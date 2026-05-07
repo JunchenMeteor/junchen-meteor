@@ -1,4 +1,4 @@
-# JC Meteor Site
+# Junchen Meteor
 
 Personal project hub for **JC Meteor**. The site presents automation testing, iOS engineering systems, and AI-assisted development workflows, with MeteorTest as the flagship project.
 
