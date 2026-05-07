@@ -2,16 +2,19 @@ import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { meteortestCopy, type Locale } from "@/content/site";
 import { getProject } from "@/content/projects";
+import { uiCopy } from "@/content/ui";
+import { localizedPath } from "@/content/locales";
 
 export function MeteorTestPage({ locale }: { locale: Locale }) {
   const copy = meteortestCopy[locale];
+  const ui = uiCopy[locale];
   const project = getProject("meteortest");
-  const demoHref = locale === "en" ? "/meteortest/demo" : "/zh-CN/meteortest/demo";
+  const demoHref = localizedPath(locale, "/meteortest/demo");
 
   return (
     <section className="page-section">
       <div className="page-title project-detail-title">
-        <span>{locale === "en" ? "Flagship project" : "主推项目"}</span>
+        <span>{ui.meteortest.flagshipProject}</span>
         <h1>{copy.title}</h1>
         <p>{copy.subtitle}</p>
       </div>
@@ -26,28 +29,28 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
           </div>
           <div className="card-actions">
             <Link href="https://github.com/JunchenMeteor/MeteorTest">
-              GitHub <ArrowUpRight size={15} />
+              {ui.common.github} <ArrowUpRight size={15} />
             </Link>
             <Link href="https://github.com/JunchenMeteor/iOS-Automation-Framework">
-              iOS companion <ArrowUpRight size={15} />
+              {ui.meteortest.iosCompanion} <ArrowUpRight size={15} />
             </Link>
             <Link href={demoHref}>
-              {locale === "en" ? "Interactive demo" : "交互 Demo"} <ArrowUpRight size={15} />
+              {ui.common.interactiveDemo} <ArrowUpRight size={15} />
             </Link>
           </div>
         </div>
         <div className="metrics-panel">
           <div>
-            <strong>Control plane</strong>
-            <span>{locale === "en" ? "Projects / suites / tasks" : "项目 / 套件 / 任务"}</span>
+            <strong>{ui.meteortest.controlPlane}</strong>
+            <span>{ui.meteortest.controlPlaneDetail}</span>
           </div>
           <div>
-            <strong>Local Agent</strong>
-            <span>{locale === "en" ? "Executor and report collector" : "执行器与报告采集"}</span>
+            <strong>{ui.meteortest.localAgent}</strong>
+            <span>{ui.meteortest.localAgentDetail}</span>
           </div>
           <div>
-            <strong>AI assist</strong>
-            <span>{locale === "en" ? "Project, suite, task, and report operations" : "项目、套件、任务和报告操作"}</span>
+            <strong>{ui.meteortest.aiAssist}</strong>
+            <span>{ui.meteortest.aiAssistDetail}</span>
           </div>
         </div>
       </div>
@@ -106,11 +109,11 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
       </div>
 
       <div className="demo-plan-section">
-        <span>{locale === "en" ? "Demo boundary" : "Demo 边界"}</span>
+        <span>{ui.meteortest.demoBoundary}</span>
         <h2>{copy.demoTitle}</h2>
         <p>{copy.demo}</p>
         <Link className="text-link" href={demoHref}>
-          {locale === "en" ? "Open interactive demo" : "打开交互 Demo"} <ArrowUpRight size={16} />
+          {ui.common.openInteractiveDemo} <ArrowUpRight size={16} />
         </Link>
       </div>
 

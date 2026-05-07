@@ -30,10 +30,11 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 4: Demo Strategy | Done | Added an in-site interactive mock demo and boundary page without fake real execution. |
 | Phase 5: MeteorTest Debugging After Website MVP | Done | Local Agent now executes iOS-Automation-Framework through the test repository Python environment; API smoke tests require API_BASE_URL for real assertions. |
 | Phase 6: Contact Surface | Done | Homepage now includes project-first contact links through GitHub profile and project issues. |
-| Phase 7: Local Mock API For Real Smoke Results | Not Started | Build a local mock API so iOS-Automation-Framework smoke tests can produce real pass/fail results without a private backend. |
-| Phase 8: Real Local MeteorTest Loop Evidence | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for website-safe evidence. |
-| Phase 9: Screenshot Or Recording Evidence | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
-| Phase 10: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
+| Phase 7: Localization Content Layer | Done | Shared UI labels, route helpers, and demo simulator copy now live in content modules instead of component-level language branches. |
+| Phase 8: Local Mock API For Real Smoke Results | Not Started | Build a local mock API so iOS-Automation-Framework smoke tests can produce real pass/fail results without a private backend. |
+| Phase 9: Real Local MeteorTest Loop Evidence | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for website-safe evidence. |
+| Phase 10: Screenshot Or Recording Evidence | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
+| Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
 ## Non-Goals
 
@@ -262,7 +263,27 @@ Public-contact boundary:
 - Do not ask visitors to post private credentials, internal URLs, device identifiers, or test accounts in public issues.
 - If a private contact channel is added later, document where it appears and what information is safe to send.
 
-## Phase 7: Local Mock API For Real Smoke Results
+## Phase 7: Localization Content Layer
+
+Status: `Done`
+
+The site now keeps translated UI labels and locale routing details out of display components.
+
+Current localization model:
+
+- `src/content/ui.ts`: shared UI labels, aria labels, page labels, and small repeated strings.
+- `src/content/locales.ts`: locale prefixes, language switch labels, and localized path helpers.
+- `src/content/demo-simulator.ts`: interactive demo simulator copy and ordered demo steps.
+- `src/content/site.ts` and `src/content/projects.ts`: page-level and project-level content.
+
+Rules:
+
+- Components can select content with `copy[locale]` or call helpers such as `localizedPath(locale, "/meteortest")`.
+- Components must not own translated display strings with `locale === "en" ? ... : ...`.
+- This rule applies across the whole project with no exceptions: labels, headings, buttons, aria text, captions, status text, helper text, and demo copy all belong in content modules.
+- Add English and Simplified Chinese strings in the same content module and same change.
+
+## Phase 8: Local Mock API For Real Smoke Results
 
 Status: `Not Started`
 
@@ -281,7 +302,7 @@ Expected work:
 - Keep mock data public-safe and deterministic.
 - Verify direct pytest execution through the project `.venv`.
 
-## Phase 8: Real Local MeteorTest Loop Evidence
+## Phase 9: Real Local MeteorTest Loop Evidence
 
 Status: `Not Started`
 
@@ -300,7 +321,7 @@ Website update rule:
 - The website can say the local loop is validated with a mock API.
 - The website should still avoid claiming public real execution until a safe connected demo exists.
 
-## Phase 9: Screenshot Or Recording Evidence
+## Phase 10: Screenshot Or Recording Evidence
 
 Status: `Deferred`
 
@@ -312,7 +333,7 @@ Requirements:
 - Label screenshots or videos clearly as local demo evidence.
 - Keep English and Chinese explanations aligned.
 
-## Phase 10: Public Connected Demo
+## Phase 11: Public Connected Demo
 
 Status: `Deferred`
 
@@ -339,12 +360,13 @@ Until these are designed, the public website should stay with the interactive mo
 | Convert Projects page into a portfolio-style index | Done | Expanded each project with purpose, built work, status, and ecosystem role. |
 | Expand the MeteorTest detail page | Done | Added background, capabilities, responsibilities, limitations, demo plan, and roadmap content. |
 | Add a clear demo status section | Done | Added a MeteorTest demo status page and links from project surfaces. |
-| Add screenshots or static demo | Done | Added an interactive mock demo; screenshots can be added later only if real UI is stable and sanitized. |
+| Add interactive demo | Done | Added an interactive mock demo; screenshots can be added later only if real UI is stable and sanitized. |
 | Run `npm run lint` and `npm run build` | Done | Verified after adding CI and syncing completed phase descriptions. |
 | Add pull request CI | Done | Added GitHub Actions workflow for npm ci, lint, and build on pull requests and main pushes. |
 | Verify desktop and mobile pages | Done | Interactive mock demo and main routes were previously visually checked; repeat when large layout changes are made. |
 | Switch focus back to MeteorTest integration debugging | Done | Local Agent to iOS-Automation-Framework execution path validated; API_BASE_URL remains the real API prerequisite. |
 | Add homepage contact module | Done | Added project-first GitHub profile and issue links. |
+| Centralize localization content | Done | Added UI, locale routing, and demo simulator content modules. |
 | Build local mock API for smoke tests | Not Started | Recommended next engineering step. |
 | Capture real local MeteorTest loop evidence | Not Started | Requires local mock API first. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |

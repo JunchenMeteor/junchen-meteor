@@ -44,6 +44,18 @@ It is acceptable to borrow the concise entry style of polished GitHub Profile RE
 - Keep `MeteorTest` as the English product/engineering name.
 - The Chinese product name for MeteorTest may be shown as `星流测试台` when useful.
 
+## Localization Rules
+
+- This is a project-wide rule with no exceptions: all multilingual display text must live in content modules, not component logic.
+- Do not put translated display copy directly in components with `locale === "en" ? ... : ...`.
+- Do not add ad hoc language branches in components for labels, headings, button text, aria text, captions, status text, or helper text.
+- Put shared UI labels in `src/content/ui.ts`.
+- Put route prefixes, locale switch labels, and localized path helpers in `src/content/locales.ts`.
+- Put page and project content in `src/content/site.ts`, `src/content/projects.ts`, or another focused content module.
+- Components may use `locale` only to select content objects or call helpers such as `localizedPath(locale, "/meteortest")`.
+- When adding English text, add the Simplified Chinese equivalent in the same content module in the same change.
+- If a new feature needs many strings, create a focused content module instead of placing strings in the component.
+
 ## Project Content Plan
 
 Before expanding homepage sections, project pages, MeteorTest demo messaging, or project portfolio content, read:

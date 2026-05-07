@@ -1,20 +1,17 @@
 import { projects } from "@/content/projects";
 import type { Locale } from "@/content/site";
+import { uiCopy } from "@/content/ui";
 
 export function ProjectsPage({ locale }: { locale: Locale }) {
+  const ui = uiCopy[locale];
   const flagship = projects.find((project) => project.role === "flagship");
-  const supportingProjects = projects.filter((project) => project.role !== "flagship");
 
   return (
     <section className="page-section">
       <div className="page-title">
-        <span>{locale === "en" ? "Projects" : "项目"}</span>
-        <h1>{locale === "en" ? "A project-led engineering portfolio" : "以项目为核心的工程作品集"}</h1>
-        <p>
-          {locale === "en"
-            ? "MeteorTest is the center of the current system, with companion repositories that cover test implementation, agent guardrails, and creator tooling."
-            : "MeteorTest 是当前项目体系的中心，配套仓库覆盖测试实现、Agent 工作规则和创作工具。"}
-          </p>
+        <span>{ui.projects.pageLabel}</span>
+        <h1>{ui.projects.pageTitle}</h1>
+        <p>{ui.projects.pageIntro}</p>
       </div>
 
       {flagship ? (
@@ -31,13 +28,13 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
             </div>
           </div>
           <div className="portfolio-aside">
-            <strong>{locale === "en" ? "Ecosystem role" : "生态角色"}</strong>
+            <strong>{ui.projects.ecosystemRole}</strong>
             <p>{flagship.portfolio.role[locale]}</p>
-            <strong>{locale === "en" ? "Evidence milestone" : "证据建设"}</strong>
+            <strong>{ui.projects.evidenceMilestone}</strong>
             <p>{flagship.portfolio.next[locale]}</p>
             <div className="card-actions">
-              <a href={flagship.links.github}>GitHub</a>
-              {flagship.links.docs ? <a href={flagship.links.docs}>Docs</a> : null}
+              <a href={flagship.links.github}>{ui.common.github}</a>
+              {flagship.links.docs ? <a href={flagship.links.docs}>{ui.common.docs}</a> : null}
             </div>
           </div>
         </article>
@@ -57,11 +54,11 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
 
             <div className="portfolio-project-grid">
               <div>
-                <h3>{locale === "en" ? "Why it exists" : "为什么存在"}</h3>
+                <h3>{ui.projects.why}</h3>
                 <p>{project.portfolio.why[locale]}</p>
               </div>
               <div>
-                <h3>{locale === "en" ? "What I built" : "做了什么"}</h3>
+                <h3>{ui.projects.built}</h3>
                 <ul>
                   {project.portfolio.built[locale].map((item) => (
                     <li key={item}>{item}</li>
@@ -69,7 +66,7 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
                 </ul>
               </div>
               <div>
-                <h3>{locale === "en" ? "Role and evidence milestone" : "角色与证据建设"}</h3>
+                <h3>{ui.projects.roleAndEvidence}</h3>
                 <p>{project.portfolio.role[locale]}</p>
                 <p>{project.portfolio.next[locale]}</p>
               </div>
@@ -82,9 +79,9 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
                 ))}
               </div>
               <div className="card-actions">
-                <a href={project.links.github}>GitHub</a>
-                {project.links.docs ? <a href={project.links.docs}>Docs</a> : null}
-                {project.links.issues ? <a href={project.links.issues}>Issues</a> : null}
+                <a href={project.links.github}>{ui.common.github}</a>
+                {project.links.docs ? <a href={project.links.docs}>{ui.common.docs}</a> : null}
+                {project.links.issues ? <a href={project.links.issues}>{ui.common.issues}</a> : null}
               </div>
             </div>
           </article>
