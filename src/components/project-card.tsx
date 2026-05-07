@@ -44,7 +44,7 @@ export function ProjectCard({ project, locale, featured = false }: ProjectCardPr
         ) : null}
         {featured && project.slug === "meteortest" ? (
           <Link href={demoHref}>
-            Demo status <ArrowUpRight size={15} />
+            {locale === "en" ? "Interactive demo" : "交互 Demo"} <ArrowUpRight size={15} />
           </Link>
         ) : null}
       </div>

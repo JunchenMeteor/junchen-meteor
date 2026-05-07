@@ -33,7 +33,7 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
           <div className="portfolio-aside">
             <strong>{locale === "en" ? "Ecosystem role" : "生态角色"}</strong>
             <p>{flagship.portfolio.role[locale]}</p>
-            <strong>{locale === "en" ? "Next" : "下一步"}</strong>
+            <strong>{locale === "en" ? "Evidence milestone" : "证据建设"}</strong>
             <p>{flagship.portfolio.next[locale]}</p>
             <div className="card-actions">
               <a href={flagship.links.github}>GitHub</a>
@@ -69,7 +69,7 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
                 </ul>
               </div>
               <div>
-                <h3>{locale === "en" ? "Role and next step" : "角色与下一步"}</h3>
+                <h3>{locale === "en" ? "Role and evidence milestone" : "角色与证据建设"}</h3>
                 <p>{project.portfolio.role[locale]}</p>
                 <p>{project.portfolio.next[locale]}</p>
               </div>
