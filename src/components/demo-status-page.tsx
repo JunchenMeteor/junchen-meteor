@@ -2,10 +2,12 @@ import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { DemoSimulator } from "@/components/demo-simulator";
 import { demoCopy, type Locale } from "@/content/site";
+import { uiCopy } from "@/content/ui";
+import { localizedPath } from "@/content/locales";
 
 export function DemoStatusPage({ locale }: { locale: Locale }) {
   const copy = demoCopy[locale];
-  const base = locale === "en" ? "" : "/zh-CN";
+  const ui = uiCopy[locale];
 
   return (
     <section className="page-section">
@@ -45,11 +47,11 @@ export function DemoStatusPage({ locale }: { locale: Locale }) {
           </ul>
         </div>
         <aside>
-          <span>{locale === "en" ? "Boundary" : "边界"}</span>
+          <span>{ui.demo.boundary}</span>
           <h3>{copy.nextTitle}</h3>
           <p>{copy.next}</p>
-          <Link className="text-link" href={`${base}/meteortest`}>
-            {locale === "en" ? "Back to MeteorTest" : "返回 MeteorTest"} <ArrowRight size={16} />
+          <Link className="text-link" href={localizedPath(locale, "/meteortest")}>
+            {ui.common.backToMeteorTest} <ArrowRight size={16} />
           </Link>
         </aside>
       </div>

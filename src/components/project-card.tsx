@@ -2,6 +2,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/content/site";
 import type { Project } from "@/content/projects";
+import { uiCopy } from "@/content/ui";
+import { localizedPath } from "@/content/locales";
 
 type ProjectCardProps = {
   project: Project;
@@ -10,7 +12,8 @@ type ProjectCardProps = {
 };
 
 export function ProjectCard({ project, locale, featured = false }: ProjectCardProps) {
-  const demoHref = locale === "en" ? "/meteortest/demo" : "/zh-CN/meteortest/demo";
+  const ui = uiCopy[locale];
+  const demoHref = localizedPath(locale, "/meteortest/demo");
 
   return (
     <article className={featured ? "project-card project-card-featured" : "project-card"}>
@@ -35,16 +38,16 @@ export function ProjectCard({ project, locale, featured = false }: ProjectCardPr
       </div>
       <div className="card-actions">
         <Link href={project.links.github}>
-          GitHub <ArrowUpRight size={15} />
+          {ui.common.github} <ArrowUpRight size={15} />
         </Link>
         {project.links.docs ? (
           <Link href={project.links.docs}>
-            Docs <ArrowUpRight size={15} />
+            {ui.common.docs} <ArrowUpRight size={15} />
           </Link>
         ) : null}
         {featured && project.slug === "meteortest" ? (
           <Link href={demoHref}>
-            {locale === "en" ? "Interactive demo" : "交互 Demo"} <ArrowUpRight size={15} />
+            {ui.common.interactiveDemo} <ArrowUpRight size={15} />
           </Link>
         ) : null}
       </div>

@@ -3,16 +3,18 @@ import { ArrowRight, Github, Layers, MessageSquare, Radar, Route, TerminalSquare
 import { contactCopy, homeCopy, site, type Locale } from "@/content/site";
 import { projects } from "@/content/projects";
 import { ProjectCard } from "@/components/project-card";
+import { uiCopy } from "@/content/ui";
+import { localizedPath } from "@/content/locales";
 
 const iconMap = [Radar, Route, Layers, TerminalSquare];
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
   const contact = contactCopy[locale];
+  const ui = uiCopy[locale];
   const flagship = projects[0];
   const companion = projects[1];
   const otherProjects = projects.slice(2);
-  const base = locale === "en" ? "" : "/zh-CN";
 
   return (
     <>
@@ -21,9 +23,9 @@ export function HomePage({ locale }: { locale: Locale }) {
           <p className="eyebrow">{copy.eyebrow}</p>
           <h1>{site.name}</h1>
           <p className="hero-title">{copy.heroTitle}</p>
-          <p className="hero-intro">{locale === "en" ? site.intro.en : site.intro.zh}</p>
+          <p className="hero-intro">{site.intro[locale]}</p>
           <div className="hero-actions">
-            <Link className="primary-button" href={`${base}/meteortest`}>
+            <Link className="primary-button" href={localizedPath(locale, "/meteortest")}>
               {copy.primaryCta} <ArrowRight size={18} />
             </Link>
             <Link className="secondary-button" href={site.github}>
@@ -31,16 +33,9 @@ export function HomePage({ locale }: { locale: Locale }) {
             </Link>
           </div>
         </div>
-        <div className="hero-visual flow-visual" aria-label="MeteorTest system flow">
+        <div className="hero-visual flow-visual" aria-label={ui.aria.meteorFlow}>
           <div className="flow-rail">
-            {[
-              locale === "en" ? "AI operation entry" : "AI 操作入口",
-              locale === "en" ? "Project and suite import" : "项目和套件导入",
-              locale === "en" ? "Task creation" : "任务创建",
-              locale === "en" ? "Local Agent" : "本地执行器",
-              locale === "en" ? "Reports" : "报告回传",
-              locale === "en" ? "AI next action" : "AI 下一步建议"
-            ].map((item, index) => (
+            {ui.home.flowSteps.map((item, index) => (
               <div className="flow-step" key={item}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <strong>{item}</strong>
@@ -48,12 +43,8 @@ export function HomePage({ locale }: { locale: Locale }) {
             ))}
           </div>
           <div className="flow-caption">
-            <span>{locale === "en" ? "AI-first execution model" : "AI 优先执行模型"}</span>
-            <p>
-              {locale === "en"
-                ? "This is a simplified AI-assisted operation model, not a screenshot of the current MeteorTest web console."
-                : "这是简化后的 AI 辅助操作模型，不是当前 MeteorTest Web 控制台截图。"}
-            </p>
+            <span>{ui.home.flowLabel}</span>
+            <p>{ui.home.flowCaption}</p>
           </div>
         </div>
       </section>
@@ -69,7 +60,7 @@ export function HomePage({ locale }: { locale: Locale }) {
 
       <section className="depth-section">
         <div className="section-heading">
-          <span>{locale === "en" ? "Project substance" : "项目内容"}</span>
+          <span>{ui.home.projectSubstance}</span>
           <h2>{copy.depthTitle}</h2>
           <p>{copy.depthIntro}</p>
         </div>
@@ -93,7 +84,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <h2>{companion.name}</h2>
           <p>{companion.summary[locale]}</p>
           <Link className="text-link" href={companion.links.github}>
-            GitHub <ArrowRight size={16} />
+            {ui.common.github} <ArrowRight size={16} />
           </Link>
         </div>
         <div className="contract-panel">
@@ -108,7 +99,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <section className="ecosystem-section">
         <div className="section-heading">
           <span>{copy.ecosystemTitle}</span>
-          <h2>{locale === "en" ? "Projects that support the same loop" : "围绕同一执行闭环的项目"}</h2>
+          <h2>{ui.home.ecosystemHeading}</h2>
         </div>
         <div className="ecosystem-grid">
           {projects.map((project, index) => {
@@ -127,7 +118,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <section className="focus-section">
         <div className="section-heading">
           <span>{copy.focusTitle}</span>
-          <h2>{locale === "en" ? "What this site is about" : "这个站点关注什么"}</h2>
+          <h2>{ui.home.focusHeading}</h2>
         </div>
         <div className="focus-list">
           {copy.focusItems.map((item) => (
@@ -149,7 +140,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               <strong>{item.label}</strong>
               <span>{item.description}</span>
               <em>
-                {locale === "en" ? "Open link" : "打开链接"} <ArrowRight size={15} />
+                {ui.common.openLink} <ArrowRight size={15} />
               </em>
             </Link>
           ))}
