@@ -72,7 +72,7 @@ export const homeCopy = {
         ]
       },
       {
-        title: "Next milestones",
+        title: "Evidence milestones",
         items: [
           "Add a static online demo with mock data that explains the validated execution path.",
           "Configure a real target API environment before presenting API smoke results as executed assertions.",
@@ -127,7 +127,7 @@ export const homeCopy = {
         ]
       },
       {
-        title: "下一步",
+        title: "证据建设",
         items: [
           "增加一个使用 mock 数据的静态在线 Demo，用来解释已验证的执行链路。",
           "在展示 API smoke 的真实断言结果前，先配置真实目标 API 环境。",

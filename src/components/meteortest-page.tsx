@@ -32,7 +32,7 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
               iOS companion <ArrowUpRight size={15} />
             </Link>
             <Link href={demoHref}>
-              Demo status <ArrowUpRight size={15} />
+              {locale === "en" ? "Interactive demo" : "交互 Demo"} <ArrowUpRight size={15} />
             </Link>
           </div>
         </div>
@@ -47,7 +47,7 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
           </div>
           <div>
             <strong>AI assist</strong>
-            <span>{locale === "en" ? "Failure analysis context" : "失败分析上下文"}</span>
+            <span>{locale === "en" ? "Project, suite, task, and report operations" : "项目、套件、任务和报告操作"}</span>
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
         <h2>{copy.demoTitle}</h2>
         <p>{copy.demo}</p>
         <Link className="text-link" href={demoHref}>
-          {locale === "en" ? "View demo status" : "查看 Demo 状态"} <ArrowUpRight size={16} />
+          {locale === "en" ? "Open interactive demo" : "打开交互 Demo"} <ArrowUpRight size={16} />
         </Link>
       </div>
 

@@ -1,6 +1,6 @@
 # Project Content And Demo Plan
 
-This document defines how the JC Meteor personal website should become a stronger project-led portfolio without overstating project maturity. It also records the recommended order for MeteorTest demo work and the later MeteorTest debugging phase.
+This document records how the JC Meteor personal website was built into a project-led portfolio without overstating project maturity. It also tracks the remaining engineering stages for stronger MeteorTest evidence.
 
 ## Goals
 
@@ -42,21 +42,21 @@ Use these status labels so future agents can quickly understand progress:
 - Do not claim MeteorTest is production-ready SaaS.
 - Do not start debugging MeteorTest target-project failures before this website content pass is stable.
 
-## Current Gap
+## Completed Website Baseline
 
-The current site has a good visual base, but the project content is thin:
+The website MVP now covers the earlier content gaps:
 
-- The homepage introduces MeteorTest, but does not yet explain the real engineering problem deeply.
-- The project ecosystem is visible, but the relationship between repositories needs stronger context.
-- The Projects page is currently closer to a list than a portfolio.
-- The MeteorTest detail page needs more substance around background, capabilities, architecture, limitations, and roadmap.
-- There is no demo strategy yet, so a visitor cannot distinguish between planned demo, static mock demo, and real platform execution.
+- The homepage explains MeteorTest's engineering problem, AI-first execution model, companion test project, project ecosystem, and contact entry points.
+- The Projects page presents each repository with purpose, built work, status, links, and ecosystem role.
+- The MeteorTest detail page includes background, problem framing, responsibilities, execution loop, capabilities, limitations, demo boundary, and roadmap.
+- The demo page is an interactive mock demo that makes the AI-assisted operation loop visible without pretending to be a public real-execution service.
+- The planning document now separates completed website work from future evidence-building work.
 
 ## Content Principles
 
 1. **Project claims must be grounded**
-   - Use wording that can be backed by the actual repository README, current code, or a planned roadmap item.
-   - Prefer `MVP`, `active development`, `static demo planned`, and `local execution loop` over broad marketing claims.
+   - Use wording that can be backed by the actual repository README, current code, local validation results, or a clearly marked future stage.
+   - Prefer `MVP`, `active development`, `interactive mock demo`, `validated local execution path`, and `real execution demo is not public yet` over broad marketing claims.
 
 2. **Bilingual content must stay aligned**
    - English is the default route.
@@ -99,9 +99,9 @@ Content to include:
   - core flow has been walked through
   - target test project integration path has been validated through the Local Agent
   - API smoke tests still need API_BASE_URL before they can run real assertions
-- Next milestones:
+- Current follow-up milestones:
   - configure a real API_BASE_URL for API smoke execution
-  - add static online demo
+  - add a local mock API for real pass/fail smoke evidence
   - improve report and AI-assisted operation presentation
 
 ### Add project evidence sections
@@ -112,7 +112,7 @@ Recommended homepage sections:
 - `Execution model`
 - `Companion project`
 - `Current status`
-- `Next milestones`
+- `Current follow-up milestones`
 
 ## Phase 2: Projects Page As Portfolio
 
@@ -136,7 +136,7 @@ Recommended project summaries:
 - Role: flagship testing platform
 - Why it exists: connect test projects, task scheduling, local execution, reports, and AI-assisted operations
 - Status: MVP / active development
-- Next: static demo and real API target configuration
+- Next: local mock API and real API target configuration
 
 ### iOS-Automation-Framework
 
@@ -189,7 +189,7 @@ Chinese equivalent:
 
 Status: `Done`
 
-MeteorTest should have an online demo, but it should be introduced in stages.
+MeteorTest now has an online interactive mock demo. Future demo work should add evidence gradually without crossing execution-safety boundaries.
 
 ### Recommended order
 
@@ -340,8 +340,9 @@ Until these are designed, the public website should stay with the interactive mo
 | Expand the MeteorTest detail page | Done | Added background, capabilities, responsibilities, limitations, demo plan, and roadmap content. |
 | Add a clear demo status section | Done | Added a MeteorTest demo status page and links from project surfaces. |
 | Add screenshots or static demo | Done | Added an interactive mock demo; screenshots can be added later only if real UI is stable and sanitized. |
-| Run `npm run lint` and `npm run build` | Done | Last verified after adding this plan. |
-| Verify desktop and mobile pages | In Progress | Initial visual checks exist; repeat after each content phase. |
+| Run `npm run lint` and `npm run build` | Done | Verified after adding CI and syncing completed phase descriptions. |
+| Add pull request CI | Done | Added GitHub Actions workflow for npm ci, lint, and build on pull requests and main pushes. |
+| Verify desktop and mobile pages | Done | Interactive mock demo and main routes were previously visually checked; repeat when large layout changes are made. |
 | Switch focus back to MeteorTest integration debugging | Done | Local Agent to iOS-Automation-Framework execution path validated; API_BASE_URL remains the real API prerequisite. |
 | Add homepage contact module | Done | Added project-first GitHub profile and issue links. |
 | Build local mock API for smoke tests | Not Started | Recommended next engineering step. |

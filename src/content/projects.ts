@@ -76,8 +76,8 @@ export const projects: Project[] = [
         zh: "主推平台项目和控制平面。"
       },
       next: {
-        en: "Stabilize the sample execution path, then add a mock-data online demo.",
-        zh: "先稳定样例执行路径，再增加基于 mock 数据的在线 Demo。"
+        en: "Build a local mock API so the validated Agent path can produce real API smoke pass/fail evidence.",
+        zh: "增加本地 mock API，让已验证的 Agent 链路能产出真实的 API smoke 通过/失败证据。"
       }
     },
     highlights: {
@@ -133,8 +133,8 @@ export const projects: Project[] = [
         zh: "配套测试代码项目和集成样例。"
       },
       next: {
-        en: "Debug the current target-project execution failures after the website MVP is stable.",
-        zh: "官网 MVP 稳定后，排查当前目标测试项目的执行失败问题。"
+        en: "Add a deterministic local mock API and use API_BASE_URL to run smoke tests with real assertions.",
+        zh: "增加确定性的本地 mock API，并通过 API_BASE_URL 运行带真实断言的 smoke 测试。"
       }
     },
     highlights: {
