@@ -27,7 +27,7 @@ Do not use the old owner name `qd1332543` in public-facing content.
 Use two different surfaces for two different jobs:
 
 - `JunchenMeteor/JunchenMeteor`: GitHub Profile README. Keep it lightweight, clean, and link-focused.
-- `jc-meteor-site`: personal website. Make it more complete, more visual, and more project-led.
+- `junchen-meteor`: personal website. Make it more complete, more visual, and more project-led.
 
 It is acceptable to borrow the concise entry style of polished GitHub Profile READMEs, but do not reduce the website to a sparse profile README. The website should explain the MeteorTest ecosystem and project relationships in more depth.
 
@@ -52,7 +52,7 @@ Before expanding homepage sections, project pages, MeteorTest demo messaging, or
 docs/PROJECT_CONTENT_PLAN.md
 ```
 
-Implement the plan in phases. Start with website content depth, then project portfolio structure, then MeteorTest detail content, then static demo messaging. Do not jump into real MeteorTest execution debugging until the website MVP is stable unless the user explicitly redirects the task.
+Implement the plan in phases. The website MVP, interactive mock demo, contact surface, and MeteorTest-to-iOS-Automation-Framework local execution-path debugging are complete. The next evidence-building phase is a local mock API for real API smoke pass/fail results, followed by local MeteorTest loop evidence, sanitized screenshots or recordings, and only later a public connected demo if execution safety is designed.
 
 ## Content Boundaries
 
@@ -62,7 +62,9 @@ Acceptable wording:
 
 - `active development`
 - `MVP`
-- `static demo planned`
+- `interactive mock demo`
+- `validated local execution path`
+- `real execution demo is not public yet`
 - `AI-assisted project import`
 - `AI-assisted suite import`
 - `AI-assisted task creation`
