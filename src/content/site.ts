@@ -1,0 +1,460 @@
+export type Locale = "en" | "zh";
+
+export const site = {
+  name: "JC Meteor",
+  zhName: "钧宸流星",
+  github: "https://github.com/JunchenMeteor",
+  tagline: {
+    en: "Automation testing, iOS engineering systems, and AI-assisted development workflows.",
+    zh: "聚焦自动化测试、iOS 工程体系与 AI 辅助研发工作流。"
+  },
+  intro: {
+    en: "A project-led engineering portfolio centered on repeatable testing systems, local execution loops, and practical agent workflows.",
+    zh: "一个以项目为核心的工程主页，串联可复现的测试系统、本地执行闭环和实用的 Agent 工作流。"
+  }
+};
+
+export const navItems = {
+  en: [
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" }
+  ],
+  zh: [
+    { label: "首页", href: "/zh-CN" },
+    { label: "项目", href: "/zh-CN/projects" }
+  ]
+};
+
+export const homeCopy = {
+  en: {
+    eyebrow: "Project hub",
+    heroTitle: "Build testing systems that can be repeated, observed, and improved.",
+    primaryCta: "Explore MeteorTest",
+    secondaryCta: "View GitHub",
+    flagshipLabel: "Flagship project",
+    companionLabel: "Companion test project",
+    ecosystemTitle: "A compact engineering ecosystem",
+    focusTitle: "Engineering focus",
+    focusItems: [
+      "Automation testing platforms",
+      "iOS automation and test infrastructure",
+      "AI-assisted coding workflows",
+      "Practical tooling for repeatable execution"
+    ],
+    depthTitle: "Why MeteorTest exists",
+    depthIntro:
+      "MeteorTest is built around one practical loop: let a platform or AI assistant import test projects, register suites, create tasks, trigger local execution, and bring logs, reports, and failure context back into one place.",
+    depthGroups: [
+      {
+        title: "Problem",
+        items: [
+          "Automation scripts often live in separate repositories without a shared entry point.",
+          "Task execution is easy to start manually, but hard to trace later.",
+          "Reports, logs, app artifacts, environments, and task context are usually disconnected.",
+          "AI assistants are less useful when they can only comment on logs instead of operating with project, suite, task, and report context."
+        ]
+      },
+      {
+        title: "What it does",
+        items: [
+          "Imports projects and suites from a test project's meteortest.yml contract.",
+          "Lets the AI assistant help create tasks, select suites, inspect reports, and summarize failures from platform context.",
+          "Lets a Python Local Agent claim tasks and execute pytest, Appium, or Locust commands.",
+          "Collects status, logs, Allure artifacts, and AI-assisted operation history."
+        ]
+      },
+      {
+        title: "Current status",
+        items: [
+          "MVP and active development.",
+          "The platform-to-agent-to-test-repository execution path has been validated with iOS-Automation-Framework.",
+          "The API smoke suite now runs through the Local Agent with the test repository's own Python environment; real assertions still require a configured API_BASE_URL."
+        ]
+      },
+      {
+        title: "Next milestones",
+        items: [
+          "Add a static online demo with mock data that explains the validated execution path.",
+          "Configure a real target API environment before presenting API smoke results as executed assertions.",
+          "Improve report presentation and AI-assisted operation context."
+        ]
+      }
+    ]
+  },
+  zh: {
+    eyebrow: "项目入口",
+    heroTitle: "构建可复现、可观测、可持续改进的测试工程系统。",
+    primaryCta: "查看 MeteorTest",
+    secondaryCta: "查看 GitHub",
+    flagshipLabel: "主推项目",
+    companionLabel: "配套测试项目",
+    ecosystemTitle: "紧凑的工程项目生态",
+    focusTitle: "工程方向",
+    focusItems: [
+      "自动化测试平台",
+      "iOS 自动化与测试基础设施",
+      "AI 辅助编码工作流",
+      "面向可复现执行的实用工具"
+    ],
+    depthTitle: "为什么要做 MeteorTest",
+    depthIntro:
+      "MeteorTest 围绕一个实用闭环建设：让平台或 AI 助手导入测试项目、登记套件、创建任务、触发本地执行，再把日志、报告和失败上下文回传到同一个地方。",
+    depthGroups: [
+      {
+        title: "问题",
+        items: [
+          "自动化脚本经常分散在不同仓库，缺少统一入口。",
+          "测试任务手动执行很容易，但后续追踪历史和上下文很困难。",
+          "报告、日志、App 产物、环境和任务上下文通常是割裂的。",
+          "AI 助手如果只能点评日志，而不能基于项目、套件、任务和报告上下文操作，实际帮助会很有限。"
+        ]
+      },
+      {
+        title: "它做什么",
+        items: [
+          "从测试项目的 meteortest.yml 契约导入项目和测试套件。",
+          "让 AI 助手基于平台上下文辅助创建任务、选择套件、查看报告和总结失败。",
+          "由 Python 本地执行器领取任务并执行 pytest、Appium 或 Locust 命令。",
+          "收集状态、日志、Allure 产物和 AI 辅助操作记录。"
+        ]
+      },
+      {
+        title: "当前状态",
+        items: [
+          "MVP，仍在主动开发中。",
+          "平台到本地执行器再到测试仓库的执行链路，已经通过 iOS-Automation-Framework 验证。",
+          "API smoke suite 现在可以通过 Local Agent 使用测试仓库自己的 Python 环境运行；真实断言仍需要配置 API_BASE_URL。"
+        ]
+      },
+      {
+        title: "下一步",
+        items: [
+          "增加一个使用 mock 数据的静态在线 Demo，用来解释已验证的执行链路。",
+          "在展示 API smoke 的真实断言结果前，先配置真实目标 API 环境。",
+          "改进报告展示和 AI 辅助操作上下文。"
+        ]
+      }
+    ]
+  }
+};
+
+export const contactCopy = {
+  en: {
+    eyebrow: "Contact",
+    title: "Project-first contact",
+    intro:
+      "For now, the cleanest way to reach JC Meteor is through GitHub project context. Use issues for project-specific feedback and the profile link for the broader project hub.",
+    links: [
+      {
+        label: "GitHub Profile",
+        description: "Public project hub, repositories, and profile updates.",
+        href: "https://github.com/JunchenMeteor"
+      },
+      {
+        label: "MeteorTest Issues",
+        description: "Questions, bugs, and roadmap feedback for the flagship testing platform.",
+        href: "https://github.com/JunchenMeteor/MeteorTest/issues"
+      },
+      {
+        label: "iOS Automation Issues",
+        description: "Test project integration, pytest/Appium, and sample execution questions.",
+        href: "https://github.com/JunchenMeteor/iOS-Automation-Framework/issues"
+      }
+    ],
+    note:
+      "Private credentials, internal URLs, device identifiers, and test accounts should not be posted publicly."
+  },
+  zh: {
+    eyebrow: "联系",
+    title: "以项目上下文为主的联系入口",
+    intro:
+      "目前最清晰的联系入口是 GitHub 项目上下文。具体项目反馈走 issue，整体项目入口和公开资料走 profile。",
+    links: [
+      {
+        label: "GitHub Profile",
+        description: "公开项目入口、仓库列表和个人主页更新。",
+        href: "https://github.com/JunchenMeteor"
+      },
+      {
+        label: "MeteorTest Issues",
+        description: "主推测试平台的问题、缺陷和路线图反馈。",
+        href: "https://github.com/JunchenMeteor/MeteorTest/issues"
+      },
+      {
+        label: "iOS Automation Issues",
+        description: "测试项目接入、pytest/Appium 和样例执行相关问题。",
+        href: "https://github.com/JunchenMeteor/iOS-Automation-Framework/issues"
+      }
+    ],
+    note:
+      "私有密钥、内部 URL、设备标识和测试账号不应发布到公开 issue 中。"
+  }
+};
+
+export const meteortestCopy = {
+  en: {
+    title: "MeteorTest",
+    subtitle: "The flagship project in the JC Meteor portfolio.",
+    summary:
+      "MeteorTest is an automation testing platform for managing projects, importing suites, scheduling local executors, collecting reports, and using AI to assist with project import, suite operations, task creation, report inspection, and failure analysis.",
+    loopTitle: "Execution loop",
+    loop: [
+      {
+        title: "Test project contract",
+        body: "The automation repository provides meteortest.yml, declaring suites, commands, required tools, and report behavior."
+      },
+      {
+        title: "Platform or AI import",
+        body: "MeteorTest reads the contract and registers the project suites, either through the Web console or through AI-assisted project operations."
+      },
+      {
+        title: "AI-assisted task creation",
+        body: "A user or AI assistant can create a task that binds the project, suite, environment, build artifact, and execution metadata into one run request."
+      },
+      {
+        title: "Local execution",
+        body: "The Python Local Agent claims the task and runs the declared pytest, Appium, or Locust command on the local machine."
+      },
+      {
+        title: "Report upload",
+        body: "Logs, status, Allure artifacts, screenshots, and execution summaries are written back to the platform."
+      },
+      {
+        title: "AI-assisted operations",
+        body: "MeteorTest uses platform context to help import suites, create tasks, inspect reports, summarize failures, and suggest the next action."
+      }
+    ],
+    roadmapTitle: "Roadmap",
+    roadmap: [
+      "Stabilize local executor lifecycle and task locking.",
+      "Improve report aggregation and failure summaries.",
+      "Add a static online demo that explains the validated Local Agent execution path without connecting public execution services.",
+      "Expand project permission and collaboration boundaries after the MVP is stable."
+    ],
+    sections: [
+      {
+        title: "Background",
+        body:
+          "Automation testing work often starts inside one repository, then spreads across products, environments, devices, reports, and local machines. MeteorTest is an attempt to make that execution loop visible and repeatable without moving every test into the platform itself."
+      },
+      {
+        title: "Problem",
+        body:
+          "The hard part is not only running pytest or Appium. The hard part is knowing which project, suite, app artifact, environment, executor, log, report, failure summary, and AI operation belong to the same run."
+      },
+      {
+        title: "Approach",
+        body:
+          "MeteorTest keeps the platform as the control plane and lets the Local Agent handle execution. Test repositories own their code and expose a meteortest.yml contract; the platform imports that contract and schedules tasks against it."
+      }
+    ],
+    responsibilitiesTitle: "System responsibilities",
+    responsibilities: [
+      {
+        title: "MeteorTest platform",
+        body: "Owns project metadata, suite import, task state, reports, executor visibility, settings, and AI-assisted operation surfaces."
+      },
+      {
+        title: "Local Agent",
+        body: "Claims queued tasks, prepares artifacts, runs suite commands, captures logs, and writes reports back to the platform."
+      },
+      {
+        title: "Test project",
+        body: "Owns test code, fixtures, app-specific configuration, report output, and the meteortest.yml integration contract."
+      }
+    ],
+    capabilitiesTitle: "Capability overview",
+    capabilities: [
+      "Project and suite management",
+      "Build artifact registration",
+      "Task creation and queueing",
+      "AI-assisted project, suite, and task operations",
+      "Local executor status",
+      "Logs and Allure report collection",
+      "AI-assisted failure analysis"
+    ],
+    limitationsTitle: "Current limitations",
+    limitations: [
+      "MeteorTest is still an MVP and active development project.",
+      "The Local Agent can execute the iOS-Automation-Framework API smoke suite through the test repository's own virtual environment.",
+      "The current API smoke tests are skipped unless API_BASE_URL points to a real target service.",
+      "No public real-execution demo is exposed yet."
+    ],
+    demoTitle: "Demo boundary",
+    demo:
+      "The website can link to a public MeteorTest demo page, but the first version should remain static and mock-data based. It can explain the validated project-import and Local Agent execution path without connecting real Supabase secrets, Local Agent endpoints, devices, or private app artifacts."
+  },
+  zh: {
+    title: "MeteorTest",
+    subtitle: "JC Meteor 项目体系中的主推项目。",
+    summary:
+      "MeteorTest 是一个自动化测试平台，用于管理项目、导入套件、调度本地执行器、收集报告，并通过 AI 辅助项目导入、套件操作、任务创建、报告查看和失败分析。",
+    loopTitle: "执行闭环",
+    loop: [
+      {
+        title: "测试项目契约",
+        body: "自动化仓库提供 meteortest.yml，声明测试套件、执行命令、依赖工具和报告行为。"
+      },
+      {
+        title: "平台或 AI 导入",
+        body: "MeteorTest 读取契约并登记项目套件，这既可以通过 Web 控制台完成，也可以通过 AI 辅助项目操作完成。"
+      },
+      {
+        title: "AI 辅助创建任务",
+        body: "用户或 AI 助手可以创建任务，把项目、套件、环境、构建产物和执行元数据绑定成一次运行请求。"
+      },
+      {
+        title: "本地执行",
+        body: "Python 本地执行器领取任务，并在本机运行声明的 pytest、Appium 或 Locust 命令。"
+      },
+      {
+        title: "回传报告",
+        body: "日志、状态、Allure 产物、截图和执行摘要会写回平台。"
+      },
+      {
+        title: "AI 辅助操作",
+        body: "MeteorTest 使用平台上下文辅助导入套件、创建任务、查看报告、总结失败，并建议下一步动作。"
+      }
+    ],
+    roadmapTitle: "路线图",
+    roadmap: [
+      "稳定本地执行器生命周期和任务锁定机制。",
+      "改进报告聚合和失败摘要能力。",
+      "增加一个静态在线 Demo，用来解释已验证的本地执行器链路，但不连接公开真实执行服务。",
+      "在 MVP 稳定后扩展项目权限和协作边界。"
+    ],
+    sections: [
+      {
+        title: "背景",
+        body:
+          "自动化测试通常从一个仓库开始，随后扩散到多个产品、环境、设备、报告和本地机器。MeteorTest 的目标是在不把所有测试代码搬进平台的前提下，让这条执行闭环变得可见、可复现。"
+      },
+      {
+        title: "问题",
+        body:
+          "难点不只是运行 pytest 或 Appium，而是知道同一次运行里的项目、套件、App 产物、环境、执行器、日志、报告、失败摘要和 AI 操作如何对应起来。"
+      },
+      {
+        title: "方案",
+        body:
+          "MeteorTest 将平台定位为控制平面，让本地执行器负责真实执行。测试仓库保留自己的代码，并通过 meteortest.yml 暴露集成契约；平台导入契约后基于它创建和调度任务。"
+      }
+    ],
+    responsibilitiesTitle: "系统职责",
+    responsibilities: [
+      {
+        title: "MeteorTest 平台",
+        body: "负责项目元数据、套件导入、任务状态、报告、执行器可见性、设置和 AI 辅助操作入口。"
+      },
+      {
+        title: "本地执行器",
+        body: "领取排队任务，准备产物，执行套件命令，采集日志，并把报告写回平台。"
+      },
+      {
+        title: "测试项目",
+        body: "负责测试代码、fixture、应用相关配置、报告输出，以及 meteortest.yml 集成契约。"
+      }
+    ],
+    capabilitiesTitle: "能力概览",
+    capabilities: [
+      "项目和套件管理",
+      "构建产物登记",
+      "任务创建和排队",
+      "AI 辅助项目、套件和任务操作",
+      "本地执行器状态",
+      "日志和 Allure 报告采集",
+      "AI 辅助失败分析"
+    ],
+    limitationsTitle: "当前限制",
+    limitations: [
+      "MeteorTest 仍是 MVP 和主动开发项目。",
+      "Local Agent 已经可以通过测试仓库自己的虚拟环境执行 iOS-Automation-Framework 的 API smoke suite。",
+      "当前 API smoke 测试在没有 API_BASE_URL 指向真实目标服务时会被跳过。",
+      "目前还没有公开的真实执行 Demo。"
+    ],
+    demoTitle: "Demo 边界",
+    demo:
+      "官网可以接入一个公开的 MeteorTest Demo 页面，但第一个版本应该保持静态和 mock 数据。它可以解释已验证的项目导入和 Local Agent 执行链路，但不连接真实 Supabase 密钥、本地执行器端点、设备或私有 App 产物。"
+  }
+};
+
+export const demoCopy = {
+  en: {
+    title: "MeteorTest Interactive Demo",
+    subtitle: "A browser-side walkthrough of the AI-assisted project, suite, task, execution, report, and next-action loop.",
+    status: "Interactive mock demo",
+    summary:
+      "This demo puts the AI operation entry first: the assistant can help import a project contract, register suites, prepare a task, hand execution to the Local Agent, inspect report context, and suggest the next action. The page uses mock data and does not connect real Supabase projects, Local Agent endpoints, devices, or private app artifacts.",
+    stagesTitle: "What this demo shows",
+    stages: [
+      {
+        title: "1. AI as operation entry",
+        status: "Shown",
+        body:
+          "The flow starts from AI-assisted project and suite operations instead of treating AI as a report-only feature."
+      },
+      {
+        title: "2. Local Agent handoff",
+        status: "Shown",
+        body:
+          "The simulation shows how a prepared task is handed to a Local Agent and executed through the test repository runtime."
+      },
+      {
+        title: "3. Report and next action",
+        status: "Shown",
+        body:
+          "The final step highlights report inspection and AI-assisted follow-up, including environment or rerun suggestions."
+      }
+    ],
+    boundariesTitle: "Public demo boundaries",
+    boundaries: [
+      "Do not connect production Supabase secrets.",
+      "Do not expose Local Agent endpoints or machine paths.",
+      "Do not run real device or app automation from the public website.",
+      "Do not show private app artifacts, internal URLs, tokens, or test accounts.",
+      "Do not imply that real execution is publicly available before it is designed."
+    ],
+    nextTitle: "Real execution boundary",
+    next:
+      "A future real connected demo needs authentication, data isolation, secrets handling, task permission checks, and executor sandboxing. Until then, this page should remain an interactive mock demo backed by validated local integration work."
+  },
+  zh: {
+    title: "MeteorTest 交互 Demo",
+    subtitle: "用浏览器内交互演示 AI 辅助的项目、套件、任务、执行、报告和下一步动作闭环。",
+    status: "可交互 mock Demo",
+    summary:
+      "这个 Demo 把 AI 操作入口放在最前面：AI 助手可以辅助导入项目契约、登记套件、准备任务、交给 Local Agent 执行、查看报告上下文，并建议下一步动作。页面使用 mock 数据，不连接真实 Supabase 项目、本地执行器端点、设备或私有 App 产物。",
+    stagesTitle: "这个 Demo 展示什么",
+    stages: [
+      {
+        title: "1. AI 作为操作入口",
+        status: "已展示",
+        body:
+          "流程从 AI 辅助项目和套件操作开始，而不是把 AI 只当成报告分析功能。"
+      },
+      {
+        title: "2. 交给 Local Agent",
+        status: "已展示",
+        body:
+          "模拟展示准备好的任务如何交给 Local Agent，并通过测试仓库自己的运行时执行。"
+      },
+      {
+        title: "3. 报告和下一步",
+        status: "已展示",
+        body:
+          "最后一步突出报告查看和 AI 辅助跟进，包括环境配置或重跑建议。"
+      }
+    ],
+    boundariesTitle: "公开 Demo 边界",
+    boundaries: [
+      "不连接生产 Supabase 密钥。",
+      "不暴露本地执行器端点或机器路径。",
+      "不从公开官网触发真实设备或 App 自动化。",
+      "不展示私有 App 产物、内部 URL、token 或测试账号。",
+      "在真实执行能力设计完成前，不暗示它已经可以公开使用。"
+    ],
+    nextTitle: "真实执行边界",
+    next:
+      "未来如果要接入真实执行 Demo，需要先设计认证、数据隔离、密钥处理、任务权限校验和执行器沙箱。在此之前，这个页面应保持为基于本地验证工作的交互式 mock Demo。"
+  }
+};
