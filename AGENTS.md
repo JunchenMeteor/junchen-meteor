@@ -114,4 +114,10 @@ npm run lint
 npm run build
 ```
 
+For local preview, use port `3010` by default:
+
+```bash
+npm run dev -- -H 127.0.0.1 -p 3010
+```
+
 For visual changes, also verify desktop and mobile layouts, English and Chinese routes, header navigation, project links, and text wrapping.

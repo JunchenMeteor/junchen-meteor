@@ -36,10 +36,30 @@ export const homeCopy = {
     ecosystemTitle: "A compact engineering ecosystem",
     focusTitle: "Engineering focus",
     focusItems: [
-      "Automation testing platforms",
-      "iOS automation and test infrastructure",
-      "AI-assisted coding workflows",
-      "Practical tooling for repeatable execution"
+      {
+        title: "Automation testing platforms",
+        body:
+          "Build control planes that connect projects, suites, tasks, local executors, logs, reports, and follow-up actions.",
+        points: ["Project contracts", "Task queues", "Report context"]
+      },
+      {
+        title: "iOS automation infrastructure",
+        body:
+          "Keep UI automation and API smoke tests maintainable through clear fixtures, runtime isolation, and platform integration contracts.",
+        points: ["pytest/Appium", "Allure output", "Runtime ownership"]
+      },
+      {
+        title: "AI-assisted engineering workflows",
+        body:
+          "Use AI as an operation partner that can import projects, prepare tasks, inspect results, and suggest concrete next actions.",
+        points: ["Agent guardrails", "Context-first actions", "Human review"]
+      },
+      {
+        title: "Repeatable local execution",
+        body:
+          "Prefer small, observable execution loops that can run locally first, then become website evidence or platform workflows later.",
+        points: ["Local-first validation", "Environment checks", "Safe demo boundaries"]
+      }
     ],
     depthTitle: "Why MeteorTest exists",
     depthIntro:
@@ -91,10 +111,26 @@ export const homeCopy = {
     ecosystemTitle: "紧凑的工程项目生态",
     focusTitle: "工程方向",
     focusItems: [
-      "自动化测试平台",
-      "iOS 自动化与测试基础设施",
-      "AI 辅助编码工作流",
-      "面向可复现执行的实用工具"
+      {
+        title: "自动化测试平台",
+        body: "构建连接项目、套件、任务、本地执行器、日志、报告和后续动作的控制平面。",
+        points: ["项目契约", "任务队列", "报告上下文"]
+      },
+      {
+        title: "iOS 自动化基础设施",
+        body: "通过清晰的 fixture、运行时隔离和平台集成契约，让 UI 自动化与 API smoke 测试更可维护。",
+        points: ["pytest/Appium", "Allure 产物", "运行时归属"]
+      },
+      {
+        title: "AI 辅助工程工作流",
+        body: "把 AI 作为能导入项目、准备任务、查看结果并提出下一步动作的工程协作入口。",
+        points: ["Agent 规则", "上下文优先操作", "人工确认"]
+      },
+      {
+        title: "可复现的本地执行",
+        body: "优先建设小而可观测的本地执行闭环，再逐步沉淀为官网证据或平台工作流。",
+        points: ["本地优先验证", "环境检查", "安全 Demo 边界"]
+      }
     ],
     depthTitle: "为什么要做 MeteorTest",
     depthIntro:
@@ -140,54 +176,66 @@ export const homeCopy = {
 
 export const contactCopy = {
   en: {
-    eyebrow: "Contact",
-    title: "Project-first contact",
+    eyebrow: "Contact & collaboration",
+    title: "Open project channels first",
     intro:
-      "For now, the cleanest way to reach JC Meteor is through GitHub project context. Use issues for project-specific feedback and the profile link for the broader project hub.",
+      "JC Meteor is currently organized around public engineering work. GitHub is the best place to understand the projects, follow progress, and discuss project-specific questions.",
+    collaborationTitle: "Good topics to discuss",
+    collaborationItems: [
+      "Automation testing platforms and local execution loops.",
+      "iOS automation, pytest/Appium integration, and test infrastructure.",
+      "AI-assisted development workflows that can operate on real project context."
+    ],
     links: [
       {
         label: "GitHub Profile",
-        description: "Public project hub, repositories, and profile updates.",
+        description: "Start here for the public project hub, repositories, and profile updates.",
         href: "https://github.com/JunchenMeteor"
       },
       {
         label: "MeteorTest Issues",
-        description: "Questions, bugs, and roadmap feedback for the flagship testing platform.",
+        description: "Use this for platform questions, bugs, roadmap feedback, and testing workflow ideas.",
         href: "https://github.com/JunchenMeteor/MeteorTest/issues"
       },
       {
         label: "iOS Automation Issues",
-        description: "Test project integration, pytest/Appium, and sample execution questions.",
+        description: "Use this for test project integration, pytest/Appium, and sample execution questions.",
         href: "https://github.com/JunchenMeteor/iOS-Automation-Framework/issues"
       }
     ],
     note:
-      "Private credentials, internal URLs, device identifiers, and test accounts should not be posted publicly."
+      "A private contact channel is not published yet. Do not post credentials, internal URLs, device identifiers, or test accounts in public issues."
   },
   zh: {
-    eyebrow: "联系",
-    title: "以项目上下文为主的联系入口",
+    eyebrow: "联系与协作",
+    title: "优先使用公开项目入口",
     intro:
-      "目前最清晰的联系入口是 GitHub 项目上下文。具体项目反馈走 issue，整体项目入口和公开资料走 profile。",
+      "JC Meteor 目前围绕公开工程项目展开。了解项目、跟进进展、讨论具体问题，GitHub 是最合适的入口。",
+    collaborationTitle: "适合交流的方向",
+    collaborationItems: [
+      "自动化测试平台和本地执行闭环。",
+      "iOS 自动化、pytest/Appium 接入和测试基础设施。",
+      "能够基于真实项目上下文操作的 AI 辅助研发工作流。"
+    ],
     links: [
       {
         label: "GitHub Profile",
-        description: "公开项目入口、仓库列表和个人主页更新。",
+        description: "整体了解公开项目、仓库列表和个人主页更新，建议从这里开始。",
         href: "https://github.com/JunchenMeteor"
       },
       {
         label: "MeteorTest Issues",
-        description: "主推测试平台的问题、缺陷和路线图反馈。",
+        description: "用于测试平台相关问题、缺陷、路线图反馈和测试工作流想法。",
         href: "https://github.com/JunchenMeteor/MeteorTest/issues"
       },
       {
         label: "iOS Automation Issues",
-        description: "测试项目接入、pytest/Appium 和样例执行相关问题。",
+        description: "用于测试项目接入、pytest/Appium 和样例执行相关问题。",
         href: "https://github.com/JunchenMeteor/iOS-Automation-Framework/issues"
       }
     ],
     note:
-      "私有密钥、内部 URL、设备标识和测试账号不应发布到公开 issue 中。"
+      "暂时不公开私密联系渠道。私有密钥、内部 URL、设备标识和测试账号不要发布到公开 issue 中。"
   }
 };
 
