@@ -42,7 +42,7 @@ export const uiCopy = {
       localAgentDetail: "Executor and report collector",
       aiAssist: "AI assist",
       aiAssistDetail: "Project, suite, task, and report operations",
-      demoBoundary: "Demo boundary"
+      demoStatus: "Demo status"
     },
     projects: {
       pageLabel: "Projects",
@@ -50,13 +50,13 @@ export const uiCopy = {
       pageIntro:
         "MeteorTest is the center of the current system, with companion repositories that cover test implementation, agent guardrails, and creator tooling.",
       ecosystemRole: "Ecosystem role",
-      evidenceMilestone: "Evidence milestone",
+      validationResults: "Validation results",
       why: "Why it exists",
       built: "What I built",
-      roleAndEvidence: "Role and evidence milestone"
+      roleAndValidation: "Role and validation results"
     },
     demo: {
-      boundary: "Boundary",
+      nextStep: "Next step",
       currentStep: "Current step"
     }
   },
@@ -93,20 +93,20 @@ export const uiCopy = {
       localAgentDetail: "执行器与报告采集",
       aiAssist: "AI 辅助",
       aiAssistDetail: "项目、套件、任务和报告操作",
-      demoBoundary: "Demo 边界"
+      demoStatus: "Demo 状态"
     },
     projects: {
       pageLabel: "项目",
       pageTitle: "以项目为核心的工程作品集",
       pageIntro: "MeteorTest 是当前项目体系的中心，配套仓库覆盖测试实现、Agent 工作规则和创作工具。",
       ecosystemRole: "生态角色",
-      evidenceMilestone: "证据建设",
+      validationResults: "验证结果",
       why: "为什么存在",
       built: "做了什么",
-      roleAndEvidence: "角色与证据建设"
+      roleAndValidation: "角色与验证结果"
     },
     demo: {
-      boundary: "边界",
+      nextStep: "下一步计划",
       currentStep: "当前步骤"
     }
   }

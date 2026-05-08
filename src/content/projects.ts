@@ -133,8 +133,8 @@ export const projects: Project[] = [
         zh: "配套测试代码项目和集成样例。"
       },
       next: {
-        en: "Use the deterministic local mock API as the stable target for direct smoke execution and the next MeteorTest Agent evidence run.",
-        zh: "使用确定性的本地 mock API 作为直接 smoke 执行和下一轮 MeteorTest Agent 证据运行的稳定目标。"
+        en: "Use the deterministic local mock API as the stable target for direct smoke execution and the next MeteorTest Agent validation run.",
+        zh: "使用确定性的本地 mock API 作为直接 smoke 执行和下一轮 MeteorTest Agent 验证运行的稳定目标。"
       }
     },
     highlights: {
@@ -224,19 +224,19 @@ export const projects: Project[] = [
     },
     portfolio: {
       why: {
-        en: "Creator workflows need repeatable video processing steps, but final publishing should remain a human-reviewed action.",
-        zh: "创作流程需要可复现的视频处理步骤，但最终发布仍应保留人工确认。"
+        en: "Creator workflows benefit from repeatable video processing steps before a human reviews and publishes the final draft.",
+        zh: "创作流程适合先用可复现的视频处理步骤产出草稿，再由人工审核和发布。"
       },
       built: {
         en: [
           "FFmpeg scripts for replay download, clipping, vertical conversion, slow motion, subtitles, and BGM mixing.",
           "Bash and PowerShell variants for cross-platform use.",
-          "OpenClaw/Codex/Claude Code guidance with publishing and copyright boundaries."
+          "OpenClaw/Codex/Claude Code guidance for reviewed publishing and copyright-aware preparation."
         ],
         zh: [
           "用于回放下载、剪辑、竖屏转换、慢动作、字幕和 BGM 混音的 FFmpeg 脚本。",
           "同时提供 Bash 和 PowerShell 版本，便于跨平台使用。",
-          "面向 OpenClaw、Codex、Claude Code 的使用规则，并明确发布和版权边界。"
+          "面向 OpenClaw、Codex、Claude Code 的使用规则，支持带人工审核和版权意识的草稿准备。"
         ]
       },
       role: {
@@ -244,21 +244,21 @@ export const projects: Project[] = [
         zh: "独立的创作工具项目。"
       },
       next: {
-        en: "Keep compliance guidance clear and avoid implying automatic final publishing.",
-        zh: "持续明确合规说明，避免暗示可以自动完成最终发布。"
+        en: "Improve reviewed draft preparation guidance and keep source-material usage clear.",
+        zh: "继续完善草稿审核流程说明，并保持素材使用说明清晰。"
       }
     },
     highlights: {
       en: [
         "FFmpeg processing scripts",
         "Bash and PowerShell support",
-        "Draft preparation boundary",
+        "Reviewed draft workflow",
         "Copyright and BGM guidance"
       ],
       zh: [
         "FFmpeg 处理脚本",
         "支持 Bash 和 PowerShell",
-        "草稿准备边界",
+        "草稿审核流程",
         "版权和 BGM 说明"
       ]
     },

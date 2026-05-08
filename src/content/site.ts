@@ -57,8 +57,8 @@ export const homeCopy = {
       {
         title: "Repeatable local execution",
         body:
-          "Prefer small, observable execution loops that can run locally first, then become website evidence or platform workflows later.",
-        points: ["Local-first validation", "Environment checks", "Safe demo boundaries"]
+          "Prefer small, observable execution loops that can run locally first, then become website validation results or platform workflows later.",
+        points: ["Local-first validation", "Environment checks", "Demo readiness"]
       }
     ],
     depthTitle: "Why MeteorTest exists",
@@ -92,10 +92,10 @@ export const homeCopy = {
         ]
       },
       {
-        title: "Evidence milestones",
+        title: "Validation progress",
         items: [
           "The public site keeps the demo interactive and mock-data based.",
-          "Use the local mock API as website-safe evidence for API smoke assertions.",
+          "Use the local mock API as public-safe validation results for API smoke assertions.",
           "Next, run the same mock-backed smoke suite through MeteorTest Local Agent and capture logs/report artifacts."
         ]
       }
@@ -128,8 +128,8 @@ export const homeCopy = {
       },
       {
         title: "可复现的本地执行",
-        body: "优先建设小而可观测的本地执行闭环，再逐步沉淀为官网证据或平台工作流。",
-        points: ["本地优先验证", "环境检查", "安全 Demo 边界"]
+        body: "优先建设小而可观测的本地执行闭环，再逐步沉淀为官网验证结果或平台工作流。",
+        points: ["本地优先验证", "环境检查", "Demo 就绪度"]
       }
     ],
     depthTitle: "为什么要做 MeteorTest",
@@ -163,10 +163,10 @@ export const homeCopy = {
         ]
       },
       {
-        title: "证据建设",
+        title: "验证进展",
         items: [
           "公开官网继续保持交互式 mock 数据 Demo。",
-          "使用本地 mock API 作为公开安全的 API smoke 断言证据。",
+          "使用本地 mock API 作为公开安全的 API smoke 断言验证结果。",
           "下一步通过 MeteorTest Local Agent 运行同一套 mock-backed smoke suite，并采集日志和报告产物。"
         ]
       }
@@ -204,7 +204,7 @@ export const contactCopy = {
       }
     ],
     note:
-      "A private contact channel is not published yet. Do not post credentials, internal URLs, device identifiers, or test accounts in public issues."
+      "For private details such as credentials, internal URLs, device identifiers, or test accounts, use a private channel when one is published."
   },
   zh: {
     eyebrow: "联系与协作",
@@ -235,7 +235,7 @@ export const contactCopy = {
       }
     ],
     note:
-      "暂时不公开私密联系渠道。私有密钥、内部 URL、设备标识和测试账号不要发布到公开 issue 中。"
+      "涉及私有密钥、内部 URL、设备标识或测试账号的信息，后续应通过私密渠道沟通。"
   }
 };
 
@@ -276,8 +276,8 @@ export const meteortestCopy = {
     roadmap: [
       "Stabilize local executor lifecycle and task locking.",
       "Improve report aggregation and failure summaries.",
-      "Add a static online demo that explains the validated Local Agent execution path without connecting public execution services.",
-      "Expand project permission and collaboration boundaries after the MVP is stable."
+      "Capture a MeteorTest Local Agent run against the local mock API.",
+      "Publish a temporary static website preview before designing any connected execution demo."
     ],
     sections: [
       {
@@ -321,16 +321,16 @@ export const meteortestCopy = {
       "Logs and Allure report collection",
       "AI-assisted failure analysis"
     ],
-    limitationsTitle: "Current limitations",
-    limitations: [
+    statusTitle: "Available now",
+    statusItems: [
       "MeteorTest is still an MVP and active development project.",
       "The Local Agent can execute the iOS-Automation-Framework API smoke suite through the test repository's own virtual environment.",
       "The current API smoke tests can produce real pass/fail results against the iOS-Automation-Framework local mock API.",
-      "No public real-execution demo is exposed yet."
+      "The public website includes an interactive product walkthrough and project validation updates."
     ],
-    demoTitle: "Demo boundary",
+    demoTitle: "Demo status",
     demo:
-      "The website can link to a public MeteorTest demo page, but the first version should remain static and mock-data based. It can explain the validated project-import and Local Agent execution path without connecting real Supabase secrets, Local Agent endpoints, devices, or private app artifacts."
+      "The current demo is an interactive browser walkthrough that explains the project import, task preparation, Local Agent handoff, report context, and AI follow-up flow. Local smoke-test run results are collected separately from the public page."
   },
   zh: {
     title: "MeteorTest",
@@ -368,8 +368,8 @@ export const meteortestCopy = {
     roadmap: [
       "稳定本地执行器生命周期和任务锁定机制。",
       "改进报告聚合和失败摘要能力。",
-      "增加一个静态在线 Demo，用来解释已验证的本地执行器链路，但不连接公开真实执行服务。",
-      "在 MVP 稳定后扩展项目权限和协作边界。"
+      "采集一次 MeteorTest Local Agent 基于本地 mock API 的执行记录。",
+      "在设计任何联网执行 Demo 前，先发布一个临时静态官网预览。"
     ],
     sections: [
       {
@@ -413,16 +413,16 @@ export const meteortestCopy = {
       "日志和 Allure 报告采集",
       "AI 辅助失败分析"
     ],
-    limitationsTitle: "当前限制",
-    limitations: [
+    statusTitle: "当前可见能力",
+    statusItems: [
       "MeteorTest 仍是 MVP 和主动开发项目。",
       "Local Agent 已经可以通过测试仓库自己的虚拟环境执行 iOS-Automation-Framework 的 API smoke suite。",
       "当前 API smoke 测试可以基于 iOS-Automation-Framework 的本地 mock API 产生真实通过/失败结果。",
-      "目前还没有公开的真实执行 Demo。"
+      "公开官网已经提供交互式产品 walkthrough 和项目验证结果更新。"
     ],
-    demoTitle: "Demo 边界",
+    demoTitle: "Demo 状态",
     demo:
-      "官网可以接入一个公开的 MeteorTest Demo 页面，但第一个版本应该保持静态和 mock 数据。它可以解释已验证的项目导入和 Local Agent 执行链路，但不连接真实 Supabase 密钥、本地执行器端点、设备或私有 App 产物。"
+      "当前 Demo 是一个浏览器内交互 walkthrough，用来说明项目导入、任务准备、Local Agent 交接、报告上下文和 AI 后续动作。真实 smoke 测试运行结果会在公开页面之外单独采集。"
   }
 };
 
@@ -454,17 +454,16 @@ export const demoCopy = {
           "The final step highlights report inspection and AI-assisted follow-up, including environment or rerun suggestions."
       }
     ],
-    boundariesTitle: "Public demo boundaries",
-    boundaries: [
-      "Do not connect production Supabase secrets.",
-      "Do not expose Local Agent endpoints or machine paths.",
-      "Do not run real device or app automation from the public website.",
-      "Do not show private app artifacts, internal URLs, tokens, or test accounts.",
-      "Do not imply that real execution is publicly available before it is designed."
+    resultsTitle: "What is available now",
+    resultsItems: [
+      "Interactive browser walkthrough for the AI-assisted operation loop.",
+      "Local mock API smoke validation results from iOS-Automation-Framework.",
+      "A clear next step to run the same smoke suite through MeteorTest Local Agent.",
+      "Public-safe project links and implementation notes."
     ],
-    nextTitle: "Real execution boundary",
+    nextTitle: "Next step",
     next:
-      "The next evidence step is to run the mock-backed API smoke suite through MeteorTest Local Agent and capture website-safe logs/report artifacts. A future real connected demo still needs authentication, data isolation, secrets handling, task permission checks, and executor sandboxing."
+      "Next, the mock-backed API smoke suite will be executed through MeteorTest Local Agent so the website can show real local logs and report artifacts. A public connected execution demo remains a later design topic."
   },
   zh: {
     title: "MeteorTest 交互 Demo",
@@ -493,16 +492,15 @@ export const demoCopy = {
           "最后一步突出报告查看和 AI 辅助跟进，包括环境配置或重跑建议。"
       }
     ],
-    boundariesTitle: "公开 Demo 边界",
-    boundaries: [
-      "不连接生产 Supabase 密钥。",
-      "不暴露本地执行器端点或机器路径。",
-      "不从公开官网触发真实设备或 App 自动化。",
-      "不展示私有 App 产物、内部 URL、token 或测试账号。",
-      "在真实执行能力设计完成前，不暗示它已经可以公开使用。"
+    resultsTitle: "当前可见内容",
+    resultsItems: [
+      "展示 AI 辅助操作闭环的浏览器内交互 walkthrough。",
+      "来自 iOS-Automation-Framework 的本地 mock API smoke 验证结果。",
+      "下一步会通过 MeteorTest Local Agent 运行同一套 smoke suite。",
+      "公开安全的项目链接和实现说明。"
     ],
-    nextTitle: "真实执行边界",
+    nextTitle: "下一步计划",
     next:
-      "下一步是通过 MeteorTest Local Agent 运行 mock-backed API smoke suite，并采集可安全展示的日志和报告产物。未来如果要接入真实执行 Demo，仍需要先设计认证、数据隔离、密钥处理、任务权限校验和执行器沙箱。"
+      "下一步会通过 MeteorTest Local Agent 执行 mock-backed API smoke suite，并把真实本地日志和报告产物整理成官网可展示的运行结果。公网联网执行 Demo 会作为后续独立设计。"
   }
 };

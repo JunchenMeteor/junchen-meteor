@@ -37,17 +37,17 @@ export function DemoStatusPage({ locale }: { locale: Locale }) {
         </div>
       </div>
 
-      <div className="demo-boundary-section">
+      <div className="demo-results-section">
         <div>
-          <h2>{copy.boundariesTitle}</h2>
+          <h2>{copy.resultsTitle}</h2>
           <ul>
-            {copy.boundaries.map((item) => (
+            {copy.resultsItems.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
         <aside>
-          <span>{ui.demo.boundary}</span>
+          <span>{ui.demo.nextStep}</span>
           <h3>{copy.nextTitle}</h3>
           <p>{copy.next}</p>
           <Link className="text-link" href={localizedPath(locale, "/meteortest")}>

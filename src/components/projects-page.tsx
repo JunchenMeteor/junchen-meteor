@@ -30,7 +30,7 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
           <div className="portfolio-aside">
             <strong>{ui.projects.ecosystemRole}</strong>
             <p>{flagship.portfolio.role[locale]}</p>
-            <strong>{ui.projects.evidenceMilestone}</strong>
+            <strong>{ui.projects.validationResults}</strong>
             <p>{flagship.portfolio.next[locale]}</p>
             <div className="card-actions">
               <a href={flagship.links.github}>{ui.common.github}</a>
@@ -66,7 +66,7 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
                 </ul>
               </div>
               <div>
-                <h3>{ui.projects.roleAndEvidence}</h3>
+                <h3>{ui.projects.roleAndValidation}</h3>
                 <p>{project.portfolio.role[locale]}</p>
                 <p>{project.portfolio.next[locale]}</p>
               </div>

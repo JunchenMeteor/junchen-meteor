@@ -994,7 +994,7 @@ a {
 
 .detail-text-panel,
 .responsibility-grid article,
-.limitation-panel,
+.status-panel,
 .demo-plan-section {
   padding: 22px;
   border: 1px solid var(--line);
@@ -1012,7 +1012,7 @@ a {
 
 .detail-text-panel p,
 .responsibility-grid p,
-.limitation-panel li,
+.status-panel li,
 .demo-plan-section p {
   color: var(--muted);
   line-height: 1.65;
@@ -1053,7 +1053,7 @@ a {
   font-weight: 700;
 }
 
-.limitation-panel ul {
+.status-panel ul {
   display: grid;
   gap: 10px;
   margin: 0;
@@ -1105,7 +1105,7 @@ a {
 }
 
 .demo-stage-section,
-.demo-boundary-section {
+.demo-results-section {
   margin-top: 58px;
 }
 
@@ -1282,7 +1282,7 @@ a {
 }
 
 .demo-stage-section h2,
-.demo-boundary-section h2 {
+.demo-results-section h2 {
   margin: 0 0 18px;
   font-size: clamp(30px, 4vw, 48px);
 }
@@ -1294,7 +1294,7 @@ a {
 }
 
 .demo-stage-grid article,
-.demo-boundary-section aside {
+.demo-results-section aside {
   padding: 22px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -1302,7 +1302,7 @@ a {
 }
 
 .demo-stage-grid span,
-.demo-boundary-section aside span {
+.demo-results-section aside span {
   color: var(--accent-2);
   font-size: 13px;
   font-weight: 700;
@@ -1310,25 +1310,25 @@ a {
 }
 
 .demo-stage-grid h3,
-.demo-boundary-section h3 {
+.demo-results-section h3 {
   margin: 12px 0 10px;
   font-size: 22px;
 }
 
 .demo-stage-grid p,
-.demo-boundary-section p,
-.demo-boundary-section li {
+.demo-results-section p,
+.demo-results-section li {
   color: var(--muted);
   line-height: 1.65;
 }
 
-.demo-boundary-section {
+.demo-results-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.7fr);
   gap: 24px;
 }
 
-.demo-boundary-section ul {
+.demo-results-section ul {
   display: grid;
   gap: 12px;
   margin: 0;
@@ -1361,7 +1361,7 @@ a {
   .portfolio-flagship,
   .capability-section,
   .demo-simulator-grid,
-  .demo-boundary-section,
+  .demo-results-section,
   .contact-context {
     grid-template-columns: 1fr;
   }
