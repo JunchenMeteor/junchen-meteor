@@ -88,15 +88,15 @@ export const homeCopy = {
         items: [
           "MVP and active development.",
           "The platform-to-agent-to-test-repository execution path has been validated with iOS-Automation-Framework.",
-          "The API smoke suite now runs through the Local Agent with the test repository's own Python environment; real assertions still require a configured API_BASE_URL."
+          "The API smoke suite can now produce real pass/fail results against the iOS-Automation-Framework local mock API."
         ]
       },
       {
         title: "Evidence milestones",
         items: [
-          "Add a static online demo with mock data that explains the validated execution path.",
-          "Configure a real target API environment before presenting API smoke results as executed assertions.",
-          "Improve report presentation and AI-assisted operation context."
+          "The public site keeps the demo interactive and mock-data based.",
+          "Use the local mock API as website-safe evidence for API smoke assertions.",
+          "Next, run the same mock-backed smoke suite through MeteorTest Local Agent and capture logs/report artifacts."
         ]
       }
     ]
@@ -114,11 +114,11 @@ export const homeCopy = {
       {
         title: "自动化测试平台",
         body: "构建连接项目、套件、任务、本地执行器、日志、报告和后续动作的控制平面。",
-        points: ["项目契约", "任务队列", "报告上下文"]
+        points: ["项目协议", "任务队列", "报告上下文"]
       },
       {
         title: "iOS 自动化基础设施",
-        body: "通过清晰的 fixture、运行时隔离和平台集成契约，让 UI 自动化与 API smoke 测试更可维护。",
+        body: "通过清晰的 fixture、运行时隔离和平台集成协议，让 UI 自动化与 API smoke 测试更可维护。",
         points: ["pytest/Appium", "Allure 产物", "运行时归属"]
       },
       {
@@ -148,7 +148,7 @@ export const homeCopy = {
       {
         title: "它做什么",
         items: [
-          "从测试项目的 meteortest.yml 契约导入项目和测试套件。",
+          "从测试项目的 meteortest.yml 协议导入项目和测试套件。",
           "让 AI 助手基于平台上下文辅助创建任务、选择套件、查看报告和总结失败。",
           "由 Python 本地执行器领取任务并执行 pytest、Appium 或 Locust 命令。",
           "收集状态、日志、Allure 产物和 AI 辅助操作记录。"
@@ -159,15 +159,15 @@ export const homeCopy = {
         items: [
           "MVP，仍在主动开发中。",
           "平台到本地执行器再到测试仓库的执行链路，已经通过 iOS-Automation-Framework 验证。",
-          "API smoke suite 现在可以通过 Local Agent 使用测试仓库自己的 Python 环境运行；真实断言仍需要配置 API_BASE_URL。"
+          "API smoke suite 现在可以基于 iOS-Automation-Framework 的本地 mock API 产生真实通过/失败结果。"
         ]
       },
       {
         title: "证据建设",
         items: [
-          "增加一个使用 mock 数据的静态在线 Demo，用来解释已验证的执行链路。",
-          "在展示 API smoke 的真实断言结果前，先配置真实目标 API 环境。",
-          "改进报告展示和 AI 辅助操作上下文。"
+          "公开官网继续保持交互式 mock 数据 Demo。",
+          "使用本地 mock API 作为公开安全的 API smoke 断言证据。",
+          "下一步通过 MeteorTest Local Agent 运行同一套 mock-backed smoke suite，并采集日志和报告产物。"
         ]
       }
     ]
@@ -325,7 +325,7 @@ export const meteortestCopy = {
     limitations: [
       "MeteorTest is still an MVP and active development project.",
       "The Local Agent can execute the iOS-Automation-Framework API smoke suite through the test repository's own virtual environment.",
-      "The current API smoke tests are skipped unless API_BASE_URL points to a real target service.",
+      "The current API smoke tests can produce real pass/fail results against the iOS-Automation-Framework local mock API.",
       "No public real-execution demo is exposed yet."
     ],
     demoTitle: "Demo boundary",
@@ -340,12 +340,12 @@ export const meteortestCopy = {
     loopTitle: "执行闭环",
     loop: [
       {
-        title: "测试项目契约",
+        title: "测试项目协议",
         body: "自动化仓库提供 meteortest.yml，声明测试套件、执行命令、依赖工具和报告行为。"
       },
       {
         title: "平台或 AI 导入",
-        body: "MeteorTest 读取契约并登记项目套件，这既可以通过 Web 控制台完成，也可以通过 AI 辅助项目操作完成。"
+        body: "MeteorTest 读取协议并登记项目套件，这既可以通过 Web 控制台完成，也可以通过 AI 辅助项目操作完成。"
       },
       {
         title: "AI 辅助创建任务",
@@ -385,7 +385,7 @@ export const meteortestCopy = {
       {
         title: "方案",
         body:
-          "MeteorTest 将平台定位为控制平面，让本地执行器负责真实执行。测试仓库保留自己的代码，并通过 meteortest.yml 暴露集成契约；平台导入契约后基于它创建和调度任务。"
+          "MeteorTest 将平台定位为控制平面，让本地执行器负责真实执行。测试仓库保留自己的代码，并通过 meteortest.yml 暴露集成协议；平台导入协议后基于它创建和调度任务。"
       }
     ],
     responsibilitiesTitle: "系统职责",
@@ -400,7 +400,7 @@ export const meteortestCopy = {
       },
       {
         title: "测试项目",
-        body: "负责测试代码、fixture、应用相关配置、报告输出，以及 meteortest.yml 集成契约。"
+        body: "负责测试代码、fixture、应用相关配置、报告输出，以及 meteortest.yml 集成协议。"
       }
     ],
     capabilitiesTitle: "能力概览",
@@ -417,7 +417,7 @@ export const meteortestCopy = {
     limitations: [
       "MeteorTest 仍是 MVP 和主动开发项目。",
       "Local Agent 已经可以通过测试仓库自己的虚拟环境执行 iOS-Automation-Framework 的 API smoke suite。",
-      "当前 API smoke 测试在没有 API_BASE_URL 指向真实目标服务时会被跳过。",
+      "当前 API smoke 测试可以基于 iOS-Automation-Framework 的本地 mock API 产生真实通过/失败结果。",
       "目前还没有公开的真实执行 Demo。"
     ],
     demoTitle: "Demo 边界",
@@ -432,7 +432,7 @@ export const demoCopy = {
     subtitle: "A browser-side walkthrough of the AI-assisted project, suite, task, execution, report, and next-action loop.",
     status: "Interactive mock demo",
     summary:
-      "This demo puts the AI operation entry first: the assistant can help import a project contract, register suites, prepare a task, hand execution to the Local Agent, inspect report context, and suggest the next action. The page uses mock data and does not connect real Supabase projects, Local Agent endpoints, devices, or private app artifacts.",
+      "This demo puts the AI operation entry first: the assistant can help import a project contract, register suites, prepare a task, hand execution to the Local Agent, inspect report context, and suggest the next action. The current website demo remains browser-side mock data, while the companion test project now has a local mock API that can produce real API smoke pass/fail results.",
     stagesTitle: "What this demo shows",
     stages: [
       {
@@ -445,7 +445,7 @@ export const demoCopy = {
         title: "2. Local Agent handoff",
         status: "Shown",
         body:
-          "The simulation shows how a prepared task is handed to a Local Agent and executed through the test repository runtime."
+          "The simulation shows how a prepared task is handed to a Local Agent and executed through the test repository runtime. Local mock API smoke execution has been validated outside the public website."
       },
       {
         title: "3. Report and next action",
@@ -464,14 +464,14 @@ export const demoCopy = {
     ],
     nextTitle: "Real execution boundary",
     next:
-      "A future real connected demo needs authentication, data isolation, secrets handling, task permission checks, and executor sandboxing. Until then, this page should remain an interactive mock demo backed by validated local integration work."
+      "The next evidence step is to run the mock-backed API smoke suite through MeteorTest Local Agent and capture website-safe logs/report artifacts. A future real connected demo still needs authentication, data isolation, secrets handling, task permission checks, and executor sandboxing."
   },
   zh: {
     title: "MeteorTest 交互 Demo",
     subtitle: "用浏览器内交互演示 AI 辅助的项目、套件、任务、执行、报告和下一步动作闭环。",
     status: "可交互 mock Demo",
     summary:
-      "这个 Demo 把 AI 操作入口放在最前面：AI 助手可以辅助导入项目契约、登记套件、准备任务、交给 Local Agent 执行、查看报告上下文，并建议下一步动作。页面使用 mock 数据，不连接真实 Supabase 项目、本地执行器端点、设备或私有 App 产物。",
+      "这个 Demo 把 AI 操作入口放在最前面：AI 助手可以辅助导入项目协议、登记套件、准备任务、交给 Local Agent 执行、查看报告上下文，并建议下一步动作。当前官网 Demo 仍是浏览器内 mock 数据，但配套测试项目已经有本地 mock API，可以产生 API smoke 的真实通过/失败结果。",
     stagesTitle: "这个 Demo 展示什么",
     stages: [
       {
@@ -484,7 +484,7 @@ export const demoCopy = {
         title: "2. 交给 Local Agent",
         status: "已展示",
         body:
-          "模拟展示准备好的任务如何交给 Local Agent，并通过测试仓库自己的运行时执行。"
+          "模拟展示准备好的任务如何交给 Local Agent，并通过测试仓库自己的运行时执行。本地 mock API smoke 执行已经在公开官网之外完成验证。"
       },
       {
         title: "3. 报告和下一步",
@@ -503,6 +503,6 @@ export const demoCopy = {
     ],
     nextTitle: "真实执行边界",
     next:
-      "未来如果要接入真实执行 Demo，需要先设计认证、数据隔离、密钥处理、任务权限校验和执行器沙箱。在此之前，这个页面应保持为基于本地验证工作的交互式 mock Demo。"
+      "下一步是通过 MeteorTest Local Agent 运行 mock-backed API smoke suite，并采集可安全展示的日志和报告产物。未来如果要接入真实执行 Demo，仍需要先设计认证、数据隔离、密钥处理、任务权限校验和执行器沙箱。"
   }
 };

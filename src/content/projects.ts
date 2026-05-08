@@ -76,8 +76,8 @@ export const projects: Project[] = [
         zh: "主推平台项目和控制平面。"
       },
       next: {
-        en: "Build a local mock API so the validated Agent path can produce real API smoke pass/fail evidence.",
-        zh: "增加本地 mock API，让已验证的 Agent 链路能产出真实的 API smoke 通过/失败证据。"
+        en: "Run the mock-backed API smoke suite through MeteorTest Local Agent and capture website-safe logs/report artifacts.",
+        zh: "通过 MeteorTest Local Agent 运行 mock-backed API smoke suite，并采集可安全展示的日志和报告产物。"
       }
     },
     highlights: {
@@ -125,7 +125,7 @@ export const projects: Project[] = [
         zh: [
           "基于 pytest 的 API、iOS UI 和性能测试套件结构。",
           "Appium/XCUITest Page Object 工作流和 Allure 报告输出。",
-          "作为第一个平台集成样例的 meteortest.yml 契约文件。"
+          "作为第一个平台集成样例的 meteortest.yml 协议文件。"
         ]
       },
       role: {
@@ -133,8 +133,8 @@ export const projects: Project[] = [
         zh: "配套测试代码项目和集成样例。"
       },
       next: {
-        en: "Add a deterministic local mock API and use API_BASE_URL to run smoke tests with real assertions.",
-        zh: "增加确定性的本地 mock API，并通过 API_BASE_URL 运行带真实断言的 smoke 测试。"
+        en: "Use the deterministic local mock API as the stable target for direct smoke execution and the next MeteorTest Agent evidence run.",
+        zh: "使用确定性的本地 mock API 作为直接 smoke 执行和下一轮 MeteorTest Agent 证据运行的稳定目标。"
       }
     },
     highlights: {
@@ -148,7 +148,7 @@ export const projects: Project[] = [
         "pytest API 测试套件",
         "Appium/XCUITest UI 测试套件",
         "Allure 报告输出",
-        "MeteorTest 集成契约"
+        "MeteorTest 集成协议"
       ]
     },
     links: {

@@ -66,6 +66,14 @@ docs/PROJECT_CONTENT_PLAN.md
 
 Implement the plan in phases. The website MVP, interactive mock demo, contact surface, and MeteorTest-to-iOS-Automation-Framework local execution-path debugging are complete. The next evidence-building phase is a local mock API for real API smoke pass/fail results, followed by local MeteorTest loop evidence, sanitized screenshots or recordings, and only later a public connected demo if execution safety is designed.
 
+When a phase status, evidence claim, capability boundary, terminology rule, project milestone, backend behavior, interaction flow, environment variable, port, command, or test capability changes, update all affected surfaces in the same change:
+
+- `docs/PROJECT_CONTENT_PLAN.md` for agent/project continuity.
+- Visible website copy in `src/content/*` when users would otherwise see stale information.
+- Any related implementation code, configuration, examples, commands, or tests that would otherwise contradict the new behavior.
+
+Do not treat a documentation-only update as complete if the public UI, backend behavior, interaction logic, configuration, examples, or tests still say or implement the old status, next step, terminology, or runtime behavior.
+
 ## Content Boundaries
 
 Do not overstate project maturity.

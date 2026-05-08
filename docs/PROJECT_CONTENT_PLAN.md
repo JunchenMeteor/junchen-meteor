@@ -31,7 +31,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 5: MeteorTest Debugging After Website MVP | Done | Local Agent now executes iOS-Automation-Framework through the test repository Python environment; API smoke tests require API_BASE_URL for real assertions. |
 | Phase 6: Contact Surface | Done | Homepage now includes project-first contact links through GitHub profile and project issues. |
 | Phase 7: Localization Content Layer | Done | Shared UI labels, route helpers, and demo simulator copy now live in content modules instead of component-level language branches. |
-| Phase 8: Local Mock API For Real Smoke Results | Not Started | Build a local mock API so iOS-Automation-Framework smoke tests can produce real pass/fail results without a private backend. |
+| Phase 8: Local Mock API For Real Smoke Results | Done | iOS-Automation-Framework now has a deterministic local mock API; `-m smoke` produces real pass/fail results against `API_BASE_URL=http://127.0.0.1:8010`. |
 | Phase 9: Real Local MeteorTest Loop Evidence | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for website-safe evidence. |
 | Phase 10: Screenshot Or Recording Evidence | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
 | Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
@@ -285,22 +285,25 @@ Rules:
 
 ## Phase 8: Local Mock API For Real Smoke Results
 
-Status: `Not Started`
+Status: `Done`
 
-Next recommended engineering stage.
+The local mock API stage is implemented in iOS-Automation-Framework.
 
-Goal:
+Result:
 
-- Add a lightweight local mock API for the endpoints used by the iOS-Automation-Framework API smoke tests.
-- Run smoke tests with `API_BASE_URL=http://127.0.0.1:<port>` so they produce real pass/fail results instead of skip-only output.
+- Added a lightweight deterministic mock API under `tools/mock_api`.
+- Covered the current smoke endpoints used by user, product, order, and cart API cases.
+- Added a mock API contract test.
+- Verified direct smoke execution with `API_BASE_URL=http://127.0.0.1:8010`.
 
-Expected work:
+Validation:
 
-- Identify the exact endpoints used by `API_Automation/cases`.
-- Add a local mock service under iOS-Automation-Framework.
-- Document startup and test commands.
-- Keep mock data public-safe and deterministic.
-- Verify direct pytest execution through the project `.venv`.
+- `.venv\Scripts\python.exe -m pytest tests\test_mock_api_contract.py -q -n 0 -p no:cacheprovider --basetemp=.pytest-basetemp-mock-api`
+- `$env:API_BASE_URL='http://127.0.0.1:8010'; .venv\Scripts\python.exe -m pytest API_Automation\cases -v -n 0 -m smoke -p no:cacheprovider --basetemp=.pytest-basetemp-api-smoke`
+
+Observed result:
+
+- `6 passed, 16 deselected`
 
 ## Phase 9: Real Local MeteorTest Loop Evidence
 
@@ -367,7 +370,7 @@ Until these are designed, the public website should stay with the interactive mo
 | Switch focus back to MeteorTest integration debugging | Done | Local Agent to iOS-Automation-Framework execution path validated; API_BASE_URL remains the real API prerequisite. |
 | Add homepage contact module | Done | Added project-first GitHub profile and issue links. |
 | Centralize localization content | Done | Added UI, locale routing, and demo simulator content modules. |
-| Build local mock API for smoke tests | Not Started | Recommended next engineering step. |
+| Build local mock API for smoke tests | Done | Implemented in iOS-Automation-Framework and verified with 6 smoke tests against the local mock API. |
 | Capture real local MeteorTest loop evidence | Not Started | Requires local mock API first. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |
 | Design public connected demo | Deferred | Requires security and execution isolation design. |
