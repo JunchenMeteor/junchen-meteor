@@ -3,6 +3,7 @@ import { Github } from "lucide-react";
 import { navItems, site, type Locale } from "@/content/site";
 import { uiCopy } from "@/content/ui";
 import { localeConfig } from "@/content/locales";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 type LayoutProps = {
   locale: Locale;
@@ -31,6 +32,7 @@ export function SiteLayout({ locale, children }: LayoutProps) {
           ))}
         </nav>
         <div className="header-actions">
+          <ThemeSwitcher locale={locale} />
           <Link className="icon-link" href={site.github} aria-label={ui.aria.githubProfile}>
             <Github size={18} />
           </Link>

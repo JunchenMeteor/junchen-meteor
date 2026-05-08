@@ -6,7 +6,8 @@ export const uiCopy = {
       home: "JC Meteor home",
       primaryNav: "Primary navigation",
       githubProfile: "GitHub profile",
-      meteorFlow: "MeteorTest system flow"
+      meteorFlow: "MeteorTest system flow",
+      themeSwitcher: "Switch visual theme"
     },
     common: {
       github: "GitHub",
@@ -65,7 +66,8 @@ export const uiCopy = {
       home: "JC Meteor 首页",
       primaryNav: "主导航",
       githubProfile: "GitHub 主页",
-      meteorFlow: "MeteorTest 系统流程"
+      meteorFlow: "MeteorTest 系统流程",
+      themeSwitcher: "切换视觉主题"
     },
     common: {
       github: "GitHub",

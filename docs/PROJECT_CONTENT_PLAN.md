@@ -33,7 +33,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 7: Localization Content Layer | Done | Shared UI labels, route helpers, and demo simulator copy now live in content modules instead of component-level language branches. |
 | Phase 8: Local Mock API For Real Smoke Results | Done | iOS-Automation-Framework now has a deterministic local mock API; `-m smoke` produces real pass/fail results against `API_BASE_URL=http://127.0.0.1:8010`. |
 | Phase 8.5: Public Copy Reframe | Done | Public website copy now emphasizes available capabilities, completed work, validation results, and next steps instead of internal guardrail-style boundary language. |
-| Phase 8.6: Theme Token Foundation | Not Started | Build a token-first theme foundation that starts small but can grow into a medium-complexity theme system later. |
+| Phase 8.6: Theme System Foundation | Done | Built a medium-complexity token-first theme system with runtime switching, persisted selection, localized labels, and stable theme override blocks. |
 | Phase 8.7: Temporary Public Website Preview | Not Started | Deploy the static personal website for temporary public access without enabling public test execution. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for public-safe run results. |
 | Phase 10: Screenshot Or Recording Results | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
@@ -366,20 +366,22 @@ Validation:
 - `npm run lint`
 - `npm run build`
 
-## Phase 8.6: Theme Token Foundation
+## Phase 8.6: Theme System Foundation
 
-Status: `Not Started`
+Status: `Done`
 
 Goal:
 
 - Make visual style easier to evolve without rewriting page components.
-- Keep the first implementation low-risk while designing the token model so it can grow into a medium-complexity theme system later.
+- Provide a medium-complexity theme system now so future visual experiments can happen through tokens and theme metadata instead of ad hoc component edits.
 
 Design direction:
 
-- Start with CSS custom properties and no runtime theme picker.
-- Organize tokens in layers so later themes can override stable semantic names instead of editing components.
-- Treat this as the foundation for possible future themes such as `default`, `light`, `studio`, or `terminal`, without committing to those themes now.
+- Use CSS custom properties for layered base, semantic, and component tokens.
+- Support runtime switching through a small header control.
+- Persist the selected theme in local storage.
+- Keep theme labels in localized content modules.
+- Add new themes through stable `[data-theme="..."]` override blocks and shared theme metadata.
 
 Recommended scope:
 
@@ -403,28 +405,40 @@ Recommended scope:
   - buttons/links
   - flow visual
   - demo panels
+- Runtime behavior:
+  - ThemeProvider initializes the active theme from local storage.
+  - ThemeSwitcher cycles through the curated theme list.
+  - The current click order groups darker themes first, then lighter themes: `ink`, `indigo`, `forest`, `dune`, `aurora`, `parchment`, `sky`, `glacier`, `mint`, and `sakura`.
 - Keep existing layout and component structure.
-- Optionally add a small internal theme note documenting the token layers and current visual direction.
+
+Completed changes:
+
+- Added layered CSS custom properties for palette, semantic, and component-level styling.
+- Added stable `[data-theme="..."]` theme override blocks.
+- Added `src/content/themes.ts` for theme IDs, localized labels, storage key, and validation helper.
+- Added ThemeProvider and ThemeSwitcher components.
+- Added a header theme switcher with localized accessible labels.
+- Updated AGENTS.md so future UI/theme changes use the shared theme system.
 
 Medium-complexity extension path:
 
-- Add theme override blocks such as `[data-theme="default"]`, `[data-theme="light"]`, or `[data-theme="terminal"]`.
 - Add `src/styles/themes.css` if `globals.css` becomes too large.
-- Add `src/content/themes.ts` only if theme names, descriptions, or UI-facing theme metadata are needed.
-- Add a runtime theme switch only after there is a real user-facing reason.
+- Add richer theme metadata only when it is needed by the UI.
+- Add per-route or per-section theme defaults only if the site needs editorial control later.
 
 Non-goals for this phase:
 
 - Do not make module order, page layout, or content sections fully configurable yet.
 - Do not introduce a visual theme editor.
 - Do not create per-section layout configuration.
-- Do not add persistence, cookies, or user preferences for theme selection.
+- Do not add cookies, server-side user preferences, or arbitrary custom theme editing.
 
 Validation:
 
-- The current visual style should look the same or slightly cleaner after token extraction.
+- The default visual style should look the same or slightly cleaner after token extraction.
 - The token names should describe intent, not only raw colors.
 - Component CSS should start depending on semantic/component tokens rather than hardcoded colors where practical.
+- Theme switching should work on desktop and mobile without breaking layout.
 - Desktop and mobile text wrapping should remain stable.
 - `npm run lint`
 - `npm run build`
@@ -511,7 +525,7 @@ Until these are designed, the public website should stay with the interactive mo
 | Centralize localization content | Done | Added UI, locale routing, and demo simulator content modules. |
 | Build local mock API for smoke tests | Done | Implemented in iOS-Automation-Framework and verified with 6 smoke tests against the local mock API. |
 | Reframe public website copy for visitors | Done | Public UI copy now uses available status, completed validation results, and next-step messaging; detailed guardrails remain in docs and AGENTS. |
-| Add theme token foundation | Not Started | Create layered base, semantic, and component tokens that can grow into a medium-complexity theme system later. |
+| Add theme system foundation | Done | Added layered tokens, curated theme overrides, a localized theme switcher, and persisted runtime theme selection. |
 | Publish temporary public website preview | Not Started | Static website hosting only; not public connected test execution. |
 | Capture real local MeteorTest loop run results | Not Started | Requires local mock API first. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |

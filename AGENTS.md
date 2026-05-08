@@ -125,15 +125,20 @@ Prefer strong first-screen identity, MeteorTest as the dominant flagship section
 
 Avoid generic resume layouts, copying a GitHub Profile README as the entire website, nested UI cards, one-color themes, and text that overlaps or wraps badly.
 
-For visual configurability, prefer a token-first approach that starts low-cost but can grow into a medium-complexity theme system:
+For visual configurability, use the existing medium-complexity token-first theme system:
 
 - Organize theme CSS custom properties into base tokens, semantic tokens, and component tokens.
 - Base tokens include palette primitives, font references, spacing, radius, shadow, and glow primitives.
 - Semantic tokens include page background, text, muted text, surface, border, accent, status colors, link, focus, and selection states.
 - Component tokens may cover hero visuals, project cards, badges, buttons, flow visuals, and demo panels when they reduce future CSS churn.
+- Theme metadata and display labels live in `src/content/themes.ts`; visible theme text must remain localized there.
+- Runtime theme behavior lives in the theme components; do not scatter `localStorage`, `data-theme`, or theme-name logic across unrelated components.
+- Add new themes through stable `[data-theme="..."]` override blocks and the shared theme metadata.
+- New pages, layout sections, cards, panels, buttons, badges, diagrams, and demo surfaces must participate in the theme system from the first implementation.
+- Use semantic or component tokens for colors, backgrounds, borders, shadows, focus states, and highlighted surfaces; avoid hardcoded colors in component CSS unless defining a token.
+- When changing a layout or visual component, verify at least one dark theme and one light theme so the component is not accidentally locked to a single palette.
 - Keep layout and module order stable unless there is a concrete product reason to change them.
-- Keep the first implementation CSS-only. Do not build a full theme engine, runtime theme switch, persistence layer, or visual theme editor before the need is clear.
-- If themes expand later, prefer stable override blocks such as `[data-theme="default"]`, `[data-theme="light"]`, or `[data-theme="terminal"]`; add `src/styles/themes.css` or `src/content/themes.ts` only when the split has a real maintenance benefit.
+- Do not build a visual theme editor or arbitrary user-defined theme builder before there is a real product reason.
 
 Temporary public website hosting is allowed and is separate from public connected test execution. A Vercel, Cloudflare Pages, Netlify, or GitHub Pages preview may expose the static website, but must not expose MeteorTest Local Agent endpoints, Supabase secrets, local machines, devices, or test execution services.
 
