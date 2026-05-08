@@ -122,7 +122,15 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
         <div className="focus-list">
           {copy.focusItems.map((item) => (
-            <div key={item}>{item}</div>
+            <article key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+              <div className="focus-tags">
+                {item.points.map((point) => (
+                  <span key={point}>{point}</span>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -133,9 +141,17 @@ export function HomePage({ locale }: { locale: Locale }) {
           <h2>{contact.title}</h2>
           <p>{contact.intro}</p>
         </div>
+        <div className="contact-context">
+          <strong>{contact.collaborationTitle}</strong>
+          <ul>
+            {contact.collaborationItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
         <div className="contact-grid">
-          {contact.links.map((item) => (
-            <Link className="contact-card" href={item.href} key={item.href}>
+          {contact.links.map((item, index) => (
+            <Link className={index === 0 ? "contact-card contact-card-primary" : "contact-card"} href={item.href} key={item.href}>
               <MessageSquare size={20} />
               <strong>{item.label}</strong>
               <span>{item.description}</span>
