@@ -98,10 +98,10 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
             ))}
           </div>
         </div>
-        <div className="limitation-panel">
-          <h2>{copy.limitationsTitle}</h2>
+        <div className="status-panel">
+          <h2>{copy.statusTitle}</h2>
           <ul>
-            {copy.limitations.map((item) => (
+            {copy.statusItems.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
@@ -109,7 +109,7 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
       </div>
 
       <div className="demo-plan-section">
-        <span>{ui.meteortest.demoBoundary}</span>
+        <span>{ui.meteortest.demoStatus}</span>
         <h2>{copy.demoTitle}</h2>
         <p>{copy.demo}</p>
         <Link className="text-link" href={demoHref}>

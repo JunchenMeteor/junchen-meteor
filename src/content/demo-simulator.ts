@@ -9,7 +9,7 @@ export const demoSimulatorCopy = {
     label: "Interactive mock demo",
     title: "Run the MeteorTest loop",
     note:
-      "This is a browser-only simulation using mock data. The companion test project now has a local mock API for real smoke pass/fail evidence, but this public page still does not connect to Supabase, devices, private artifacts, or an execution service.",
+      "This browser walkthrough uses mock data to show the MeteorTest loop. The companion test project now has a local mock API for real smoke pass/fail validation results, with run results collected separately.",
     reset: "Reset",
     advance: "Next step",
     done: "Flow complete",
@@ -59,7 +59,7 @@ export const demoSimulatorCopy = {
     label: "可交互 mock Demo",
     title: "运行 MeteorTest 闭环",
     note:
-      "这是一个只在浏览器中运行的 mock 数据模拟。配套测试项目现在已有本地 mock API，可用于真实 smoke 通过/失败证据；但这个公开页面仍不连接 Supabase、设备、私有产物或执行服务。",
+      "这个浏览器 walkthrough 使用 mock 数据展示 MeteorTest 闭环。配套测试项目现在已有本地 mock API，可用于真实 smoke 通过/失败验证结果；运行结果会单独采集。",
     reset: "重置",
     advance: "下一步",
     done: "流程完成",

@@ -1,13 +1,13 @@
 # Project Content And Demo Plan
 
-This document records how the JC Meteor personal website was built into a project-led portfolio without overstating project maturity. It also tracks the remaining engineering stages for stronger MeteorTest evidence.
+This document records how the JC Meteor personal website was built into a project-led portfolio without overstating project maturity. It also tracks the remaining engineering stages for stronger MeteorTest validation results.
 
 ## Goals
 
 - Make the website feel like a serious engineering portfolio, not only a visual landing page.
 - Explain why each project exists, what has been built, and how the projects relate to each other.
 - Keep MeteorTest as the flagship project while keeping the personal brand hierarchy clear.
-- Add project evidence gradually: problem statements, architecture, AI-assisted operations, status, roadmap, and demo links.
+- Add project validation results gradually: problem statements, architecture, AI-assisted operations, status, roadmap, and demo links.
 - Avoid implying that the website is showing the real MeteorTest UI unless a section is explicitly a real screenshot or live demo.
 
 ## Status Legend
@@ -26,17 +26,17 @@ Use these status labels so future agents can quickly understand progress:
 | --- | --- | --- |
 | Phase 1: Homepage Content Depth | Done | Homepage now includes MeteorTest problem, capability, status, and milestone content. |
 | Phase 2: Projects Page As Portfolio | Done | Projects page now presents each project with purpose, built work, status, and ecosystem role. |
-| Phase 3: MeteorTest Detail Page | Done | MeteorTest detail page now includes background, capabilities, responsibilities, limitations, demo plan, and roadmap. |
-| Phase 4: Demo Strategy | Done | Added an in-site interactive mock demo and boundary page without fake real execution. |
+| Phase 3: MeteorTest Detail Page | Done | MeteorTest detail page now includes background, capabilities, responsibilities, available status, demo plan, and roadmap. |
+| Phase 4: Demo Strategy | Done | Added an in-site interactive mock demo and status page without fake real execution. |
 | Phase 5: MeteorTest Debugging After Website MVP | Done | Local Agent now executes iOS-Automation-Framework through the test repository Python environment; API smoke tests require API_BASE_URL for real assertions. |
 | Phase 6: Contact Surface | Done | Homepage now includes project-first contact links through GitHub profile and project issues. |
 | Phase 7: Localization Content Layer | Done | Shared UI labels, route helpers, and demo simulator copy now live in content modules instead of component-level language branches. |
 | Phase 8: Local Mock API For Real Smoke Results | Done | iOS-Automation-Framework now has a deterministic local mock API; `-m smoke` produces real pass/fail results against `API_BASE_URL=http://127.0.0.1:8010`. |
-| Phase 8.5: Public Copy Reframe | Not Started | Rework public website copy from internal guardrails into user-facing status, completed work, current work, and roadmap messaging. |
+| Phase 8.5: Public Copy Reframe | Done | Public website copy now emphasizes available capabilities, completed work, validation results, and next steps instead of internal guardrail-style boundary language. |
 | Phase 8.6: Theme Token Foundation | Not Started | Build a token-first theme foundation that starts small but can grow into a medium-complexity theme system later. |
 | Phase 8.7: Temporary Public Website Preview | Not Started | Deploy the static personal website for temporary public access without enabling public test execution. |
-| Phase 9: Real Local MeteorTest Loop Evidence | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for website-safe evidence. |
-| Phase 10: Screenshot Or Recording Evidence | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
+| Phase 9: Real Local MeteorTest Loop Run Results | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for public-safe run results. |
+| Phase 10: Screenshot Or Recording Results | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
 | Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
 ## Non-Goals
@@ -52,9 +52,9 @@ The website MVP now covers the earlier content gaps:
 
 - The homepage explains MeteorTest's engineering problem, AI-first execution model, companion test project, project ecosystem, and contact entry points.
 - The Projects page presents each repository with purpose, built work, status, links, and ecosystem role.
-- The MeteorTest detail page includes background, problem framing, responsibilities, execution loop, capabilities, limitations, demo boundary, and roadmap.
+- The MeteorTest detail page includes background, problem framing, responsibilities, execution loop, capabilities, available status, demo status, and roadmap.
 - The demo page is an interactive mock demo that makes the AI-assisted operation loop visible without pretending to be a public real-execution service.
-- The planning document now separates completed website work from future evidence-building work.
+- The planning document now separates completed website work from future validation-results work.
 
 ## Content Principles
 
@@ -105,10 +105,10 @@ Content to include:
   - API smoke tests still need API_BASE_URL before they can run real assertions
 - Current follow-up milestones:
   - configure a real API_BASE_URL for API smoke execution
-  - add a local mock API for real pass/fail smoke evidence
+  - add a local mock API for real pass/fail smoke validation results
   - improve report and AI-assisted operation presentation
 
-### Add project evidence sections
+### Add project validation sections
 
 Recommended homepage sections:
 
@@ -177,7 +177,7 @@ Recommended sections:
 - Execution loop
 - Capability overview
 - Companion repository
-- Current limitations
+- Available now
 - Demo plan
 - Roadmap
 
@@ -193,7 +193,7 @@ Chinese equivalent:
 
 Status: `Done`
 
-MeteorTest now has an online interactive mock demo. Future demo work should add evidence gradually without crossing execution-safety boundaries.
+MeteorTest now has an online interactive mock demo. Future demo work should add validation results gradually while keeping public execution disabled until the required safeguards exist.
 
 ### Recommended order
 
@@ -308,15 +308,15 @@ Observed result:
 
 - `6 passed, 16 deselected`
 
-## Phase 9: Real Local MeteorTest Loop Evidence
+## Phase 9: Real Local MeteorTest Loop Run Results
 
 Status: `Not Started`
 
-Phase 9 should wait until the website copy is more visitor-facing and the basic theme/deploy path is clearer. This keeps the public site useful before adding more execution evidence.
+Phase 9 should wait until the website copy is more visitor-facing and the basic theme/deploy path is clearer. This keeps the public site useful before adding more execution run results.
 
 After the mock API exists, use MeteorTest itself to execute the same API smoke suite.
 
-Expected evidence:
+Expected run results:
 
 - MeteorTest task created for `api_smoke`.
 - Local Agent uses the iOS-Automation-Framework `.venv`.
@@ -331,7 +331,7 @@ Website update rule:
 
 ## Phase 8.5: Public Copy Reframe
 
-Status: `Not Started`
+Status: `Done`
 
 Goal:
 
@@ -345,11 +345,19 @@ Goal:
 
 Recommended changes:
 
-- Keep safety and maturity boundaries in `AGENTS.md`, `docs/PROJECT_CONTENT_PLAN.md`, and repository READMEs.
+- Keep safety and maturity guidance in `AGENTS.md`, `docs/PROJECT_CONTENT_PLAN.md`, and repository READMEs.
 - Keep only short public-facing caveats on the website when needed.
-- Turn `Current limitations` into a more visitor-friendly `Current status` or `What is available now` section.
-- Turn `Demo boundary` into `Demo status` or `What the demo shows`.
+- Use visitor-friendly `Current status` or `What is available now` sections for maturity details.
+- Use `Demo status` or `What the demo shows` for demo readiness details.
 - Keep the English and Chinese versions structurally aligned.
+
+Completed changes:
+
+- Renamed visible maturity surfaces to `Available now` / `当前可见能力`.
+- Renamed visible demo readiness surfaces to `Demo status`, `What is available now`, and `Next step`.
+- Reframed demo copy around the browser walkthrough, local mock API validation results, and the next MeteorTest Local Agent validation run.
+- Reframed contact and toolkit language to avoid public pages reading like internal safety instructions.
+- Updated component and CSS naming where old `limitation` / `boundary` concepts would otherwise contradict the new public copy.
 
 Validation:
 
@@ -455,7 +463,7 @@ Relationship to Phase 11:
 - Phase 8.7 is static/public website hosting.
 - Phase 11 is public connected test execution and remains deferred until security and execution isolation are designed.
 
-## Phase 10: Screenshot Or Recording Evidence
+## Phase 10: Screenshot Or Recording Results
 
 Status: `Deferred`
 
@@ -464,7 +472,7 @@ Screenshots or recordings can make the website more convincing, but only after t
 Requirements:
 
 - Sanitize private paths, local usernames, internal URLs, device IDs, tokens, and test accounts.
-- Label screenshots or videos clearly as local demo evidence.
+- Label screenshots or videos clearly as local demo validation results.
 - Keep English and Chinese explanations aligned.
 
 ## Phase 11: Public Connected Demo
@@ -484,7 +492,7 @@ Required design topics:
 - Executor sandboxing.
 - Log and artifact redaction.
 
-Until these are designed, the public website should stay with the interactive mock demo plus local validation evidence.
+Until these are designed, the public website should stay with the interactive mock demo plus local validation results.
 
 ## Implementation Tracker
 
@@ -492,7 +500,7 @@ Until these are designed, the public website should stay with the interactive mo
 | --- | --- | --- |
 | Add homepage content depth for MeteorTest | Done | Added homepage project substance section for MeteorTest. |
 | Convert Projects page into a portfolio-style index | Done | Expanded each project with purpose, built work, status, and ecosystem role. |
-| Expand the MeteorTest detail page | Done | Added background, capabilities, responsibilities, limitations, demo plan, and roadmap content. |
+| Expand the MeteorTest detail page | Done | Added background, capabilities, responsibilities, available status, demo plan, and roadmap content. |
 | Add a clear demo status section | Done | Added a MeteorTest demo status page and links from project surfaces. |
 | Add interactive demo | Done | Added an interactive mock demo; screenshots can be added later only if real UI is stable and sanitized. |
 | Run `npm run lint` and `npm run build` | Done | Verified after adding CI and syncing completed phase descriptions. |
@@ -502,10 +510,10 @@ Until these are designed, the public website should stay with the interactive mo
 | Add homepage contact module | Done | Added project-first GitHub profile and issue links. |
 | Centralize localization content | Done | Added UI, locale routing, and demo simulator content modules. |
 | Build local mock API for smoke tests | Done | Implemented in iOS-Automation-Framework and verified with 6 smoke tests against the local mock API. |
-| Reframe public website copy for visitors | Not Started | Replace internal guardrail-style UI copy with status, completed work, in-progress work, and roadmap messaging. |
+| Reframe public website copy for visitors | Done | Public UI copy now uses available status, completed validation results, and next-step messaging; detailed guardrails remain in docs and AGENTS. |
 | Add theme token foundation | Not Started | Create layered base, semantic, and component tokens that can grow into a medium-complexity theme system later. |
 | Publish temporary public website preview | Not Started | Static website hosting only; not public connected test execution. |
-| Capture real local MeteorTest loop evidence | Not Started | Requires local mock API first. |
+| Capture real local MeteorTest loop run results | Not Started | Requires local mock API first. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |
 | Design public connected demo | Deferred | Requires security and execution isolation design. |
 
