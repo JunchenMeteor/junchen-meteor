@@ -32,6 +32,9 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 6: Contact Surface | Done | Homepage now includes project-first contact links through GitHub profile and project issues. |
 | Phase 7: Localization Content Layer | Done | Shared UI labels, route helpers, and demo simulator copy now live in content modules instead of component-level language branches. |
 | Phase 8: Local Mock API For Real Smoke Results | Done | iOS-Automation-Framework now has a deterministic local mock API; `-m smoke` produces real pass/fail results against `API_BASE_URL=http://127.0.0.1:8010`. |
+| Phase 8.5: Public Copy Reframe | Not Started | Rework public website copy from internal guardrails into user-facing status, completed work, current work, and roadmap messaging. |
+| Phase 8.6: Theme Token Foundation | Not Started | Build a token-first theme foundation that starts small but can grow into a medium-complexity theme system later. |
+| Phase 8.7: Temporary Public Website Preview | Not Started | Deploy the static personal website for temporary public access without enabling public test execution. |
 | Phase 9: Real Local MeteorTest Loop Evidence | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for website-safe evidence. |
 | Phase 10: Screenshot Or Recording Evidence | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
 | Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
@@ -309,6 +312,8 @@ Observed result:
 
 Status: `Not Started`
 
+Phase 9 should wait until the website copy is more visitor-facing and the basic theme/deploy path is clearer. This keeps the public site useful before adding more execution evidence.
+
 After the mock API exists, use MeteorTest itself to execute the same API smoke suite.
 
 Expected evidence:
@@ -323,6 +328,132 @@ Website update rule:
 
 - The website can say the local loop is validated with a mock API.
 - The website should still avoid claiming public real execution until a safe connected demo exists.
+
+## Phase 8.5: Public Copy Reframe
+
+Status: `Not Started`
+
+Goal:
+
+- Make the public website read like it is written for visitors, not only for the project owner or coding agents.
+- Replace heavy "should / should not / boundary / limitation" language in visible UI with:
+  - what exists
+  - what has been built
+  - what is running locally
+  - what is in progress
+  - what is planned next
+
+Recommended changes:
+
+- Keep safety and maturity boundaries in `AGENTS.md`, `docs/PROJECT_CONTENT_PLAN.md`, and repository READMEs.
+- Keep only short public-facing caveats on the website when needed.
+- Turn `Current limitations` into a more visitor-friendly `Current status` or `What is available now` section.
+- Turn `Demo boundary` into `Demo status` or `What the demo shows`.
+- Keep the English and Chinese versions structurally aligned.
+
+Validation:
+
+- Public pages should not feel like internal agent instructions.
+- The website should still avoid overclaiming public real execution.
+- `npm run lint`
+- `npm run build`
+
+## Phase 8.6: Theme Token Foundation
+
+Status: `Not Started`
+
+Goal:
+
+- Make visual style easier to evolve without rewriting page components.
+- Keep the first implementation low-risk while designing the token model so it can grow into a medium-complexity theme system later.
+
+Design direction:
+
+- Start with CSS custom properties and no runtime theme picker.
+- Organize tokens in layers so later themes can override stable semantic names instead of editing components.
+- Treat this as the foundation for possible future themes such as `default`, `light`, `studio`, or `terminal`, without committing to those themes now.
+
+Recommended scope:
+
+- Base tokens:
+  - color palette primitives
+  - font family and type scale references
+  - spacing scale
+  - border radius scale
+  - shadow and glow primitives
+- Semantic tokens:
+  - page background
+  - text, muted text, and subtle text
+  - surface and elevated surface
+  - border and strong border
+  - accent, secondary accent, success, warning, and danger
+  - link, focus, and selection states
+- Component tokens where they reduce future churn:
+  - hero visual
+  - project cards
+  - badges/status pills
+  - buttons/links
+  - flow visual
+  - demo panels
+- Keep existing layout and component structure.
+- Optionally add a small internal theme note documenting the token layers and current visual direction.
+
+Medium-complexity extension path:
+
+- Add theme override blocks such as `[data-theme="default"]`, `[data-theme="light"]`, or `[data-theme="terminal"]`.
+- Add `src/styles/themes.css` if `globals.css` becomes too large.
+- Add `src/content/themes.ts` only if theme names, descriptions, or UI-facing theme metadata are needed.
+- Add a runtime theme switch only after there is a real user-facing reason.
+
+Non-goals for this phase:
+
+- Do not make module order, page layout, or content sections fully configurable yet.
+- Do not introduce a visual theme editor.
+- Do not create per-section layout configuration.
+- Do not add persistence, cookies, or user preferences for theme selection.
+
+Validation:
+
+- The current visual style should look the same or slightly cleaner after token extraction.
+- The token names should describe intent, not only raw colors.
+- Component CSS should start depending on semantic/component tokens rather than hardcoded colors where practical.
+- Desktop and mobile text wrapping should remain stable.
+- `npm run lint`
+- `npm run build`
+
+## Phase 8.7: Temporary Public Website Preview
+
+Status: `Not Started`
+
+Goal:
+
+- Make the personal website temporarily accessible through a public URL for sharing and review.
+- This is not the same as Phase 11.
+
+Scope:
+
+- Deploy the static/presentational website only.
+- Do not expose MeteorTest Local Agent endpoints.
+- Do not connect public visitors to Supabase secrets, local machines, devices, or test execution services.
+- Prefer Vercel, Cloudflare Pages, Netlify, or GitHub Pages for a temporary preview URL.
+
+Recommended order:
+
+1. Decide deployment target.
+2. Add minimal deployment documentation if needed.
+3. Verify English and Chinese routes after deployment.
+4. Keep custom domain work optional until the brand/domain decision is stable.
+
+Validation:
+
+- Public URL opens the homepage.
+- `/zh-CN`, `/projects`, and `/meteortest/demo` routes work.
+- No private environment variables are required for the public static website.
+
+Relationship to Phase 11:
+
+- Phase 8.7 is static/public website hosting.
+- Phase 11 is public connected test execution and remains deferred until security and execution isolation are designed.
 
 ## Phase 10: Screenshot Or Recording Evidence
 
@@ -371,6 +502,9 @@ Until these are designed, the public website should stay with the interactive mo
 | Add homepage contact module | Done | Added project-first GitHub profile and issue links. |
 | Centralize localization content | Done | Added UI, locale routing, and demo simulator content modules. |
 | Build local mock API for smoke tests | Done | Implemented in iOS-Automation-Framework and verified with 6 smoke tests against the local mock API. |
+| Reframe public website copy for visitors | Not Started | Replace internal guardrail-style UI copy with status, completed work, in-progress work, and roadmap messaging. |
+| Add theme token foundation | Not Started | Create layered base, semantic, and component tokens that can grow into a medium-complexity theme system later. |
+| Publish temporary public website preview | Not Started | Static website hosting only; not public connected test execution. |
 | Capture real local MeteorTest loop evidence | Not Started | Requires local mock API first. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |
 | Design public connected demo | Deferred | Requires security and execution isolation design. |

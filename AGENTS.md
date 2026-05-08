@@ -78,6 +78,16 @@ Do not treat a documentation-only update as complete if the public UI, backend b
 
 Do not overstate project maturity.
 
+Write public website copy for visitors, not for agents or the project owner. Visible pages should emphasize:
+
+- what exists
+- what has been built
+- what is currently available
+- what is in progress
+- what is planned next
+
+Keep detailed "do not", safety, maturity, and execution-boundary instructions in `AGENTS.md`, `docs/PROJECT_CONTENT_PLAN.md`, or repository READMEs. On public pages, use short visitor-facing caveats only when they prevent a real misunderstanding.
+
 Acceptable wording:
 
 - `active development`
@@ -114,6 +124,18 @@ Build a polished engineering-product site.
 Prefer strong first-screen identity, MeteorTest as the dominant flagship section, clear project hierarchy, dense but readable project metadata, subtle borders, grids, badges, and structured layout.
 
 Avoid generic resume layouts, copying a GitHub Profile README as the entire website, nested UI cards, one-color themes, and text that overlaps or wraps badly.
+
+For visual configurability, prefer a token-first approach that starts low-cost but can grow into a medium-complexity theme system:
+
+- Organize theme CSS custom properties into base tokens, semantic tokens, and component tokens.
+- Base tokens include palette primitives, font references, spacing, radius, shadow, and glow primitives.
+- Semantic tokens include page background, text, muted text, surface, border, accent, status colors, link, focus, and selection states.
+- Component tokens may cover hero visuals, project cards, badges, buttons, flow visuals, and demo panels when they reduce future CSS churn.
+- Keep layout and module order stable unless there is a concrete product reason to change them.
+- Keep the first implementation CSS-only. Do not build a full theme engine, runtime theme switch, persistence layer, or visual theme editor before the need is clear.
+- If themes expand later, prefer stable override blocks such as `[data-theme="default"]`, `[data-theme="light"]`, or `[data-theme="terminal"]`; add `src/styles/themes.css` or `src/content/themes.ts` only when the split has a real maintenance benefit.
+
+Temporary public website hosting is allowed and is separate from public connected test execution. A Vercel, Cloudflare Pages, Netlify, or GitHub Pages preview may expose the static website, but must not expose MeteorTest Local Agent endpoints, Supabase secrets, local machines, devices, or test execution services.
 
 ## Validation Commands
 
