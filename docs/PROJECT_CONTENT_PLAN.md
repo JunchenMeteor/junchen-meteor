@@ -35,6 +35,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8.5: Public Copy Reframe | Done | Public website copy now emphasizes available capabilities, completed work, validation results, and next steps instead of internal guardrail-style boundary language. |
 | Phase 8.6: Theme System Foundation | Done | Built a medium-complexity token-first theme system with runtime switching, persisted selection, localized labels, and stable theme override blocks. |
 | Phase 8.7: Temporary Public Website Preview | Done | Added GitHub Pages static export workflow and deployment instructions for a public website preview without enabling public test execution. |
+| Phase 8.8: Productized Website Surfaces | Done | Homepage flagship section now presents MeteorTest as a project workspace snapshot, and non-flagship projects now have detail pages instead of only appearing as list items. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API and produced public-safe task status, pytest summary, and artifact summary. |
 | Phase 10: Screenshot Or Recording Results | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
 | Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
@@ -514,6 +515,41 @@ Relationship to Phase 11:
 - Phase 8.7 is static/public website hosting.
 - Phase 11 is public connected test execution and remains deferred until security and execution isolation are designed.
 
+## Phase 8.8: Productized Website Surfaces
+
+Status: `Done`
+
+Goal:
+
+- Reduce the feeling that the website is only a set of presentation slides.
+- Use the completed Phase 9 local run result to make the homepage feel more like a product/project status surface.
+- Keep the change scoped to public website presentation, not a full MeteorTest Web console clone.
+
+Completed changes:
+
+- Replaced the homepage MeteorTest featured card with a richer project workspace snapshot.
+- Added direct actions for opening MeteorTest, trying the interactive demo, and opening the GitHub repository.
+- Added a compact snapshot for project, suite, executor, and report artifacts.
+- Added an AI-assisted operation loop panel and latest local validation rows.
+- Added generic project detail pages for non-flagship repositories.
+- Added project detail entry links from project cards and the Projects page.
+- Kept copy bilingual and stored in content modules.
+- Kept styling on existing theme tokens so dark and light themes can render the new surface.
+
+Non-goals:
+
+- Do not claim the homepage is the actual MeteorTest Web console.
+- Do not make public visitors trigger real Local Agent execution.
+- Do not connect the personal website to Supabase, local Agent services, or private report storage.
+- Do not replace the later screenshot/recording phase.
+
+Validation:
+
+- `npm run lint`
+- `npm run build`
+- GitHub Pages static export build with `GITHUB_PAGES=true npm run build`
+- Browser check for desktop and mobile homepage rendering.
+
 ## Phase 10: Screenshot Or Recording Results
 
 Status: `Deferred`
@@ -594,6 +630,8 @@ Recommended first implementation:
 | Reframe public website copy for visitors | Done | Public UI copy now uses available status, completed validation results, and next-step messaging; detailed guardrails remain in docs and AGENTS. |
 | Add theme system foundation | Done | Added layered tokens, curated theme overrides, a localized theme switcher, and persisted runtime theme selection. |
 | Publish temporary public website preview | Done | Added GitHub Pages workflow and README setup instructions; public URL verification happens after merge and Pages publish. |
+| Productize homepage MeteorTest surface | Done | Replaced the sparse featured card with a project workspace snapshot, operation loop, latest local validation rows, and direct actions. |
+| Add non-flagship project detail pages | Done | Added `/projects/<slug>` and `/zh-CN/projects/<slug>` for other repositories so project hierarchy is not limited to MeteorTest only. |
 | Capture real local MeteorTest loop run results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API with `6 passed, 16 deselected`. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |
 | Design public connected demo | Deferred | Requires security and execution isolation design. |

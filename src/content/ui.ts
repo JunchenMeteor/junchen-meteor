@@ -14,7 +14,9 @@ export const uiCopy = {
       docs: "Docs",
       issues: "Issues",
       openLink: "Open link",
+      viewDetails: "View details",
       backToMeteorTest: "Back to MeteorTest",
+      backToProjects: "Back to projects",
       interactiveDemo: "Interactive demo",
       openInteractiveDemo: "Open interactive demo"
     },
@@ -54,7 +56,13 @@ export const uiCopy = {
       validationResults: "Validation results",
       why: "Why it exists",
       built: "What I built",
-      roleAndValidation: "Role and validation results"
+      roleAndValidation: "Role and validation results",
+      detailLabel: "Project detail",
+      overview: "Overview",
+      highlights: "Highlights",
+      techStack: "Tech stack",
+      links: "Project links",
+      next: "Current next step"
     },
     demo: {
       nextStep: "Next step",
@@ -74,7 +82,9 @@ export const uiCopy = {
       docs: "Docs",
       issues: "Issues",
       openLink: "打开链接",
+      viewDetails: "查看详情",
       backToMeteorTest: "返回 MeteorTest",
+      backToProjects: "返回项目列表",
       interactiveDemo: "交互 Demo",
       openInteractiveDemo: "打开交互 Demo"
     },
@@ -105,7 +115,13 @@ export const uiCopy = {
       validationResults: "验证结果",
       why: "为什么存在",
       built: "做了什么",
-      roleAndValidation: "角色与验证结果"
+      roleAndValidation: "角色与验证结果",
+      detailLabel: "项目详情",
+      overview: "概览",
+      highlights: "亮点",
+      techStack: "技术栈",
+      links: "项目链接",
+      next: "当前下一步"
     },
     demo: {
       nextStep: "下一步计划",
