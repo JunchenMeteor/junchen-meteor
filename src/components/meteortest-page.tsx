@@ -5,6 +5,7 @@ import { getProject } from "@/content/projects";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
+import { ScreenshotResults } from "@/components/screenshot-results";
 
 export function MeteorTestPage({ locale }: { locale: Locale }) {
   const copy = meteortestCopy[locale];
@@ -110,6 +111,8 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
       </div>
 
       <ValidationRunPanel locale={locale} />
+
+      <ScreenshotResults locale={locale} />
 
       <div className="demo-plan-section">
         <span>{ui.meteortest.demoStatus}</span>

@@ -37,7 +37,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8.7: Temporary Public Website Preview | Done | Added GitHub Pages static export workflow and deployment instructions for a public website preview without enabling public test execution. |
 | Phase 8.8: Productized Website Surfaces | Done | Homepage flagship section now presents MeteorTest as a project workspace snapshot, and non-flagship projects now have detail pages instead of only appearing as list items. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API and produced public-safe task status, pytest summary, and artifact summary. |
-| Phase 10: Screenshot Or Recording Results | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
+| Phase 10: Screenshot Or Recording Results | Done | Added sanitized local MeteorTest Web preview screenshots for the dashboard and report center, labeled separately from public connected execution. |
 | Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 | Phase 12: MeteorTest Web Public Preview | Deferred | Plan a public-accessible MeteorTest Web preview separately from the personal website, with environment templates and secret handling before deployment. |
 
@@ -552,15 +552,37 @@ Validation:
 
 ## Phase 10: Screenshot Or Recording Results
 
-Status: `Deferred`
+Status: `Done`
 
-Screenshots or recordings can make the website more convincing, but only after the MeteorTest UI and sample data are stable enough to represent.
+Screenshots can make the website more convincing without exposing a public connected execution service.
+
+Completed changes:
+
+- Captured two sanitized MeteorTest Web local preview screenshots:
+  - Dashboard / execution workspace.
+  - Report center empty-state surface.
+- Used placeholder environment variables and empty demo data.
+- Stored images under `public/screenshots`.
+- Added a bilingual screenshot results section to the MeteorTest detail page and demo status page.
+- Labeled the screenshots as local preview screenshots, not public connected execution.
 
 Requirements:
 
 - Sanitize private paths, local usernames, internal URLs, device IDs, tokens, and test accounts.
 - Label screenshots or videos clearly as local demo validation results.
 - Keep English and Chinese explanations aligned.
+
+Validation:
+
+- Visual inspection confirmed the screenshots do not contain private local paths, tokens, real accounts, or Supabase secrets.
+- `npm run lint`
+- `npm run build`
+- GitHub Pages static export build with `GITHUB_PAGES=true npm run build`
+
+Follow-up:
+
+- Replace placeholder/empty-state screenshots with richer seeded demo data after MeteorTest Web has a safe demo-data strategy.
+- Recording remains optional and should only be added after the screen flow is stable and private-data handling is reviewed.
 
 ## Phase 11: Public Connected Demo
 
@@ -633,7 +655,7 @@ Recommended first implementation:
 | Productize homepage MeteorTest surface | Done | Replaced the sparse featured card with a project workspace snapshot, operation loop, latest local validation rows, and direct actions. |
 | Add non-flagship project detail pages | Done | Added `/projects/<slug>` and `/zh-CN/projects/<slug>` for other repositories so project hierarchy is not limited to MeteorTest only. |
 | Capture real local MeteorTest loop run results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API with `6 passed, 16 deselected`. |
-| Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |
+| Add sanitized screenshots or recordings | Done | Added dashboard and report center screenshots from a local MeteorTest Web preview using placeholder env and empty demo data. |
 | Design public connected demo | Deferred | Requires security and execution isolation design. |
 | Plan MeteorTest Web public preview | Deferred | Track separately from the static personal website; requires env template, secret handling, and deployment design in MeteorTest docs. |
 
