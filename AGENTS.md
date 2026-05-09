@@ -64,7 +64,7 @@ Before expanding homepage sections, project pages, MeteorTest demo messaging, or
 docs/PROJECT_CONTENT_PLAN.md
 ```
 
-Implement the plan in phases. The website MVP, interactive mock demo, contact surface, MeteorTest-to-iOS-Automation-Framework local execution-path debugging, local mock API validation, public website preview, productized homepage surface, local MeteorTest Agent run results, and sanitized local preview screenshots are complete. Next work should focus only on richer seeded demo data, optional recordings, or public connected demos after execution safety is designed.
+Implement the plan in phases. The website MVP, interactive mock demo, contact surface, MeteorTest-to-iOS-Automation-Framework local execution-path debugging, local mock API validation, public website preview, productized homepage surface, local MeteorTest Agent run results, and sanitized local preview screenshots are complete. Next work should focus on Phase 11 MeteorTest Web Public Preview before Phase 12 Public Connected Demo. Richer seeded demo data and optional recordings can support those phases, but public execution still requires explicit safety design.
 
 When a phase status, validation claim, capability boundary, terminology rule, project milestone, backend behavior, interaction flow, environment variable, port, command, or test capability changes, update all affected surfaces in the same change:
 
@@ -74,7 +74,7 @@ When a phase status, validation claim, capability boundary, terminology rule, pr
 
 Do not treat a documentation-only update as complete if the public UI, backend behavior, interaction logic, configuration, examples, or tests still say or implement the old status, next step, terminology, or runtime behavior.
 
-MeteorTest Web public access is a separate future track from this static personal website. If that work starts, update the MeteorTest repository docs in the same change, especially `PROGRESS.md`, `AGENTS.md`, and `apps/web/README.md`. Do not rely on local-only `.env.local` values or machine paths; add safe environment templates, deployment-provider secret instructions, and a public-preview boundary before exposing any Web console.
+MeteorTest Web public access is Phase 11 and comes before the Phase 12 public connected execution demo. If Phase 11 starts, update the MeteorTest repository docs in the same change, especially `PROGRESS.md`, `AGENTS.md`, and `apps/web/README.md`. Do not rely on local-only `.env.local` values or machine paths; add safe environment templates, deployment-provider secret instructions, and a public-preview boundary before exposing any Web console.
 
 ## Content Boundaries
 
