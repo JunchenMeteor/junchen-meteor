@@ -1,5 +1,23 @@
 # Junchen Meteor
 
+<p align="center">
+  <strong>A project-led personal website for automation testing, iOS engineering systems, and AI-assisted development workflows</strong>
+</p>
+
+<p align="center">
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=nextdotjs" />
+  <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img alt="Theme System" src="https://img.shields.io/badge/Theme-Token_System-74D6B3?style=for-the-badge" />
+  <br />
+  <a href="https://junchenmeteor.github.io/junchen-meteor/"><img alt="Live Preview" src="https://img.shields.io/badge/Live-Preview-1F6FEB" /></a>
+  <a href="https://github.com/JunchenMeteor/junchen-meteor/issues"><img alt="Issues" src="https://img.shields.io/badge/Links-Issues-1F6FEB" /></a>
+  <a href="docs/PROJECT_CONTENT_PLAN.md"><img alt="Roadmap" src="https://img.shields.io/badge/Links-Roadmap-8957E5" /></a>
+  <br />
+  <a href="README.md"><img alt="Docs English" src="https://img.shields.io/badge/Docs-English-black" /></a>
+  <a href="README.zh-CN.md"><img alt="Docs 中文" src="https://img.shields.io/badge/Docs-%E4%B8%AD%E6%96%87-red" /></a>
+</p>
+
 Personal project hub for **JC Meteor**. The site presents automation testing, iOS engineering systems, and AI-assisted development workflows, with **MeteorTest** as the flagship project.
 
 ## Live Preview
