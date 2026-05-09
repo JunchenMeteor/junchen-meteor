@@ -34,7 +34,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8: Local Mock API For Real Smoke Results | Done | iOS-Automation-Framework now has a deterministic local mock API; `-m smoke` produces real pass/fail results against `API_BASE_URL=http://127.0.0.1:8010`. |
 | Phase 8.5: Public Copy Reframe | Done | Public website copy now emphasizes available capabilities, completed work, validation results, and next steps instead of internal guardrail-style boundary language. |
 | Phase 8.6: Theme System Foundation | Done | Built a medium-complexity token-first theme system with runtime switching, persisted selection, localized labels, and stable theme override blocks. |
-| Phase 8.7: Temporary Public Website Preview | Not Started | Deploy the static personal website for temporary public access without enabling public test execution. |
+| Phase 8.7: Temporary Public Website Preview | Done | Added GitHub Pages static export workflow and deployment instructions for a public website preview without enabling public test execution. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for public-safe run results. |
 | Phase 10: Screenshot Or Recording Results | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
 | Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
@@ -445,7 +445,7 @@ Validation:
 
 ## Phase 8.7: Temporary Public Website Preview
 
-Status: `Not Started`
+Status: `Done`
 
 Goal:
 
@@ -461,15 +461,26 @@ Scope:
 
 Recommended order:
 
-1. Decide deployment target.
-2. Add minimal deployment documentation if needed.
-3. Verify English and Chinese routes after deployment.
-4. Keep custom domain work optional until the brand/domain decision is stable.
+1. Decide deployment target. `Done`: GitHub Pages with GitHub Actions.
+2. Add minimal deployment documentation if needed. `Done`: README includes setup steps and expected URL.
+3. Verify English and Chinese routes after deployment. `Pending after merge`: verify once Pages publishes from `main`.
+4. Keep custom domain work optional until the brand/domain decision is stable. `Done`: no custom domain is required for this phase.
+
+Completed changes:
+
+- Added static export settings in `next.config.ts`.
+- Added `.github/workflows/pages.yml` to build and deploy the `out` directory with GitHub Pages.
+- Configured the GitHub Pages build to use `/junchen-meteor` as the repository base path.
+- Documented the static preview setup in README.
+- Kept the preview explicitly separate from public connected test execution.
 
 Validation:
 
-- Public URL opens the homepage.
-- `/zh-CN`, `/projects`, and `/meteortest/demo` routes work.
+- `npm run lint`
+- `npm run build`
+- GitHub Pages static export build with `GITHUB_PAGES=true npm run build`
+- Public URL opens the homepage. `Pending after merge`
+- `/zh-CN`, `/projects`, and `/meteortest/demo` routes work. `Pending after merge`
 - No private environment variables are required for the public static website.
 
 Relationship to Phase 11:
@@ -526,7 +537,7 @@ Until these are designed, the public website should stay with the interactive mo
 | Build local mock API for smoke tests | Done | Implemented in iOS-Automation-Framework and verified with 6 smoke tests against the local mock API. |
 | Reframe public website copy for visitors | Done | Public UI copy now uses available status, completed validation results, and next-step messaging; detailed guardrails remain in docs and AGENTS. |
 | Add theme system foundation | Done | Added layered tokens, curated theme overrides, a localized theme switcher, and persisted runtime theme selection. |
-| Publish temporary public website preview | Not Started | Static website hosting only; not public connected test execution. |
+| Publish temporary public website preview | Done | Added GitHub Pages workflow and README setup instructions; public URL verification happens after merge and Pages publish. |
 | Capture real local MeteorTest loop run results | Not Started | Requires local mock API first. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |
 | Design public connected demo | Deferred | Requires security and execution isolation design. |
