@@ -30,6 +30,8 @@ https://junchenmeteor.github.io/junchen-meteor/
 
 This preview is the static public website only. It does not expose MeteorTest Local Agent endpoints, Supabase secrets, local machines, devices, or test execution services.
 
+MeteorTest Web public-preview readiness is prepared in the MeteorTest repository with an environment template and secret-boundary guidance. The live MeteorTest Web console still needs a separate application deployment before it can be opened publicly.
+
 ## What This Site Covers
 
 - **MeteorTest**: the flagship automation testing platform project.

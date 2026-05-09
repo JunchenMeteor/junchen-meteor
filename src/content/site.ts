@@ -263,12 +263,13 @@ export const meteortestShowcaseCopy = {
       "Hand execution to Local Agent",
       "Read report context and suggest next action"
     ],
-    resultTitle: "Latest local validation",
+    resultTitle: "Validation and preview status",
     resultRows: [
       { label: "Task", value: "phase9-api-smoke-001" },
       { label: "Result", value: "Succeeded" },
       { label: "Pytest", value: "6 passed, 16 deselected" },
-      { label: "Exit", value: "0" }
+      { label: "Exit", value: "0" },
+      { label: "Web preview", value: "Deployment-ready" }
     ]
   },
   zh: {
@@ -294,12 +295,13 @@ export const meteortestShowcaseCopy = {
       "交给 Local Agent 执行",
       "读取报告上下文并建议下一步"
     ],
-    resultTitle: "最近本地验证",
+    resultTitle: "验证和预览状态",
     resultRows: [
       { label: "任务", value: "phase9-api-smoke-001" },
       { label: "结果", value: "Succeeded" },
       { label: "Pytest", value: "6 passed, 16 deselected" },
-      { label: "退出码", value: "0" }
+      { label: "退出码", value: "0" },
+      { label: "Web 预览", value: "已具备部署准备" }
     ]
   }
 };
@@ -342,6 +344,7 @@ export const meteortestCopy = {
       "Stabilize local executor lifecycle and task locking.",
       "Improve report aggregation and failure summaries.",
       "Turn the local run results into clearer product-facing website surfaces.",
+      "Deploy a separate MeteorTest Web public preview with provider-managed environment variables.",
       "Design public connected execution only after security and execution isolation are explicit."
     ],
     sections: [
@@ -391,11 +394,12 @@ export const meteortestCopy = {
       "MeteorTest is still an MVP and active development project.",
       "The Local Agent can execute the iOS-Automation-Framework API smoke suite through the test repository's own virtual environment.",
       "The current API smoke tests have produced real pass/fail results against the iOS-Automation-Framework local mock API through MeteorTest Local Agent.",
+      "MeteorTest Web now has a committed environment template and public-preview boundary documentation; the next step is a separate deployment.",
       "The public website includes an interactive product walkthrough and project validation updates."
     ],
     demoTitle: "Demo status",
     demo:
-      "The current demo is an interactive browser walkthrough that explains the project import, task preparation, Local Agent handoff, report context, and AI follow-up flow. Local smoke-test run results are collected separately from the public page."
+      "The current demo is an interactive browser walkthrough that explains the project import, task preparation, Local Agent handoff, report context, and AI follow-up flow. Local smoke-test run results are collected separately from the public page. A real MeteorTest Web public preview is prepared at the repository level and still needs deployment."
   },
   zh: {
     title: "MeteorTest",
@@ -434,6 +438,7 @@ export const meteortestCopy = {
       "稳定本地执行器生命周期和任务锁定机制。",
       "改进报告聚合和失败摘要能力。",
       "把本地运行结果整理成更清晰的产品化官网展示。",
+      "使用部署平台托管的环境变量，部署独立的 MeteorTest Web 公网预览。",
       "只有在安全和执行隔离设计明确后，再设计公网联网执行。"
     ],
     sections: [
@@ -483,11 +488,12 @@ export const meteortestCopy = {
       "MeteorTest 仍是 MVP 和主动开发项目。",
       "Local Agent 已经可以通过测试仓库自己的虚拟环境执行 iOS-Automation-Framework 的 API smoke suite。",
       "当前 API smoke 测试已经通过 MeteorTest Local Agent 基于 iOS-Automation-Framework 的本地 mock API 产生真实通过/失败结果。",
+      "MeteorTest Web 已补齐环境变量模板和公网预览边界说明；下一步是独立部署。",
       "公开官网已经提供交互式产品 walkthrough 和项目验证结果更新。"
     ],
     demoTitle: "Demo 状态",
     demo:
-      "当前 Demo 是一个浏览器内交互 walkthrough，用来说明项目导入、任务准备、Local Agent 交接、报告上下文和 AI 后续动作。真实 smoke 测试运行结果会在公开页面之外单独采集。"
+      "当前 Demo 是一个浏览器内交互 walkthrough，用来说明项目导入、任务准备、Local Agent 交接、报告上下文和 AI 后续动作。真实 smoke 测试运行结果会在公开页面之外单独采集。真实 MeteorTest Web 公网预览已经完成仓库层面的准备，仍需要部署。"
   }
 };
 
@@ -528,7 +534,7 @@ export const demoCopy = {
     ],
     nextTitle: "Next step",
     next:
-      "Next, the website surfaces can be made less presentation-like by showing the validated loop as a more product-like project status and run-results experience. A public connected execution demo remains a later design topic."
+      "Next, deploy the separate MeteorTest Web public preview with provider-managed environment variables and a dedicated preview backend. A public connected execution demo remains a later design topic."
   },
   zh: {
     title: "MeteorTest 交互 Demo",
@@ -566,7 +572,7 @@ export const demoCopy = {
     ],
     nextTitle: "下一步计划",
     next:
-      "下一步可以把官网展示做得更像产品状态和运行结果体验，减少类似 PPT 的观感。公网联网执行 Demo 会作为后续独立设计。"
+      "下一步是使用部署平台托管的环境变量和独立预览后端，部署单独的 MeteorTest Web 公网预览。公网联网执行 Demo 会作为后续独立设计。"
   }
 };
 
@@ -640,7 +646,7 @@ export const screenshotResultsCopy = {
       }
     ],
     note:
-      "This is not a public connected demo. Real public Web access and executable demos remain separate deployment and safety phases."
+      "This is not a public connected demo. MeteorTest Web public-preview preparation is now in place, but the live Web console still needs a separate deployment."
   },
   zh: {
     eyebrow: "本地预览截图",
@@ -664,6 +670,6 @@ export const screenshotResultsCopy = {
       }
     ],
     note:
-      "这不是公网联网 Demo。公网 Web 访问和可执行 Demo 仍然是后续独立的部署与安全阶段。"
+      "这不是公网联网 Demo。MeteorTest Web 的公网预览准备已经就绪，但真实 Web 控制台仍需要单独部署。"
   }
 };

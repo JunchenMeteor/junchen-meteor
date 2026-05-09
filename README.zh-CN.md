@@ -30,6 +30,8 @@ https://junchenmeteor.github.io/junchen-meteor/
 
 这个预览只包含静态公开官网，不会暴露 MeteorTest Local Agent 端点、Supabase 密钥、本机服务、设备或测试执行服务。
 
+MeteorTest Web 的公网预览准备已经在 MeteorTest 仓库中完成，包括环境变量模板和密钥边界说明。真实 MeteorTest Web 控制台仍需要单独部署后才能公网访问。
+
 ## 这个站点包含什么
 
 - **MeteorTest**：主推的自动化测试平台项目。
