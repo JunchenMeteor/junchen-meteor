@@ -13,13 +13,13 @@ Personal project hub for **JC Meteor**. The site presents automation testing, iO
 
 ```bash
 npm install
-npm run dev
+npm run dev -- -H 127.0.0.1 -p 3010
 ```
 
 Open:
 
 ```text
-http://127.0.0.1:3000
+http://127.0.0.1:3010
 ```
 
 ## Validation
@@ -27,6 +27,35 @@ http://127.0.0.1:3000
 ```bash
 npm run lint
 npm run build
+```
+
+## Static Public Preview
+
+The site can be published as a static GitHub Pages preview. The preview is only the public website; it does not expose MeteorTest Local Agent endpoints, Supabase secrets, local machines, devices, or test execution services.
+
+GitHub Pages setup:
+
+1. Open repository Settings.
+2. Go to Pages.
+3. Set Source to `GitHub Actions`.
+4. Merge to `main` or run the `GitHub Pages` workflow manually.
+
+Expected preview URL:
+
+```text
+https://junchenmeteor.github.io/junchen-meteor/
+```
+
+Local static-export check:
+
+```bash
+npm run build
+```
+
+GitHub Pages base-path check:
+
+```bash
+GITHUB_PAGES=true npm run build
 ```
 
 ## Content Rules
