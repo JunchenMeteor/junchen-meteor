@@ -76,8 +76,8 @@ export const projects: Project[] = [
         zh: "主推平台项目和控制平面。"
       },
       next: {
-        en: "Run the mock-backed API smoke suite through MeteorTest Local Agent and capture website-safe logs/report artifacts.",
-        zh: "通过 MeteorTest Local Agent 运行 mock-backed API smoke suite，并采集可安全展示的日志和报告产物。"
+        en: "Use the completed local Agent run results to make the website status and demo surfaces more product-like.",
+        zh: "基于已完成的本地 Agent 运行结果，把官网状态和 Demo 展示做得更像产品体验。"
       }
     },
     highlights: {
@@ -133,8 +133,8 @@ export const projects: Project[] = [
         zh: "配套测试代码项目和集成样例。"
       },
       next: {
-        en: "Use the deterministic local mock API as the stable target for direct smoke execution and the next MeteorTest Agent validation run.",
-        zh: "使用确定性的本地 mock API 作为直接 smoke 执行和下一轮 MeteorTest Agent 验证运行的稳定目标。"
+        en: "Keep the deterministic local mock API as the stable target for direct smoke execution and MeteorTest Agent validation runs.",
+        zh: "继续把确定性的本地 mock API 作为直接 smoke 执行和 MeteorTest Agent 验证运行的稳定目标。"
       }
     },
     highlights: {

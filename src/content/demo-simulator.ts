@@ -9,7 +9,7 @@ export const demoSimulatorCopy = {
     label: "Interactive mock demo",
     title: "Run the MeteorTest loop",
     note:
-      "This browser walkthrough uses mock data to show the MeteorTest loop. The companion test project now has a local mock API for real smoke pass/fail validation results, with run results collected separately.",
+      "This browser walkthrough uses mock data to show the MeteorTest loop. The same mock-backed API smoke path has also completed a local MeteorTest Agent run, with run results summarized separately.",
     reset: "Reset",
     advance: "Next step",
     done: "Flow complete",
@@ -49,9 +49,9 @@ export const demoSimulatorCopy = {
     },
     logs: [
       "Loaded meteortest.yml from iOS-Automation-Framework",
-      "AI prepared api_smoke task for staging and requested confirmation",
+      "AI prepared api_smoke task for local-mock-api and requested confirmation",
       "Resolved Python runtime from test repository .venv",
-      "pytest collected 6 smoke cases and passed against the local mock API",
+      "pytest collected 6 smoke cases and passed through the MeteorTest Local Agent",
       "AI summarized report context and proposed the next action"
     ]
   },
@@ -59,7 +59,7 @@ export const demoSimulatorCopy = {
     label: "可交互 mock Demo",
     title: "运行 MeteorTest 闭环",
     note:
-      "这个浏览器 walkthrough 使用 mock 数据展示 MeteorTest 闭环。配套测试项目现在已有本地 mock API，可用于真实 smoke 通过/失败验证结果；运行结果会单独采集。",
+      "这个浏览器 walkthrough 使用 mock 数据展示 MeteorTest 闭环。同一条 mock-backed API smoke 链路也已经完成一次本地 MeteorTest Agent 运行；运行结果会单独展示。",
     reset: "重置",
     advance: "下一步",
     done: "流程完成",
@@ -99,9 +99,9 @@ export const demoSimulatorCopy = {
     },
     logs: [
       "已从 iOS-Automation-Framework 读取 meteortest.yml",
-      "AI 已为 staging 环境准备 api_smoke 任务并请求确认",
+      "AI 已为 local-mock-api 环境准备 api_smoke 任务并请求确认",
       "已从测试仓库 .venv 解析 Python 运行时",
-      "pytest 已收集 6 个 smoke 用例，并基于本地 mock API 全部通过",
+      "pytest 已收集 6 个 smoke 用例，并通过 MeteorTest Local Agent 全部执行通过",
       "AI 已总结报告上下文并提出下一步动作"
     ]
   }

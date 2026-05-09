@@ -4,6 +4,7 @@ import { DemoSimulator } from "@/components/demo-simulator";
 import { demoCopy, type Locale } from "@/content/site";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
+import { ValidationRunPanel } from "@/components/validation-run-panel";
 
 export function DemoStatusPage({ locale }: { locale: Locale }) {
   const copy = demoCopy[locale];
@@ -23,6 +24,8 @@ export function DemoStatusPage({ locale }: { locale: Locale }) {
       </div>
 
       <DemoSimulator locale={locale} />
+
+      <ValidationRunPanel locale={locale} />
 
       <div className="demo-stage-section">
         <h2>{copy.stagesTitle}</h2>

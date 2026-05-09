@@ -35,9 +35,10 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8.5: Public Copy Reframe | Done | Public website copy now emphasizes available capabilities, completed work, validation results, and next steps instead of internal guardrail-style boundary language. |
 | Phase 8.6: Theme System Foundation | Done | Built a medium-complexity token-first theme system with runtime switching, persisted selection, localized labels, and stable theme override blocks. |
 | Phase 8.7: Temporary Public Website Preview | Done | Added GitHub Pages static export workflow and deployment instructions for a public website preview without enabling public test execution. |
-| Phase 9: Real Local MeteorTest Loop Run Results | Not Started | Run MeteorTest Agent against the mock API and capture real local logs/reports for public-safe run results. |
+| Phase 9: Real Local MeteorTest Loop Run Results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API and produced public-safe task status, pytest summary, and artifact summary. |
 | Phase 10: Screenshot Or Recording Results | Deferred | Add sanitized screenshots or recordings only after UI and private-data handling are stable. |
 | Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
+| Phase 12: MeteorTest Web Public Preview | Deferred | Plan a public-accessible MeteorTest Web preview separately from the personal website, with environment templates and secret handling before deployment. |
 
 ## Non-Goals
 
@@ -310,24 +311,49 @@ Observed result:
 
 ## Phase 9: Real Local MeteorTest Loop Run Results
 
-Status: `Not Started`
+Status: `Done`
 
-Phase 9 should wait until the website copy is more visitor-facing and the basic theme/deploy path is clearer. This keeps the public site useful before adding more execution run results.
+MeteorTest has now executed the mock-backed API smoke suite through its own Local Agent path.
 
-After the mock API exists, use MeteorTest itself to execute the same API smoke suite.
+Completed run:
 
-Expected run results:
+- Task ID: `phase9-api-smoke-001`
+- Project key: `yunlu-ios`
+- Suite: `api_smoke`
+- Environment: `local-mock-api`
+- Executor: `phase9-local-agent`
+- Runtime: `iOS-Automation-Framework/.venv` with Python 3.13
+- Result: `succeeded`
+- Exit code: `0`
+- pytest summary: `6 passed, 16 deselected`
+- Artifacts: `output.log` and Allure results written under task-specific report paths
 
-- MeteorTest task created for `api_smoke`.
-- Local Agent uses the iOS-Automation-Framework `.venv`.
-- Mock API receives requests.
-- pytest returns real pass/fail instead of skip.
-- Logs and Allure artifacts are written under task-specific report paths.
+Validation command shape:
+
+```powershell
+$env:API_BASE_URL='http://127.0.0.1:8010'
+$env:METEORTEST_TEST_PYTHON='../iOS-Automation-Framework/.venv/Scripts/python.exe'
+python -m agent.agent --config .meteortest-agent/config.phase9.yaml --interval 1
+```
 
 Website update rule:
 
-- The website can say the local loop is validated with a mock API.
+- The website can say the local loop is validated with a mock API through MeteorTest Local Agent.
+- The website can show public-safe task status, suite, environment, runtime, pytest summary, exit code, and artifact summary.
+- The website must not expose full local machine paths, private config, credentials, local service details beyond the mock API concept, or raw private logs.
 - The website should still avoid claiming public real execution until a safe connected demo exists.
+
+Completed website changes:
+
+- Added a reusable bilingual validation run panel.
+- Updated homepage, MeteorTest detail page, and demo status page to reference the completed local Agent run.
+- Reframed old "next run through Local Agent" copy into completed run-results language.
+- Kept public execution disabled; the browser demo remains mock-data based.
+
+Validation:
+
+- Local MeteorTest Agent run result: `6 passed, 16 deselected`, exit code `0`.
+- Website validation: run `npm run lint` and `npm run build` before PR.
 
 ## Phase 8.5: Public Copy Reframe
 
@@ -519,6 +545,36 @@ Required design topics:
 
 Until these are designed, the public website should stay with the interactive mock demo plus local validation results.
 
+## Phase 12: MeteorTest Web Public Preview
+
+Status: `Deferred`
+
+The MeteorTest Web console can also become publicly accessible later, but it should be treated as a separate deployment effort from this personal website.
+
+Why this is separate:
+
+- The personal website is a static public project hub.
+- MeteorTest Web is an application console that depends on Supabase, AI provider keys, Agent behavior, report storage, and environment-specific configuration.
+- Some current MeteorTest Web parameters live only on the local machine and are not synchronized to GitHub.
+
+Required preparation:
+
+- Add or verify safe environment templates such as `.env.local.example`.
+- Document required variables without real values.
+- Decide which variables are public browser variables and which must stay server-only.
+- Make local-only machine paths, tokens, service-role keys, and private API keys impossible to commit accidentally.
+- Choose a deployment target such as Vercel, Cloudflare Pages/Workers, Netlify, or a controlled server.
+- Decide whether the public preview is read-only, demo-data only, authenticated, or connected to a real Supabase project.
+- Keep Local Agent execution endpoints private unless a dedicated execution-safety design exists.
+- Mirror this plan into the MeteorTest repository docs, such as `PROGRESS.md`, `AGENTS.md`, and `apps/web/README.md`, before starting the deployment implementation.
+
+Recommended first implementation:
+
+- Deploy a Web console preview with demo or seeded data only.
+- Keep task creation and real execution disabled or authenticated.
+- Use GitHub secrets or deployment-provider environment variables instead of committing local `.env.local`.
+- Add a deployment checklist to MeteorTest before opening public access.
+
 ## Implementation Tracker
 
 | Item | Status | Notes |
@@ -538,9 +594,10 @@ Until these are designed, the public website should stay with the interactive mo
 | Reframe public website copy for visitors | Done | Public UI copy now uses available status, completed validation results, and next-step messaging; detailed guardrails remain in docs and AGENTS. |
 | Add theme system foundation | Done | Added layered tokens, curated theme overrides, a localized theme switcher, and persisted runtime theme selection. |
 | Publish temporary public website preview | Done | Added GitHub Pages workflow and README setup instructions; public URL verification happens after merge and Pages publish. |
-| Capture real local MeteorTest loop run results | Not Started | Requires local mock API first. |
+| Capture real local MeteorTest loop run results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API with `6 passed, 16 deselected`. |
 | Add sanitized screenshots or recordings | Deferred | Only after UI and sample data are stable. |
 | Design public connected demo | Deferred | Requires security and execution isolation design. |
+| Plan MeteorTest Web public preview | Deferred | Track separately from the static personal website; requires env template, secret handling, and deployment design in MeteorTest docs. |
 
 When completing an item, update both the row status and any relevant phase status above.
 
