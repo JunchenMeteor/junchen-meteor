@@ -1,6 +1,7 @@
 import { projects } from "@/content/projects";
 import type { Locale } from "@/content/site";
 import { uiCopy } from "@/content/ui";
+import { projectDetailHref } from "@/content/routes";
 
 export function ProjectsPage({ locale }: { locale: Locale }) {
   const ui = uiCopy[locale];
@@ -33,6 +34,7 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
             <strong>{ui.projects.validationResults}</strong>
             <p>{flagship.portfolio.next[locale]}</p>
             <div className="card-actions">
+              <a href={projectDetailHref(locale, flagship)}>{ui.common.viewDetails}</a>
               <a href={flagship.links.github}>{ui.common.github}</a>
               {flagship.links.docs ? <a href={flagship.links.docs}>{ui.common.docs}</a> : null}
             </div>
@@ -79,6 +81,7 @@ export function ProjectsPage({ locale }: { locale: Locale }) {
                 ))}
               </div>
               <div className="card-actions">
+                <a href={projectDetailHref(locale, project)}>{ui.common.viewDetails}</a>
                 <a href={project.links.github}>{ui.common.github}</a>
                 {project.links.docs ? <a href={project.links.docs}>{ui.common.docs}</a> : null}
                 {project.links.issues ? <a href={project.links.issues}>{ui.common.issues}</a> : null}

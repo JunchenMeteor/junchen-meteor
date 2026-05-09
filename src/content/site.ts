@@ -239,6 +239,71 @@ export const contactCopy = {
   }
 };
 
+export const meteortestShowcaseCopy = {
+  en: {
+    eyebrow: "Flagship project",
+    title: "MeteorTest",
+    status: "MVP / active development",
+    summary:
+      "A testing control plane that connects project contracts, AI-assisted operations, local execution, and report context.",
+    primaryAction: "Open MeteorTest",
+    demoAction: "Try demo",
+    githubAction: "GitHub",
+    snapshotTitle: "Project workspace snapshot",
+    snapshotItems: [
+      { label: "Project", value: "yunlu-ios", detail: "Imported from meteortest.yml" },
+      { label: "Suite", value: "api_smoke", detail: "Mock-backed API smoke path" },
+      { label: "Executor", value: "phase9-local-agent", detail: "Runs through the test repository runtime" },
+      { label: "Report", value: "output.log + Allure", detail: "Task-specific artifacts collected" }
+    ],
+    operationTitle: "AI-assisted operation loop",
+    operations: [
+      "Import project and suite contracts",
+      "Create a confirmed test task",
+      "Hand execution to Local Agent",
+      "Read report context and suggest next action"
+    ],
+    resultTitle: "Latest local validation",
+    resultRows: [
+      { label: "Task", value: "phase9-api-smoke-001" },
+      { label: "Result", value: "Succeeded" },
+      { label: "Pytest", value: "6 passed, 16 deselected" },
+      { label: "Exit", value: "0" }
+    ]
+  },
+  zh: {
+    eyebrow: "主推项目",
+    title: "MeteorTest",
+    status: "MVP / 主动开发中",
+    summary:
+      "一个测试控制平面，用于连接项目协议、AI 辅助操作、本地执行和报告上下文。",
+    primaryAction: "打开 MeteorTest",
+    demoAction: "体验 Demo",
+    githubAction: "GitHub",
+    snapshotTitle: "项目工作台快照",
+    snapshotItems: [
+      { label: "项目", value: "yunlu-ios", detail: "从 meteortest.yml 导入" },
+      { label: "套件", value: "api_smoke", detail: "基于 mock API 的 smoke 链路" },
+      { label: "执行器", value: "phase9-local-agent", detail: "通过测试仓库自己的运行时执行" },
+      { label: "报告", value: "output.log + Allure", detail: "已采集任务级产物" }
+    ],
+    operationTitle: "AI 辅助操作闭环",
+    operations: [
+      "导入项目和套件协议",
+      "创建已确认的测试任务",
+      "交给 Local Agent 执行",
+      "读取报告上下文并建议下一步"
+    ],
+    resultTitle: "最近本地验证",
+    resultRows: [
+      { label: "任务", value: "phase9-api-smoke-001" },
+      { label: "结果", value: "Succeeded" },
+      { label: "Pytest", value: "6 passed, 16 deselected" },
+      { label: "退出码", value: "0" }
+    ]
+  }
+};
+
 export const meteortestCopy = {
   en: {
     title: "MeteorTest",

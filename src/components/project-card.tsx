@@ -4,6 +4,7 @@ import type { Locale } from "@/content/site";
 import type { Project } from "@/content/projects";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
+import { projectDetailHref } from "@/content/routes";
 
 type ProjectCardProps = {
   project: Project;
@@ -39,6 +40,9 @@ export function ProjectCard({ project, locale, featured = false }: ProjectCardPr
       <div className="card-actions">
         <Link href={project.links.github}>
           {ui.common.github} <ArrowUpRight size={15} />
+        </Link>
+        <Link href={projectDetailHref(locale, project)}>
+          {ui.common.viewDetails} <ArrowUpRight size={15} />
         </Link>
         {project.links.docs ? (
           <Link href={project.links.docs}>

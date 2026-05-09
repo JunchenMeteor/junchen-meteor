@@ -2,10 +2,10 @@ import Link from "next/link";
 import { ArrowRight, Github, Layers, MessageSquare, Radar, Route, TerminalSquare } from "lucide-react";
 import { contactCopy, homeCopy, site, type Locale } from "@/content/site";
 import { projects } from "@/content/projects";
-import { ProjectCard } from "@/components/project-card";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
+import { MeteorTestShowcase } from "@/components/meteortest-showcase";
 
 const iconMap = [Radar, Route, Layers, TerminalSquare];
 
@@ -56,7 +56,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <h2>MeteorTest</h2>
           <p>{flagship.summary[locale]}</p>
         </div>
-        <ProjectCard project={flagship} locale={locale} featured />
+        <MeteorTestShowcase locale={locale} />
       </section>
 
       <section className="depth-section">
@@ -79,7 +79,9 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <ValidationRunPanel locale={locale} />
+      <div className="home-validation-wrap">
+        <ValidationRunPanel locale={locale} />
+      </div>
 
       <section className="two-column-section">
         <div>
