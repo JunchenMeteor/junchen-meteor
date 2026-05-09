@@ -38,7 +38,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8.8: Productized Website Surfaces | Done | Homepage flagship section now presents MeteorTest as a project workspace snapshot, and non-flagship projects now have detail pages instead of only appearing as list items. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API and produced public-safe task status, pytest summary, and artifact summary. |
 | Phase 10: Screenshot Or Recording Results | Done | Added sanitized local MeteorTest Web preview screenshots for the dashboard and report center, labeled separately from public connected execution. |
-| Phase 11: MeteorTest Web Public Preview | Deferred | Plan a public-accessible MeteorTest Web preview separately from the personal website, with environment templates and secret handling before deployment. |
+| Phase 11: MeteorTest Web Public Preview | In Progress | MeteorTest now has the environment template and public-preview boundary docs; the remaining work is choosing a deployment target and publishing the separate Web console preview. |
 | Phase 12: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
 ## Non-Goals
@@ -587,7 +587,7 @@ Follow-up:
 
 ## Phase 11: MeteorTest Web Public Preview
 
-Status: `Deferred`
+Status: `In Progress`
 
 The MeteorTest Web console can become publicly accessible before any public connected execution demo, but it should be treated as a separate deployment effort from this personal website.
 
@@ -599,14 +599,14 @@ Why this is separate:
 
 Required preparation:
 
-- Add or verify safe environment templates such as `.env.local.example`.
-- Document required variables without real values.
-- Decide which variables are public browser variables and which must stay server-only.
-- Make local-only machine paths, tokens, service-role keys, and private API keys impossible to commit accidentally.
+- Add or verify safe environment templates such as `.env.local.example`. `Done in MeteorTest`
+- Document required variables without real values. `Done in MeteorTest`
+- Decide which variables are public browser variables and which must stay server-only. `Done in MeteorTest`
+- Make local-only machine paths, tokens, service-role keys, and private API keys impossible to commit accidentally. `Done in MeteorTest`
 - Choose a deployment target such as Vercel, Cloudflare Pages/Workers, Netlify, or a controlled server.
 - Decide whether the public preview is read-only, demo-data only, authenticated, or connected to a real Supabase project.
 - Keep Local Agent execution endpoints private unless a dedicated execution-safety design exists.
-- Mirror this plan into the MeteorTest repository docs, such as `PROGRESS.md`, `AGENTS.md`, and `apps/web/README.md`, before starting the deployment implementation.
+- Mirror this plan into the MeteorTest repository docs, such as `PROGRESS.md`, `AGENTS.md`, and `apps/web/README.md`, before starting the deployment implementation. `Done in MeteorTest`
 
 Recommended first implementation:
 
@@ -614,6 +614,17 @@ Recommended first implementation:
 - Keep task creation and real execution disabled or authenticated.
 - Use GitHub secrets or deployment-provider environment variables instead of committing local `.env.local`.
 - Add a deployment checklist to MeteorTest before opening public access.
+
+Deployment runbook for the next operator:
+
+1. Work in the MeteorTest repository first; use the detailed runbook in `apps/web/README.md`.
+2. Choose an application host with Next.js server-route support, such as Vercel, Netlify, Cloudflare Workers/Pages with a server runtime, or a controlled server. Do not use GitHub Pages for MeteorTest Web.
+3. Create an isolated preview Supabase project or schema and run the MeteorTest migrations.
+4. Configure provider-managed environment variables: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, and optional `DEEPSEEK_API_KEY`.
+5. Keep local Agent paths, machine-local runtime variables, private configs, and direct Agent endpoints out of the public Web deployment.
+6. Deploy `apps/web` with Node.js 22, `npm ci`, and `npm run build`.
+7. Smoke-check dashboard, projects, tasks, reports, builds, executors, settings, and API routes for clean loading and no secret/path exposure.
+8. Return to this personal website only after the MeteorTest Web URL exists, then update visible links, README, AGENTS, and this plan together.
 
 ## Phase 12: Public Connected Demo
 
@@ -657,7 +668,8 @@ Until these are designed, the public website should stay with the interactive mo
 | Add non-flagship project detail pages | Done | Added `/projects/<slug>` and `/zh-CN/projects/<slug>` for other repositories so project hierarchy is not limited to MeteorTest only. |
 | Capture real local MeteorTest loop run results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API with `6 passed, 16 deselected`. |
 | Add sanitized screenshots or recordings | Done | Added dashboard and report center screenshots from a local MeteorTest Web preview using placeholder env and empty demo data. |
-| Plan MeteorTest Web public preview | Deferred | Track separately from the static personal website; requires env template, secret handling, and deployment design in MeteorTest docs. |
+| Plan MeteorTest Web public preview | Done | MeteorTest now has `apps/web/.env.local.example`, secret-boundary guidance, and public-preview documentation. |
+| Deploy MeteorTest Web public preview | In Progress | Choose Vercel, Cloudflare, Netlify, or a controlled server; configure provider-managed environment variables and a dedicated preview backend before publishing. |
 | Design public connected demo | Deferred | Requires security and execution isolation design after the Web preview path exists. |
 
 When completing an item, update both the row status and any relevant phase status above.
