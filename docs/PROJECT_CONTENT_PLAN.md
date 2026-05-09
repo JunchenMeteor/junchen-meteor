@@ -37,7 +37,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8.7: Temporary Public Website Preview | Done | Added GitHub Pages static export workflow and deployment instructions for a public website preview without enabling public test execution. |
 | Phase 8.8: Productized Website Surfaces | Done | Homepage flagship section now presents MeteorTest as a project workspace snapshot, and non-flagship projects now have detail pages instead of only appearing as list items. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API and produced public-safe task status, pytest summary, and artifact summary. |
-| Phase 10: Screenshot Or Recording Results | Done | Added sanitized local MeteorTest Web preview screenshots for the dashboard and report center, labeled separately from public connected execution. |
+| Phase 10: Screenshot Or Recording Results | Done | Added sanitized local MeteorTest Web preview screenshots for the dashboard, report center, and AI operation console, labeled separately from public connected execution. |
 | Phase 11: MeteorTest Web Public Preview | In Progress | MeteorTest now has the environment template and public-preview boundary docs; the remaining work is choosing a deployment target and publishing the separate Web console preview. |
 | Phase 12: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
@@ -559,10 +559,11 @@ Screenshots can make the website more convincing without exposing a public conne
 
 Completed changes:
 
-- Captured two sanitized MeteorTest Web local preview screenshots:
-  - Dashboard / execution workspace.
-  - Report center empty-state surface.
-- Used placeholder environment variables and empty demo data.
+- Captured three sanitized MeteorTest Web local preview screenshots:
+  - Dashboard / execution workspace with mock task and project data.
+  - Report center surface with mock execution and AI analysis data.
+  - AI operation console with quick templates and conversation workspace.
+- Used placeholder environment variables and sanitized mock data.
 - Stored images under `public/screenshots`.
 - Added a bilingual screenshot results section to the MeteorTest detail page and demo status page.
 - Labeled the screenshots as local preview screenshots, not public connected execution.
@@ -582,7 +583,7 @@ Validation:
 
 Follow-up:
 
-- Replace placeholder/empty-state screenshots with richer seeded demo data after MeteorTest Web has a safe demo-data strategy.
+- Keep replacing static screenshots with richer seeded demo data or short recordings after MeteorTest Web has a safe public-preview data strategy.
 - Recording remains optional and should only be added after the screen flow is stable and private-data handling is reviewed.
 
 ## Phase 11: MeteorTest Web Public Preview
@@ -667,7 +668,7 @@ Until these are designed, the public website should stay with the interactive mo
 | Productize homepage MeteorTest surface | Done | Replaced the sparse featured card with a project workspace snapshot, operation loop, latest local validation rows, and direct actions. |
 | Add non-flagship project detail pages | Done | Added `/projects/<slug>` and `/zh-CN/projects/<slug>` for other repositories so project hierarchy is not limited to MeteorTest only. |
 | Capture real local MeteorTest loop run results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API with `6 passed, 16 deselected`. |
-| Add sanitized screenshots or recordings | Done | Added dashboard and report center screenshots from a local MeteorTest Web preview using placeholder env and empty demo data. |
+| Add sanitized screenshots or recordings | Done | Added dashboard, report center, and AI operation console screenshots from a local MeteorTest Web preview using placeholder env and sanitized mock data. |
 | Plan MeteorTest Web public preview | Done | MeteorTest now has `apps/web/.env.local.example`, secret-boundary guidance, and public-preview documentation. |
 | Deploy MeteorTest Web public preview | In Progress | Choose Vercel, Cloudflare, Netlify, or a controlled server; configure provider-managed environment variables and a dedicated preview backend before publishing. |
 | Design public connected demo | Deferred | Requires security and execution isolation design after the Web preview path exists. |
