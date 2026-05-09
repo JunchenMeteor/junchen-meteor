@@ -5,6 +5,7 @@ import { projects } from "@/content/projects";
 import { ProjectCard } from "@/components/project-card";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
+import { ValidationRunPanel } from "@/components/validation-run-panel";
 
 const iconMap = [Radar, Route, Layers, TerminalSquare];
 
@@ -77,6 +78,8 @@ export function HomePage({ locale }: { locale: Locale }) {
           ))}
         </div>
       </section>
+
+      <ValidationRunPanel locale={locale} />
 
       <section className="two-column-section">
         <div>

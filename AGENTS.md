@@ -64,7 +64,7 @@ Before expanding homepage sections, project pages, MeteorTest demo messaging, or
 docs/PROJECT_CONTENT_PLAN.md
 ```
 
-Implement the plan in phases. The website MVP, interactive mock demo, contact surface, and MeteorTest-to-iOS-Automation-Framework local execution-path debugging are complete. The next validation-results phase is a local mock API for real API smoke pass/fail results, followed by local MeteorTest loop run results, sanitized screenshots or recordings, and only later a public connected demo if execution safety is designed.
+Implement the plan in phases. The website MVP, interactive mock demo, contact surface, MeteorTest-to-iOS-Automation-Framework local execution-path debugging, local mock API validation, and local MeteorTest Agent run-results phase are complete. Next work should focus on productizing the public website surfaces, then sanitized screenshots or recordings, and only later a public connected demo if execution safety is designed.
 
 When a phase status, validation claim, capability boundary, terminology rule, project milestone, backend behavior, interaction flow, environment variable, port, command, or test capability changes, update all affected surfaces in the same change:
 
@@ -73,6 +73,8 @@ When a phase status, validation claim, capability boundary, terminology rule, pr
 - Any related implementation code, configuration, examples, commands, or tests that would otherwise contradict the new behavior.
 
 Do not treat a documentation-only update as complete if the public UI, backend behavior, interaction logic, configuration, examples, or tests still say or implement the old status, next step, terminology, or runtime behavior.
+
+MeteorTest Web public access is a separate future track from this static personal website. If that work starts, update the MeteorTest repository docs in the same change, especially `PROGRESS.md`, `AGENTS.md`, and `apps/web/README.md`. Do not rely on local-only `.env.local` values or machine paths; add safe environment templates, deployment-provider secret instructions, and a public-preview boundary before exposing any Web console.
 
 ## Content Boundaries
 

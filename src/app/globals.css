@@ -1593,8 +1593,100 @@ a {
 }
 
 .demo-stage-section,
-.demo-results-section {
+.demo-results-section,
+.validation-run-section {
   margin-top: 58px;
+}
+
+.validation-run-section {
+  padding: 24px;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius);
+  background: var(--panel-accent-bg);
+}
+
+.validation-run-heading {
+  max-width: 920px;
+}
+
+.validation-run-heading span {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.validation-run-heading h2 {
+  margin: 10px 0 12px;
+  font-size: clamp(30px, 4vw, 48px);
+}
+
+.validation-run-heading p,
+.validation-run-detail p,
+.validation-run-detail li {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.validation-run-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.validation-run-stats div {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-control);
+}
+
+.validation-run-stats span {
+  color: var(--subtle);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.validation-run-stats strong {
+  overflow-wrap: anywhere;
+  font-size: 20px;
+}
+
+.validation-run-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr);
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.validation-run-detail h3 {
+  margin: 0 0 14px;
+  font-size: 22px;
+}
+
+.validation-run-detail ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.validation-run-detail li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.validation-run-detail svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--accent);
 }
 
 .demo-simulator {
@@ -1848,6 +1940,7 @@ a {
   .capability-section,
   .demo-simulator-grid,
   .demo-results-section,
+  .validation-run-detail,
   .contact-context {
     grid-template-columns: 1fr;
   }
@@ -1868,7 +1961,8 @@ a {
   .portfolio-project-grid,
   .detail-section-grid,
   .responsibility-grid,
-  .demo-stage-grid {
+  .demo-stage-grid,
+  .validation-run-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1923,7 +2017,8 @@ a {
 
   .detail-section-grid,
   .responsibility-grid,
-  .demo-stage-grid {
+  .demo-stage-grid,
+  .validation-run-stats {
     grid-template-columns: 1fr;
   }
 
