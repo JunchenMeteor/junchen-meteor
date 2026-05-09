@@ -38,8 +38,8 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8.8: Productized Website Surfaces | Done | Homepage flagship section now presents MeteorTest as a project workspace snapshot, and non-flagship projects now have detail pages instead of only appearing as list items. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API and produced public-safe task status, pytest summary, and artifact summary. |
 | Phase 10: Screenshot Or Recording Results | Done | Added sanitized local MeteorTest Web preview screenshots for the dashboard and report center, labeled separately from public connected execution. |
-| Phase 11: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
-| Phase 12: MeteorTest Web Public Preview | Deferred | Plan a public-accessible MeteorTest Web preview separately from the personal website, with environment templates and secret handling before deployment. |
+| Phase 11: MeteorTest Web Public Preview | Deferred | Plan a public-accessible MeteorTest Web preview separately from the personal website, with environment templates and secret handling before deployment. |
+| Phase 12: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
 ## Non-Goals
 
@@ -513,7 +513,8 @@ Validation:
 Relationship to Phase 11:
 
 - Phase 8.7 is static/public website hosting.
-- Phase 11 is public connected test execution and remains deferred until security and execution isolation are designed.
+- Phase 11 is MeteorTest Web public preview and should come before any public connected execution.
+- Phase 12 is public connected test execution and remains deferred until security and execution isolation are designed.
 
 ## Phase 8.8: Productized Website Surfaces
 
@@ -584,30 +585,11 @@ Follow-up:
 - Replace placeholder/empty-state screenshots with richer seeded demo data after MeteorTest Web has a safe demo-data strategy.
 - Recording remains optional and should only be added after the screen flow is stable and private-data handling is reviewed.
 
-## Phase 11: Public Connected Demo
+## Phase 11: MeteorTest Web Public Preview
 
 Status: `Deferred`
 
-A real online demo that triggers execution is possible later, but it needs an explicit safety design first.
-
-Required design topics:
-
-- Authentication and authorization.
-- Demo data isolation.
-- Supabase secrets handling.
-- Local Agent endpoint exposure strategy.
-- Task permission checks.
-- Rate limits and abuse prevention.
-- Executor sandboxing.
-- Log and artifact redaction.
-
-Until these are designed, the public website should stay with the interactive mock demo plus local validation results.
-
-## Phase 12: MeteorTest Web Public Preview
-
-Status: `Deferred`
-
-The MeteorTest Web console can also become publicly accessible later, but it should be treated as a separate deployment effort from this personal website.
+The MeteorTest Web console can become publicly accessible before any public connected execution demo, but it should be treated as a separate deployment effort from this personal website.
 
 Why this is separate:
 
@@ -633,6 +615,25 @@ Recommended first implementation:
 - Use GitHub secrets or deployment-provider environment variables instead of committing local `.env.local`.
 - Add a deployment checklist to MeteorTest before opening public access.
 
+## Phase 12: Public Connected Demo
+
+Status: `Deferred`
+
+A real online demo that triggers execution is possible after the Web preview path exists, but it needs an explicit safety design first.
+
+Required design topics:
+
+- Authentication and authorization.
+- Demo data isolation.
+- Supabase secrets handling.
+- Local Agent endpoint exposure strategy.
+- Task permission checks.
+- Rate limits and abuse prevention.
+- Executor sandboxing.
+- Log and artifact redaction.
+
+Until these are designed, the public website should stay with the interactive mock demo plus local validation results.
+
 ## Implementation Tracker
 
 | Item | Status | Notes |
@@ -656,8 +657,8 @@ Recommended first implementation:
 | Add non-flagship project detail pages | Done | Added `/projects/<slug>` and `/zh-CN/projects/<slug>` for other repositories so project hierarchy is not limited to MeteorTest only. |
 | Capture real local MeteorTest loop run results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API with `6 passed, 16 deselected`. |
 | Add sanitized screenshots or recordings | Done | Added dashboard and report center screenshots from a local MeteorTest Web preview using placeholder env and empty demo data. |
-| Design public connected demo | Deferred | Requires security and execution isolation design. |
 | Plan MeteorTest Web public preview | Deferred | Track separately from the static personal website; requires env template, secret handling, and deployment design in MeteorTest docs. |
+| Design public connected demo | Deferred | Requires security and execution isolation design after the Web preview path exists. |
 
 When completing an item, update both the row status and any relevant phase status above.
 
