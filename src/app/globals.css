@@ -1850,7 +1850,8 @@ a {
 
 .demo-stage-section,
 .demo-results-section,
-.validation-run-section {
+.validation-run-section,
+.screenshot-results-section {
   margin-top: 58px;
 }
 
@@ -1943,6 +1944,59 @@ a {
   flex: 0 0 auto;
   margin-top: 3px;
   color: var(--accent);
+}
+
+.screenshot-results-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.screenshot-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card-bg-muted);
+}
+
+.screenshot-frame {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: var(--terminal-bg);
+}
+
+.screenshot-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.screenshot-card-copy {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+}
+
+.screenshot-card-copy h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.screenshot-card-copy p,
+.screenshot-results-note {
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.screenshot-results-note {
+  max-width: 920px;
+  margin: 18px 0 0;
 }
 
 .demo-simulator {
@@ -2200,6 +2254,7 @@ a {
   .capability-section,
   .demo-simulator-grid,
   .demo-results-section,
+  .screenshot-results-grid,
   .validation-run-detail,
   .contact-context {
     grid-template-columns: 1fr;
@@ -2234,6 +2289,7 @@ a {
   .detail-section-grid,
   .responsibility-grid,
   .demo-stage-grid,
+  .screenshot-results-grid,
   .validation-run-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2296,6 +2352,7 @@ a {
   .detail-section-grid,
   .responsibility-grid,
   .demo-stage-grid,
+  .screenshot-results-grid,
   .validation-run-stats {
     grid-template-columns: 1fr;
   }

@@ -616,3 +616,54 @@ export const validationRunCopy = {
       "公开官网仍使用浏览器内 mock Demo。公网联网执行要等认证、数据隔离和执行器安全设计完成后再推进。"
   }
 };
+
+export const screenshotResultsCopy = {
+  en: {
+    eyebrow: "Local preview screenshots",
+    title: "MeteorTest Web is visible as a real console surface",
+    summary:
+      "These screenshots were captured from a local MeteorTest Web preview using placeholder environment variables and empty demo data. They show the current console structure without exposing private Supabase data, local paths, credentials, or real test accounts.",
+    items: [
+      {
+        title: "Execution workspace",
+        body:
+          "The dashboard shows the control-plane entry points for task creation, AI assistant operations, executor checks, task stats, and the execution loop.",
+        image: "/screenshots/meteortest-dashboard-preview.png",
+        alt: "MeteorTest local dashboard preview screenshot"
+      },
+      {
+        title: "Report center",
+        body:
+          "The report page shows the report-list surface and empty-state behavior before connecting public demo data or a production Supabase project.",
+        image: "/screenshots/meteortest-reports-preview.png",
+        alt: "MeteorTest local report center preview screenshot"
+      }
+    ],
+    note:
+      "This is not a public connected demo. Real public Web access and executable demos remain separate deployment and safety phases."
+  },
+  zh: {
+    eyebrow: "本地预览截图",
+    title: "MeteorTest Web 已经具备真实控制台界面",
+    summary:
+      "这些截图来自本地 MeteorTest Web 预览，使用占位环境变量和空 demo 数据捕获。它们展示当前控制台结构，不暴露私有 Supabase 数据、本机路径、凭据或真实测试账号。",
+    items: [
+      {
+        title: "执行工作台",
+        body:
+          "Dashboard 展示任务创建、AI 助手操作、执行器检查、任务统计和执行链路等控制平面入口。",
+        image: "/screenshots/meteortest-dashboard-preview.png",
+        alt: "MeteorTest 本地 Dashboard 预览截图"
+      },
+      {
+        title: "报告中心",
+        body:
+          "报告页面展示报告列表界面和空状态行为；公网 demo 数据或生产 Supabase 项目接入属于后续阶段。",
+        image: "/screenshots/meteortest-reports-preview.png",
+        alt: "MeteorTest 本地报告中心预览截图"
+      }
+    ],
+    note:
+      "这不是公网联网 Demo。公网 Web 访问和可执行 Demo 仍然是后续独立的部署与安全阶段。"
+  }
+};

@@ -64,7 +64,7 @@ Before expanding homepage sections, project pages, MeteorTest demo messaging, or
 docs/PROJECT_CONTENT_PLAN.md
 ```
 
-Implement the plan in phases. The website MVP, interactive mock demo, contact surface, MeteorTest-to-iOS-Automation-Framework local execution-path debugging, local mock API validation, public website preview, productized homepage surface, and local MeteorTest Agent run-results phase are complete. Next work should focus on sanitized screenshots or recordings, and only later a public connected demo if execution safety is designed.
+Implement the plan in phases. The website MVP, interactive mock demo, contact surface, MeteorTest-to-iOS-Automation-Framework local execution-path debugging, local mock API validation, public website preview, productized homepage surface, local MeteorTest Agent run results, and sanitized local preview screenshots are complete. Next work should focus only on richer seeded demo data, optional recordings, or public connected demos after execution safety is designed.
 
 When a phase status, validation claim, capability boundary, terminology rule, project milestone, backend behavior, interaction flow, environment variable, port, command, or test capability changes, update all affected surfaces in the same change:
 
