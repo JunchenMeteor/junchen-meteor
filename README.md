@@ -10,7 +10,7 @@
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
   <img alt="Theme System" src="https://img.shields.io/badge/Theme-Token_System-74D6B3?style=for-the-badge" />
   <br />
-  <a href="https://junchenmeteor.github.io/junchen-meteor/"><img alt="Live Preview" src="https://img.shields.io/badge/Live-Preview-1F6FEB" /></a>
+  <a href="https://jcmeteor.com/"><img alt="Live Preview" src="https://img.shields.io/badge/Live-Preview-1F6FEB" /></a>
   <a href="https://github.com/JunchenMeteor/junchen-meteor/issues"><img alt="Issues" src="https://img.shields.io/badge/Links-Issues-1F6FEB" /></a>
   <a href="docs/PROJECT_CONTENT_PLAN.md"><img alt="Roadmap" src="https://img.shields.io/badge/Links-Roadmap-8957E5" /></a>
   <br />
@@ -22,10 +22,10 @@ Personal project hub for **JC Meteor**. The site presents automation testing, iO
 
 ## Live Preview
 
-After GitHub Pages is enabled for this repository, the public preview will be available at:
+After GitHub Pages is enabled for this repository, the public preview is available at:
 
 ```text
-https://junchenmeteor.github.io/junchen-meteor/
+https://jcmeteor.com/
 ```
 
 This preview is the static public website only. It does not expose MeteorTest Local Agent endpoints, Supabase secrets, local machines, devices, or test execution services.
@@ -90,13 +90,12 @@ Local static-export checks:
 ```bash
 npm run lint
 npm run build
-GITHUB_PAGES=true npm run build
 ```
 
-The GitHub Pages build uses the repository base path:
+The GitHub Pages build targets the custom root domain:
 
 ```text
-/junchen-meteor
+https://jcmeteor.com/
 ```
 
 ## Validation
@@ -104,12 +103,6 @@ The GitHub Pages build uses the repository base path:
 ```bash
 npm run lint
 npm run build
-```
-
-For GitHub Pages base-path validation:
-
-```bash
-GITHUB_PAGES=true npm run build
 ```
 
 ## Content Rules
