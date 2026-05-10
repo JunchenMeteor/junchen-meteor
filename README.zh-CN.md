@@ -10,7 +10,7 @@
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
   <img alt="Theme System" src="https://img.shields.io/badge/Theme-Token_System-74D6B3?style=for-the-badge" />
   <br />
-  <a href="https://junchenmeteor.github.io/junchen-meteor/"><img alt="Live Preview" src="https://img.shields.io/badge/Live-Preview-1F6FEB" /></a>
+  <a href="https://jcmeteor.com/"><img alt="Live Preview" src="https://img.shields.io/badge/Live-Preview-1F6FEB" /></a>
   <a href="https://github.com/JunchenMeteor/junchen-meteor/issues"><img alt="Issues" src="https://img.shields.io/badge/Links-Issues-1F6FEB" /></a>
   <a href="docs/PROJECT_CONTENT_PLAN.md"><img alt="Roadmap" src="https://img.shields.io/badge/Links-Roadmap-8957E5" /></a>
   <br />
@@ -25,7 +25,7 @@
 启用 GitHub Pages 后，公网预览地址为：
 
 ```text
-https://junchenmeteor.github.io/junchen-meteor/
+https://jcmeteor.com/
 ```
 
 这个预览只包含静态公开官网，不会暴露 MeteorTest Local Agent 端点、Supabase 密钥、本机服务、设备或测试执行服务。
@@ -90,13 +90,12 @@ GitHub Pages 设置步骤：
 ```bash
 npm run lint
 npm run build
-GITHUB_PAGES=true npm run build
 ```
 
-GitHub Pages 构建使用仓库 base path：
+GitHub Pages 构建面向自定义根域名：
 
 ```text
-/junchen-meteor
+https://jcmeteor.com/
 ```
 
 ## 验证
@@ -104,12 +103,6 @@ GitHub Pages 构建使用仓库 base path：
 ```bash
 npm run lint
 npm run build
-```
-
-GitHub Pages base path 验证：
-
-```bash
-GITHUB_PAGES=true npm run build
 ```
 
 ## 内容规则
