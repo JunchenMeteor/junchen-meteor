@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Bot, CheckCircle2, FileText, Github, PlayCircle } from "lucide-react";
 import { localizedPath } from "@/content/locales";
-import { meteortestShowcaseCopy, type Locale } from "@/content/site";
+import { meteorTestPreviewUrl, meteortestShowcaseCopy, type Locale } from "@/content/site";
 
 export function MeteorTestShowcase({ locale }: { locale: Locale }) {
   const copy = meteortestShowcaseCopy[locale];
@@ -14,6 +14,9 @@ export function MeteorTestShowcase({ locale }: { locale: Locale }) {
         <div className="showcase-actions">
           <Link className="primary-button" href={localizedPath(locale, "/meteortest")}>
             {copy.primaryAction} <ArrowUpRight size={16} />
+          </Link>
+          <Link className="secondary-button" href={meteorTestPreviewUrl}>
+            {copy.previewAction} <ArrowUpRight size={16} />
           </Link>
           <Link className="secondary-button" href={localizedPath(locale, "/meteortest/demo")}>
             <PlayCircle size={16} /> {copy.demoAction}

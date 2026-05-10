@@ -38,7 +38,9 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 8.8: Productized Website Surfaces | Done | Homepage flagship section now presents MeteorTest as a project workspace snapshot, and non-flagship projects now have detail pages instead of only appearing as list items. |
 | Phase 9: Real Local MeteorTest Loop Run Results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API and produced public-safe task status, pytest summary, and artifact summary. |
 | Phase 10: Screenshot Or Recording Results | Done | Added sanitized local MeteorTest Web preview screenshots for the dashboard, report center, and AI operation console, labeled separately from public connected execution. |
-| Phase 11: MeteorTest Web Public Preview | In Progress | MeteorTest now has the environment template and public-preview boundary docs; the remaining work is choosing a deployment target and publishing the separate Web console preview. |
+| Phase 11: MeteorTest Web Public Preview | In Progress | MeteorTest Web is now reachable at `https://meteortest.jcmeteor.com/`; the remaining work is updating website entry points and hardening the preview mode, demo data, auth, and private-Agent loop in the MeteorTest repo. |
+| Phase 11.1: Website Preview Entry Points | Done | Added the live MeteorTest Web preview URL to homepage, project pages, demo status, README files, AGENTS, and route copy while preserving the boundary between public preview and connected execution. |
+| Phase 11.2: Website SEO And Product Page Polish | Not Started | Add metadata/Open Graph coverage and reshape the MeteorTest page around problem, workflow, preview status, screenshots, live preview, GitHub, and roadmap. |
 | Phase 12: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
 ## Non-Goals
@@ -598,20 +600,29 @@ Why this is separate:
 - MeteorTest Web is an application console that depends on Supabase, AI provider keys, Agent behavior, report storage, and environment-specific configuration.
 - Some current MeteorTest Web parameters live only on the local machine and are not synchronized to GitHub.
 
+Current deployment status:
+
+- Personal website: `https://jcmeteor.com/`
+- MeteorTest Web preview: `https://meteortest.jcmeteor.com/`
+- Deployment host: Vercel.
+- Public mode: Web preview only.
+- Local Agent: private only; direct public Agent startup or endpoint exposure remains out of scope.
+- Public connected execution demo: still deferred until security, data isolation, permissions, rate limits, and executor safety are designed.
+
 Required preparation:
 
 - Add or verify safe environment templates such as `.env.local.example`. `Done in MeteorTest`
 - Document required variables without real values. `Done in MeteorTest`
 - Decide which variables are public browser variables and which must stay server-only. `Done in MeteorTest`
 - Make local-only machine paths, tokens, service-role keys, and private API keys impossible to commit accidentally. `Done in MeteorTest`
-- Choose a deployment target such as Vercel, Cloudflare Pages/Workers, Netlify, or a controlled server.
-- Decide whether the public preview is read-only, demo-data only, authenticated, or connected to a real Supabase project.
+- Choose a deployment target such as Vercel, Cloudflare Pages/Workers, Netlify, or a controlled server. `Done: Vercel`
+- Decide whether the public preview is read-only, demo-data only, authenticated, or connected to a real Supabase project. `In Progress: hardening work continues in MeteorTest`
 - Keep Local Agent execution endpoints private unless a dedicated execution-safety design exists.
 - Mirror this plan into the MeteorTest repository docs, such as `PROGRESS.md`, `AGENTS.md`, and `apps/web/README.md`, before starting the deployment implementation. `Done in MeteorTest`
 
 Recommended first implementation:
 
-- Deploy a Web console preview with demo or seeded data only.
+- Deploy a Web console preview with demo or seeded data only. `In Progress`
 - Keep task creation and real execution disabled or authenticated.
 - Use GitHub secrets or deployment-provider environment variables instead of committing local `.env.local`.
 - Add a deployment checklist to MeteorTest before opening public access.
@@ -625,7 +636,77 @@ Deployment runbook for the next operator:
 5. Keep local Agent paths, machine-local runtime variables, private configs, and direct Agent endpoints out of the public Web deployment.
 6. Deploy `apps/web` with Node.js 22, `npm ci`, and `npm run build`.
 7. Smoke-check dashboard, projects, tasks, reports, builds, executors, settings, and API routes for clean loading and no secret/path exposure.
-8. Return to this personal website only after the MeteorTest Web URL exists, then update visible links, README, AGENTS, and this plan together.
+8. Return to this personal website only after the MeteorTest Web URL exists, then update visible links, README, AGENTS, and this plan together. `Current step`
+
+## Phase 11.1: Website Preview Entry Points
+
+Status: `Done`
+
+Now that `https://meteortest.jcmeteor.com/` exists, the personal website should become the stable public gateway into the live MeteorTest Web preview without overstating execution maturity.
+
+Implementation scope:
+
+1. Add the live Web preview entry point.
+   - Homepage MeteorTest flagship area should include `Open Web Preview`.
+   - `/projects` and project detail pages should expose the live preview link for MeteorTest.
+   - `/meteortest` should include a primary or secondary action for the live preview.
+   - `/meteortest/demo` should keep the interactive mock demo and add a clearly separate live Web preview link.
+   - README files should describe `jcmeteor.com` as the personal website and `meteortest.jcmeteor.com` as the MeteorTest Web preview.
+
+2. Update MeteorTest status copy.
+   - Replace stale deployment-preparation language with current preview status.
+   - Recommended status model:
+     - `Personal website: Online at jcmeteor.com`
+     - `MeteorTest Web Preview: Online at meteortest.jcmeteor.com`
+     - `Execution mode: public preview only`
+     - `Local Agent: private only`
+     - `Connected execution demo: deferred`
+   - Keep English and Chinese content aligned in `src/content/*`.
+
+3. Preserve public safety boundaries.
+   - Do not describe the live preview as production SaaS.
+   - Do not imply visitors can trigger real public execution.
+   - Use visitor-facing caveats such as `Public preview only; Local Agent execution remains private`.
+
+Validation:
+
+- `npm run lint` `Done`
+- `npm run build` `Done`
+- Manual checks for `/`, `/zh-CN`, `/projects`, `/zh-CN/projects`, `/meteortest`, `/zh-CN/meteortest`, `/meteortest/demo`, and `/zh-CN/meteortest/demo`.
+- Confirm all new links point to `https://meteortest.jcmeteor.com/`. `Done through content and component checks`
+
+## Phase 11.2: Website SEO And Product Page Polish
+
+Status: `Not Started`
+
+After the live preview link is in place, improve the public website surfaces so shared links and project pages read like a polished engineering product gateway.
+
+Implementation scope:
+
+1. Add SEO and sharing metadata.
+   - Global metadata in `src/app/layout.tsx`.
+   - Page metadata for homepage, `/meteortest`, `/projects`, and localized routes where practical.
+   - Open Graph title, description, canonical URL, and Twitter card metadata.
+   - The homepage should identify `JC Meteor` and the project ecosystem.
+   - The MeteorTest page should identify the public Web preview and the private Local Agent boundary.
+
+2. Reshape `/meteortest` into a clearer product page.
+   - Hero: what MeteorTest is, plus live preview, GitHub, and mock demo actions.
+   - Problem: scattered test projects, manual execution, disconnected reports/logs, and weak AI context.
+   - Workflow: `contract -> AI/platform import -> task -> Local Agent -> report -> AI analysis`.
+   - Preview status: Web online, Agent private, connected execution deferred.
+   - Screenshots: dashboard, reports, and AI console with sanitized-preview labels.
+   - Roadmap: preview hardening, auth, demo data, private Agent loop, later connected demo design.
+
+3. Keep product claims grounded.
+   - Use `Web preview`, `MVP`, `active development`, `private Local Agent`, and `connected execution deferred`.
+   - Avoid `production-ready`, `enterprise-grade`, or one-click real execution claims.
+
+Validation:
+
+- `npm run lint`
+- `npm run build`
+- Visual check desktop and mobile layouts for English and Chinese routes.
 
 ## Phase 12: Public Connected Demo
 
@@ -670,7 +751,9 @@ Until these are designed, the public website should stay with the interactive mo
 | Capture real local MeteorTest loop run results | Done | MeteorTest Local Agent ran `api_smoke` against the local mock API with `6 passed, 16 deselected`. |
 | Add sanitized screenshots or recordings | Done | Added dashboard, report center, and AI operation console screenshots from a local MeteorTest Web preview using placeholder env and sanitized mock data. |
 | Plan MeteorTest Web public preview | Done | MeteorTest now has `apps/web/.env.local.example`, secret-boundary guidance, and public-preview documentation. |
-| Deploy MeteorTest Web public preview | In Progress | Choose Vercel, Cloudflare, Netlify, or a controlled server; configure provider-managed environment variables and a dedicated preview backend before publishing. |
+| Deploy MeteorTest Web public preview | In Progress | Vercel preview URL exists at `https://meteortest.jcmeteor.com/`; continue hardening preview mode, demo data, auth, and private-Agent execution loop in MeteorTest. |
+| Add live MeteorTest preview entry points to website | Done | Linked `https://meteortest.jcmeteor.com/` from homepage, project pages, MeteorTest page, demo status, README files, AGENTS, and this plan. |
+| Add SEO and product-page polish | Not Started | Add metadata/Open Graph coverage and reshape the MeteorTest page around live preview status and roadmap. |
 | Design public connected demo | Deferred | Requires security and execution isolation design after the Web preview path exists. |
 
 When completing an item, update both the row status and any relevant phase status above.

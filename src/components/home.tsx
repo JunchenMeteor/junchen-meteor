@@ -29,6 +29,9 @@ export function HomePage({ locale }: { locale: Locale }) {
             <Link className="primary-button" href={localizedPath(locale, "/meteortest")}>
               {copy.primaryCta} <ArrowRight size={18} />
             </Link>
+            <Link className="secondary-button" href={flagship.links.preview ?? localizedPath(locale, "/meteortest")}>
+              {copy.previewCta} <ArrowRight size={18} />
+            </Link>
             <Link className="secondary-button" href={site.github}>
               <Github size={18} /> {copy.secondaryCta}
             </Link>

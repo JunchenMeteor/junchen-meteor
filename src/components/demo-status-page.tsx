@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { DemoSimulator } from "@/components/demo-simulator";
-import { demoCopy, type Locale } from "@/content/site";
+import { demoCopy, meteorTestPreviewUrl, type Locale } from "@/content/site";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
@@ -58,6 +58,9 @@ export function DemoStatusPage({ locale }: { locale: Locale }) {
           <p>{copy.next}</p>
           <Link className="text-link" href={localizedPath(locale, "/meteortest")}>
             {ui.common.backToMeteorTest} <ArrowRight size={16} />
+          </Link>
+          <Link className="text-link" href={meteorTestPreviewUrl}>
+            {ui.common.openWebPreview} <ArrowRight size={16} />
           </Link>
         </aside>
       </div>

@@ -44,6 +44,11 @@ export function ProjectCard({ project, locale, featured = false }: ProjectCardPr
         <Link href={projectDetailHref(locale, project)}>
           {ui.common.viewDetails} <ArrowUpRight size={15} />
         </Link>
+        {project.links.preview ? (
+          <Link href={project.links.preview}>
+            {ui.common.webPreview} <ArrowUpRight size={15} />
+          </Link>
+        ) : null}
         {project.links.docs ? (
           <Link href={project.links.docs}>
             {ui.common.docs} <ArrowUpRight size={15} />

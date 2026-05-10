@@ -64,7 +64,7 @@ Before expanding homepage sections, project pages, MeteorTest demo messaging, or
 docs/PROJECT_CONTENT_PLAN.md
 ```
 
-Implement the plan in phases. The website MVP, interactive mock demo, contact surface, MeteorTest-to-iOS-Automation-Framework local execution-path debugging, local mock API validation, public website preview, productized homepage surface, local MeteorTest Agent run results, sanitized local preview screenshots, and MeteorTest Web public-preview readiness docs are complete. Next work should focus on deploying the separate Phase 11 MeteorTest Web Public Preview before Phase 12 Public Connected Demo. Richer seeded demo data and optional recordings can support those phases, but public execution still requires explicit safety design.
+Implement the plan in phases. The website MVP, interactive mock demo, contact surface, MeteorTest-to-iOS-Automation-Framework local execution-path debugging, local mock API validation, public website preview, productized homepage surface, local MeteorTest Agent run results, sanitized local preview screenshots, and MeteorTest Web public-preview readiness docs are complete. The live MeteorTest Web preview now exists at `https://meteortest.jcmeteor.com/`, while Local Agent execution remains private and public connected execution remains deferred. Next website work should focus on Phase 11.1 live preview entry points and Phase 11.2 SEO/product-page polish.
 
 When a phase status, validation claim, capability boundary, terminology rule, project milestone, backend behavior, interaction flow, environment variable, port, command, or test capability changes, update all affected surfaces in the same change:
 
@@ -74,9 +74,9 @@ When a phase status, validation claim, capability boundary, terminology rule, pr
 
 Do not treat a documentation-only update as complete if the public UI, backend behavior, interaction logic, configuration, examples, or tests still say or implement the old status, next step, terminology, or runtime behavior.
 
-MeteorTest Web public access is Phase 11 and comes before the Phase 12 public connected execution demo. MeteorTest now has safe environment templates, deployment-provider secret instructions, and a public-preview boundary. Before exposing any live Web console, choose a deployment target, configure provider-managed environment variables, use a dedicated preview backend or demo data, and keep Local Agent execution private.
+MeteorTest Web public access is Phase 11 and comes before the Phase 12 public connected execution demo. MeteorTest now has safe environment templates, deployment-provider secret instructions, a public-preview boundary, and a Vercel preview at `https://meteortest.jcmeteor.com/`. Website copy may link to this preview only when it also preserves the boundary: Web preview is online, Local Agent execution remains private, and public connected execution is not enabled.
 
-When continuing Phase 11, do the deployment work in the MeteorTest repository first and follow `apps/web/README.md` there. After a real MeteorTest Web public URL exists, update this website's visible links, `README.md`, `README.zh-CN.md`, and `docs/PROJECT_CONTENT_PLAN.md` in the same PR. Do not add a live Web console link here before the deployment is verified.
+When continuing Phase 11, do hardening work in the MeteorTest repository first and follow `apps/web/README.md` there. For this website, update visible links, `README.md`, `README.zh-CN.md`, and `docs/PROJECT_CONTENT_PLAN.md` together when the preview URL or preview boundary changes. Do not imply that visitors can trigger real public execution.
 
 ## Content Boundaries
 

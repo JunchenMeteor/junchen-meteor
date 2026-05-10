@@ -18,7 +18,9 @@ export const uiCopy = {
       backToMeteorTest: "Back to MeteorTest",
       backToProjects: "Back to projects",
       interactiveDemo: "Interactive demo",
-      openInteractiveDemo: "Open interactive demo"
+      openInteractiveDemo: "Open interactive demo",
+      webPreview: "Web preview",
+      openWebPreview: "Open Web preview"
     },
     home: {
       flowSteps: [
@@ -86,7 +88,9 @@ export const uiCopy = {
       backToMeteorTest: "返回 MeteorTest",
       backToProjects: "返回项目列表",
       interactiveDemo: "交互 Demo",
-      openInteractiveDemo: "打开交互 Demo"
+      openInteractiveDemo: "打开交互 Demo",
+      webPreview: "Web 预览",
+      openWebPreview: "打开 Web 预览"
     },
     home: {
       flowSteps: ["AI 操作入口", "项目和套件导入", "任务创建", "本地执行器", "报告回传", "AI 下一步建议"],
