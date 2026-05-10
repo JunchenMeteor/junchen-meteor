@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
-import { meteortestCopy, type Locale } from "@/content/site";
+import { meteorTestPreviewUrl, meteortestCopy, type Locale } from "@/content/site";
 import { getProject } from "@/content/projects";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
@@ -32,6 +32,9 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
           <div className="card-actions">
             <Link href="https://github.com/JunchenMeteor/MeteorTest">
               {ui.common.github} <ArrowUpRight size={15} />
+            </Link>
+            <Link href={meteorTestPreviewUrl}>
+              {ui.common.webPreview} <ArrowUpRight size={15} />
             </Link>
             <Link href="https://github.com/JunchenMeteor/iOS-Automation-Framework">
               {ui.meteortest.iosCompanion} <ArrowUpRight size={15} />
@@ -120,6 +123,9 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
         <p>{copy.demo}</p>
         <Link className="text-link" href={demoHref}>
           {ui.common.openInteractiveDemo} <ArrowUpRight size={16} />
+        </Link>
+        <Link className="text-link" href={meteorTestPreviewUrl}>
+          {ui.common.openWebPreview} <ArrowUpRight size={16} />
         </Link>
       </div>
 

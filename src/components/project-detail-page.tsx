@@ -22,6 +22,11 @@ export function ProjectDetailPage({ locale, project }: { locale: Locale; project
           <Link href={project.links.github}>
             {ui.common.github} <ArrowUpRight size={15} />
           </Link>
+          {project.links.preview ? (
+            <Link href={project.links.preview}>
+              {ui.common.webPreview} <ArrowUpRight size={15} />
+            </Link>
+          ) : null}
           {project.links.docs ? (
             <Link href={project.links.docs}>
               {ui.common.docs} <ArrowUpRight size={15} />

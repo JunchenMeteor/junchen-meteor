@@ -30,7 +30,13 @@ https://jcmeteor.com/
 
 This preview is the static public website only. It does not expose MeteorTest Local Agent endpoints, Supabase secrets, local machines, devices, or test execution services.
 
-MeteorTest Web public-preview readiness is prepared in the MeteorTest repository with an environment template and secret-boundary guidance. The live MeteorTest Web console still needs a separate application deployment before it can be opened publicly.
+MeteorTest Web is available separately as a public preview:
+
+```text
+https://meteortest.jcmeteor.com/
+```
+
+The MeteorTest Web preview is for console-surface validation. Local Agent execution remains private, and public connected execution is not enabled.
 
 ## What This Site Covers
 
@@ -45,7 +51,7 @@ The website is intentionally project-led. It explains how these repositories rel
 
 | Project | Role | Link |
 | --- | --- | --- |
-| MeteorTest | Flagship automation testing platform | [GitHub](https://github.com/JunchenMeteor/MeteorTest) |
+| MeteorTest | Flagship automation testing platform | [Web Preview](https://meteortest.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorTest) |
 | iOS-Automation-Framework | Companion iOS test project and integration sample | [GitHub](https://github.com/JunchenMeteor/iOS-Automation-Framework) |
 | senior-engineering-guardrails | Agent workflow guardrails | [GitHub](https://github.com/JunchenMeteor/senior-engineering-guardrails) |
 | douyin-video-toolkit | Creator workflow automation toolkit | [GitHub](https://github.com/JunchenMeteor/douyin-video-toolkit) |

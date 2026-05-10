@@ -39,6 +39,7 @@ export type Project = {
     docs?: string;
     issues?: string;
     roadmap?: string;
+    preview?: string;
   };
 };
 
@@ -76,8 +77,8 @@ export const projects: Project[] = [
         zh: "主推平台项目和控制平面。"
       },
       next: {
-        en: "Use the completed local Agent run results to make the website status and demo surfaces more product-like.",
-        zh: "基于已完成的本地 Agent 运行结果，把官网状态和 Demo 展示做得更像产品体验。"
+        en: "Harden the live Web preview with public-preview mode, access protection, safe demo data, and clearer task/report surfaces.",
+        zh: "围绕公网预览模式、访问保护、安全 demo 数据和更清晰的任务/报告界面，加固已上线的 Web 预览。"
       }
     },
     highlights: {
@@ -98,7 +99,8 @@ export const projects: Project[] = [
       github: "https://github.com/JunchenMeteor/MeteorTest",
       docs: "https://github.com/JunchenMeteor/MeteorTest#readme",
       issues: "https://github.com/JunchenMeteor/MeteorTest/issues",
-      roadmap: "https://github.com/JunchenMeteor/MeteorTest#roadmap"
+      roadmap: "https://github.com/JunchenMeteor/MeteorTest#roadmap",
+      preview: "https://meteortest.jcmeteor.com/"
     }
   },
   {
