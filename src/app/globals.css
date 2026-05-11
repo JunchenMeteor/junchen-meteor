@@ -2334,9 +2334,16 @@ a {
   }
 
   .nav-links {
-    width: 100%;
-    justify-content: flex-end;
+    width: fit-content;
+    justify-self: end;
+    justify-content: center;
     overflow-x: auto;
+  }
+
+  .nav-links a {
+    min-width: 74px;
+    justify-content: center;
+    text-align: center;
   }
 
   .brand-mark {
