@@ -140,6 +140,8 @@ For visual configurability, use the existing medium-complexity token-first theme
 - Add new themes through stable `[data-theme="..."]` override blocks and the shared theme metadata.
 - New pages, layout sections, cards, panels, buttons, badges, diagrams, and demo surfaces must participate in the theme system from the first implementation.
 - Use semantic or component tokens for colors, backgrounds, borders, shadows, focus states, and highlighted surfaces; avoid hardcoded colors in component CSS unless defining a token.
+- Theme-specific accent colors must match the theme's visual character. Do not reuse a green/cyan primary accent in warm themes such as parchment or dune unless the theme concept explicitly calls for it.
+- Buttons, badges, status pills, links, flow lines, and interactive highlights must use shared semantic/component tokens so theme switching updates them together.
 - When changing a layout or visual component, verify at least one dark theme and one light theme so the component is not accidentally locked to a single palette.
 - Keep layout and module order stable unless there is a concrete product reason to change them.
 - Do not build a visual theme editor or arbitrary user-defined theme builder before there is a real product reason.
