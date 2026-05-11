@@ -975,8 +975,8 @@ a {
 
 .meteortest-showcase {
   display: grid;
-  gap: 22px;
-  padding: 24px;
+  gap: 20px;
+  padding: 26px;
   border: 1px solid var(--border-accent);
   border-radius: var(--radius);
   background: var(--card-featured-bg);
@@ -991,8 +991,8 @@ a {
 .meteortest-showcase-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 18px;
-  align-items: center;
+  gap: 20px;
+  align-items: end;
 }
 
 .meteortest-showcase-header .status-pill {
@@ -1006,11 +1006,12 @@ a {
   text-transform: uppercase;
 }
 
-.meteortest-showcase-header > p {
+.meteortest-showcase-header p {
   max-width: 760px;
+  margin: 12px 0 0;
   color: var(--muted);
-  font-size: 18px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .showcase-actions {
@@ -1023,48 +1024,54 @@ a {
   max-width: none;
 }
 
-.showcase-snapshot {
-  min-height: 360px;
-  display: flex;
-  flex-direction: column;
-  padding: 18px;
+.showcase-preview {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface-panel-muted);
 }
 
-.showcase-snapshot h4,
-.showcase-panel-title strong {
-  margin: 0;
-  font-size: 18px;
+.showcase-preview-frame {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 4px);
+  background: var(--surface-control);
+  aspect-ratio: 16 / 9;
 }
 
-.showcase-snapshot-grid {
+.showcase-preview-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.showcase-preview-metrics {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: minmax(0, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
-  flex: 1;
-  margin-top: 14px;
 }
 
-.showcase-snapshot-grid div,
+.showcase-preview-metrics div,
 .showcase-result-rows div {
   display: grid;
   gap: 6px;
   min-width: 0;
-  padding: 14px;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface-control);
 }
 
-.showcase-snapshot-grid div,
 .showcase-result-rows div {
   align-content: center;
 }
 
-.showcase-snapshot-grid span,
+.showcase-preview-metrics span,
 .showcase-result-rows span {
   color: var(--subtle);
   font-size: 12px;
@@ -1072,32 +1079,43 @@ a {
   text-transform: uppercase;
 }
 
-.showcase-snapshot-grid strong,
+.showcase-preview-metrics strong,
 .showcase-result-rows strong {
   overflow-wrap: anywhere;
 }
 
-.showcase-snapshot-grid small {
-  color: var(--muted);
-  line-height: 1.45;
+.showcase-panel-title strong {
+  margin: 0;
+  font-size: 18px;
 }
 
 .meteortest-showcase-workspace {
   display: grid;
-  grid-template-columns: minmax(360px, 1.18fr) minmax(280px, 0.92fr) minmax(260px, 0.78fr);
-  gap: 14px;
+  grid-template-columns: minmax(0, 1.28fr) minmax(340px, 0.72fr);
+  gap: 16px;
   align-items: stretch;
+}
+
+.showcase-side {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 16px;
+  min-width: 0;
 }
 
 .showcase-operation-panel,
 .showcase-result-panel {
-  min-height: 360px;
   display: flex;
   flex-direction: column;
-  padding: 18px;
+  min-height: 0;
+  padding: 20px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface-panel-muted);
+}
+
+.showcase-result-panel {
+  padding: 16px;
 }
 
 .showcase-panel-title {
@@ -1113,9 +1131,9 @@ a {
 
 .showcase-operation-panel ol {
   display: grid;
-  grid-auto-rows: minmax(0, 1fr);
-  gap: 12px;
-  flex: 1;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  gap: 10px;
   margin: 16px 0 0;
   padding: 0;
   list-style: none;
@@ -1125,9 +1143,10 @@ a {
 .showcase-operation-panel li {
   position: relative;
   min-height: 0;
-  display: flex;
-  align-items: center;
-  padding: 11px 12px 11px 46px;
+  display: grid;
+  gap: 5px;
+  align-content: center;
+  padding: 13px 12px 13px 44px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   color: var(--muted);
@@ -1136,13 +1155,23 @@ a {
   counter-increment: showcase-step;
 }
 
+.showcase-operation-panel li strong {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.showcase-operation-panel li span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .showcase-operation-panel li::before {
   position: absolute;
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1156,10 +1185,10 @@ a {
 
 .showcase-result-rows {
   display: grid;
-  grid-auto-rows: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: auto;
   gap: 10px;
-  flex: 1;
-  margin-top: 16px;
+  margin-top: 14px;
 }
 
 .showcase-success {
@@ -1167,7 +1196,7 @@ a {
   align-items: center;
   gap: 8px;
   width: fit-content;
-  margin-top: 14px;
+  margin-top: 12px;
   padding: 8px 10px;
   border: 1px solid var(--border-accent-strong);
   border-radius: var(--radius-pill);
@@ -2299,10 +2328,35 @@ a {
   .site-header {
     position: static;
     gap: 14px;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    justify-items: stretch;
   }
 
   .nav-links {
+    width: 100%;
+    justify-content: flex-end;
     overflow-x: auto;
+  }
+
+  .brand-mark {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .header-actions {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .header-actions .theme-switcher,
+  .header-actions .icon-link,
+  .header-actions .locale-switch {
+    width: 100%;
+    justify-content: center;
   }
 
   .hero-section {
@@ -2321,7 +2375,7 @@ a {
   .visual-grid,
   .ecosystem-grid,
   .depth-grid,
-  .showcase-snapshot-grid,
+  .showcase-preview-metrics,
   .projects-grid,
   .focus-list,
   .contact-grid,
@@ -2368,5 +2422,27 @@ a {
 
   .site-footer {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .showcase-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .showcase-actions a {
+    justify-content: center;
+    min-width: 0;
+    padding-inline: 10px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .theme-switcher,
+  .locale-switch,
+  .icon-link {
+    min-height: 40px;
   }
 }

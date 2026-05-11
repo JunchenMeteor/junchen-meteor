@@ -159,4 +159,6 @@ For local preview, use port `3010` by default:
 npm run dev -- -H 127.0.0.1 -p 3010
 ```
 
+After frontend UI changes, restart or refresh the local preview service and verify the page is reachable before handing the work back. Confirm `http://127.0.0.1:3010` responds. If the Next dev server hangs or fails, use the built static output preview as a fallback after `npm run build`, and clearly state which preview mode is running.
+
 For visual changes, also verify desktop and mobile layouts, English and Chinese routes, header navigation, project links, and text wrapping.
