@@ -176,12 +176,23 @@ Issue and PR text must be written in English. Use direct English section heading
 Use the repository's existing issue title prefixes:
 
 - `[Feature]` for features, improvements, refactors, and maintenance work.
+- `[Bug]` for defects and regressions.
 - `[Documentation]` for documentation-only work.
 - `[Test]` for test-related work.
+- `[Security]` for dependency or security hardening changes.
 - `[Smoke test]` for smoke-test work.
 - `[Known Issues]` for known issue tracking.
 
-For `[Feature]` issues, add the `enhancement` label when the authenticated GitHub account has permission. If label permission is missing, state that limitation in the handoff instead of silently claiming the rule was fully applied.
+Add GitHub labels to issues according to the selected prefix when the authenticated account has permission:
+
+- `[Feature]` issues must use `enhancement`.
+- `[Bug]` issues must use `bug`.
+- `[Test]` and `[Smoke test]` issues must use `test`.
+- `[Documentation]` issues must use `documentation`.
+- `[Security]` issues must use `security`.
+- `[Known Issues]` issues must use `known issue`.
+
+If label permission is missing, state that limitation in the handoff instead of silently claiming the rule was fully applied.
 
 PR titles should use the same prefix as the linked issue when the change type matches, for example `[Feature] Refine mobile header controls`.
 
