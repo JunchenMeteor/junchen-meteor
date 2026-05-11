@@ -40,7 +40,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 10: Screenshot Or Recording Results | Done | Added sanitized local MeteorTest Web preview screenshots for the dashboard, report center, and AI operation console, labeled separately from public connected execution. |
 | Phase 11: MeteorTest Web Public Preview | In Progress | MeteorTest Web is now reachable at `https://meteortest.jcmeteor.com/`; the remaining work is updating website entry points and hardening the preview mode, demo data, auth, and private-Agent loop in the MeteorTest repo. |
 | Phase 11.1: Website Preview Entry Points | Done | Added the live MeteorTest Web preview URL to homepage, project pages, demo status, README files, AGENTS, and route copy while preserving the boundary between public preview and connected execution. |
-| Phase 11.2: Website SEO And Product Page Polish | Not Started | Add metadata/Open Graph coverage and reshape the MeteorTest page around problem, workflow, preview status, screenshots, live preview, GitHub, and roadmap. |
+| Phase 11.2: Website SEO And Product Page Polish | Done | Added localized metadata/Open Graph coverage and reshaped the MeteorTest page around preview status, live preview, mock demo, GitHub, workflow, screenshots, validation, and roadmap. |
 | Phase 12: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
 ## Non-Goals
@@ -678,7 +678,7 @@ Validation:
 
 ## Phase 11.2: Website SEO And Product Page Polish
 
-Status: `Not Started`
+Status: `Done`
 
 After the live preview link is in place, improve the public website surfaces so shared links and project pages read like a polished engineering product gateway.
 
@@ -708,6 +708,13 @@ Validation:
 - `npm run lint`
 - `npm run build`
 - Visual check desktop and mobile layouts for English and Chinese routes.
+
+Implementation notes:
+
+- Added localized page metadata for homepage, `/meteortest`, `/projects`, and non-flagship project detail routes.
+- Added canonical and alternate-language URLs through the shared SEO content module.
+- Reshaped the MeteorTest page hero around the live Web preview, mock demo, GitHub, preview status, and private Local Agent boundary.
+- Kept the public page copy visitor-facing while preserving detailed execution boundaries in AGENTS and this plan.
 
 ## Phase 12: Public Connected Demo
 
@@ -754,7 +761,7 @@ Until these are designed, the public website should stay with the interactive mo
 | Plan MeteorTest Web public preview | Done | MeteorTest now has `apps/web/.env.local.example`, secret-boundary guidance, and public-preview documentation. |
 | Deploy MeteorTest Web public preview | In Progress | Vercel preview URL exists at `https://meteortest.jcmeteor.com/`; continue hardening preview mode, demo data, auth, and private-Agent execution loop in MeteorTest. |
 | Add live MeteorTest preview entry points to website | Done | Linked `https://meteortest.jcmeteor.com/` from homepage, project pages, MeteorTest page, demo status, README files, AGENTS, and this plan. |
-| Add SEO and product-page polish | Not Started | Add metadata/Open Graph coverage and reshape the MeteorTest page around live preview status and roadmap. |
+| Add SEO and product-page polish | Done | Added localized metadata/Open Graph coverage and reshaped the MeteorTest page around live preview status, mock demo, GitHub, screenshots, validation, and roadmap. |
 | Design public connected demo | Deferred | Requires security and execution isolation design after the Web preview path exists. |
 
 When completing an item, update both the row status and any relevant phase status above.

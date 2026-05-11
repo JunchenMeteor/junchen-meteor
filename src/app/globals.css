@@ -1320,6 +1320,101 @@ a {
   font-weight: 700;
 }
 
+.meteortest-product-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 28px;
+  align-items: stretch;
+  padding: 28px;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius);
+  background: var(--panel-accent-bg);
+  box-shadow: var(--shadow);
+}
+
+.meteortest-product-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.meteortest-product-copy > span {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.meteortest-product-copy h1 {
+  margin: 10px 0 0;
+  font-size: clamp(48px, 8vw, 94px);
+  line-height: 0.95;
+}
+
+.meteortest-product-copy p {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.meteortest-product-copy .meteortest-product-subtitle {
+  color: var(--text-soft);
+  font-size: 20px;
+}
+
+.preview-status-card,
+.companion-panel {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-panel-strong);
+}
+
+.preview-status-card h2,
+.companion-panel h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.preview-status-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.preview-status-list div {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-control);
+}
+
+.preview-status-list span,
+.preview-status-list strong,
+.preview-status-list p {
+  display: block;
+}
+
+.preview-status-list span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.preview-status-list strong {
+  margin-top: 4px;
+  color: var(--text);
+  font-size: 20px;
+}
+
+.preview-status-list p,
+.companion-panel p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .contract-panel,
 .metrics-panel {
   padding: 24px;
@@ -2276,6 +2371,7 @@ a {
   .two-column-section,
   .meteortest-showcase-header,
   .meteortest-showcase-workspace,
+  .meteortest-product-hero,
   .detail-hero,
   .portfolio-flagship,
   .project-detail-overview,

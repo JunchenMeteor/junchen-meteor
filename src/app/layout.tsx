@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { pageMetadata, siteUrl } from "@/content/seo";
 
 export const metadata: Metadata = {
-  title: "JC Meteor",
-  description: "Automation testing, iOS engineering systems, and AI-assisted development workflows.",
-  metadataBase: new URL("https://github.com/JunchenMeteor")
+  metadataBase: new URL(siteUrl),
+  ...pageMetadata("en", "home")
 };
 
 export default function RootLayout({

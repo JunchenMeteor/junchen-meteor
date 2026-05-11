@@ -11,39 +11,51 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
   const copy = meteortestCopy[locale];
   const ui = uiCopy[locale];
   const project = getProject("meteortest");
+  const companionProject = getProject("ios-automation-framework");
   const demoHref = localizedPath(locale, "/meteortest/demo");
 
   return (
     <section className="page-section">
-      <div className="page-title project-detail-title">
-        <span>{ui.meteortest.flagshipProject}</span>
-        <h1>{copy.title}</h1>
-        <p>{copy.subtitle}</p>
-      </div>
-
-      <div className="detail-hero">
-        <div>
+      <div className="meteortest-product-hero">
+        <div className="meteortest-product-copy">
+          <span>{ui.meteortest.flagshipProject}</span>
+          <h1>{copy.title}</h1>
+          <p className="meteortest-product-subtitle">{copy.subtitle}</p>
           <p>{copy.summary}</p>
+          <p>{copy.productIntro}</p>
           <div className="tag-row">
             {project?.stack.map((tag) => (
               <span key={tag}>{tag}</span>
             ))}
           </div>
-          <div className="card-actions">
-            <Link href="https://github.com/JunchenMeteor/MeteorTest">
-              {ui.common.github} <ArrowUpRight size={15} />
-            </Link>
-            <Link href={meteorTestPreviewUrl}>
+          <div className="hero-actions">
+            <Link className="primary-button" href={meteorTestPreviewUrl}>
               {ui.common.webPreview} <ArrowUpRight size={15} />
             </Link>
-            <Link href="https://github.com/JunchenMeteor/iOS-Automation-Framework">
-              {ui.meteortest.iosCompanion} <ArrowUpRight size={15} />
-            </Link>
-            <Link href={demoHref}>
+            <Link className="secondary-button" href={demoHref}>
               {ui.common.interactiveDemo} <ArrowUpRight size={15} />
+            </Link>
+            <Link className="secondary-button" href="https://github.com/JunchenMeteor/MeteorTest">
+              {ui.common.github} <ArrowUpRight size={15} />
             </Link>
           </div>
         </div>
+
+        <aside className="preview-status-card">
+          <h2>{copy.previewStatusTitle}</h2>
+          <div className="preview-status-list">
+            {copy.previewStatusItems.map((item) => (
+              <div key={item.label}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+                <p>{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </aside>
+      </div>
+
+      <div className="detail-hero">
         <div className="metrics-panel">
           <div>
             <strong>{ui.meteortest.controlPlane}</strong>
@@ -57,6 +69,13 @@ export function MeteorTestPage({ locale }: { locale: Locale }) {
             <strong>{ui.meteortest.aiAssist}</strong>
             <span>{ui.meteortest.aiAssistDetail}</span>
           </div>
+        </div>
+        <div className="companion-panel">
+          <h2>{ui.meteortest.iosCompanion}</h2>
+          <p>{companionProject?.portfolio.role[locale]}</p>
+          <Link className="text-link" href="https://github.com/JunchenMeteor/iOS-Automation-Framework">
+            {ui.meteortest.iosCompanion} <ArrowUpRight size={16} />
+          </Link>
         </div>
       </div>
 
