@@ -71,7 +71,7 @@ Install dependencies and start the local server:
 
 ```bash
 npm install
-npm run dev -- -H 127.0.0.1 -p 3010
+npm run dev:local
 ```
 
 Open:
@@ -79,6 +79,10 @@ Open:
 ```text
 http://127.0.0.1:3010
 ```
+
+`npm run dev:local` is the preferred preview entry point. It clears an existing
+local process listening on `127.0.0.1:3010` before starting Next.js, which avoids
+stale dev-server sessions after UI changes.
 
 ## Static Preview Deployment
 

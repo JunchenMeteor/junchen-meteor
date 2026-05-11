@@ -156,9 +156,35 @@ npm run build
 For local preview, use port `3010` by default:
 
 ```bash
-npm run dev -- -H 127.0.0.1 -p 3010
+npm run dev:local
 ```
+
+`npm run dev:local` is the required local preview entry point for agents. It clears an existing process listening on `127.0.0.1:3010` before starting Next.js, so stale or hung preview sessions do not survive UI changes. Do not ask the user to remind you to restart port `3010`.
 
 After frontend UI changes, restart or refresh the local preview service and verify the page is reachable before handing the work back. Confirm `http://127.0.0.1:3010` responds. If the Next dev server hangs or fails, use the built static output preview as a fallback after `npm run build`, and clearly state which preview mode is running.
 
 For visual changes, also verify desktop and mobile layouts, English and Chinese routes, header navigation, project links, and text wrapping.
+
+## GitHub Issue And PR Rules
+
+Before creating a branch, issue, or PR, sync the local `main` branch with the upstream repository first. Create work branches from the updated `main`; do not create feature branches from stale branches.
+
+Issue and PR text must be written in English. Use direct English section headings such as `## Summary`, `## Proposed Changes`, and `## Test Plan`.
+
+Use the repository's existing issue title prefixes:
+
+- `[Feature]` for features, improvements, refactors, and maintenance work.
+- `[Documentation]` for documentation-only work.
+- `[Test]` for test-related work.
+- `[Smoke test]` for smoke-test work.
+- `[Known Issues]` for known issue tracking.
+
+For `[Feature]` issues, add the `enhancement` label when the authenticated GitHub account has permission. If label permission is missing, state that limitation in the handoff instead of silently claiming the rule was fully applied.
+
+PR titles should use the same prefix as the linked issue when the change type matches, for example `[Feature] Refine mobile header controls`.
+
+Create the issue in the upstream repository, push implementation branches to the fork, and create PRs from the fork branch into upstream `main`. Do not push directly to upstream `main`.
+
+Put `Closes #<issue-number>` at the very bottom of the PR body. Do not add `Related PR: #<number>` to the issue body.
+
+Use fresh GitHub data when checking issue or PR state. Prefer `gh api --cache 0s` or direct `gh api` calls before deciding whether an issue or PR already exists.
