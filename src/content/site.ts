@@ -328,6 +328,14 @@ export const meteortestCopy = {
     subtitle: "The flagship project in the JC Meteor portfolio.",
     summary:
       "MeteorTest is an automation testing platform for managing projects, importing suites, scheduling local executors, collecting reports, and using AI to assist with project import, suite operations, task creation, report inspection, and failure analysis.",
+    productIntro:
+      "The public Web preview is online for console-surface validation. The private Local Agent path has been validated locally, while public connected execution remains a later safety design topic.",
+    previewStatusTitle: "Preview status",
+    previewStatusItems: [
+      { label: "Web preview", value: "Online", detail: "Available at meteortest.jcmeteor.com" },
+      { label: "Local Agent", value: "Private", detail: "Validated locally with iOS-Automation-Framework" },
+      { label: "Connected execution", value: "Deferred", detail: "Requires auth, isolation, limits, and redaction design" }
+    ],
     loopTitle: "Execution loop",
     loop: [
       {
@@ -423,6 +431,14 @@ export const meteortestCopy = {
     subtitle: "JC Meteor 项目体系中的主推项目。",
     summary:
       "MeteorTest 是一个自动化测试平台，用于管理项目、导入套件、调度本地执行器、收集报告，并通过 AI 辅助项目导入、套件操作、任务创建、报告查看和失败分析。",
+    productIntro:
+      "公网 Web 预览已经上线，用于验证控制台界面。私有 Local Agent 链路已经在本地验证；公网联网执行仍是后续需要安全设计的问题。",
+    previewStatusTitle: "预览状态",
+    previewStatusItems: [
+      { label: "Web 预览", value: "已上线", detail: "可通过 meteortest.jcmeteor.com 访问" },
+      { label: "Local Agent", value: "私有", detail: "已基于 iOS-Automation-Framework 完成本地验证" },
+      { label: "联网执行", value: "延期", detail: "需要认证、隔离、限流和脱敏设计" }
+    ],
     loopTitle: "执行闭环",
     loop: [
       {
