@@ -2355,26 +2355,33 @@ a {
   .header-actions {
     grid-column: 1 / -1;
     width: 100%;
-    display: grid;
-    grid-template-columns: minmax(142px, 1fr) 44px max-content;
+    display: flex;
+    align-items: center;
     gap: 10px;
   }
 
-  .header-actions .theme-switcher,
-  .header-actions .icon-link,
-  .header-actions .locale-switch {
-    width: 100%;
-    justify-content: center;
-  }
-
   .header-actions .theme-switcher {
+    flex: 1 1 auto;
+    min-width: 0;
     justify-content: flex-start;
     padding-inline: 14px;
   }
 
+  .header-actions .theme-switcher span:first-of-type {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .header-actions .icon-link {
+    flex: 0 0 44px;
+    width: 44px;
+  }
+
   .header-actions .locale-switch {
-    width: auto;
+    flex: 0 0 auto;
     min-width: 86px;
+    padding-inline: 14px;
   }
 
   .hero-section {
