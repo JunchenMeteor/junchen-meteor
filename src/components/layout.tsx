@@ -4,6 +4,7 @@ import { navItems, site, type Locale } from "@/content/site";
 import { uiCopy } from "@/content/ui";
 import { localeConfig } from "@/content/locales";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { LocaleSwitch } from "@/components/locale-switch";
 
 type LayoutProps = {
   locale: Locale;
@@ -36,9 +37,7 @@ export function SiteLayout({ locale, children }: LayoutProps) {
           <Link className="icon-link" href={site.github} aria-label={ui.aria.githubProfile}>
             <Github size={18} />
           </Link>
-          <Link className="locale-switch" href={localeMeta.alternateHref}>
-            {localeMeta.alternateLabel}
-          </Link>
+          <LocaleSwitch locale={locale} />
         </div>
       </header>
       <main>{children}</main>

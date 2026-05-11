@@ -258,29 +258,31 @@ export const meteortestShowcaseCopy = {
     previewAction: "Open Web Preview",
     demoAction: "Try demo",
     githubAction: "GitHub",
+    previewAlt: "MeteorTest Web dashboard preview screenshot",
     snapshotTitle: "Project workspace snapshot",
+    snapshotSummary:
+      "The platform keeps project metadata, suites, runtime, and artifacts together so a task can be understood without jumping across repositories.",
     snapshotItems: [
       { label: "Project", value: "yunlu-ios", detail: "Imported from meteortest.yml" },
       { label: "Suite", value: "api_smoke", detail: "Mock-backed API smoke path" },
       { label: "Executor", value: "phase9-local-agent", detail: "Runs through the test repository runtime" },
       { label: "Report", value: "output.log + Allure", detail: "Task-specific artifacts collected" }
     ],
-    operationTitle: "AI-assisted operation loop",
+    operationTitle: "AI Operation Flow",
     operations: [
-      "Import project and suite contracts",
-      "Create a confirmed test task",
-      "Hand execution to Local Agent",
-      "Read report context and suggest next action"
+      { title: "Import", detail: "Project contract and suites" },
+      { title: "Prepare", detail: "Task, environment, build" },
+      { title: "Execute", detail: "Private Local Agent" },
+      { title: "Analyze", detail: "Report context and next action" }
     ],
     resultTitle: "Validation and preview status",
     resultRows: [
-      { label: "Task", value: "phase9-api-smoke-001" },
-      { label: "Result", value: "Succeeded" },
-      { label: "Pytest", value: "6 passed, 16 deselected" },
-      { label: "Exit", value: "0" },
+      { label: "Local validation", value: "Succeeded" },
+      { label: "Smoke suite", value: "6 passed" },
       { label: "Web preview", value: "Online" },
-      { label: "Execution", value: "Private Agent only" }
-    ]
+      { label: "Execution", value: "Private Agent" }
+    ],
+    statusNote: "Preview online"
   },
   zh: {
     eyebrow: "主推项目",
@@ -292,29 +294,31 @@ export const meteortestShowcaseCopy = {
     previewAction: "打开 Web 预览",
     demoAction: "体验 Demo",
     githubAction: "GitHub",
+    previewAlt: "MeteorTest Web Dashboard 预览截图",
     snapshotTitle: "项目工作台快照",
+    snapshotSummary:
+      "平台把项目元数据、套件、运行环境和产物放在同一处，查看任务时不需要在多个仓库和报告之间来回跳转。",
     snapshotItems: [
       { label: "项目", value: "yunlu-ios", detail: "从 meteortest.yml 导入" },
       { label: "套件", value: "api_smoke", detail: "基于 mock API 的 smoke 链路" },
       { label: "执行器", value: "phase9-local-agent", detail: "通过测试仓库自己的运行时执行" },
       { label: "报告", value: "output.log + Allure", detail: "已采集任务级产物" }
     ],
-    operationTitle: "AI 辅助操作闭环",
+    operationTitle: "AI 操作流",
     operations: [
-      "导入项目和套件协议",
-      "创建已确认的测试任务",
-      "交给 Local Agent 执行",
-      "读取报告上下文并建议下一步"
+      { title: "导入", detail: "项目协议和测试套件" },
+      { title: "准备", detail: "任务、环境和构建产物" },
+      { title: "执行", detail: "私有 Local Agent" },
+      { title: "分析", detail: "报告上下文和下一步" }
     ],
     resultTitle: "验证和预览状态",
     resultRows: [
-      { label: "任务", value: "phase9-api-smoke-001" },
-      { label: "结果", value: "Succeeded" },
-      { label: "Pytest", value: "6 passed, 16 deselected" },
-      { label: "退出码", value: "0" },
+      { label: "本地验证", value: "已通过" },
+      { label: "Smoke 套件", value: "6 passed" },
       { label: "Web 预览", value: "已上线" },
-      { label: "执行", value: "仅私有 Agent" }
-    ]
+      { label: "执行", value: "私有 Agent" }
+    ],
+    statusNote: "预览已上线"
   }
 };
 
