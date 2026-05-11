@@ -2355,7 +2355,7 @@ a {
     grid-column: 1 / -1;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr) 44px minmax(86px, auto);
     gap: 10px;
   }
 
@@ -2364,6 +2364,11 @@ a {
   .header-actions .locale-switch {
     width: 100%;
     justify-content: center;
+  }
+
+  .header-actions .theme-switcher {
+    justify-content: flex-start;
+    padding-inline: 14px;
   }
 
   .hero-section {
