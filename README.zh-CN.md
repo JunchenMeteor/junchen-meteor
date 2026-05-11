@@ -71,7 +71,7 @@ https://meteortest.jcmeteor.com/
 
 ```bash
 npm install
-npm run dev -- -H 127.0.0.1 -p 3010
+npm run dev:local
 ```
 
 打开：
@@ -79,6 +79,10 @@ npm run dev -- -H 127.0.0.1 -p 3010
 ```text
 http://127.0.0.1:3010
 ```
+
+`npm run dev:local` 是推荐的本地预览入口。它会先清理正在监听
+`127.0.0.1:3010` 的旧本地进程，再启动 Next.js，避免 UI 修改后继续看到
+卡住或过期的 dev-server 会话。
 
 ## 静态预览部署
 
