@@ -2335,6 +2335,7 @@ a {
 
   .nav-links {
     width: fit-content;
+    max-width: 100%;
     justify-self: end;
     justify-content: center;
     overflow-x: auto;
@@ -2355,7 +2356,7 @@ a {
     grid-column: 1 / -1;
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 44px minmax(86px, auto);
+    grid-template-columns: minmax(142px, 1fr) 44px max-content;
     gap: 10px;
   }
 
@@ -2369,6 +2370,11 @@ a {
   .header-actions .theme-switcher {
     justify-content: flex-start;
     padding-inline: 14px;
+  }
+
+  .header-actions .locale-switch {
+    width: auto;
+    min-width: 86px;
   }
 
   .hero-section {
