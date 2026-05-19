@@ -44,8 +44,11 @@ The MeteorTest Web preview is for console-surface validation. Local Agent execut
 - **iOS-Automation-Framework**: the companion test-code repository and `meteortest.yml` integration sample.
 - **senior-engineering-guardrails**: a coding-agent workflow discipline layer.
 - **douyin-video-toolkit**: a creator workflow automation toolkit.
+- **MeteorVoice**: an early-stage voice-first English practice product experiment.
+- **idea-to-app-spec**: a reusable AI workflow skill for turning rough ideas into build-ready handoff artifacts.
+- **TimeTracker**: a utility backend service for user, device, event, and session tracking.
 
-The website is intentionally project-led. It explains how these repositories relate to repeatable testing loops, local execution, reports, and AI-assisted operations.
+The website is intentionally project-led. It explains how these repositories relate to repeatable testing loops, local execution, reports, AI-assisted operations, reusable workflow packaging, and product experiments.
 
 ## Key Projects
 
@@ -53,6 +56,10 @@ The website is intentionally project-led. It explains how these repositories rel
 | --- | --- | --- |
 | MeteorTest | Flagship automation testing platform | [Web Preview](https://meteortest.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorTest) |
 | iOS-Automation-Framework | Companion iOS test project and integration sample | [GitHub](https://github.com/JunchenMeteor/iOS-Automation-Framework) |
+| MeteorVoice | Early-stage voice practice product experiment | [GitHub](https://github.com/JunchenMeteor/MeteorVoice) |
+| junchen-meteor | Personal website and project hub | [GitHub](https://github.com/JunchenMeteor/junchen-meteor) |
+| TimeTracker | Utility backend service | [GitHub](https://github.com/JunchenMeteor/TimeTracker) |
+| idea-to-app-spec | Reusable AI idea-to-spec workflow skill | [GitHub](https://github.com/JunchenMeteor/idea-to-app-spec) |
 | senior-engineering-guardrails | Agent workflow guardrails | [GitHub](https://github.com/JunchenMeteor/senior-engineering-guardrails) |
 | douyin-video-toolkit | Creator workflow automation toolkit | [GitHub](https://github.com/JunchenMeteor/douyin-video-toolkit) |
 
