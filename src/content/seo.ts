@@ -27,7 +27,7 @@ const seoCopy = {
     projects: {
       title: "Projects | JC Meteor",
       description:
-        "Explore JC Meteor projects including MeteorTest, iOS-Automation-Framework, senior-engineering-guardrails, and creator workflow automation tools.",
+        "Explore JC Meteor projects including MeteorTest, iOS-Automation-Framework, MeteorVoice, idea-to-app-spec, and reusable AI workflow tools.",
       path: "/projects"
     }
   },
@@ -45,7 +45,7 @@ const seoCopy = {
     },
     projects: {
       title: "项目 | JC Meteor",
-      description: "查看 JC Meteor 项目，包括 MeteorTest、iOS-Automation-Framework、senior-engineering-guardrails 和创作者工作流工具。",
+      description: "查看 JC Meteor 项目，包括 MeteorTest、iOS-Automation-Framework、MeteorVoice、idea-to-app-spec 和可复用 AI 工作流工具。",
       path: "/zh-CN/projects"
     }
   }
