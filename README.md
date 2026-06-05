@@ -1,7 +1,7 @@
 # Junchen Meteor
 
 <p align="center">
-  <strong>A project-led personal website for automation testing, iOS engineering systems, and AI-assisted development workflows</strong>
+  <strong>A project-led personal website for automation testing, voice AI practice, iOS engineering systems, and AI-assisted development workflows</strong>
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
   <a href="README.zh-CN.md"><img alt="Docs 中文" src="https://img.shields.io/badge/Docs-%E4%B8%AD%E6%96%87-red" /></a>
 </p>
 
-Personal project hub for **JC Meteor**. The site presents automation testing, iOS engineering systems, and AI-assisted development workflows, with **MeteorTest** as the flagship project.
+Personal project hub for **JC Meteor**. The site presents automation testing, voice AI practice, iOS engineering systems, and AI-assisted development workflows, with **MeteorTest** as the flagship project and **MeteorVoice** as the voice-first learning product.
 
 ## Live Preview
 
@@ -29,6 +29,12 @@ https://jcmeteor.com/
 ```
 
 This preview is the static public website only. It does not expose MeteorTest Local Agent endpoints, Supabase secrets, local machines, devices, or test execution services.
+
+The Tencent Cloud deployment uses the same public domain and displays the ICP record required for the domestic route:
+
+```text
+陕ICP备2026014092号-1
+```
 
 MeteorTest Web is available separately as a public preview:
 
@@ -41,17 +47,19 @@ The MeteorTest Web preview is for console-surface validation. Local Agent execut
 ## What This Site Covers
 
 - **MeteorTest**: the flagship automation testing platform project.
+- **MeteorVoice**: the bilingual voice conversation coach for English speaking practice.
 - **iOS-Automation-Framework**: the companion test-code repository and `meteortest.yml` integration sample.
 - **senior-engineering-guardrails**: a coding-agent workflow discipline layer.
 - **douyin-video-toolkit**: a creator workflow automation toolkit.
 
-The website is intentionally project-led. It explains how these repositories relate to repeatable testing loops, local execution, reports, and AI-assisted operations.
+The website is intentionally project-led. It explains how these repositories relate to repeatable testing loops, voice interaction loops, local execution, reports, and AI-assisted operations.
 
 ## Key Projects
 
 | Project | Role | Link |
 | --- | --- | --- |
 | MeteorTest | Flagship automation testing platform | [Web Preview](https://meteortest.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorTest) |
+| MeteorVoice | Voice-first English speaking practice product | [Preview](https://meteorvoice.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorVoice) |
 | iOS-Automation-Framework | Companion iOS test project and integration sample | [GitHub](https://github.com/JunchenMeteor/iOS-Automation-Framework) |
 | senior-engineering-guardrails | Agent workflow guardrails | [GitHub](https://github.com/JunchenMeteor/senior-engineering-guardrails) |
 | douyin-video-toolkit | Creator workflow automation toolkit | [GitHub](https://github.com/JunchenMeteor/douyin-video-toolkit) |
@@ -131,6 +139,7 @@ The site uses project-first public contact links:
 
 - [GitHub Profile](https://github.com/JunchenMeteor)
 - [MeteorTest Issues](https://github.com/JunchenMeteor/MeteorTest/issues)
+- [MeteorVoice Issues](https://github.com/JunchenMeteor/MeteorVoice/issues)
 - [iOS-Automation-Framework Issues](https://github.com/JunchenMeteor/iOS-Automation-Framework/issues)
 
 Do not post private credentials, internal URLs, device identifiers, or test accounts in public issues.

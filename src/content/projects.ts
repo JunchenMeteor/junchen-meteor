@@ -1,4 +1,4 @@
-export type ProjectRole = "flagship" | "companion" | "skill" | "toolkit";
+export type ProjectRole = "flagship" | "product" | "companion" | "skill" | "toolkit";
 export type ProjectStatus = "Active" | "MVP" | "Maintained" | "Toolkit";
 
 export type Project = {
@@ -101,6 +101,63 @@ export const projects: Project[] = [
       issues: "https://github.com/JunchenMeteor/MeteorTest/issues",
       roadmap: "https://github.com/JunchenMeteor/MeteorTest#roadmap",
       preview: "https://meteortest.jcmeteor.com/"
+    }
+  },
+  {
+    slug: "meteorvoice",
+    name: "MeteorVoice",
+    role: "product",
+    status: "Active",
+    stack: ["Next.js", "Expo iOS", "Supabase", "DeepSeek", "Xunfei ASR/TTS"],
+    summary: {
+      en: "A bilingual voice conversation coach for English speaking practice across mobile and web sessions.",
+      zh: "面向英语口语练习的双语语音会话教练，覆盖移动端与 Web 会话。"
+    },
+    portfolio: {
+      why: {
+        en: "MeteorVoice turns English practice into a spoken loop where listening, endpointing, AI feedback, and speech playback can be measured and improved together.",
+        zh: "MeteorVoice 把英语练习做成可说、可听、可衡量的闭环，让监听、断句、AI 反馈和语音播放可以一起优化。"
+      },
+      built: {
+        en: [
+          "Mobile and Web session surfaces with shared API client behavior, authentication, preferences, history, and settings.",
+          "ASR provider layer with native STT fallback, Xunfei WebSocket routing, PCM capture diagnostics, and provider-level observability.",
+          "TTS provider routing, session lifecycle controls, echo guard, endpointing, grouped loading feedback, and deployment paths for Tencent Cloud and Vercel."
+        ],
+        zh: [
+          "移动端和 Web 会话界面，共用 API client 行为、登录、偏好、历史记录和设置能力。",
+          "统一 ASR Provider 层，覆盖原生 STT fallback、讯飞 WebSocket 路由、PCM 采集诊断和供应商级观测。",
+          "TTS Provider 路由、会话生命周期控制、回声防护、断句、聚合加载反馈，以及腾讯云和 Vercel 的部署路径。"
+        ]
+      },
+      role: {
+        en: "Voice-first learning product and cross-platform AI interaction system.",
+        zh: "语音优先学习产品和跨端 AI 交互系统。"
+      },
+      next: {
+        en: "Improve bilingual response routing, voice quality, ASR/TTS diagnostics, and production deployment hardening.",
+        zh: "继续优化中英文回复路由、音色质量、ASR/TTS 诊断能力和生产部署防护。"
+      }
+    },
+    highlights: {
+      en: [
+        "Bilingual speaking practice",
+        "ASR provider routing",
+        "TTS playback control",
+        "Mobile session lifecycle"
+      ],
+      zh: [
+        "双语口语练习",
+        "ASR Provider 路由",
+        "TTS 播放控制",
+        "移动端会话生命周期"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/MeteorVoice",
+      docs: "https://github.com/JunchenMeteor/MeteorVoice#readme",
+      issues: "https://github.com/JunchenMeteor/MeteorVoice/issues",
+      preview: "https://meteorvoice.jcmeteor.com/"
     }
   },
   {

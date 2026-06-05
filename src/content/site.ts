@@ -4,13 +4,15 @@ export const site = {
   name: "JC Meteor",
   zhName: "钧宸流星",
   github: "https://github.com/JunchenMeteor",
+  icpRecord: "陕ICP备2026014092号-1",
+  icpHref: "https://beian.miit.gov.cn/",
   tagline: {
-    en: "Automation testing, iOS engineering systems, and AI-assisted development workflows.",
-    zh: "聚焦自动化测试、iOS 工程体系与 AI 辅助研发工作流。"
+    en: "Automation testing, voice AI practice, iOS engineering systems, and AI-assisted development workflows.",
+    zh: "聚焦自动化测试、语音 AI 练习、iOS 工程体系与 AI 辅助研发工作流。"
   },
   intro: {
-    en: "A project-led engineering portfolio centered on repeatable testing systems, local execution loops, and practical agent workflows.",
-    zh: "一个以项目为核心的工程主页，串联可复现的测试系统、本地执行闭环和实用的 Agent 工作流。"
+    en: "A project-led engineering portfolio centered on repeatable testing systems, voice interaction products, local execution loops, and practical agent workflows.",
+    zh: "一个以项目为核心的工程主页，串联可复现的测试系统、语音交互产品、本地执行闭环和实用的 Agent 工作流。"
   }
 };
 
@@ -54,8 +56,14 @@ export const homeCopy = {
       {
         title: "AI-assisted engineering workflows",
         body:
-          "Use AI as an operation partner that can import projects, prepare tasks, inspect results, and suggest concrete next actions.",
-        points: ["Agent guardrails", "Context-first actions", "Human review"]
+          "Use AI as an operation partner that can import projects, prepare tasks, inspect results, guide voice practice, and suggest concrete next actions.",
+        points: ["Agent guardrails", "Voice feedback", "Human review"]
+      },
+      {
+        title: "Voice-first learning products",
+        body:
+          "Build spoken interaction loops where ASR, endpointing, TTS, session state, and feedback controls stay observable across web and mobile.",
+        points: ["ASR provider layer", "TTS routing", "Mobile session control"]
       },
       {
         title: "Repeatable local execution",
@@ -129,8 +137,13 @@ export const homeCopy = {
       },
       {
         title: "AI 辅助工程工作流",
-        body: "把 AI 作为能导入项目、准备任务、查看结果并提出下一步动作的工程协作入口。",
-        points: ["Agent 规则", "上下文优先操作", "人工确认"]
+        body: "把 AI 作为能导入项目、准备任务、查看结果、指导口语练习并提出下一步动作的工程协作入口。",
+        points: ["Agent 规则", "语音反馈", "人工确认"]
+      },
+      {
+        title: "语音优先学习产品",
+        body: "构建可观测的语音交互闭环，让 ASR、断句、TTS、会话状态和反馈控制在 Web 与移动端保持一致。",
+        points: ["ASR Provider 层", "TTS 路由", "移动端会话控制"]
       },
       {
         title: "可复现的本地执行",
@@ -191,6 +204,7 @@ export const contactCopy = {
     collaborationTitle: "Good topics to discuss",
     collaborationItems: [
       "Automation testing platforms and local execution loops.",
+      "Voice AI practice products, ASR/TTS provider routing, and mobile session control.",
       "iOS automation, pytest/Appium integration, and test infrastructure.",
       "AI-assisted development workflows that can operate on real project context."
     ],
@@ -204,6 +218,11 @@ export const contactCopy = {
         label: "MeteorTest Issues",
         description: "Use this for platform questions, bugs, roadmap feedback, and testing workflow ideas.",
         href: "https://github.com/JunchenMeteor/MeteorTest/issues"
+      },
+      {
+        label: "MeteorVoice Issues",
+        description: "Use this for voice practice, ASR/TTS routing, mobile session, and speech feedback questions.",
+        href: "https://github.com/JunchenMeteor/MeteorVoice/issues"
       },
       {
         label: "iOS Automation Issues",
@@ -222,6 +241,7 @@ export const contactCopy = {
     collaborationTitle: "适合交流的方向",
     collaborationItems: [
       "自动化测试平台和本地执行闭环。",
+      "语音 AI 练习产品、ASR/TTS Provider 路由和移动端会话控制。",
       "iOS 自动化、pytest/Appium 接入和测试基础设施。",
       "能够基于真实项目上下文操作的 AI 辅助研发工作流。"
     ],
@@ -235,6 +255,11 @@ export const contactCopy = {
         label: "MeteorTest Issues",
         description: "用于测试平台相关问题、缺陷、路线图反馈和测试工作流想法。",
         href: "https://github.com/JunchenMeteor/MeteorTest/issues"
+      },
+      {
+        label: "MeteorVoice Issues",
+        description: "用于语音练习、ASR/TTS 路由、移动端会话和语音反馈相关问题。",
+        href: "https://github.com/JunchenMeteor/MeteorVoice/issues"
       },
       {
         label: "iOS Automation Issues",
