@@ -53,7 +53,7 @@ export const uiCopy = {
       pageLabel: "Projects",
       pageTitle: "A project-led engineering portfolio",
       pageIntro:
-        "MeteorTest and MeteorVoice anchor the current system, with companion repositories that cover test implementation, agent guardrails, and creator tooling.",
+        "MeteorTest and MeteorVoice anchor the current system, with companion repositories that cover test implementation, agent guardrails, creator tooling, workflow packaging, and the public homepage itself.",
       ecosystemRole: "Ecosystem role",
       validationResults: "Validation results",
       why: "Why it exists",
@@ -114,7 +114,7 @@ export const uiCopy = {
     projects: {
       pageLabel: "项目",
       pageTitle: "以项目为核心的工程作品集",
-      pageIntro: "MeteorTest 和 MeteorVoice 是当前项目体系的核心，配套仓库覆盖测试实现、Agent 工作规则和创作工具。",
+      pageIntro: "MeteorTest 和 MeteorVoice 是当前项目体系的核心，配套仓库覆盖测试实现、Agent 工作规则、创作工具、工作流打包和个人主页本身。",
       ecosystemRole: "生态角色",
       validationResults: "验证结果",
       why: "为什么存在",

@@ -51,8 +51,10 @@ https://meteortest.jcmeteor.com/
 - **iOS-Automation-Framework**：配套测试代码仓库，也是 `meteortest.yml` 集成样例。
 - **senior-engineering-guardrails**：面向 AI 编码 Agent 的工程工作规则。
 - **douyin-video-toolkit**：创作者工作流自动化工具。
+- **idea-to-app-spec**：把模糊想法整理成可执行交付产物的可复用 AI 工作流 skill。
+- **TimeTracker**：用于用户、设备、事件和会话跟踪的实用型后端服务。
 
-这个网站以项目为核心，说明这些仓库如何围绕可复现测试闭环、语音交互闭环、本地执行、报告和 AI 辅助操作形成关系。
+这个网站以项目为核心，说明这些仓库如何围绕可复现测试闭环、语音交互闭环、本地执行、报告、AI 辅助操作、可复用工作流打包和产品实验形成关系。
 
 ## 关键项目
 
@@ -61,6 +63,9 @@ https://meteortest.jcmeteor.com/
 | MeteorTest | 主推自动化测试平台 | [Web 预览](https://meteortest.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorTest) |
 | MeteorVoice | 语音优先英语口语练习产品 | [预览](https://meteorvoice.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorVoice) |
 | iOS-Automation-Framework | iOS 配套测试项目和集成样例 | [GitHub](https://github.com/JunchenMeteor/iOS-Automation-Framework) |
+| junchen-meteor | 个人主页和项目入口 | [GitHub](https://github.com/JunchenMeteor/junchen-meteor) |
+| TimeTracker | 实用型后端服务 | [GitHub](https://github.com/JunchenMeteor/TimeTracker) |
+| idea-to-app-spec | 可复用 AI 想法转规格工作流 skill | [GitHub](https://github.com/JunchenMeteor/idea-to-app-spec) |
 | senior-engineering-guardrails | Agent 工作规则 | [GitHub](https://github.com/JunchenMeteor/senior-engineering-guardrails) |
 | douyin-video-toolkit | 创作者工作流自动化工具 | [GitHub](https://github.com/JunchenMeteor/douyin-video-toolkit) |
 

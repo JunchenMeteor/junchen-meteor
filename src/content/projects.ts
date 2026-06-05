@@ -43,7 +43,20 @@ export type Project = {
   };
 };
 
-export const projects: Project[] = [
+const projectDisplayOrder = [
+  "meteortest",
+  "meteorvoice",
+  "ios-automation-framework",
+  "junchen-meteor",
+  "timetracker",
+  "idea-to-app-spec",
+  "senior-engineering-guardrails",
+  "douyin-video-toolkit"
+];
+
+const projectRank = new Map(projectDisplayOrder.map((slug, index) => [slug, index]));
+
+const projectEntries: Project[] = [
   {
     slug: "meteortest",
     name: "MeteorTest",
@@ -325,8 +338,179 @@ export const projects: Project[] = [
       github: "https://github.com/JunchenMeteor/douyin-video-toolkit",
       docs: "https://github.com/JunchenMeteor/douyin-video-toolkit#readme"
     }
+  },
+  {
+    slug: "junchen-meteor",
+    name: "junchen-meteor",
+    zhName: "JC Meteor 个人主页",
+    role: "companion",
+    status: "Active",
+    stack: ["Next.js", "TypeScript", "Localization", "Theme System"],
+    summary: {
+      en: "A bilingual personal website that presents JC Meteor's project hub, technical identity, and public project ecosystem.",
+      zh: "一个双语个人网站，用于展示 JC Meteor 的项目主页、技术身份和公开项目生态。"
+    },
+    portfolio: {
+      why: {
+        en: "A personal homepage gives the project family one stable public entry point instead of scattering context across individual repositories.",
+        zh: "个人主页为项目家族提供一个稳定的公开入口，避免把上下文分散在各个仓库里。"
+      },
+      built: {
+        en: [
+          "Bilingual project showcase with localized routes and shared content modules.",
+          "Flagship project framing for MeteorTest and related companion projects.",
+          "Structured project pages that keep public project context easy to scan."
+        ],
+        zh: [
+          "具备本地化路由和共享内容模块的双语项目展示。",
+          "围绕 MeteorTest 和配套项目构建主项目叙事。",
+          "结构化项目页面，方便快速浏览公开项目上下文。"
+        ]
+      },
+      role: {
+        en: "Public project hub and portfolio site.",
+        zh: "公开项目主页和作品集站点。"
+      },
+      next: {
+        en: "Keep the project list current as new repos land, and continue tightening the relationship between the homepage and each project detail page.",
+        zh: "随着新仓库增加持续更新项目列表，并继续加强首页与各项目详情页之间的关联。"
+      }
+    },
+    highlights: {
+      en: [
+        "Bilingual content structure",
+        "Localized project routes",
+        "Project ecosystem overview",
+        "Shared content modules"
+      ],
+      zh: [
+        "双语内容结构",
+        "本地化项目路由",
+        "项目生态总览",
+        "共享内容模块"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/junchen-meteor",
+      docs: "https://github.com/JunchenMeteor/junchen-meteor#readme"
+    }
+  },
+  {
+    slug: "idea-to-app-spec",
+    name: "idea-to-app-spec",
+    role: "skill",
+    status: "Maintained",
+    stack: ["Codex", "Claude Code", "Workflow Design", "Chronicle"],
+    summary: {
+      en: "An AI workflow skill that turns rough ideas into specs, plans, one-shot prompts, and implementation handoff artifacts.",
+      zh: "一个 AI 工作流 skill，可把模糊想法转成 spec、plan、one-shot prompt 和 implementation handoff 产物。"
+    },
+    portfolio: {
+      why: {
+        en: "Many AI builds fail because the idea is not shaped well enough before implementation starts.",
+        zh: "很多 AI 项目失败，是因为在开始实现前，想法还没有被整理清楚。"
+      },
+      built: {
+        en: [
+          "Explore, package, and skill-mining modes for shaping delivery workflows.",
+          "Spec, plan, one-shot prompt, handoff, chronicle, and skill suggestion outputs.",
+          "Codex and Claude Code installation guidance for reusable workflow packaging."
+        ],
+        zh: [
+          "用于整理交付流程的 Explore、Package 和 Skill Mining 模式。",
+          "输出 spec、plan、one-shot prompt、handoff、chronicle 和 skill suggestion。",
+          "提供面向 Codex 和 Claude Code 的安装与复用说明。"
+        ]
+      },
+      role: {
+        en: "Reusable AI workflow package.",
+        zh: "可复用的 AI 工作流包。"
+      },
+      next: {
+        en: "Keep tightening the workflow packaging, documentation, and reusable skill suggestions.",
+        zh: "继续打磨工作流打包、文档和可复用 skill 建议。"
+      }
+    },
+    highlights: {
+      en: [
+        "Idea-to-spec workflow",
+        "One-shot prompt generation",
+        "Implementation handoff",
+        "Chronicle and skill mining"
+      ],
+      zh: [
+        "想法转 spec 工作流",
+        "One-shot prompt 生成",
+        "实现交接",
+        "Chronicle 和 skill 挖掘"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/idea-to-app-spec",
+      docs: "https://github.com/JunchenMeteor/idea-to-app-spec#readme"
+    }
+  },
+  {
+    slug: "timetracker",
+    name: "TimeTracker",
+    zhName: "TimeTracker 后端服务",
+    role: "companion",
+    status: "Active",
+    stack: ["Java", "Spring Boot", "Docker", "MySQL", "Redis"],
+    summary: {
+      en: "A backend service for tracking users, devices, events, and daily sessions.",
+      zh: "一个用于跟踪用户、设备、事件和每日会话的后端服务。"
+    },
+    portfolio: {
+      why: {
+        en: "Operational systems work better when attendance, device, and session data are structured instead of scattered in ad hoc records.",
+        zh: "当考勤、设备和会话数据被结构化管理，而不是散落在零散记录中时，运营系统会更好用。"
+      },
+      built: {
+        en: [
+          "REST APIs for registration, login, device reporting, and session queries.",
+          "Docker Compose setup for backend, MySQL, and Redis.",
+          "Simple service-layer structure for model, repository, controller, and security code."
+        ],
+        zh: [
+          "用于注册、登录、设备上报和会话查询的 REST API。",
+          "提供后端、MySQL 和 Redis 的 Docker Compose 启动方案。",
+          "采用 model、repository、controller 和 security 分层的服务结构。"
+        ]
+      },
+      role: {
+        en: "Utility backend service.",
+        zh: "实用型后端服务。"
+      },
+      next: {
+        en: "Expand the reporting and workflow layer if it becomes part of a larger product system.",
+        zh: "如果它演进为更大产品体系的一部分，再扩展报表和流程层。"
+      }
+    },
+    highlights: {
+      en: [
+        "Device and session tracking",
+        "REST API service",
+        "Dockerized local stack",
+        "Simple layered backend design"
+      ],
+      zh: [
+        "设备和会话跟踪",
+        "REST API 服务",
+        "Docker 化本地栈",
+        "简洁的后端分层设计"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/TimeTracker",
+      docs: "https://github.com/JunchenMeteor/TimeTracker#readme"
+    }
   }
 ];
+
+export const projects = [...projectEntries].sort((left, right) => {
+  return (projectRank.get(left.slug) ?? Number.MAX_SAFE_INTEGER) - (projectRank.get(right.slug) ?? Number.MAX_SAFE_INTEGER);
+});
 
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);
