@@ -1,4 +1,4 @@
-export type ProjectRole = "flagship" | "companion" | "skill" | "toolkit";
+export type ProjectRole = "flagship" | "product" | "companion" | "skill" | "toolkit";
 export type ProjectStatus = "Active" | "MVP" | "Maintained" | "Toolkit";
 
 export type Project = {
@@ -45,8 +45,8 @@ export type Project = {
 
 const projectDisplayOrder = [
   "meteortest",
-  "ios-automation-framework",
   "meteorvoice",
+  "ios-automation-framework",
   "junchen-meteor",
   "timetracker",
   "idea-to-app-spec",
@@ -114,6 +114,63 @@ const projectEntries: Project[] = [
       issues: "https://github.com/JunchenMeteor/MeteorTest/issues",
       roadmap: "https://github.com/JunchenMeteor/MeteorTest#roadmap",
       preview: "https://meteortest.jcmeteor.com/"
+    }
+  },
+  {
+    slug: "meteorvoice",
+    name: "MeteorVoice",
+    role: "product",
+    status: "Active",
+    stack: ["Next.js", "Expo iOS", "Supabase", "DeepSeek", "Xunfei ASR/TTS"],
+    summary: {
+      en: "A bilingual voice conversation coach for English speaking practice across mobile and web sessions.",
+      zh: "面向英语口语练习的双语语音会话教练，覆盖移动端与 Web 会话。"
+    },
+    portfolio: {
+      why: {
+        en: "MeteorVoice turns English practice into a spoken loop where listening, endpointing, AI feedback, and speech playback can be measured and improved together.",
+        zh: "MeteorVoice 把英语练习做成可说、可听、可衡量的闭环，让监听、断句、AI 反馈和语音播放可以一起优化。"
+      },
+      built: {
+        en: [
+          "Mobile and Web session surfaces with shared API client behavior, authentication, preferences, history, and settings.",
+          "ASR provider layer with native STT fallback, Xunfei WebSocket routing, PCM capture diagnostics, and provider-level observability.",
+          "TTS provider routing, session lifecycle controls, echo guard, endpointing, grouped loading feedback, and deployment paths for Tencent Cloud and Vercel."
+        ],
+        zh: [
+          "移动端和 Web 会话界面，共用 API client 行为、登录、偏好、历史记录和设置能力。",
+          "统一 ASR Provider 层，覆盖原生 STT fallback、讯飞 WebSocket 路由、PCM 采集诊断和供应商级观测。",
+          "TTS Provider 路由、会话生命周期控制、回声防护、断句、聚合加载反馈，以及腾讯云和 Vercel 的部署路径。"
+        ]
+      },
+      role: {
+        en: "Voice-first learning product and cross-platform AI interaction system.",
+        zh: "语音优先学习产品和跨端 AI 交互系统。"
+      },
+      next: {
+        en: "Improve bilingual response routing, voice quality, ASR/TTS diagnostics, and production deployment hardening.",
+        zh: "继续优化中英文回复路由、音色质量、ASR/TTS 诊断能力和生产部署防护。"
+      }
+    },
+    highlights: {
+      en: [
+        "Bilingual speaking practice",
+        "ASR provider routing",
+        "TTS playback control",
+        "Mobile session lifecycle"
+      ],
+      zh: [
+        "双语口语练习",
+        "ASR Provider 路由",
+        "TTS 播放控制",
+        "移动端会话生命周期"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/MeteorVoice",
+      docs: "https://github.com/JunchenMeteor/MeteorVoice#readme",
+      issues: "https://github.com/JunchenMeteor/MeteorVoice/issues",
+      preview: "https://meteorvoice.jcmeteor.com/"
     }
   },
   {
@@ -336,61 +393,6 @@ const projectEntries: Project[] = [
     links: {
       github: "https://github.com/JunchenMeteor/junchen-meteor",
       docs: "https://github.com/JunchenMeteor/junchen-meteor#readme"
-    }
-  },
-  {
-    slug: "meteorvoice",
-    name: "MeteorVoice",
-    role: "companion",
-    status: "Active",
-    stack: ["Next.js", "Supabase", "LangGraph", "Vercel AI SDK", "TTS"],
-    summary: {
-      en: "An early-stage voice-first English speaking coach, with the first engineering loop in place and real accent providers still being integrated.",
-      zh: "一个早期阶段的语音优先英语陪练应用，已完成第一轮工程闭环，真实口音供应商仍在接入中。"
-    },
-    portfolio: {
-      why: {
-        en: "The project explores whether a short voice-practice loop can make English speaking feedback easier to repeat and refine.",
-        zh: "这个项目用于探索短闭环语音练习是否能让英语口语反馈更容易反复使用和迭代。"
-      },
-      built: {
-        en: [
-          "First-pass Next.js app structure for practice sessions, correction items, preferences, and history.",
-          "Supabase-backed persistence for sessions, turns, correction items, and user preferences.",
-          "Mock AI, STT, and TTS providers that keep local development runnable before real voice-provider integration is complete."
-        ],
-        zh: [
-          "完成第一版 Next.js 应用结构，覆盖练习会话、纠错项、偏好和历史记录。",
-          "基于 Supabase 持久化会话、轮次、纠错项和用户偏好。",
-          "提供 mock AI、STT 和 TTS 适配器，在真实语音供应商接入完成前保持本地开发可运行。"
-        ]
-      },
-      role: {
-        en: "Early voice-coaching product experiment.",
-        zh: "早期语音陪练产品实验。"
-      },
-      next: {
-        en: "Connect real STT/TTS providers, validate accent behavior, and tighten the correction loop after provider integration is stable.",
-        zh: "接入真实 STT/TTS 供应商，验证口音表现，并在供应商接入稳定后继续打磨纠错闭环。"
-      }
-    },
-    highlights: {
-      en: [
-        "First-pass voice practice loop",
-        "Mock provider development path",
-        "Supabase-backed session history",
-        "Real accent integration planned"
-      ],
-      zh: [
-        "第一版语音练习闭环",
-        "Mock 供应商开发路径",
-        "Supabase 会话历史",
-        "计划接入真实口音"
-      ]
-    },
-    links: {
-      github: "https://github.com/JunchenMeteor/MeteorVoice",
-      docs: "https://github.com/JunchenMeteor/MeteorVoice#readme"
     }
   },
   {

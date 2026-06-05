@@ -6,7 +6,7 @@ This document records how the JC Meteor personal website was built into a projec
 
 - Make the website feel like a serious engineering portfolio, not only a visual landing page.
 - Explain why each project exists, what has been built, and how the projects relate to each other.
-- Keep MeteorTest as the flagship project while keeping the personal brand hierarchy clear.
+- Keep MeteorTest as the flagship project, present MeteorVoice as the voice-first learning product, and keep the personal brand hierarchy clear.
 - Add project validation results gradually: problem statements, architecture, AI-assisted operations, status, roadmap, and demo links.
 - Avoid implying that the website is showing the real MeteorTest UI unless a section is explicitly a real screenshot or live demo.
 
@@ -41,6 +41,7 @@ Use these status labels so future agents can quickly understand progress:
 | Phase 11: MeteorTest Web Public Preview | In Progress | MeteorTest Web is now reachable at `https://meteortest.jcmeteor.com/`; the remaining work is updating website entry points and hardening the preview mode, demo data, auth, and private-Agent loop in the MeteorTest repo. |
 | Phase 11.1: Website Preview Entry Points | Done | Added the live MeteorTest Web preview URL to homepage, project pages, demo status, README files, AGENTS, and route copy while preserving the boundary between public preview and connected execution. |
 | Phase 11.2: Website SEO And Product Page Polish | Done | Added localized metadata/Open Graph coverage and reshaped the MeteorTest page around preview status, live preview, mock demo, GitHub, workflow, screenshots, validation, and roadmap. |
+| Phase 11.3: MeteorVoice And ICP Website Update | Done | Added MeteorVoice as an active product entry, updated homepage/project/README copy, and added the required ICP footer link for the Tencent Cloud domestic route. |
 | Phase 12: Public Connected Demo | Deferred | Consider only after authentication, data isolation, secrets handling, permission checks, rate limits, and executor sandboxing are designed. |
 
 ## Non-Goals
@@ -56,9 +57,11 @@ The website MVP now covers the earlier content gaps:
 
 - The homepage explains MeteorTest's engineering problem, AI-first execution model, companion test project, project ecosystem, and contact entry points.
 - The Projects page presents each repository with purpose, built work, status, links, and ecosystem role.
+- MeteorVoice is now represented as a separate active product covering bilingual speaking practice, ASR provider routing, TTS playback, mobile session lifecycle, diagnostics, and Tencent/Vercel deployment paths.
 - The MeteorTest detail page includes background, problem framing, responsibilities, execution loop, capabilities, available status, demo status, and roadmap.
 - The demo page is an interactive mock demo that makes the AI-assisted operation loop visible without pretending to be a public real-execution service.
 - The planning document now separates completed website work from future validation-results work.
+- The footer displays `陕ICP备2026014092号-1` and links to `https://beian.miit.gov.cn/` for the domestic deployment.
 
 ## Content Principles
 
@@ -80,6 +83,11 @@ The website MVP now covers the earlier content gaps:
    - It should be the strongest project section on the homepage.
    - It should not be a top-level nav item beside the personal brand.
    - It should have a dedicated detail page and later a demo entry.
+
+5. **MeteorVoice is a product entry, not a testing companion**
+   - It should appear as an active product in the project index and detail routes.
+   - It should describe the real cross-platform voice loop: ASR provider layer, TTS routing, session state, diagnostics, and deployment hardening.
+   - It should not imply perfect bilingual quality or production maturity beyond what the app currently supports.
 
 ## Phase 1: Homepage Content Depth
 

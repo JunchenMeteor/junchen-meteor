@@ -2349,11 +2349,32 @@ a {
 
 .site-footer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
   padding: 28px clamp(20px, 5vw, 72px);
   border-top: 1px solid var(--line);
   color: var(--muted);
+}
+
+.site-footer div {
+  display: grid;
+  gap: 6px;
+}
+
+.site-footer div span:first-child {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-footer a:hover {
+  color: var(--accent);
 }
 
 @media (max-width: 980px) {
@@ -2543,6 +2564,7 @@ a {
 
   .site-footer {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 

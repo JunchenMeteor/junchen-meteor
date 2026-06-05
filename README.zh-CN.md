@@ -1,7 +1,7 @@
 # Junchen Meteor
 
 <p align="center">
-  <strong>用于串联自动化测试、iOS 工程体系和 AI 辅助开发工作流的项目型个人官网</strong>
+  <strong>用于串联自动化测试、语音 AI 练习、iOS 工程体系和 AI 辅助开发工作流的项目型个人官网</strong>
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
   <a href="README.zh-CN.md"><img alt="Docs 中文" src="https://img.shields.io/badge/Docs-%E4%B8%AD%E6%96%87-red" /></a>
 </p>
 
-**JC Meteor** 的个人项目官网。这个站点用于展示自动化测试、iOS 工程体系和 AI 辅助开发工作流，其中 **MeteorTest** 是当前主推项目。
+**JC Meteor** 的个人项目官网。这个站点用于展示自动化测试、语音 AI 练习、iOS 工程体系和 AI 辅助开发工作流，其中 **MeteorTest** 是当前主推项目，**MeteorVoice** 是语音优先学习产品。
 
 ## 在线预览
 
@@ -29,6 +29,12 @@ https://jcmeteor.com/
 ```
 
 这个预览只包含静态公开官网，不会暴露 MeteorTest Local Agent 端点、Supabase 密钥、本机服务、设备或测试执行服务。
+
+腾讯云国内部署使用同一个公开域名，并在页面底部展示备案号：
+
+```text
+陕ICP备2026014092号-1
+```
 
 MeteorTest Web 已经作为独立公网预览上线：
 
@@ -41,22 +47,22 @@ https://meteortest.jcmeteor.com/
 ## 这个站点包含什么
 
 - **MeteorTest**：主推的自动化测试平台项目。
+- **MeteorVoice**：面向英语口语练习的双语语音会话教练。
 - **iOS-Automation-Framework**：配套测试代码仓库，也是 `meteortest.yml` 集成样例。
 - **senior-engineering-guardrails**：面向 AI 编码 Agent 的工程工作规则。
 - **douyin-video-toolkit**：创作者工作流自动化工具。
-- **MeteorVoice**：早期阶段的语音优先英语练习产品实验。
 - **idea-to-app-spec**：把模糊想法整理成可执行交付产物的可复用 AI 工作流 skill。
 - **TimeTracker**：用于用户、设备、事件和会话跟踪的实用型后端服务。
 
-这个网站以项目为核心，说明这些仓库如何围绕可复现测试闭环、本地执行、报告、AI 辅助操作、可复用工作流打包和产品实验形成关系。
+这个网站以项目为核心，说明这些仓库如何围绕可复现测试闭环、语音交互闭环、本地执行、报告、AI 辅助操作、可复用工作流打包和产品实验形成关系。
 
 ## 关键项目
 
 | 项目 | 角色 | 链接 |
 | --- | --- | --- |
 | MeteorTest | 主推自动化测试平台 | [Web 预览](https://meteortest.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorTest) |
+| MeteorVoice | 语音优先英语口语练习产品 | [预览](https://meteorvoice.jcmeteor.com/) / [GitHub](https://github.com/JunchenMeteor/MeteorVoice) |
 | iOS-Automation-Framework | iOS 配套测试项目和集成样例 | [GitHub](https://github.com/JunchenMeteor/iOS-Automation-Framework) |
-| MeteorVoice | 早期语音练习产品实验 | [GitHub](https://github.com/JunchenMeteor/MeteorVoice) |
 | junchen-meteor | 个人主页和项目入口 | [GitHub](https://github.com/JunchenMeteor/junchen-meteor) |
 | TimeTracker | 实用型后端服务 | [GitHub](https://github.com/JunchenMeteor/TimeTracker) |
 | idea-to-app-spec | 可复用 AI 想法转规格工作流 skill | [GitHub](https://github.com/JunchenMeteor/idea-to-app-spec) |
@@ -138,6 +144,7 @@ npm run build
 
 - [GitHub Profile](https://github.com/JunchenMeteor)
 - [MeteorTest Issues](https://github.com/JunchenMeteor/MeteorTest/issues)
+- [MeteorVoice Issues](https://github.com/JunchenMeteor/MeteorVoice/issues)
 - [iOS-Automation-Framework Issues](https://github.com/JunchenMeteor/iOS-Automation-Framework/issues)
 
 不要在公开 issue 中发布私有凭据、内部 URL、设备标识或测试账号。

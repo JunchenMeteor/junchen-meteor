@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Github, Layers, MessageSquare, Radar, Route, TerminalSquare } from "lucide-react";
+import { ArrowRight, Github, Layers, MessageSquare, Mic2, Radar, Route, TerminalSquare } from "lucide-react";
 import { contactCopy, homeCopy, site, type Locale } from "@/content/site";
 import { projects } from "@/content/projects";
 import { uiCopy } from "@/content/ui";
@@ -7,15 +7,14 @@ import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
 import { MeteorTestShowcase } from "@/components/meteortest-showcase";
 
-const iconMap = [Radar, Route, Layers, TerminalSquare];
+const iconMap = [Radar, Mic2, Route, Layers, TerminalSquare];
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
   const contact = contactCopy[locale];
   const ui = uiCopy[locale];
-  const flagship = projects[0];
-  const companion = projects[1];
-  const otherProjects = projects.slice(2);
+  const flagship = projects.find((project) => project.slug === "meteortest") ?? projects[0];
+  const companion = projects.find((project) => project.slug === "ios-automation-framework") ?? projects[1];
 
   return (
     <>
