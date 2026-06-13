@@ -1,0 +1,43 @@
+name: Deploy Tencent
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-tencent-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy static site
+    runs-on: [self-hosted, linux, x64, tencent, junchen-meteor]
+    environment: tencent
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Deploy to web root
+        run: |
+          sudo rm -rf /srv/junchen-meteor/out
+          sudo mkdir -p /srv/junchen-meteor/out
+          sudo cp -r out/* /srv/junchen-meteor/out/
+          sudo chown -R www-data:www-data /srv/junchen-meteor/out/
+          echo "Deployed to /srv/junchen-meteor/out"

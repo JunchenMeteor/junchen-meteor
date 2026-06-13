@@ -46,9 +46,16 @@ export function SiteLayout({ locale, children }: LayoutProps) {
           <span>JC Meteor</span>
           <span>{site.tagline[locale]}</span>
         </div>
-        <a href={site.icpHref} target="_blank" rel="noreferrer">
-          {site.icpRecord}
-        </a>
+        <div className="footer-records">
+          <a href={site.icpHref} target="_blank" rel="noreferrer" className="record-link">
+            {site.icpRecord}
+          </a>
+          <span className="record-sep">|</span>
+          <a href={site.psHref} target="_blank" rel="noreferrer" className="record-link">
+            <img src="/ps-record-icon.png" alt="" className="ps-record-icon" />
+            {site.psRecord}
+          </a>
+        </div>
       </footer>
     </div>
   );

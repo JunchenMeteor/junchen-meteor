@@ -48,6 +48,8 @@ const projectDisplayOrder = [
   "meteorvoice",
   "ios-automation-framework",
   "junchen-meteor",
+  "lensport",
+  "agentshot",
   "timetracker",
   "idea-to-app-spec",
   "senior-engineering-guardrails",
@@ -393,6 +395,118 @@ const projectEntries: Project[] = [
     links: {
       github: "https://github.com/JunchenMeteor/junchen-meteor",
       docs: "https://github.com/JunchenMeteor/junchen-meteor#readme"
+    }
+  },
+  {
+    slug: "lensport",
+    name: "Lensport",
+    role: "product",
+    status: "Active",
+    stack: ["TypeScript", "MCP", "Node.js", "Screen Capture"],
+    summary: {
+      en: "A local MCP server that gives AI coding agents the ability to see your screen — no cloud, no telemetry, no background recording.",
+      zh: "一个本地 MCP Server，让 AI 编程助手能够看到你的屏幕——无云端、无遥测、无后台录制。"
+    },
+    portfolio: {
+      why: {
+        en: "AI coding agents can read code but can't see UI. Lensport bridges this gap by providing screen context through the MCP protocol, running entirely locally.",
+        zh: "AI 编程助手能读代码但看不到界面。Lensport 通过 MCP 协议提供屏幕上下文，完全在本地运行，弥补这个缺口。"
+      },
+      built: {
+        en: [
+          "MCP server over stdio with screen capture, screenshot list, and recent screenshot tools.",
+          "macOS and Windows screen capture with platform-native implementations.",
+          "Local-first storage — screenshots stay on your machine, no cloud uploads."
+        ],
+        zh: [
+          "基于 stdio 的 MCP Server，提供屏幕捕获、截图列表和最近截图工具。",
+          "macOS 和 Windows 屏幕捕获，使用平台原生实现。",
+          "本地优先存储——截图保存在本机，不上传云端。"
+        ]
+      },
+      role: {
+        en: "Local screen context MCP server for AI agents.",
+        zh: "面向 AI Agent 的本地屏幕上下文 MCP Server。"
+      },
+      next: {
+        en: "Expand platform support, improve capture performance, and add region-select and annotation tools.",
+        zh: "扩展平台支持，优化捕获性能，增加区域选择和标注工具。"
+      }
+    },
+    highlights: {
+      en: [
+        "MCP server over stdio",
+        "Screen capture for AI agents",
+        "macOS & Windows support",
+        "Local-first, no cloud"
+      ],
+      zh: [
+        "基于 stdio 的 MCP Server",
+        "面向 AI Agent 的屏幕捕获",
+        "支持 macOS 和 Windows",
+        "本地优先，无云端"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/lensport",
+      docs: "https://github.com/JunchenMeteor/lensport#readme",
+      issues: "https://github.com/JunchenMeteor/lensport/issues"
+    }
+  },
+  {
+    slug: "agentshot",
+    name: "AgentShot",
+    role: "toolkit",
+    status: "Active",
+    stack: ["Node.js", "TypeScript", "CLI", "npm"],
+    summary: {
+      en: "A local-first screenshot bridge that turns clipboard screenshots into AI-ready prompts for terminal coding agents.",
+      zh: "一个本地优先的截图桥接工具，把剪贴板截图转换成终端 AI Agent 可用的 prompt。"
+    },
+    portfolio: {
+      why: {
+        en: "Terminal AI agents can't see your screen, and manually saving, renaming, and uploading screenshots breaks the flow. AgentShot turns clipboard screenshots into instant AI context.",
+        zh: "终端 AI Agent 看不到你的屏幕，手动保存、重命名、上传截图会打断工作流。AgentShot 把剪贴板截图变成即时的 AI 上下文。"
+      },
+      built: {
+        en: [
+          "Cross-platform CLI for macOS, Windows, and WSL.",
+          "Clipboard-to-prompt bridge with automatic file naming and storage.",
+          "One-command install scripts for Bash and PowerShell."
+        ],
+        zh: [
+          "跨平台 CLI，支持 macOS、Windows 和 WSL。",
+          "剪贴板到 prompt 的桥接，自动命名和存储截图文件。",
+          "Bash 和 PowerShell 一键安装脚本。"
+        ]
+      },
+      role: {
+        en: "Screenshot-to-prompt bridge for terminal AI agents.",
+        zh: "面向终端 AI Agent 的截图转 prompt 桥接工具。"
+      },
+      next: {
+        en: "Expand agent format support and add more platform integrations.",
+        zh: "扩展更多 Agent 格式支持，增加更多平台集成。"
+      }
+    },
+    highlights: {
+      en: [
+        "Clipboard to AI prompt",
+        "Cross-platform CLI",
+        "Published npm package",
+        "Zero cloud uploads"
+      ],
+      zh: [
+        "剪贴板转 AI prompt",
+        "跨平台 CLI",
+        "已发布 npm 包",
+        "零云端上传"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/AgentShot",
+      docs: "https://github.com/JunchenMeteor/AgentShot#readme",
+      issues: "https://github.com/JunchenMeteor/AgentShot/issues"
     }
   },
   {

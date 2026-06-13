@@ -6,6 +6,8 @@ export const site = {
   github: "https://github.com/JunchenMeteor",
   icpRecord: "陕ICP备2026014092号-1",
   icpHref: "https://beian.miit.gov.cn/",
+  psRecord: "陕公网安备61011302002507号",
+  psHref: "https://beian.mps.gov.cn/#/query/webSearch?code=61011302002507",
   tagline: {
     en: "Automation testing, voice AI practice, iOS engineering systems, and AI-assisted development workflows.",
     zh: "聚焦自动化测试、语音 AI 练习、iOS 工程体系与 AI 辅助研发工作流。"
