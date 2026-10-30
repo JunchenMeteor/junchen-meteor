@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Github, Layers, MessageSquare, Mic2, Radar, Route, TerminalSquare } from "lucide-react";
+import { ArrowRight, Github, MessageSquare } from "lucide-react";
 import { contactCopy, homeCopy, site, type Locale } from "@/content/site";
 import { projects } from "@/content/projects";
 import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
 import { MeteorTestShowcase } from "@/components/meteortest-showcase";
-
-const iconMap = [Radar, Mic2, Route, Layers, TerminalSquare];
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
@@ -20,10 +18,14 @@ export function HomePage({ locale }: { locale: Locale }) {
     <>
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="eyebrow">{copy.eyebrow}</p>
+          <p className="hero-status">
+            <span className="status-dot" aria-hidden="true" />
+            {copy.heroStatus}
+          </p>
           <h1>{site.name}</h1>
           <p className="hero-title">{copy.heroTitle}</p>
           <p className="hero-intro">{site.intro[locale]}</p>
+          <p className="hero-identity">{site.identity[locale]}</p>
           <div className="hero-actions">
             <Link className="primary-button" href={localizedPath(locale, "/meteortest")}>
               {copy.primaryCta} <ArrowRight size={18} />
@@ -31,25 +33,26 @@ export function HomePage({ locale }: { locale: Locale }) {
             <Link className="secondary-button" href={flagship.links.preview ?? localizedPath(locale, "/meteortest")}>
               {copy.previewCta} <ArrowRight size={18} />
             </Link>
-            <Link className="secondary-button" href={site.github}>
-              <Github size={18} /> {copy.secondaryCta}
-            </Link>
           </div>
+          <Link className="hero-github" href={site.github}>
+            <Github size={16} /> {copy.secondaryCta}
+          </Link>
         </div>
-        <div className="hero-visual flow-visual" aria-label={ui.aria.meteorFlow}>
-          <div className="flow-rail">
-            {ui.home.flowSteps.map((item, index) => (
-              <div className="flow-step" key={item}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{item}</strong>
+        <aside className="run-sheet" aria-label={copy.sheetLabel}>
+          <div className="run-sheet-head">
+            <span className="run-sheet-label">{copy.sheetLabel}</span>
+            <span className="run-sheet-state">{copy.sheetStatus}</span>
+          </div>
+          <dl className="run-sheet-rows">
+            {copy.sheetRows.map((row) => (
+              <div key={row.label}>
+                <dt>{row.label}</dt>
+                <dd>{row.value}</dd>
               </div>
             ))}
-          </div>
-          <div className="flow-caption">
-            <span>{ui.home.flowLabel}</span>
-            <p>{ui.home.flowCaption}</p>
-          </div>
-        </div>
+          </dl>
+          <p className="run-sheet-note">{copy.sheetNote}</p>
+        </aside>
       </section>
 
       <section className="flagship-section">
@@ -103,23 +106,28 @@ export function HomePage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
-      <section className="ecosystem-section">
+      <section className="work-section">
         <div className="section-heading">
-          <span>{copy.ecosystemTitle}</span>
-          <h2>{ui.home.ecosystemHeading}</h2>
+          <span>{copy.workLabel}</span>
+          <h2>{copy.workTitle}</h2>
+          <p>{copy.workIntro}</p>
         </div>
-        <div className="ecosystem-grid">
-          {projects.map((project, index) => {
-            const Icon = iconMap[index] ?? Layers;
-            return (
-              <Link className="ecosystem-item" href={project.links.github} key={project.slug}>
-                <Icon size={20} />
-                <strong>{project.name}</strong>
-                <span>{project.summary[locale]}</span>
+        <ul className="work-ledger">
+          {projects.map((project) => (
+            <li key={project.slug}>
+              <Link className="work-row" href={project.links.github}>
+                <span className="work-name">
+                  <strong>{project.name}</strong>
+                  {project.zhName ? <small>{project.zhName}</small> : null}
+                </span>
+                <span className="work-summary">{project.summary[locale]}</span>
+                <span className="work-stack">{project.stack.join(" / ")}</span>
+                <span className="work-status">{project.status}</span>
+                <ArrowRight className="work-arrow" size={16} />
               </Link>
-            );
-          })}
-        </div>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <section className="focus-section">

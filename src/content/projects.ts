@@ -45,7 +45,9 @@ export type Project = {
 
 const projectDisplayOrder = [
   "meteortest",
+  "sprout",
   "meteorvoice",
+  "tankquest-academy",
   "ios-automation-framework",
   "junchen-meteor",
   "lensport",
@@ -618,6 +620,118 @@ const projectEntries: Project[] = [
     links: {
       github: "https://github.com/JunchenMeteor/TimeTracker",
       docs: "https://github.com/JunchenMeteor/TimeTracker#readme"
+    }
+  },
+  {
+    slug: "sprout",
+    name: "Sprout",
+    role: "product",
+    status: "Active",
+    stack: ["SwiftUI", "uni-app x", "FastAPI", "LangGraph"],
+    summary: {
+      en: "An English speaking practice app built as three cooperating repositories: a SwiftUI iOS client, a uni-app x cross-platform client, and a FastAPI + LangGraph backend.",
+      zh: "一个由三个仓库协同构成的英语口语练习 App：SwiftUI iOS 客户端、uni-app x 跨端客户端，以及 FastAPI + LangGraph 后端。"
+    },
+    portfolio: {
+      why: {
+        en: "Daily speaking practice falls apart when the prompt, the recording history, and the feedback live in separate tools. Sprout keeps one loop in one place: prompt, record, correct, review.",
+        zh: "当出题、录音历史和反馈分散在不同工具里，每天的口语练习很难坚持。Sprout 把「出题、录音、纠正、回顾」放在同一个闭环里。"
+      },
+      built: {
+        en: [
+          "SwiftUI iOS client for iPhone and iPad covering interface, recording, playback, local storage, and offline flows, with explicitly marked mock services in Debug builds.",
+          "uni-app x cross-platform client targeting WeChat mini program, Web, Android, and HarmonyOS NEXT.",
+          "FastAPI + LangGraph backend with a single interface contract (EC-API-0.1) distributed to both clients with version and hash."
+        ],
+        zh: [
+          "面向 iPhone 和 iPad 的 SwiftUI 客户端，覆盖界面、录音、播放、本地存储和离线流程，Debug 构建使用显式标记的模拟服务。",
+          "面向微信小程序、Web、Android 和 HarmonyOS NEXT 的 uni-app x 跨端客户端。",
+          "FastAPI + LangGraph 后端，围绕唯一接口契约 EC-API-0.1 开发，并按版本与哈希分发给两个客户端。"
+        ]
+      },
+      role: {
+        en: "Product work across three repositories under one interface contract.",
+        zh: "跨三个仓库、围绕一份接口契约的产品工作。"
+      },
+      next: {
+        en: "Close the remaining contract gaps, replace the mock services with the real backend, and validate each target platform in turn.",
+        zh: "先补齐剩余的契约缺口，再用真实后端替换模拟服务，并逐端验证。"
+      }
+    },
+    highlights: {
+      en: [
+        "Three repositories, one interface contract",
+        "iOS client and cross-platform client share EC-API-0.1",
+        "Local storage and offline practice flows",
+        "Only the iOS client repository is public today"
+      ],
+      zh: [
+        "三个仓库共享一份接口契约",
+        "iOS 与跨端客户端共用 EC-API-0.1",
+        "本地存储与离线练习流程",
+        "目前仅 iOS 客户端仓库公开"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/SproutIOS",
+      docs: "https://github.com/JunchenMeteor/SproutIOS#readme"
+    }
+  },
+  {
+    slug: "tankquest-academy",
+    name: "TankQuest Academy",
+    role: "product",
+    status: "Active",
+    stack: ["Phaser", "TypeScript", "Tauri", "Node.js"],
+    summary: {
+      en: "A 2.5D web learning game for kids: tank-themed training grounds that mix driving, tactical challenges, and math, English, and direction drills.",
+      zh: "一款面向孩子的 2.5D Web 学习游戏：坦克主题训练场把驾驶、战术挑战与数学、英语、方向训练结合起来。"
+    },
+    portfolio: {
+      why: {
+        en: "Practice apps lose children when the practice is the whole game. TankQuest turns drills into a training ground where progress, upgrades, and challenges carry the learning.",
+        zh: "当练习本身就是全部内容时，孩子很快会失去兴趣。TankQuest 把训练放进一个训练场里，让进度、升级和挑战承载学习。"
+      },
+      built: {
+        en: [
+          "Phaser 2.5D training grounds with layered tanks and authoritative arcade physics.",
+          "Math, English, and direction objectives, three child-owned tanks, persistent skins and upgrades.",
+          "Backend-authoritative rewards and progression, plus a separate aggregate-only parent report.",
+          "Optional child-safe AI assistance for question drafts and wrong-answer explanations, with deterministic fallback."
+        ],
+        zh: [
+          "基于 Phaser 的 2.5D 训练场，包含分层坦克与权威的 Arcade 物理。",
+          "数学、英语和方向三类目标，三个属于孩子的坦克，带持久化的外观与升级。",
+          "奖励与进度由后端权威裁定，并提供独立的、仅含聚合数据的家长报告。",
+          "可选的儿童安全 AI 辅助，用于题目草稿与错题解释，并提供确定性的降级路径。"
+        ]
+      },
+      role: {
+        en: "Solo product build across game client, API, and Windows preview.",
+        zh: "独立完成游戏客户端、API 与 Windows 预览版的产品开发。"
+      },
+      next: {
+        en: "Carry the v0.5 vertical slice past the preview stage: tighten the learning records and the desktop build before expanding content.",
+        zh: "把 v0.5 竖切从预览阶段继续推进：先收紧学习记录与桌面构建，再扩充内容。"
+      }
+    },
+    highlights: {
+      en: [
+        "Phaser 2.5D game client plus API",
+        "Backend-authoritative rewards and progress",
+        "Aggregate-only parent report",
+        "Tauri Windows technical preview"
+      ],
+      zh: [
+        "Phaser 2.5D 游戏客户端与 API",
+        "奖励与进度由后端权威裁定",
+        "仅聚合数据的家长报告",
+        "Tauri Windows 技术预览"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/tankquest-academy",
+      docs: "https://github.com/JunchenMeteor/tankquest-academy#readme"
     }
   }
 ];

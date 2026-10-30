@@ -44,6 +44,7 @@ export function SiteLayout({ locale, children }: LayoutProps) {
       <footer className="site-footer">
         <div>
           <span>JC Meteor</span>
+          <span className="footer-identity">{site.identity[locale]}</span>
           <span>{site.tagline[locale]}</span>
         </div>
         <div className="footer-records">
