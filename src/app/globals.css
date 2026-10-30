@@ -1,6 +1,39 @@
+@font-face {
+  font-family: "Plex Sans";
+  src: url("/fonts/plex-sans.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/space-grotesk.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plex Mono";
+  src: url("/fonts/plex-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plex Mono";
+  src: url("/fonts/plex-mono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --font-sans: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
-  --font-mono: Consolas, "Courier New", monospace;
+  --font-sans: "Plex Sans", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+  --font-mono: "Plex Mono", ui-monospace, Consolas, "Courier New", monospace;
+  --font-display: "Space Grotesk", "Plex Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
 
   --space-page-x: clamp(20px, 5vw, 72px);
   --space-section-y: 78px;
@@ -2618,5 +2651,418 @@ a {
   .locale-switch,
   .icon-link {
     min-height: 40px;
+  }
+}
+
+/* ---------- Home redesign: hero run sheet, identity, work ledger ---------- */
+
+.hero-section {
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  align-items: center;
+  min-height: 0;
+  padding: clamp(52px, 7vw, 92px) var(--space-page-x) clamp(60px, 8vw, 104px);
+  gap: clamp(36px, 6vw, 84px);
+}
+
+.hero-copy h1 {
+  margin: 20px 0 8px;
+  font-size: clamp(56px, 8.6vw, 128px);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  padding: 6px 13px 6px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface-control);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--alpha-accent-surface);
+  animation: status-breathe 5s ease-in-out infinite;
+}
+
+@keyframes status-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot {
+    animation: none;
+  }
+}
+
+.hero-title {
+  max-width: 24ch;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(26px, 3.1vw, 42px);
+  line-height: 1.14;
+  letter-spacing: -0.018em;
+  font-weight: 600;
+}
+
+.hero-intro {
+  max-width: 54ch;
+  margin: 22px 0 0;
+  color: var(--text-secondary);
+  font-size: 17.5px;
+  line-height: 1.72;
+}
+
+.hero-identity {
+  margin: 26px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent-primary);
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.run-sheet {
+  padding: 22px 22px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  box-shadow: var(--shadow-elevated);
+}
+
+.run-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.run-sheet-label {
+  color: var(--text-subtle);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.run-sheet-state {
+  padding: 3px 9px;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-pill);
+  background: var(--alpha-accent-surface);
+  color: var(--success);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.run-sheet-rows {
+  margin: 0;
+  padding: 4px 0 0;
+}
+
+.run-sheet-rows > div {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.run-sheet-rows > div:last-child {
+  border-bottom: 0;
+}
+
+.run-sheet-rows dt {
+  color: var(--text-subtle);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.run-sheet-rows dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.run-sheet-note {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--text-subtle);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.work-section {
+  padding: var(--space-section-y) var(--space-page-x);
+  border-top: 1px solid var(--line);
+}
+
+.section-heading h2 {
+  letter-spacing: -0.022em;
+}
+
+.work-ledger {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.work-ledger li {
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.work-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.95fr) minmax(0, 2.15fr) minmax(140px, 1fr) auto 18px;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 10px;
+  border-radius: var(--radius);
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.work-row:hover,
+.work-row:focus-visible {
+  background: var(--alpha-surface-soft);
+}
+
+.work-name strong {
+  display: block;
+  font-size: 16.5px;
+  letter-spacing: -0.012em;
+}
+
+.work-name small {
+  display: block;
+  margin-top: 3px;
+  color: var(--text-subtle);
+  font-size: 12px;
+}
+
+.work-summary {
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.work-stack {
+  color: var(--text-subtle);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.work-status {
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--accent-secondary);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.work-arrow {
+  color: var(--text-subtle);
+  transition:
+    transform 0.18s ease,
+    color 0.18s ease;
+}
+
+.work-row:hover .work-arrow {
+  color: var(--accent-primary);
+  transform: translateX(3px);
+}
+
+.footer-identity {
+  color: var(--text-soft);
+}
+
+@media (max-width: 1080px) {
+  .work-row {
+    grid-template-columns: minmax(130px, 1fr) minmax(0, 2fr) auto 18px;
+  }
+
+  .work-stack {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    padding-top: 44px;
+  }
+
+  .hero-title {
+    max-width: 30ch;
+  }
+
+  .run-sheet {
+    max-width: 560px;
+  }
+
+  .work-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 18px 6px;
+  }
+
+  .work-arrow {
+    display: none;
+  }
+
+  .work-status {
+    order: -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-row,
+  .work-arrow {
+    transition: none;
+  }
+}
+
+/* ---------- Typography: display face applied to headings ---------- */
+
+h1,
+h2,
+h3,
+.hero-title,
+.hero-copy h1,
+.section-heading h2,
+.page-title h1,
+.brand-mark strong {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01" 1;
+}
+
+.hero-copy h1 {
+  font-size: clamp(52px, 7.6vw, 112px);
+  letter-spacing: -0.03em;
+}
+
+.hero-title {
+  max-width: 26ch;
+  letter-spacing: -0.012em;
+  font-weight: 500;
+}
+
+.hero-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--border-default);
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.hero-github:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+}
+
+.hero-section {
+  min-height: calc(100svh - 78px);
+  align-items: center;
+}
+
+.section-heading h2 {
+  font-weight: 600;
+}
+
+.work-name strong {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.project-card h3,
+.ecosystem-item strong {
+  font-family: var(--font-display);
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    min-height: 0;
+  }
+}
+
+/* ---------- Ledger and contact polish ---------- */
+
+.work-row {
+  grid-template-columns: minmax(150px, 0.9fr) minmax(0, 2.05fr) minmax(180px, 1.05fr) auto 18px;
+}
+
+.work-stack {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1240px) {
+  .work-row {
+    grid-template-columns: minmax(140px, 1fr) minmax(0, 2fr) auto 18px;
+  }
+
+  .work-stack {
+    display: none;
+  }
+
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .work-row {
+    display: flex;
+  }
+
+  .work-stack {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 12px var(--space-page-x);
+  }
+
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

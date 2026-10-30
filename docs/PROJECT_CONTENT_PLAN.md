@@ -774,6 +774,16 @@ Until these are designed, the public website should stay with the interactive mo
 
 When completing an item, update both the row status and any relevant phase status above.
 
+## Homepage Refresh (2026-10)
+
+The homepage was rebuilt around evidence rather than a generic flow diagram:
+
+- The hero now carries a compact `MeteorTest MVP · active development` status line, the positioning statement, and an identity line (`Engineering portfolio of Pengyu Qi (Connor)`), so a visitor arriving from a resume or application form can connect the site to its author.
+- The hero visual is a run sheet from the validated local `api_smoke` run (task, suite, result, artifacts, runtime) instead of a numbered flow diagram.
+- The ecosystem grid was replaced by a project ledger that lists every public project with its stack and current status, including two newly documented projects: `Sprout` (SwiftUI iOS client, uni-app x cross-platform client, and a FastAPI + LangGraph backend under one interface contract) and `TankQuest Academy` (Phaser 2.5D learning game with a Tauri preview).
+- Display typography moved to bundled Latin webfonts (Space Grotesk for headings, IBM Plex Sans for text, IBM Plex Mono for data) served from `public/fonts`. No build-time font fetching is required.
+- The footer repeats the same identity line.
+
 ## Validation
 
 Run:

@@ -4,6 +4,10 @@ export const site = {
   name: "JC Meteor",
   zhName: "钧宸流星",
   github: "https://github.com/JunchenMeteor",
+  identity: {
+    en: "Engineering portfolio of Pengyu Qi (Connor).",
+    zh: "祁鹏宇（Pengyu Qi / Connor）的工程作品集。"
+  },
   icpRecord: "陕ICP备2026014092号-1",
   icpHref: "https://beian.miit.gov.cn/",
   psRecord: "陕公网安备61011302002507号",
@@ -42,6 +46,22 @@ export const homeCopy = {
     companionLabel: "Companion test project",
     ecosystemTitle: "A compact engineering ecosystem",
     focusTitle: "Engineering focus",
+    heroStatus: "MeteorTest MVP · active development",
+    sheetLabel: "Latest validated local run",
+    sheetTitle: "API smoke suite",
+    sheetStatus: "Succeeded",
+    sheetRows: [
+      { label: "Task", value: "phase9-api-smoke-001" },
+      { label: "Suite", value: "api_smoke · pytest" },
+      { label: "Result", value: "6 passed · exit 0" },
+      { label: "Artifacts", value: "output.log + Allure" },
+      { label: "Runtime", value: "private Local Agent" }
+    ],
+    sheetNote: "The public site stays mock-data based; real execution stays private.",
+    workLabel: "Work",
+    workTitle: "Projects, with the state they are actually in.",
+    workIntro:
+      "Each entry links to public code and states how far it has been validated. Several repositories behind these systems are still private.",
     focusItems: [
       {
         title: "Automation testing platforms",
@@ -126,6 +146,22 @@ export const homeCopy = {
     companionLabel: "配套测试项目",
     ecosystemTitle: "紧凑的工程项目生态",
     focusTitle: "工程方向",
+    heroStatus: "MeteorTest MVP · 仍在主动开发",
+    sheetLabel: "最近一次已验证的本地运行",
+    sheetTitle: "API smoke 套件",
+    sheetStatus: "已通过",
+    sheetRows: [
+      { label: "任务", value: "phase9-api-smoke-001" },
+      { label: "套件", value: "api_smoke · pytest" },
+      { label: "结果", value: "6 passed · exit 0" },
+      { label: "产物", value: "output.log + Allure" },
+      { label: "运行时", value: "私有 Local Agent" }
+    ],
+    sheetNote: "公开站点仍使用 mock 数据；真实执行保持私有。",
+    workLabel: "作品",
+    workTitle: "项目，连同它们当前的真实状态。",
+    workIntro:
+      "每条都链到公开代码，并写明验证到了哪一步。这些系统背后的部分仓库仍未公开。",
     focusItems: [
       {
         title: "自动化测试平台",
