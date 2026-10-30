@@ -44,11 +44,11 @@ export type Project = {
 };
 
 const projectDisplayOrder = [
-  "meteortest",
   "sprout",
-  "meteorvoice",
-  "tankquest-academy",
   "ios-automation-framework",
+  "meteorvoice",
+  "meteortest",
+  "tankquest-academy",
   "junchen-meteor",
   "lensport",
   "agentshot",
