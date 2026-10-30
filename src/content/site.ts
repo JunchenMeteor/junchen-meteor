@@ -13,12 +13,12 @@ export const site = {
   psRecord: "陕公网安备61011302002507号",
   psHref: "https://beian.mps.gov.cn/#/query/webSearch?code=61011302002507",
   tagline: {
-    en: "Automation testing, voice AI practice, iOS engineering systems, and AI-assisted development workflows.",
-    zh: "聚焦自动化测试、语音 AI 练习、iOS 工程体系与 AI 辅助研发工作流。"
+    en: "iOS and cross-platform apps, from interface contract to release checks.",
+    zh: "iOS 与跨端应用，从接口契约到发布校验。"
   },
   intro: {
-    en: "A project-led engineering portfolio centered on repeatable testing systems, voice interaction products, local execution loops, and practical agent workflows.",
-    zh: "一个以项目为核心的工程主页，串联可复现的测试系统、语音交互产品、本地执行闭环和实用的 Agent 工作流。"
+    en: "I build iOS and cross-platform apps, the API contracts they depend on, and the automated checks that keep each release dependable.",
+    zh: "我做 iOS 与跨端 App，也做它们依赖的接口契约，以及让每次发布可靠的自动化校验。"
   }
 };
 
@@ -37,27 +37,38 @@ export const navItems = {
 
 export const homeCopy = {
   en: {
-    eyebrow: "Project hub",
-    heroTitle: "Build testing systems that can be repeated, observed, and improved.",
-    primaryCta: "Explore MeteorTest",
+    eyebrow: "Mobile engineering portfolio",
+    heroTitle: "Mobile engineering with release quality built in.",
+    primaryCta: "See the mobile work",
     previewCta: "Open MeteorTest Web Preview",
     secondaryCta: "View GitHub",
-    flagshipLabel: "Flagship project",
-    companionLabel: "Companion test project",
+    flagshipLabel: "Release quality",
+    companionLabel: "The test code behind it",
     ecosystemTitle: "A compact engineering ecosystem",
     focusTitle: "Engineering focus",
-    heroStatus: "MeteorTest MVP · active development",
-    sheetLabel: "Latest validated local run",
+    heroStatus: "Mobile engineer · SwiftUI / uni-app x / Python",
+    sheetLabel: "Latest validated mobile suite",
     sheetTitle: "API smoke suite",
     sheetStatus: "Succeeded",
     sheetRows: [
       { label: "Task", value: "phase9-api-smoke-001" },
-      { label: "Suite", value: "api_smoke · pytest" },
+      { label: "Suite", value: "iOS-Automation-Framework · api_smoke" },
       { label: "Result", value: "6 passed · exit 0" },
       { label: "Artifacts", value: "output.log + Allure" },
       { label: "Runtime", value: "private Local Agent" }
     ],
     sheetNote: "The public site stays mock-data based; real execution stays private.",
+    mobileLabel: "Mobile work",
+    mobileTitle: "One product, three repositories, one contract.",
+    mobileIntro:
+      "Sprout is an English speaking-practice product built end to end: the iOS client, the uni-app x cross-platform client, and the FastAPI backend that serves both.",
+    mobileRepos: [
+      { name: "SproutIOS", detail: "SwiftUI · iPhone and iPad · recording, playback, offline practice" },
+      { name: "SproutCrossPlatform", detail: "uni-app x · WeChat mini program, Web, Android, HarmonyOS NEXT" },
+      { name: "SproutApi", detail: "FastAPI + LangGraph · EC-API-0.1 interface contract" }
+    ],
+    mobileNote:
+      "The interface contract is versioned and distributed to both clients with a hash. Only the iOS repository is public today.",
     workLabel: "Work",
     workTitle: "Projects, with the state they are actually in.",
     workIntro:
@@ -137,27 +148,38 @@ export const homeCopy = {
     ]
   },
   zh: {
-    eyebrow: "项目入口",
-    heroTitle: "构建可复现、可观测、可持续改进的测试工程系统。",
-    primaryCta: "查看 MeteorTest",
+    eyebrow: "移动工程作品集",
+    heroTitle: "移动工程，把发布质量做进去。",
+    primaryCta: "看移动端作品",
     previewCta: "打开 MeteorTest Web 预览",
     secondaryCta: "查看 GitHub",
-    flagshipLabel: "主推项目",
-    companionLabel: "配套测试项目",
+    flagshipLabel: "发布质量",
+    companionLabel: "背后的测试代码",
     ecosystemTitle: "紧凑的工程项目生态",
     focusTitle: "工程方向",
-    heroStatus: "MeteorTest MVP · 仍在主动开发",
-    sheetLabel: "最近一次已验证的本地运行",
+    heroStatus: "移动端工程师 · SwiftUI / uni-app x / Python",
+    sheetLabel: "最近一次已验证的移动端套件",
     sheetTitle: "API smoke 套件",
     sheetStatus: "已通过",
     sheetRows: [
       { label: "任务", value: "phase9-api-smoke-001" },
-      { label: "套件", value: "api_smoke · pytest" },
+      { label: "套件", value: "iOS-Automation-Framework · api_smoke" },
       { label: "结果", value: "6 passed · exit 0" },
       { label: "产物", value: "output.log + Allure" },
       { label: "运行时", value: "私有 Local Agent" }
     ],
     sheetNote: "公开站点仍使用 mock 数据；真实执行保持私有。",
+    mobileLabel: "移动端作品",
+    mobileTitle: "一个产品，三个仓库，一份契约。",
+    mobileIntro:
+      "Sprout 是一个英语口语练习产品，我从头到尾做完：iOS 客户端、uni-app x 跨端客户端，以及同时服务两者的 FastAPI 后端。",
+    mobileRepos: [
+      { name: "SproutIOS", detail: "SwiftUI · iPhone 与 iPad · 录音、播放、离线练习" },
+      { name: "SproutCrossPlatform", detail: "uni-app x · 微信小程序、Web、Android、HarmonyOS NEXT" },
+      { name: "SproutApi", detail: "FastAPI + LangGraph · EC-API-0.1 接口契约" }
+    ],
+    mobileNote:
+      "接口契约按版本与哈希分发给两个客户端。目前只有 iOS 仓库公开。",
     workLabel: "作品",
     workTitle: "项目，连同它们当前的真实状态。",
     workIntro:
