@@ -13,8 +13,8 @@ export const site = {
   psRecord: "陕公网安备61011302002507号",
   psHref: "https://beian.mps.gov.cn/#/query/webSearch?code=61011302002507",
   tagline: {
-    en: "iOS and cross-platform mobile engineering, with release quality built in.",
-    zh: "iOS 与跨端移动工程，把发布质量做进流程里。"
+    en: "iOS and cross-platform apps, from interface contract to release checks.",
+    zh: "iOS 与跨端应用，从接口契约到发布校验。"
   },
   intro: {
     en: "I build iOS and cross-platform apps, the API contracts they depend on, and the automated checks that keep each release dependable.",
@@ -38,7 +38,7 @@ export const navItems = {
 export const homeCopy = {
   en: {
     eyebrow: "Mobile engineering portfolio",
-    heroTitle: "Mobile apps that still work the week after release.",
+    heroTitle: "Mobile engineering with release quality built in.",
     primaryCta: "See the mobile work",
     previewCta: "Open MeteorTest Web Preview",
     secondaryCta: "View GitHub",
@@ -149,7 +149,7 @@ export const homeCopy = {
   },
   zh: {
     eyebrow: "移动工程作品集",
-    heroTitle: "发布一周后，依然稳的移动应用。",
+    heroTitle: "移动工程，把发布质量做进去。",
     primaryCta: "看移动端作品",
     previewCta: "打开 MeteorTest Web 预览",
     secondaryCta: "查看 GitHub",
