@@ -7,6 +7,10 @@ import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
 import { MeteorTestShowcase } from "@/components/meteortest-showcase";
 import { RevealList } from "@/components/reveal-list";
+import { StatusTicker } from "@/components/status-ticker";
+import { Marquee } from "@/components/marquee";
+import { MobileStory } from "@/components/mobile-story";
+import { Magnetic } from "@/components/magnetic";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
@@ -14,27 +18,27 @@ export function HomePage({ locale }: { locale: Locale }) {
   const ui = uiCopy[locale];
   const flagship = projects.find((project) => project.slug === "meteortest") ?? projects[0];
   const companion = projects.find((project) => project.slug === "ios-automation-framework") ?? projects[1];
-  const sprout = projects.find((project) => project.slug === "sprout") ?? projects[0];
 
   return (
     <>
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="hero-status">
-            <span className="status-dot" aria-hidden="true" />
-            {copy.heroStatus}
-          </p>
+          <StatusTicker items={copy.tickerItems} />
           <h1>{site.name}</h1>
           <p className="hero-title">{copy.heroTitle}</p>
           <p className="hero-intro">{site.intro[locale]}</p>
           <p className="hero-identity">{site.identity[locale]}</p>
           <div className="hero-actions">
-            <Link className="primary-button" href={localizedPath(locale, "/projects")}>
-              {copy.primaryCta} <ArrowRight size={18} />
-            </Link>
-            <Link className="secondary-button" href={flagship.links.preview ?? localizedPath(locale, "/meteortest")}>
-              {copy.previewCta} <ArrowRight size={18} />
-            </Link>
+            <Magnetic>
+              <Link className="primary-button" href={localizedPath(locale, "/projects")}>
+                {copy.primaryCta} <ArrowRight size={18} />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link className="secondary-button" href={flagship.links.preview ?? localizedPath(locale, "/meteortest")}>
+                {copy.previewCta} <ArrowRight size={18} />
+              </Link>
+            </Magnetic>
           </div>
           <Link className="hero-github" href={site.github}>
             <Github size={16} /> {copy.secondaryCta}
@@ -57,30 +61,14 @@ export function HomePage({ locale }: { locale: Locale }) {
         </aside>
       </section>
 
-      <section className="mobile-section">
-        <div className="section-heading">
-          <span>{copy.mobileLabel}</span>
-          <h2>{copy.mobileTitle}</h2>
-          <p>{copy.mobileIntro}</p>
-        </div>
-        <div className="mobile-feature">
-          <ol className="mobile-repos">
-            {copy.mobileRepos.map((repo, index) => (
-              <li key={repo.name}>
-                <span className="repo-index">{String(index + 1).padStart(2, "0")}</span>
-                <strong>{repo.name}</strong>
-                <small>{repo.detail}</small>
-              </li>
-            ))}
-          </ol>
-          <div className="mobile-side">
-            <p className="mobile-note">{copy.mobileNote}</p>
-            <Link className="text-link" href={sprout.links.github}>
-              {sprout.name} {ui.common.github} <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Marquee label={copy.marqueeLabel} items={copy.marqueeItems} />
+
+      <MobileStory
+        label={copy.storyLabel}
+        title={copy.storyTitle}
+        hint={copy.storyHint}
+        scenes={copy.storyScenes}
+      />
 
       <section className="flagship-section">
         <div className="section-heading">

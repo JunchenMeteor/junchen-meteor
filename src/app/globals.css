@@ -542,7 +542,7 @@ a {
 
 .site-shell {
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .site-header {
@@ -3309,5 +3309,493 @@ h3,
 
   .work-ledger[data-reveal="shown"] > li:nth-child(12) {
     animation-delay: 0.68s;
+  }
+}
+
+/* ---------- Ambient motion layer ---------- */
+
+.ambient-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient-blob {
+  position: absolute;
+  width: min(72vw, 880px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(96px);
+  opacity: 0.55;
+}
+
+.ambient-blob-a {
+  top: -22%;
+  right: -12%;
+  background: radial-gradient(circle at 40% 40%, var(--glow-mint), transparent 62%);
+}
+
+.ambient-blob-b {
+  bottom: -28%;
+  left: -16%;
+  background: radial-gradient(circle at 60% 40%, var(--glow-gold), transparent 60%);
+}
+
+.ambient-grid {
+  position: absolute;
+  inset: -30%;
+  background-image:
+    linear-gradient(var(--alpha-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--alpha-grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.85;
+}
+
+.pointer-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 640px;
+  height: 640px;
+  margin: -320px 0 0 -320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-mint), transparent 62%);
+  opacity: 0.6;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(var(--pointer-x, -2000px), var(--pointer-y, -2000px), 0);
+}
+
+main,
+.site-footer,
+.marquee {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Status ticker ---------- */
+
+.ticker-viewport {
+  position: relative;
+  display: inline-block;
+  min-width: min(100%, 34ch);
+  height: 1.25em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.ticker-text {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Marquee ---------- */
+
+.marquee {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 13px var(--space-page-x);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--alpha-surface-soft);
+  overflow: hidden;
+}
+
+.marquee-label {
+  flex: 0 0 auto;
+  color: var(--text-subtle);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+.marquee-window {
+  flex: 1 1 auto;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 34px;
+  width: max-content;
+}
+
+.marquee-item {
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .marquee-label {
+    display: none;
+  }
+
+  .ticker-viewport {
+    min-width: 0;
+  }
+}
+
+/* ---------- Ambient keyframes ---------- */
+
+@keyframes blob-drift-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-7%, 9%, 0) scale(1.16);
+  }
+}
+
+@keyframes blob-drift-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.1);
+  }
+  to {
+    transform: translate3d(9%, -7%, 0) scale(0.94);
+  }
+}
+
+@keyframes grid-pan {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(48px, 48px, 0);
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes ticker-in {
+  from {
+    opacity: 0;
+    transform: translateY(72%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ambient-blob-a {
+    animation: blob-drift-a 34s ease-in-out infinite alternate;
+  }
+
+  .ambient-blob-b {
+    animation: blob-drift-b 46s ease-in-out infinite alternate;
+  }
+
+  .ambient-grid {
+    animation: grid-pan 68s linear infinite;
+  }
+
+  .marquee-track {
+    animation: marquee-scroll 28s linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .ticker-text {
+    animation: ticker-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pointer-glow {
+    display: none;
+  }
+}
+
+/* ---------- Particle field and depth parallax ---------- */
+
+.particle-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hero-copy {
+    translate: calc(var(--px, 0) * -8px) calc(var(--py, 0) * -5px);
+  }
+
+  .run-sheet {
+    translate: calc(var(--px, 0) * 15px) calc(var(--py, 0) * 10px);
+  }
+
+  .ambient-blob-a {
+    translate: calc(var(--px, 0) * 26px) calc(var(--py, 0) * 20px);
+  }
+
+  .ambient-blob-b {
+    translate: calc(var(--px, 0) * -22px) calc(var(--py, 0) * -16px);
+  }
+}
+
+/* ---------- Magnetic controls ---------- */
+
+.magnetic {
+  display: inline-flex;
+  transition: translate 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: translate;
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .magnetic {
+    transition: none;
+  }
+}
+
+/* ---------- Scroll narrative ---------- */
+
+.story-section {
+  padding: var(--space-section-y) var(--space-page-x) 0;
+  border-top: 1px solid var(--line);
+}
+
+.story-heading {
+  max-width: 720px;
+}
+
+.story-track {
+  position: relative;
+  margin-top: 18px;
+  padding-bottom: 40px;
+}
+
+.story-stage {
+  display: grid;
+  gap: 48px;
+}
+
+.story-scene {
+  display: grid;
+  gap: 16px;
+  max-width: 860px;
+}
+
+.story-kicker {
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.story-scene h3 {
+  max-width: 20ch;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.6vw, 60px);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.story-scene p {
+  max-width: 58ch;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.story-meta li {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.story-progress {
+  display: none;
+}
+
+/* Pinned mode: only enabled by JavaScript, so the no-JS view stays stacked. */
+.story-track[data-mode="motion"] {
+  height: calc(var(--scenes, 3) * 100svh);
+  padding-bottom: 0;
+}
+
+.story-track[data-mode="motion"] .story-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: block;
+  padding: clamp(96px, 12vh, 140px) 0 64px;
+}
+
+.story-track[data-mode="motion"] .story-scene {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  translate: 0 -50%;
+  will-change: transform, opacity;
+}
+
+.story-track[data-mode="motion"] .story-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  display: block;
+  height: 2px;
+  background: var(--border-soft);
+  overflow: hidden;
+}
+
+.story-track[data-mode="motion"] .story-progress span {
+  display: block;
+  height: 100%;
+  background: var(--accent-primary);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+@media (max-width: 720px) {
+  .story-scene h3 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .story-scene p {
+    font-size: 15.5px;
+  }
+}
+
+/* ---------- Walkthrough control ---------- */
+
+.tour-control {
+  position: fixed;
+  right: clamp(14px, 3vw, 28px);
+  bottom: clamp(14px, 3vw, 28px);
+  z-index: 20;
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+}
+
+.tour-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.tour-button:hover {
+  background: var(--surface-control-hover);
+}
+
+.tour-progress {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--border-soft);
+  overflow: hidden;
+}
+
+.tour-progress span {
+  display: block;
+  height: 100%;
+  background: var(--accent-primary);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+@media (max-width: 620px) {
+  .tour-button span {
+    display: none;
+  }
+
+  .tour-button {
+    padding: 10px;
+  }
+}
+
+/* ---------- Story polish ---------- */
+
+.story-numeral {
+  display: none;
+}
+
+.story-track[data-mode="motion"] .story-scene {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  translate: 0 -50%;
+  max-width: none;
+  padding-right: clamp(0px, 18vw, 260px);
+}
+
+.story-track[data-mode="motion"] .story-numeral {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: block;
+  translate: 0 -50%;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: clamp(120px, 20vw, 300px);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+.story-track[data-mode="motion"] .story-scene > *:not(.story-numeral) {
+  max-width: 860px;
+}
+
+@media (max-width: 900px) {
+  .story-track[data-mode="motion"] .story-numeral {
+    display: none;
+  }
+
+  .story-track[data-mode="motion"] .story-scene {
+    padding-right: 0;
   }
 }

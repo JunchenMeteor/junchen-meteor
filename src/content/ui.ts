@@ -36,7 +36,9 @@ export const uiCopy = {
         "This is a simplified AI-assisted operation model, not a screenshot of the current MeteorTest web console.",
       projectSubstance: "Project substance",
       ecosystemHeading: "Projects that support the same loop",
-      focusHeading: "What this site is about"
+      focusHeading: "What this site is about",
+      tourPlay: "Play walkthrough",
+      tourPause: "Pause walkthrough"
     },
     meteortest: {
       flagshipProject: "Flagship project",
@@ -98,7 +100,9 @@ export const uiCopy = {
       flowCaption: "这是简化后的 AI 辅助操作模型，不是当前 MeteorTest Web 控制台截图。",
       projectSubstance: "项目内容",
       ecosystemHeading: "围绕同一执行闭环的项目",
-      focusHeading: "这个站点关注什么"
+      focusHeading: "这个站点关注什么",
+      tourPlay: "播放演示",
+      tourPause: "暂停演示"
     },
     meteortest: {
       flagshipProject: "主推项目",

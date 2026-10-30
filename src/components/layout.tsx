@@ -5,6 +5,9 @@ import { uiCopy } from "@/content/ui";
 import { localeConfig } from "@/content/locales";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LocaleSwitch } from "@/components/locale-switch";
+import { AmbientMotion } from "@/components/ambient-motion";
+import { ParticleField } from "@/components/particle-field";
+import { AutoTour } from "@/components/auto-tour";
 
 type LayoutProps = {
   locale: Locale;
@@ -17,6 +20,8 @@ export function SiteLayout({ locale, children }: LayoutProps) {
 
   return (
     <div className="site-shell">
+      <ParticleField />
+      <AmbientMotion />
       <header className="site-header">
         <Link href={localeMeta.homeHref} className="brand-mark" aria-label={ui.aria.home}>
           <span className="brand-orbit" />
@@ -41,6 +46,7 @@ export function SiteLayout({ locale, children }: LayoutProps) {
         </div>
       </header>
       <main>{children}</main>
+      <AutoTour playLabel={ui.home.tourPlay} pauseLabel={ui.home.tourPause} />
       <footer className="site-footer">
         <div>
           <span>JC Meteor</span>
