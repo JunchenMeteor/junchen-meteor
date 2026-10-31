@@ -72,7 +72,6 @@ export function HeroStage({
         .from("[data-stage='intro']", { y: 18, opacity: 0, duration: 0.6 }, "-=0.4")
         .from("[data-stage='identity']", { y: 14, opacity: 0, duration: 0.5 }, "-=0.35")
         .from("[data-stage='actions']", { y: 14, opacity: 0, duration: 0.5 }, "-=0.3")
-        .from("[data-card]", { y: 60, scale: 0.9, opacity: 0, stagger: 0.08, duration: 0.8 }, "-=0.9")
         .from("[data-stage='sheet']", { y: 24, opacity: 0, duration: 0.6 }, "-=0.7");
     }, root);
 
@@ -112,13 +111,13 @@ export function HeroStage({
     cards.forEach((card, position) => {
       const offset = position - index;
       const depth = Math.abs(offset);
+      const active = offset === 0;
       const props = {
-        xPercent: offset * 14,
-        yPercent: depth * 7,
-        scale: 1 - depth * 0.08,
-        rotate: offset * 2.2,
-        opacity: depth > 2 ? 0 : 1 - depth * 0.22,
-        zIndex: 10 - depth
+        yPercent: active ? 0 : offset < 0 ? -12 : 12,
+        xPercent: active ? 0 : offset < 0 ? -6 : 6,
+        scale: active ? 1 : 0.94,
+        opacity: active ? 1 : 0,
+        zIndex: active ? 10 : 1
       };
       if (reduced) {
         gsap.set(card, props);
