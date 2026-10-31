@@ -23,9 +23,10 @@ export function HomePage({ locale }: { locale: Locale }) {
   return (
     <>
       <HeroStage
-        locale={locale}
         name={site.name}
         zhName={site.zhName}
+        brand={copy.stageBrand}
+        version={copy.stageVersion}
         phrases={copy.heroPhrases}
         intro={site.intro[locale]}
         identity={site.identity[locale]}
@@ -38,6 +39,10 @@ export function HomePage({ locale }: { locale: Locale }) {
         slides={copy.showcaseSlides}
         sheetLabel={copy.sheetLabel}
         sheetRows={copy.sheetRows}
+        dialLabel={copy.dialLabel}
+        dialValue={copy.dialValue}
+        dialCaption={copy.dialCaption}
+        footItems={copy.stageFoot}
       />
 
       <Marquee label={copy.marqueeLabel} items={copy.marqueeItems} />

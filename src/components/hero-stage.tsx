@@ -4,7 +4,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Github } from "lucide-react";
 import gsap from "gsap";
-import type { Locale } from "@/content/site";
+import { TickerDial } from "@/components/ticker-dial";
 
 export type StageSlide = {
   name: string;
@@ -12,10 +12,13 @@ export type StageSlide = {
   meta: string[];
 };
 
+type FootItem = { title: string; detail: string };
+
 type HeroStageProps = {
-  locale: Locale;
   name: string;
   zhName: string;
+  brand: string;
+  version: string;
   phrases: string[];
   intro: string;
   identity: string;
@@ -28,15 +31,20 @@ type HeroStageProps = {
   slides: StageSlide[];
   sheetLabel: string;
   sheetRows: { label: string; value: string }[];
+  dialLabel: string;
+  dialValue: string;
+  dialCaption: string;
+  footItems: FootItem[];
   intervalMs?: number;
 };
 
 const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 export function HeroStage({
-  locale,
   name,
   zhName,
+  brand,
+  version,
   phrases,
   intro,
   identity,
@@ -49,6 +57,10 @@ export function HeroStage({
   slides,
   sheetLabel,
   sheetRows,
+  dialLabel,
+  dialValue,
+  dialCaption,
+  footItems,
   intervalMs = 4200
 }: HeroStageProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -64,15 +76,16 @@ export function HeroStage({
     if (reduced || document.documentElement.dataset.motion === "off") return;
 
     const context = gsap.context(() => {
-      const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
-      timeline
-        .from("[data-stage='status']", { y: 18, opacity: 0, duration: 0.5 })
-        .from("[data-stage='title']", { y: 40, opacity: 0, duration: 0.8 }, "-=0.25")
-        .from("[data-stage='phrase']", { y: 26, opacity: 0, duration: 0.7 }, "-=0.45")
-        .from("[data-stage='intro']", { y: 18, opacity: 0, duration: 0.6 }, "-=0.4")
-        .from("[data-stage='identity']", { y: 14, opacity: 0, duration: 0.5 }, "-=0.35")
-        .from("[data-stage='actions']", { y: 14, opacity: 0, duration: 0.5 }, "-=0.3")
-        .from("[data-stage='sheet']", { y: 24, opacity: 0, duration: 0.6 }, "-=0.7");
+      gsap
+        .timeline({ defaults: { ease: "power3.out" } })
+        .from("[data-stage='head']", { y: 14, opacity: 0, duration: 0.5 })
+        .from("[data-stage='title']", { y: 40, opacity: 0, duration: 0.8 }, "-=0.2")
+        .from("[data-stage='phrase']", { y: 24, opacity: 0, duration: 0.6 }, "-=0.4")
+        .from("[data-stage='intro']", { y: 16, opacity: 0, duration: 0.5 }, "-=0.35")
+        .from("[data-stage='identity']", { y: 12, opacity: 0, duration: 0.45 }, "-=0.3")
+        .from("[data-stage='actions']", { y: 12, opacity: 0, duration: 0.45 }, "-=0.28")
+        .from("[data-stage='visual']", { y: 30, opacity: 0, duration: 0.8 }, "-=0.7")
+        .from("[data-stage='foot']", { y: 16, opacity: 0, duration: 0.5 }, "-=0.5");
     }, root);
 
     return () => context.revert();
@@ -110,95 +123,105 @@ export function HeroStage({
 
     cards.forEach((card, position) => {
       const offset = position - index;
-      const depth = Math.abs(offset);
       const active = offset === 0;
       const props = {
-        yPercent: active ? 0 : offset < 0 ? -12 : 12,
-        xPercent: active ? 0 : offset < 0 ? -6 : 6,
-        scale: active ? 1 : 0.94,
+        yPercent: active ? 0 : offset < 0 ? -10 : 10,
+        scale: active ? 1 : 0.95,
         opacity: active ? 1 : 0,
         zIndex: active ? 10 : 1
       };
       if (reduced) {
         gsap.set(card, props);
       } else {
-        gsap.to(card, { ...props, duration: 0.9, ease: "power3.out" });
+        gsap.to(card, { ...props, duration: 0.8, ease: "power3.out" });
       }
     });
   }, [index]);
 
-  const active = slides[index];
-
   return (
     <section className="stage" ref={rootRef} aria-label={name}>
-      <div className="stage-bg" aria-hidden="true">
-        <span className="stage-orb stage-orb-a" />
-        <span className="stage-orb stage-orb-b" />
-      </div>
+      <div className="stage-panel">
+        <header className="stage-head" data-stage="head">
+          <span className="stage-brand">
+            <i aria-hidden="true" />
+            <span>
+              <strong>{brand}</strong>
+              <small>{version}</small>
+            </span>
+          </span>
+          <span className="stage-status">
+            <span className="status-dot" aria-hidden="true" />
+            {statusItems[0]}
+          </span>
+        </header>
 
-      <div className="stage-copy">
-        <p className="stage-status" data-stage="status">
-          <span className="status-dot" aria-hidden="true" />
-          {statusItems[0]}
-        </p>
-        <h1 data-stage="title">
-          {name}
-          <small>{zhName}</small>
-        </h1>
-        <p className="stage-phrase" data-stage="phrase" ref={phraseRef}>
-          {phrases[phraseIndex]}
-        </p>
-        <p className="stage-intro" data-stage="intro">
-          {intro}
-        </p>
-        <p className="stage-identity" data-stage="identity">
-          {identity}
-        </p>
-        <div className="stage-actions" data-stage="actions">
-          <Link className="primary-button" href={primaryHref}>
-            {primaryCta} <ArrowRight size={18} />
-          </Link>
-          <Link className="secondary-button" href={secondaryHref}>
-            {secondaryCta} <ArrowRight size={18} />
-          </Link>
-          <Link className="stage-github" href={githubHref}>
-            <Github size={16} /> GitHub
-          </Link>
-        </div>
-      </div>
+        <div className="stage-body">
+          <div className="stage-copy">
+            <h1 data-stage="title">
+              {name}
+              <small>{zhName}</small>
+            </h1>
+            <p className="stage-phrase" data-stage="phrase" ref={phraseRef}>
+              {phrases[phraseIndex]}
+            </p>
+            <p className="stage-intro" data-stage="intro">
+              {intro}
+            </p>
+            <p className="stage-identity" data-stage="identity">
+              {identity}
+            </p>
+            <div className="stage-actions" data-stage="actions">
+              <Link className="primary-button" href={primaryHref}>
+                {primaryCta} <ArrowRight size={18} />
+              </Link>
+              <Link className="secondary-button" href={secondaryHref}>
+                {secondaryCta} <ArrowRight size={18} />
+              </Link>
+              <Link className="stage-github" href={githubHref}>
+                <Github size={16} /> GitHub
+              </Link>
+            </div>
+          </div>
 
-      <div className="stage-visual">
-        <div className="stage-cards" ref={cardsRef}>
-          {slides.map((slide) => (
-            <article className="stage-card" data-card key={slide.name}>
-              <span className="stage-card-name">{slide.name}</span>
-              <p>{slide.line}</p>
-              <ul>
-                {slide.meta.map((item) => (
-                  <li key={item}>{item}</li>
+          <div className="stage-visual" data-stage="visual">
+            <TickerDial label={dialLabel} value={dialValue} caption={dialCaption} />
+
+            <div className="stage-cards" ref={cardsRef}>
+              {slides.map((slide) => (
+                <article className="stage-card" data-card key={slide.name}>
+                  <span className="stage-card-name">{slide.name}</span>
+                  <p>{slide.line}</p>
+                  <ul>
+                    {slide.meta.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+
+            <div className="stage-sheet">
+              <span className="stage-sheet-label">{sheetLabel}</span>
+              <dl>
+                {sheetRows.map((row) => (
+                  <div key={row.label}>
+                    <dt>{row.label}</dt>
+                    <dd>{row.value}</dd>
+                  </div>
                 ))}
-              </ul>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div className="stage-foot" data-stage="foot">
+          {footItems.map((item) => (
+            <article className="stage-foot-card" key={item.title}>
+              <strong>{item.title}</strong>
+              <span>{item.detail}</span>
             </article>
           ))}
         </div>
-
-        <div className="stage-sheet" data-stage="sheet">
-          <span className="stage-sheet-label">{sheetLabel}</span>
-          <dl>
-            {sheetRows.map((row) => (
-              <div key={row.label}>
-                <dt>{row.label}</dt>
-                <dd>{row.value}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
-
-      <div className="stage-dots" aria-hidden="true">
-        {slides.map((slide) => (
-          <i key={slide.name} data-on={slide.name === active.name} />
-        ))}
       </div>
     </section>
   );
