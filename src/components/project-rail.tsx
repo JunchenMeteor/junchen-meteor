@@ -1,109 +1,141 @@
-"use client";
+'use client';
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { Project } from "@/content/projects";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import type { Project } from '@/content/projects';
 
 type ProjectRailProps = {
   projects: Project[];
-  locale: "en" | "zh";
+  locale: 'en' | 'zh';
   detailLabel: string;
   intervalMs?: number;
 };
 
-function wrapOffset(position: number, index: number, total: number) {
-  const half = total / 2;
-  return ((((position - index + half) % total) + total) % total) - half;
-}
+const STEP = 330;
+const VISIBLE = 2;
 
 /**
- * Coverflow rail: the active card sits largest in the middle, neighbours
- * step back and rotate in 3D. It advances on its own, can be dragged, and
- * the dots underneath jump straight to a project.
+ * Layered project stack: the active card sits on top, its neighbours peek out
+ * from underneath on both sides with decreasing scale, opacity and blur so the
+ * row reads as a stack rather than a filmstrip.
  */
-export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }: ProjectRailProps) {
-  const [index, setIndex] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const dragStart = useRef<number | null>(null);
+export function ProjectRail({
+  projects,
+  locale,
+  detailLabel,
+  intervalMs = 6000,
+}: ProjectRailProps) {
+  const count = projects.length;
+  const [active, setActive] = useState(0);
+  const [drag, setDrag] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const startX = useRef<number | null>(null);
 
-  const move = useCallback(
-    (direction: -1 | 1) => {
-      setIndex((current) => (current + direction + projects.length) % projects.length);
-    },
-    [projects.length]
+  const go = useCallback(
+    (direction: -1 | 1) => setActive((current) => (current + direction + count) % count),
+    [count]
   );
 
   useEffect(() => {
-    if (dragging) return;
+    if (hovered || count < 2 || drag !== 0) return;
     const timer = window.setInterval(() => {
-      if (document.documentElement.dataset.motion === "off") return;
-      move(1);
+      if (document.documentElement.dataset.motion === 'off') return;
+      go(1);
     }, intervalMs);
     return () => window.clearInterval(timer);
-  }, [dragging, intervalMs, move]);
+  }, [count, drag, go, hovered, intervalMs]);
 
-  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    dragStart.current = event.clientX;
-    setDragging(true);
-  };
-
-  const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
-    const start = dragStart.current;
-    dragStart.current = null;
-    setDragging(false);
-    if (start === null) return;
-    const delta = event.clientX - start;
-    if (Math.abs(delta) < 60) return;
-    move(delta < 0 ? 1 : -1);
+  const endDrag = (delta: number) => {
+    setDrag(0);
+    if (Math.abs(delta) > 40) go(delta < 0 ? 1 : -1);
   };
 
   return (
-    <div className="coverflow">
+    <div className="rail">
       <div
-        className="coverflow-stage"
-        onPointerDown={onPointerDown}
-        onPointerUp={onPointerUp}
+        className="rail-stack"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onPointerDown={(event) => {
+          startX.current = event.clientX;
+        }}
+        onPointerMove={(event) => {
+          if (startX.current === null) return;
+          setDrag(event.clientX - startX.current);
+        }}
+        onPointerUp={(event) => {
+          if (startX.current === null) return;
+          const delta = event.clientX - startX.current;
+          startX.current = null;
+          endDrag(delta);
+        }}
         onPointerLeave={() => {
-          dragStart.current = null;
-          setDragging(false);
+          if (startX.current === null) return;
+          startX.current = null;
+          endDrag(0);
         }}
       >
-        {projects.map((project, position) => {
-          const offset = wrapOffset(position, index, projects.length);
-          const depth = Math.min(Math.abs(offset), 3);
-          const hidden = depth >= 3;
+        {projects.map((project, index) => {
+          let offset = index - active;
+          if (offset > count / 2) offset -= count;
+          if (offset < -count / 2) offset += count;
+          const distance = Math.abs(offset);
+          const isActive = offset === 0;
+          const hidden = distance > VISIBLE;
+          const shift = offset * STEP + drag;
 
           return (
             <article
-              className="coverflow-card"
               key={project.slug}
-              data-active={offset === 0}
-              aria-hidden={offset !== 0}
+              className="rail-layer"
+              data-active={isActive}
+              aria-hidden={!isActive}
               style={{
-                transform: `translate3d(calc(-50% + ${offset * 62}%), 0, ${-depth * 180}px) rotateY(${offset * -22}deg) scale(${1 - depth * 0.08})`,
-                opacity: hidden ? 0 : offset === 0 ? 1 : Math.max(0.15, 0.75 - depth * 0.22),
-                zIndex: 10 - depth
+                transform: `translate(-50%, ${distance * 10}px) translateX(${shift}px) rotateY(${
+                  offset === 0 ? 0 : -Math.sign(offset) * 16
+                }deg) scale(${1 - distance * 0.06})`,
+                opacity: hidden ? 0 : 1 - distance * 0.18,
+                filter: distance === 0 ? 'none' : `blur(${distance * 0.9}px)`,
+                maskImage:
+                  distance === 0
+                    ? undefined
+                    : `linear-gradient(to ${offset < 0 ? 'right' : 'left'}, #000 55%, transparent 100%)`,
+                WebkitMaskImage:
+                  distance === 0
+                    ? undefined
+                    : `linear-gradient(to ${offset < 0 ? 'right' : 'left'}, #000 55%, transparent 100%)`,
+                zIndex: 20 - distance,
+                pointerEvents: hidden ? 'none' : 'auto',
+              }}
+              onClick={(event) => {
+                if (isActive) return;
+                event.preventDefault();
+                setActive(index);
               }}
             >
-              <div className="coverflow-top">
-                <span className="coverflow-status">{project.status}</span>
-                <span className="coverflow-stack">{project.stack.slice(0, 3).join(" / ")}</span>
+              <span className="rail-ghost" aria-hidden="true">
+                {project.name.slice(0, 2)}
+              </span>
+              <div className="rail-card-top">
+                <span className="rail-status">{project.status}</span>
+                <span className="rail-stack-label">{project.stack.slice(0, 3).join(' / ')}</span>
               </div>
               <h3>{project.name}</h3>
               {project.zhName ? <small>{project.zhName}</small> : null}
               <p>{project.summary[locale]}</p>
               {project.image ? (
-                <div className="coverflow-shot">
+                <div className="rail-shot">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
                 </div>
-              ) : (
-                <div className="coverflow-shot coverflow-placeholder" aria-hidden="true">
-                  <span>{project.name.slice(0, 2)}</span>
-                </div>
-              )}
-              <Link className="coverflow-link" href={project.links.github}>
+              ) : null}
+              <Link
+                className="rail-link"
+                href={project.links.github}
+                tabIndex={isActive ? 0 : -1}
+                onClick={(event) => event.stopPropagation()}
+              >
                 {detailLabel} <ArrowRight size={15} />
               </Link>
             </article>
@@ -111,31 +143,26 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }
         })}
       </div>
 
-      <div className="coverflow-controls">
-        <button type="button" className="rail-arrow" onClick={() => move(-1)} aria-label="previous">
+      <div className="rail-controls">
+        <button type="button" className="rail-arrow" onClick={() => go(-1)} aria-label="previous">
           <ArrowLeft size={16} />
         </button>
-        <button type="button" className="rail-arrow" onClick={() => move(1)} aria-label="next">
-          <ArrowRight size={16} />
-        </button>
-
         <div className="coverflow-dots">
           {projects.map((project, position) => (
             <button
               key={project.slug}
               type="button"
               className="coverflow-dot"
-              data-on={position === index}
-              aria-label={project.name}
-              aria-current={position === index}
-              onClick={() => setIndex(position)}
+              data-on={position === active}
+              aria-label={`project ${position + 1}`}
+              aria-current={position === active}
+              onClick={() => setActive(position)}
             />
           ))}
         </div>
-
-        <span className="rail-counter">
-          {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-        </span>
+        <button type="button" className="rail-arrow" onClick={() => go(1)} aria-label="next">
+          <ArrowRight size={16} />
+        </button>
       </div>
     </div>
   );
