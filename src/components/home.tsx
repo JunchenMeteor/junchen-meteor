@@ -7,6 +7,7 @@ import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
 import { MeteorTestShowcase } from "@/components/meteortest-showcase";
 import { StatsBand, ArchitectureDiagram } from "@/components/stats-band";
+import { ScreenGallery } from "@/components/screen-gallery";
 import { StatusTicker } from "@/components/status-ticker";
 import { Marquee } from "@/components/marquee";
 import { MobileStory } from "@/components/mobile-story";
@@ -71,6 +72,13 @@ export function HomePage({ locale }: { locale: Locale }) {
         playLabel={copy.showcasePlay}
         pauseLabel={copy.showcasePause}
         slides={copy.showcaseSlides}
+      />
+
+      <ScreenGallery
+        label={copy.galleryLabel}
+        title={copy.galleryTitle}
+        note={copy.galleryNote}
+        items={copy.galleryItems}
       />
 
       <StatsBand locale={locale} />

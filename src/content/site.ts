@@ -115,6 +115,31 @@ export const homeCopy = {
         meta: ["Phaser", "Tauri preview", "parent report"]
       }
     ],
+    galleryLabel: "Screens",
+    galleryTitle: "What the products actually look like.",
+    galleryNote: "Captured from the running builds, not mockups.",
+    galleryItems: [
+      {
+        src: "/screenshots/meteortest-dashboard-preview.png",
+        title: "MeteorTest · workspace",
+        caption: "Projects, suites, tasks, and artifacts in one console."
+      },
+      {
+        src: "/screenshots/meteortest-reports-preview.png",
+        title: "MeteorTest · reports",
+        caption: "Run status, logs, and Allure artifacts per task."
+      },
+      {
+        src: "/screenshots/tankquest-missions.png",
+        title: "TankQuest · missions",
+        caption: "Twelve missions across math, English, and direction drills."
+      },
+      {
+        src: "/screenshots/tankquest-battle.png",
+        title: "TankQuest · battle",
+        caption: "Arcade physics with an in-battle math challenge."
+      }
+    ],
     storyLabel: "How it is built",
     storyTitle: "Three scenes, one product.",
     storyHint: "Scroll to move through the build.",
@@ -298,6 +323,31 @@ export const homeCopy = {
         name: "TankQuest Academy",
         line: "进度由后端权威裁定的 2.5D 学习游戏。",
         meta: ["Phaser", "Tauri 预览", "家长报告"]
+      }
+    ],
+    galleryLabel: "界面",
+    galleryTitle: "这些产品实际长什么样。",
+    galleryNote: "截自正在运行的构建，不是效果图。",
+    galleryItems: [
+      {
+        src: "/screenshots/meteortest-dashboard-preview.png",
+        title: "MeteorTest · 工作区",
+        caption: "项目、套件、任务与产物集中在一个控制台。"
+      },
+      {
+        src: "/screenshots/meteortest-reports-preview.png",
+        title: "MeteorTest · 报告",
+        caption: "按任务查看运行状态、日志与 Allure 产物。"
+      },
+      {
+        src: "/screenshots/tankquest-missions.png",
+        title: "TankQuest · 任务选择",
+        caption: "12 个任务，覆盖数学、英语与方向训练。"
+      },
+      {
+        src: "/screenshots/tankquest-battle.png",
+        title: "TankQuest · 战斗",
+        caption: "Arcade 物理，战斗中加入数学挑战。"
       }
     ],
     storyLabel: "构建方式",
