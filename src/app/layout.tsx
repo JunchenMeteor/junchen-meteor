@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="ink" data-motion="on" suppressHydrationWarning>
+    <html lang="en" data-theme="sky" data-motion="on" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
       </head>

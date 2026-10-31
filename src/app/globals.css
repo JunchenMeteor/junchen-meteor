@@ -4714,3 +4714,470 @@ html[data-motion="off"] .showcase-slide {
     height: 200px;
   }
 }
+
+/* ---------- Wide screen framing ---------- */
+
+:root {
+  --content-max: 1560px;
+  --page-gutter: max(var(--space-page-x), calc((100vw - var(--content-max)) / 2));
+}
+
+.hero-section,
+.mobile-section,
+.story-section,
+.flagship-section,
+.depth-section,
+.two-column-section,
+.ecosystem-section,
+.focus-section,
+.contact-section,
+.work-section,
+.stats-section,
+.arch-section,
+.gallery-section,
+.page-section,
+.site-header,
+.site-footer {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.marquee {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.showcase-slide {
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+@media (min-width: 1900px) {
+  .arch-diagram {
+    max-width: 1180px;
+  }
+
+  .stats-grid {
+    gap: 24px;
+  }
+
+  .rail-card {
+    flex-basis: min(760px, 46vw);
+  }
+}
+
+.arch-diagram {
+  margin-inline: auto;
+}
+
+.hero-reel-line {
+  max-width: 26ch;
+  color: var(--text);
+  font-size: clamp(26px, 3.1vw, 42px);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.018em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-reel {
+    animation: rise-in 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    animation-delay: 0.14s;
+  }
+}
+
+/* ---------- Coverflow rail ---------- */
+
+.coverflow {
+  position: relative;
+  margin-top: 10px;
+}
+
+.coverflow-stage {
+  position: relative;
+  height: clamp(420px, 52vh, 520px);
+  perspective: 1600px;
+  perspective-origin: 50% 40%;
+  transform-style: preserve-3d;
+}
+
+.coverflow-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(760px, 62vw);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-elevated);
+  transform-origin: 50% 50%;
+  translate: 0 -50%;
+  transition:
+    transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.6s ease;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.coverflow-card[data-active="true"] {
+  border-color: var(--border-accent);
+}
+
+.coverflow-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--text-subtle);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.coverflow-status {
+  color: var(--accent-secondary);
+}
+
+.coverflow-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.coverflow-card small {
+  color: var(--text-subtle);
+  font-size: 12px;
+}
+
+.coverflow-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.coverflow-shot {
+  margin-top: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 150px;
+}
+
+.coverflow-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.coverflow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent-primary);
+  font-size: 13.5px;
+}
+
+.coverflow-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .coverflow-stage {
+    height: 420px;
+  }
+
+  .coverflow-card {
+    width: 84vw;
+    padding: 22px;
+  }
+
+  .coverflow-shot {
+    height: 120px;
+  }
+}
+
+/* Marquee: keep the label out of the scrolling track. */
+.marquee {
+  gap: 0;
+}
+
+.marquee-label {
+  position: relative;
+  z-index: 2;
+  padding-right: 18px;
+  margin-right: 18px;
+  border-right: 1px solid var(--line);
+  background: inherit;
+}
+
+.marquee-window {
+  mask-image: linear-gradient(90deg, transparent, #000 2%, #000 98%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 2%, #000 98%, transparent);
+}
+
+/* Gallery: consistent aspect ratio at any width. */
+.gallery-item img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+@media (min-width: 1900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+}
+
+/* ---------- Content-fit sizing on wide screens ---------- */
+
+.focus-list {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  max-width: 1160px;
+}
+
+.focus-list article {
+  min-height: 0;
+  padding: 20px;
+}
+
+.depth-grid {
+  max-width: 1280px;
+}
+
+.contact-grid {
+  max-width: 1280px;
+}
+
+.stats-grid {
+  max-width: 1280px;
+}
+
+.gallery-grid {
+  max-width: 1360px;
+}
+
+.lang-block {
+  max-width: 1280px;
+}
+
+.work-section .section-heading,
+.focus-section .section-heading,
+.contact-section .section-heading,
+.gallery-section .section-heading,
+.stats-section .section-heading {
+  max-width: 720px;
+}
+
+/* ---------- Cards size to content instead of stretching ---------- */
+
+.section-heading {
+  max-width: 680px;
+}
+
+.focus-list,
+.contact-grid,
+.stats-grid,
+.depth-grid {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 320px));
+  justify-content: start;
+  gap: 16px;
+}
+
+.contact-grid {
+  max-width: 1360px;
+}
+
+.contact-card {
+  min-height: 0;
+  padding: 20px;
+}
+
+.focus-list article {
+  padding: 20px;
+}
+
+.stat-cell {
+  padding: 18px;
+}
+
+.depth-panel {
+  padding: 18px;
+}
+
+@media (max-width: 720px) {
+  .focus-list,
+  .contact-grid,
+  .stats-grid,
+  .depth-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Final grid composition: fill a centred 1200px column. */
+.focus-list,
+.contact-grid,
+.stats-grid,
+.depth-grid {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  justify-content: stretch;
+  max-width: 1200px;
+}
+
+@media (min-width: 1000px) {
+  .focus-list,
+  .contact-grid,
+  .stats-grid,
+  .depth-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .focus-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Coverflow dots and drag ---------- */
+
+.coverflow-stage {
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.coverflow-stage:active {
+  cursor: grabbing;
+}
+
+.coverflow-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.coverflow-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--border-default);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.coverflow-dot[data-on="true"] {
+  background: var(--accent-primary);
+  transform: scale(1.6);
+}
+
+/* ---------- Equal gutters for wide sections ---------- */
+
+.home-validation-wrap {
+  padding: 0 var(--page-gutter);
+}
+
+.home-validation-wrap > .validation-run-section,
+.contact-context {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.depth-grid,
+.contact-grid,
+.stats-grid,
+.focus-list,
+.gallery-grid,
+.lang-block,
+.arch-diagram {
+  margin-inline: auto;
+}
+
+.coverflow-placeholder {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-accent);
+  background:
+    radial-gradient(circle at 30% 30%, var(--alpha-accent-surface-strong), transparent 60%),
+    var(--surface-panel-muted);
+}
+
+.coverflow-placeholder span {
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: 96px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  -webkit-text-stroke: 1.5px var(--border-accent-strong);
+}
+
+/* Hero reel must reserve two lines at any width. */
+.hero-reel {
+  min-height: 2.45em;
+  font-size: clamp(26px, 3.1vw, 42px);
+}
+
+@media (max-width: 720px) {
+  .hero-reel {
+    min-height: 2.1em;
+  }
+}
+
+.ticker-viewport {
+  min-width: 30ch;
+}
+
+@media (max-width: 720px) {
+  .ticker-viewport {
+    min-width: 0;
+  }
+}
+
+/* Carousel controls: arrows at the far edges, dots dead centre. */
+.coverflow-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.coverflow-controls .rail-arrow:first-of-type {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.coverflow-controls .rail-arrow:nth-of-type(2) {
+  grid-column: 3;
+  justify-self: end;
+  grid-row: 1;
+}
+
+.coverflow-dots {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: center;
+  margin: 0;
+}
+
+.rail-counter {
+  position: absolute;
+  right: 0;
+  top: -26px;
+  margin: 0;
+}

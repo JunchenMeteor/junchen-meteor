@@ -17,7 +17,7 @@ export const themeIds = [
 
 export type ThemeId = (typeof themeIds)[number];
 
-export const defaultTheme: ThemeId = "ink";
+export const defaultTheme: ThemeId = "sky";
 
 export const themeCopy = {
   en: {

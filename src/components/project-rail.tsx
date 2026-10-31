@@ -2,107 +2,137 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Project } from "@/content/projects";
 
 type ProjectRailProps = {
   projects: Project[];
   locale: "en" | "zh";
-  playLabel: string;
-  pauseLabel: string;
   detailLabel: string;
   intervalMs?: number;
 };
 
+function wrapOffset(position: number, index: number, total: number) {
+  const half = total / 2;
+  return ((((position - index + half) % total) + total) % total) - half;
+}
+
 /**
- * Project rail that advances on its own. Cards are large and slide by more
- * than a screen height worth of distance per step, so the section reads as a
- * moving track rather than a list.
+ * Coverflow rail: the active card sits largest in the middle, neighbours
+ * step back and rotate in 3D. It advances on its own, can be dragged, and
+ * the dots underneath jump straight to a project.
  */
-export function ProjectRail({
-  projects,
-  locale,
-  playLabel,
-  pauseLabel,
-  detailLabel,
-  intervalMs = 3800
-}: ProjectRailProps) {
+export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }: ProjectRailProps) {
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const [step, setStep] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const dragStart = useRef<number | null>(null);
 
-  const measure = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector<HTMLElement>("[data-card]");
-    if (!card) return;
-    const gap = Number.parseFloat(getComputedStyle(track).columnGap || "24") || 24;
-    setStep(card.offsetWidth + gap);
-  }, []);
+  const move = useCallback(
+    (direction: -1 | 1) => {
+      setIndex((current) => (current + direction + projects.length) % projects.length);
+    },
+    [projects.length]
+  );
 
   useEffect(() => {
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [measure]);
-
-  useEffect(() => {
-    if (!playing) return;
+    if (dragging) return;
     const timer = window.setInterval(() => {
       if (document.documentElement.dataset.motion === "off") return;
-      setIndex((current) => (current + 1) % projects.length);
+      move(1);
     }, intervalMs);
     return () => window.clearInterval(timer);
-  }, [playing, projects.length, intervalMs]);
+  }, [dragging, intervalMs, move]);
 
-  const move = (direction: -1 | 1) => {
-    setIndex((current) => {
-      const next = current + direction;
-      if (next < 0) return projects.length - 1;
-      if (next >= projects.length) return 0;
-      return next;
-    });
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    dragStart.current = event.clientX;
+    setDragging(true);
+  };
+
+  const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    const start = dragStart.current;
+    dragStart.current = null;
+    setDragging(false);
+    if (start === null) return;
+    const delta = event.clientX - start;
+    if (Math.abs(delta) < 60) return;
+    move(delta < 0 ? 1 : -1);
   };
 
   return (
-    <div className="rail" onMouseEnter={() => setPlaying(false)} onMouseLeave={() => setPlaying(true)}>
-      <div className="rail-viewport">
-        <div className="rail-track" ref={trackRef} style={{ transform: `translate3d(${-index * step}px, 0, 0)` }}>
-          {projects.map((project) => (
-            <article className="rail-card" data-card key={project.slug}>
-              <div className="rail-card-top">
-                <span className="rail-status">{project.status}</span>
-                <span className="rail-stack">{project.stack.slice(0, 3).join(" / ")}</span>
+    <div className="coverflow">
+      <div
+        className="coverflow-stage"
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+        onPointerLeave={() => {
+          dragStart.current = null;
+          setDragging(false);
+        }}
+      >
+        {projects.map((project, position) => {
+          const offset = wrapOffset(position, index, projects.length);
+          const depth = Math.min(Math.abs(offset), 3);
+          const hidden = depth >= 3;
+
+          return (
+            <article
+              className="coverflow-card"
+              key={project.slug}
+              data-active={offset === 0}
+              aria-hidden={offset !== 0}
+              style={{
+                transform: `translate3d(calc(-50% + ${offset * 62}%), 0, ${-depth * 180}px) rotateY(${offset * -22}deg) scale(${1 - depth * 0.08})`,
+                opacity: hidden ? 0 : offset === 0 ? 1 : Math.max(0.15, 0.75 - depth * 0.22),
+                zIndex: 10 - depth
+              }}
+            >
+              <div className="coverflow-top">
+                <span className="coverflow-status">{project.status}</span>
+                <span className="coverflow-stack">{project.stack.slice(0, 3).join(" / ")}</span>
               </div>
               <h3>{project.name}</h3>
               {project.zhName ? <small>{project.zhName}</small> : null}
               <p>{project.summary[locale]}</p>
               {project.image ? (
-                <div className="rail-shot">
+                <div className="coverflow-shot">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" />
+                  <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
                 </div>
-              ) : null}
-              <Link className="rail-link" href={project.links.github}>
+              ) : (
+                <div className="coverflow-shot coverflow-placeholder" aria-hidden="true">
+                  <span>{project.name.slice(0, 2)}</span>
+                </div>
+              )}
+              <Link className="coverflow-link" href={project.links.github}>
                 {detailLabel} <ArrowRight size={15} />
               </Link>
             </article>
-          ))}
-        </div>
+          );
+        })}
       </div>
 
-      <div className="rail-controls">
+      <div className="coverflow-controls">
         <button type="button" className="rail-arrow" onClick={() => move(-1)} aria-label="previous">
           <ArrowLeft size={16} />
         </button>
         <button type="button" className="rail-arrow" onClick={() => move(1)} aria-label="next">
           <ArrowRight size={16} />
         </button>
-        <button type="button" className="rail-toggle" onClick={() => setPlaying((current) => !current)} aria-pressed={playing}>
-          {playing ? <Pause size={14} /> : <Play size={14} />}
-          <span>{playing ? pauseLabel : playLabel}</span>
-        </button>
+
+        <div className="coverflow-dots">
+          {projects.map((project, position) => (
+            <button
+              key={project.slug}
+              type="button"
+              className="coverflow-dot"
+              data-on={position === index}
+              aria-label={project.name}
+              aria-current={position === index}
+              onClick={() => setIndex(position)}
+            />
+          ))}
+        </div>
+
         <span className="rail-counter">
           {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
         </span>

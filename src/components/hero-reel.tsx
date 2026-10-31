@@ -30,7 +30,7 @@ export function HeroReel({ phrases, intervalMs = 4400 }: HeroReelProps) {
       {phrases.map((phrase, position) => {
         const state = position === index ? "active" : position < index ? "past" : "next";
         return (
-          <p className="hero-reel-line hero-title" data-state={state} key={phrase}>
+          <p className="hero-reel-line" data-state={state} key={phrase}>
             {phrase}
           </p>
         );
