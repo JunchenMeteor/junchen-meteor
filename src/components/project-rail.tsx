@@ -12,7 +12,7 @@ type ProjectRailProps = {
   intervalMs?: number;
 };
 
-const STEP = 210;
+const STEP = 330;
 const VISIBLE = 2;
 
 /**
@@ -92,11 +92,19 @@ export function ProjectRail({
               data-active={isActive}
               aria-hidden={!isActive}
               style={{
-                transform: `translate(-50%, ${distance * 14}px) translateX(${shift}px) scale(${
-                  1 - distance * 0.07
-                })`,
-                opacity: hidden ? 0 : 1 - distance * 0.22,
-                filter: distance === 0 ? 'none' : `blur(${distance * 1.1}px)`,
+                transform: `translate(-50%, ${distance * 10}px) translateX(${shift}px) rotateY(${
+                  offset === 0 ? 0 : -Math.sign(offset) * 16
+                }deg) scale(${1 - distance * 0.06})`,
+                opacity: hidden ? 0 : 1 - distance * 0.18,
+                filter: distance === 0 ? 'none' : `blur(${distance * 0.9}px)`,
+                maskImage:
+                  distance === 0
+                    ? undefined
+                    : `linear-gradient(to ${offset < 0 ? 'right' : 'left'}, #000 55%, transparent 100%)`,
+                WebkitMaskImage:
+                  distance === 0
+                    ? undefined
+                    : `linear-gradient(to ${offset < 0 ? 'right' : 'left'}, #000 55%, transparent 100%)`,
                 zIndex: 20 - distance,
                 pointerEvents: hidden ? 'none' : 'auto',
               }}
