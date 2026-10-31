@@ -1,21 +1,24 @@
-"use client";
+'use client';
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import type { Project } from "@/content/projects";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+import type { Project } from '@/content/projects';
 
 type ProjectRailProps = {
   projects: Project[];
-  locale: "en" | "zh";
+  locale: 'en' | 'zh';
   detailLabel: string;
   intervalMs?: number;
 };
 
+const STEP = 210;
+const VISIBLE = 2;
+
 /**
- * Coverflow rail built on native scrolling: the active card snaps to the
- * centre at full size, neighbours stay visible but smaller. Drag, swipe and
- * clicking a side card all move the rail; arrows sit beside the dots.
+ * Layered project stack: the active card sits on top, its neighbours peek out
+ * from underneath on both sides with decreasing scale, opacity and blur so the
+ * row reads as a stack rather than a filmstrip.
  */
 export function ProjectRail({
   projects,
@@ -25,64 +28,82 @@ export function ProjectRail({
 }: ProjectRailProps) {
   const count = projects.length;
   const [active, setActive] = useState(0);
+  const [drag, setDrag] = useState(0);
   const [hovered, setHovered] = useState(false);
-  const stageRef = useRef<HTMLDivElement | null>(null);
-  const cardRefs = useRef<Array<HTMLElement | null>>([]);
-
-  /* Clone the tail and head so the first card still has a neighbour on its left. */
-  const slides =
-    count > 1 ? [projects[count - 1], ...projects, projects[0]] : projects;
+  const startX = useRef<number | null>(null);
 
   const go = useCallback(
-    (direction: -1 | 1) => {
-      setActive((current) => (current + direction + count) % count);
-    },
-    [count],
+    (direction: -1 | 1) => setActive((current) => (current + direction + count) % count),
+    [count]
   );
 
   useEffect(() => {
-    const card = cardRefs.current[active + (count > 1 ? 1 : 0)];
-    const stage = stageRef.current;
-    if (!card || !stage) return;
-    const target = card.offsetLeft - (stage.clientWidth - card.clientWidth) / 2;
-    stage.scrollTo({ left: target, behavior: "smooth" });
-  }, [active, count]);
-
-  useEffect(() => {
-    if (hovered || count < 2) return;
+    if (hovered || count < 2 || drag !== 0) return;
     const timer = window.setInterval(() => {
-      if (document.documentElement.dataset.motion === "off") return;
+      if (document.documentElement.dataset.motion === 'off') return;
       go(1);
     }, intervalMs);
     return () => window.clearInterval(timer);
-  }, [count, go, hovered, intervalMs]);
+  }, [count, drag, go, hovered, intervalMs]);
+
+  const endDrag = (delta: number) => {
+    setDrag(0);
+    if (Math.abs(delta) > 40) go(delta < 0 ? 1 : -1);
+  };
 
   return (
     <div className="rail">
       <div
-        className="rail-stage"
-        ref={stageRef}
+        className="rail-stack"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        onPointerDown={(event) => {
+          startX.current = event.clientX;
+        }}
+        onPointerMove={(event) => {
+          if (startX.current === null) return;
+          setDrag(event.clientX - startX.current);
+        }}
+        onPointerUp={(event) => {
+          if (startX.current === null) return;
+          const delta = event.clientX - startX.current;
+          startX.current = null;
+          endDrag(delta);
+        }}
+        onPointerLeave={() => {
+          if (startX.current === null) return;
+          startX.current = null;
+          endDrag(0);
+        }}
       >
-        {slides.map((project, index) => {
-          const isActive = count > 1 ? index === active + 1 : index === active;
-          const offset = index - (count > 1 ? active + 1 : active);
-          /* Neighbours tuck under the centred card instead of sitting beside it. */
-          const shift = offset === 0 ? 0 : -Math.sign(offset) * 96;
+        {projects.map((project, index) => {
+          let offset = index - active;
+          if (offset > count / 2) offset -= count;
+          if (offset < -count / 2) offset += count;
+          const distance = Math.abs(offset);
+          const isActive = offset === 0;
+          const hidden = distance > VISIBLE;
+          const shift = offset * STEP + drag;
+
           return (
             <article
-              key={`${project.slug}-${index}`}
-              ref={(node) => {
-                cardRefs.current[index] = node;
-              }}
-              className="rail-card"
+              key={project.slug}
+              className="rail-layer"
               data-active={isActive}
-              style={{ ["--rail-shift" as string]: `${shift}px` }}
               aria-hidden={!isActive}
-              onClick={() => {
+              style={{
+                transform: `translate(-50%, ${distance * 14}px) translateX(${shift}px) scale(${
+                  1 - distance * 0.07
+                })`,
+                opacity: hidden ? 0 : 1 - distance * 0.22,
+                filter: distance === 0 ? 'none' : `blur(${distance * 1.1}px)`,
+                zIndex: 20 - distance,
+                pointerEvents: hidden ? 'none' : 'auto',
+              }}
+              onClick={(event) => {
                 if (isActive) return;
-                setActive((((index - 1) % count) + count) % count);
+                event.preventDefault();
+                setActive(index);
               }}
             >
               <span className="rail-ghost" aria-hidden="true">
@@ -90,9 +111,7 @@ export function ProjectRail({
               </span>
               <div className="rail-card-top">
                 <span className="rail-status">{project.status}</span>
-                <span className="rail-stack">
-                  {project.stack.slice(0, 3).join(" / ")}
-                </span>
+                <span className="rail-stack-label">{project.stack.slice(0, 3).join(' / ')}</span>
               </div>
               <h3>{project.name}</h3>
               {project.zhName ? <small>{project.zhName}</small> : null}
@@ -100,12 +119,7 @@ export function ProjectRail({
               {project.image ? (
                 <div className="rail-shot">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={project.image}
-                    alt={`${project.name} screenshot`}
-                    loading="lazy"
-                    draggable={false}
-                  />
+                  <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
                 </div>
               ) : null}
               <Link
@@ -122,12 +136,7 @@ export function ProjectRail({
       </div>
 
       <div className="rail-controls">
-        <button
-          type="button"
-          className="rail-arrow"
-          onClick={() => go(-1)}
-          aria-label="previous"
-        >
+        <button type="button" className="rail-arrow" onClick={() => go(-1)} aria-label="previous">
           <ArrowLeft size={16} />
         </button>
         <div className="coverflow-dots">
@@ -143,12 +152,7 @@ export function ProjectRail({
             />
           ))}
         </div>
-        <button
-          type="button"
-          className="rail-arrow"
-          onClick={() => go(1)}
-          aria-label="next"
-        >
+        <button type="button" className="rail-arrow" onClick={() => go(1)} aria-label="next">
           <ArrowRight size={16} />
         </button>
       </div>

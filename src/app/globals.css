@@ -6773,3 +6773,81 @@ body[data-theme] .coverflow-card {
   opacity: 0.68;
   filter: blur(2.2px) saturate(0.95);
 }
+
+/* ---------- Layered rail: cards stack and cover each other ---------- */
+.rail-stack {
+  position: relative;
+  height: 400px;
+  touch-action: pan-y;
+}
+
+.rail-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(620px, 58%);
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(16, 22, 30, 0.05), 0 24px 48px rgba(16, 22, 30, 0.12);
+  transform-origin: center;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.45s ease,
+    filter 0.45s ease;
+  overflow: hidden;
+  cursor: pointer;
+  margin-top: -170px;
+}
+
+.rail-layer[data-active='true'] {
+  cursor: default;
+  box-shadow: 0 4px 8px rgba(16, 22, 30, 0.06), 0 40px 70px rgba(16, 22, 30, 0.18);
+}
+
+.rail-layer p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rail-layer .rail-shot {
+  flex: 0 0 150px;
+  height: 150px;
+}
+
+.rail-layer .rail-shot img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.rail-layer .rail-link {
+  margin-top: auto;
+}
+
+.rail-stack-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+}
+
+@media (max-width: 760px) {
+  .rail-stack {
+    height: 430px;
+  }
+
+  .rail-layer {
+    width: 86%;
+    min-height: 380px;
+    margin-top: -190px;
+  }
+}
