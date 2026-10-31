@@ -6359,3 +6359,69 @@ body[data-theme] .coverflow-card {
 .rail-viewport {
   padding: 6px 2px 10px;
 }
+
+/* One continuous page background: sections never paint their own fill. */
+[data-theme="pearl"] .work-section,
+[data-theme="pearl"] .stats-section,
+[data-theme="pearl"] .gallery-section,
+[data-theme="pearl"] .depth-section,
+[data-theme="pearl"] .flagship-section,
+[data-theme="pearl"] .two-column-section,
+[data-theme="pearl"] .focus-section,
+[data-theme="pearl"] .contact-section,
+[data-theme="pearl"] .mobile-section,
+[data-theme="pearl"] .story-section,
+[data-theme="pearl"] .arch-section,
+[data-theme="pearl"] .showcase {
+  background: transparent !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Give the card shadow room inside the clipped viewport. */
+.rail-viewport {
+  padding: 8px 4px 30px;
+}
+
+/* Soft edges on the rail: content fades before it reaches the viewport edge. */
+.rail {
+  position: relative;
+}
+
+.rail-viewport {
+  mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+}
+
+.rail::before,
+.rail::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 34px;
+  width: clamp(24px, 4vw, 64px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.rail::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--page-bg), transparent);
+}
+
+.rail::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--page-bg), transparent);
+}
+
+/* Keep the fade to the outer margin so card text stays readable. */
+.rail-viewport {
+  mask-image: linear-gradient(90deg, transparent 0, #000 1.6%, #000 98.4%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1.6%, #000 98.4%, transparent 100%);
+}
+
+.rail::before,
+.rail::after {
+  width: clamp(16px, 1.6vw, 26px);
+}
