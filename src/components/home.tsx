@@ -149,13 +149,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           <h2>{copy.workTitle}</h2>
           <p>{copy.workIntro}</p>
         </div>
-        <ProjectRail
-          projects={projects}
-          locale={locale}
-          playLabel={copy.showcasePlay}
-          pauseLabel={copy.showcasePause}
-          detailLabel={ui.common.viewDetails}
-        />
+        <ProjectRail projects={projects} locale={locale} detailLabel={ui.common.viewDetails} />
       </section>
 
       <section className="focus-section">

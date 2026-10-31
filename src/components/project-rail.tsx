@@ -1,15 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Pause, Play } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { Project } from "@/content/projects";
 
 type ProjectRailProps = {
   projects: Project[];
   locale: "en" | "zh";
-  playLabel: string;
-  pauseLabel: string;
   detailLabel: string;
   intervalMs?: number;
 };
@@ -21,19 +19,13 @@ function wrapOffset(position: number, index: number, total: number) {
 
 /**
  * Coverflow rail: the active card sits largest in the middle, neighbours
- * step back, shrink, and rotate in 3D. Advances on its own and pauses on
- * hover or when page motion is switched off.
+ * step back and rotate in 3D. It advances on its own, can be dragged, and
+ * the dots underneath jump straight to a project.
  */
-export function ProjectRail({
-  projects,
-  locale,
-  playLabel,
-  pauseLabel,
-  detailLabel,
-  intervalMs = 4200
-}: ProjectRailProps) {
+export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }: ProjectRailProps) {
   const [index, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
+  const [dragging, setDragging] = useState(false);
+  const dragStart = useRef<number | null>(null);
 
   const move = useCallback(
     (direction: -1 | 1) => {
@@ -43,21 +35,40 @@ export function ProjectRail({
   );
 
   useEffect(() => {
-    if (!playing) return;
+    if (dragging) return;
     const timer = window.setInterval(() => {
       if (document.documentElement.dataset.motion === "off") return;
       move(1);
     }, intervalMs);
     return () => window.clearInterval(timer);
-  }, [playing, intervalMs, move]);
+  }, [dragging, intervalMs, move]);
+
+  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    dragStart.current = event.clientX;
+    setDragging(true);
+  };
+
+  const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    const start = dragStart.current;
+    dragStart.current = null;
+    setDragging(false);
+    if (start === null) return;
+    const delta = event.clientX - start;
+    if (Math.abs(delta) < 60) return;
+    move(delta < 0 ? 1 : -1);
+  };
 
   return (
-    <div
-      className="coverflow"
-      onMouseEnter={() => setPlaying(false)}
-      onMouseLeave={() => setPlaying(true)}
-    >
-      <div className="coverflow-stage">
+    <div className="coverflow">
+      <div
+        className="coverflow-stage"
+        onPointerDown={onPointerDown}
+        onPointerUp={onPointerUp}
+        onPointerLeave={() => {
+          dragStart.current = null;
+          setDragging(false);
+        }}
+      >
         {projects.map((project, position) => {
           const offset = wrapOffset(position, index, projects.length);
           const depth = Math.min(Math.abs(offset), 3);
@@ -72,8 +83,7 @@ export function ProjectRail({
               style={{
                 transform: `translate3d(calc(-50% + ${offset * 62}%), 0, ${-depth * 180}px) rotateY(${offset * -22}deg) scale(${1 - depth * 0.08})`,
                 opacity: hidden ? 0 : offset === 0 ? 1 : Math.max(0.15, 0.75 - depth * 0.22),
-                zIndex: 10 - depth,
-                pointerEvents: offset === 0 ? "auto" : "none"
+                zIndex: 10 - depth
               }}
             >
               <div className="coverflow-top">
@@ -86,9 +96,13 @@ export function ProjectRail({
               {project.image ? (
                 <div className="coverflow-shot">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" />
+                  <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
                 </div>
-              ) : null}
+              ) : (
+                <div className="coverflow-shot coverflow-placeholder" aria-hidden="true">
+                  <span>{project.name.slice(0, 2)}</span>
+                </div>
+              )}
               <Link className="coverflow-link" href={project.links.github}>
                 {detailLabel} <ArrowRight size={15} />
               </Link>
@@ -104,15 +118,21 @@ export function ProjectRail({
         <button type="button" className="rail-arrow" onClick={() => move(1)} aria-label="next">
           <ArrowRight size={16} />
         </button>
-        <button
-          type="button"
-          className="rail-toggle"
-          onClick={() => setPlaying((current) => !current)}
-          aria-pressed={playing}
-        >
-          {playing ? <Pause size={14} /> : <Play size={14} />}
-          <span>{playing ? pauseLabel : playLabel}</span>
-        </button>
+
+        <div className="coverflow-dots">
+          {projects.map((project, position) => (
+            <button
+              key={project.slug}
+              type="button"
+              className="coverflow-dot"
+              data-on={position === index}
+              aria-label={project.name}
+              aria-current={position === index}
+              onClick={() => setIndex(position)}
+            />
+          ))}
+        </div>
+
         <span className="rail-counter">
           {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
         </span>

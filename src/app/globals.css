@@ -5048,3 +5048,102 @@ html[data-motion="off"] .showcase-slide {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+
+/* ---------- Coverflow dots and drag ---------- */
+
+.coverflow-stage {
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.coverflow-stage:active {
+  cursor: grabbing;
+}
+
+.coverflow-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+.coverflow-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--border-default);
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.coverflow-dot[data-on="true"] {
+  background: var(--accent-primary);
+  transform: scale(1.6);
+}
+
+/* ---------- Equal gutters for wide sections ---------- */
+
+.home-validation-wrap {
+  padding: 0 var(--page-gutter);
+}
+
+.home-validation-wrap > .validation-run-section,
+.contact-context {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.depth-grid,
+.contact-grid,
+.stats-grid,
+.focus-list,
+.gallery-grid,
+.lang-block,
+.arch-diagram {
+  margin-inline: auto;
+}
+
+.coverflow-placeholder {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-accent);
+  background:
+    radial-gradient(circle at 30% 30%, var(--alpha-accent-surface-strong), transparent 60%),
+    var(--surface-panel-muted);
+}
+
+.coverflow-placeholder span {
+  color: transparent;
+  font-family: var(--font-display);
+  font-size: 96px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  -webkit-text-stroke: 1.5px var(--border-accent-strong);
+}
+
+/* Hero reel must reserve two lines at any width. */
+.hero-reel {
+  min-height: 2.45em;
+  font-size: clamp(26px, 3.1vw, 42px);
+}
+
+@media (max-width: 720px) {
+  .hero-reel {
+    min-height: 2.1em;
+  }
+}
+
+.ticker-viewport {
+  min-width: 30ch;
+}
+
+@media (max-width: 720px) {
+  .ticker-viewport {
+    min-width: 0;
+  }
+}
