@@ -6700,3 +6700,9 @@ body[data-theme] .coverflow-card {
 .rail-stage .rail-link {
   margin-top: auto;
 }
+
+/* Room for the scaled active card so its edges are never clipped. */
+.rail-stage {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
