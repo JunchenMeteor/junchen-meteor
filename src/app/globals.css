@@ -6331,3 +6331,31 @@ body[data-theme] .coverflow-card {
   min-height: 0;
   gap: 8px;
 }
+
+/* Full-bleed white bands: the panel must not slice the page background. */
+[data-theme="pearl"] .work-section,
+[data-theme="pearl"] .stats-section,
+[data-theme="pearl"] .gallery-section {
+  margin: 0;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  padding: clamp(44px, 5vw, 76px) var(--page-gutter);
+  box-shadow: none;
+  border-top: 1px solid rgba(22, 24, 27, 0.06);
+  border-bottom: 1px solid rgba(22, 24, 27, 0.06);
+}
+
+/* Equal card heights and room for the shadow inside the band. */
+.rail-page {
+  align-items: stretch;
+}
+
+.rail-card {
+  min-height: 300px;
+  justify-content: flex-start;
+}
+
+.rail-viewport {
+  padding: 6px 2px 10px;
+}
