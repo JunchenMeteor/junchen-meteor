@@ -17,27 +17,36 @@ type ProjectRailProps = {
  * centre at full size, neighbours stay visible but smaller. Drag, swipe and
  * clicking a side card all move the rail; arrows sit beside the dots.
  */
-export function ProjectRail({ projects, locale, detailLabel, intervalMs = 6000 }: ProjectRailProps) {
+export function ProjectRail({
+  projects,
+  locale,
+  detailLabel,
+  intervalMs = 6000,
+}: ProjectRailProps) {
   const count = projects.length;
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState(false);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<Array<HTMLElement | null>>([]);
 
+  /* Clone the tail and head so the first card still has a neighbour on its left. */
+  const slides =
+    count > 1 ? [projects[count - 1], ...projects, projects[0]] : projects;
+
   const go = useCallback(
     (direction: -1 | 1) => {
       setActive((current) => (current + direction + count) % count);
     },
-    [count]
+    [count],
   );
 
   useEffect(() => {
-    const card = cardRefs.current[active];
+    const card = cardRefs.current[active + (count > 1 ? 1 : 0)];
     const stage = stageRef.current;
     if (!card || !stage) return;
     const target = card.offsetLeft - (stage.clientWidth - card.clientWidth) / 2;
     stage.scrollTo({ left: target, behavior: "smooth" });
-  }, [active]);
+  }, [active, count]);
 
   useEffect(() => {
     if (hovered || count < 2) return;
@@ -56,23 +65,27 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 6000 }
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {projects.map((project, index) => {
-          const isActive = index === active;
+        {slides.map((project, index) => {
+          const isActive = count > 1 ? index === active + 1 : index === active;
           return (
             <article
-              key={project.slug}
+              key={`${project.slug}-${index}`}
               ref={(node) => {
                 cardRefs.current[index] = node;
               }}
               className="rail-card"
               data-active={isActive}
+              aria-hidden={!isActive}
               onClick={() => {
-                if (!isActive) setActive(index);
+                if (isActive) return;
+                setActive((((index - 1) % count) + count) % count);
               }}
             >
               <div className="rail-card-top">
                 <span className="rail-status">{project.status}</span>
-                <span className="rail-stack">{project.stack.slice(0, 3).join(" / ")}</span>
+                <span className="rail-stack">
+                  {project.stack.slice(0, 3).join(" / ")}
+                </span>
               </div>
               <h3>{project.name}</h3>
               {project.zhName ? <small>{project.zhName}</small> : null}
@@ -102,7 +115,12 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 6000 }
       </div>
 
       <div className="rail-controls">
-        <button type="button" className="rail-arrow" onClick={() => go(-1)} aria-label="previous">
+        <button
+          type="button"
+          className="rail-arrow"
+          onClick={() => go(-1)}
+          aria-label="previous"
+        >
           <ArrowLeft size={16} />
         </button>
         <div className="coverflow-dots">
@@ -118,7 +136,12 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 6000 }
             />
           ))}
         </div>
-        <button type="button" className="rail-arrow" onClick={() => go(1)} aria-label="next">
+        <button
+          type="button"
+          className="rail-arrow"
+          onClick={() => go(1)}
+          aria-label="next"
+        >
           <ArrowRight size={16} />
         </button>
       </div>
