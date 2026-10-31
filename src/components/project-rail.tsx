@@ -12,48 +12,41 @@ type ProjectRailProps = {
   intervalMs?: number;
 };
 
+const PAGE_SIZE = 3;
+
+function chunk<T>(items: T[], size: number): T[][] {
+  const pages: T[][] = [];
+  for (let index = 0; index < items.length; index += size) {
+    pages.push(items.slice(index, index + size));
+  }
+  return pages;
+}
+
 /**
- * Flat project rail: one row of opaque cards, clipped by the panel, that
- * advances on its own, can be dragged, and can be jumped through with the
- * dots underneath.
+ * Paged project rail: three full cards per page, so nothing is ever clipped
+ * mid-card at the panel edge. Advances on its own and can be dragged.
  */
-export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }: ProjectRailProps) {
-  const [index, setIndex] = useState(0);
+export function ProjectRail({ projects, locale, detailLabel, intervalMs = 5000 }: ProjectRailProps) {
+  const pages = chunk(projects, PAGE_SIZE);
+  const [page, setPage] = useState(0);
   const [dragging, setDragging] = useState(false);
-  const [step, setStep] = useState(0);
-  const trackRef = useRef<HTMLDivElement | null>(null);
   const dragStart = useRef<number | null>(null);
-
-  const measure = useCallback(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.querySelector<HTMLElement>("[data-card]");
-    if (!card) return;
-    const gap = Number.parseFloat(getComputedStyle(track).columnGap || "16") || 16;
-    setStep(card.offsetWidth + gap);
-  }, []);
-
-  useEffect(() => {
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [measure]);
 
   const move = useCallback(
     (direction: -1 | 1) => {
-      setIndex((current) => (current + direction + projects.length) % projects.length);
+      setPage((current) => (current + direction + pages.length) % pages.length);
     },
-    [projects.length]
+    [pages.length]
   );
 
   useEffect(() => {
-    if (dragging) return;
+    if (dragging || pages.length < 2) return;
     const timer = window.setInterval(() => {
       if (document.documentElement.dataset.motion === "off") return;
       move(1);
     }, intervalMs);
     return () => window.clearInterval(timer);
-  }, [dragging, intervalMs, move]);
+  }, [dragging, intervalMs, move, pages.length]);
 
   return (
     <div className="rail">
@@ -77,30 +70,30 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }
           setDragging(false);
         }}
       >
-        <div
-          className="rail-track"
-          ref={trackRef}
-          style={{ transform: `translate3d(${-index * step}px, 0, 0)` }}
-        >
-          {projects.map((project) => (
-            <article className="rail-card" data-card key={project.slug}>
-              <div className="rail-card-top">
-                <span className="rail-status">{project.status}</span>
-                <span className="rail-stack">{project.stack.slice(0, 3).join(" / ")}</span>
-              </div>
-              <h3>{project.name}</h3>
-              {project.zhName ? <small>{project.zhName}</small> : null}
-              <p>{project.summary[locale]}</p>
-              {project.image ? (
-                <div className="rail-shot">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
-                </div>
-              ) : null}
-              <Link className="rail-link" href={project.links.github}>
-                {detailLabel} <ArrowRight size={15} />
-              </Link>
-            </article>
+        <div className="rail-track" style={{ transform: `translate3d(${-page * 100}%, 0, 0)` }}>
+          {pages.map((group, groupIndex) => (
+            <div className="rail-page" key={groupIndex}>
+              {group.map((project) => (
+                <article className="rail-card" data-card key={project.slug}>
+                  <div className="rail-card-top">
+                    <span className="rail-status">{project.status}</span>
+                    <span className="rail-stack">{project.stack.slice(0, 3).join(" / ")}</span>
+                  </div>
+                  <h3>{project.name}</h3>
+                  {project.zhName ? <small>{project.zhName}</small> : null}
+                  <p>{project.summary[locale]}</p>
+                  {project.image ? (
+                    <div className="rail-shot">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
+                    </div>
+                  ) : null}
+                  <Link className="rail-link" href={project.links.github}>
+                    {detailLabel} <ArrowRight size={15} />
+                  </Link>
+                </article>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -110,15 +103,15 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }
           <ArrowLeft size={16} />
         </button>
         <div className="coverflow-dots">
-          {projects.map((project, position) => (
+          {pages.map((group, position) => (
             <button
-              key={project.slug}
+              key={position}
               type="button"
               className="coverflow-dot"
-              data-on={position === index}
-              aria-label={project.name}
-              aria-current={position === index}
-              onClick={() => setIndex(position)}
+              data-on={position === page}
+              aria-label={`page ${position + 1}`}
+              aria-current={position === page}
+              onClick={() => setPage(position)}
             />
           ))}
         </div>
@@ -126,7 +119,7 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }
           <ArrowRight size={16} />
         </button>
         <span className="rail-counter">
-          {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+          {String(page + 1).padStart(2, "0")} / {String(pages.length).padStart(2, "0")}
         </span>
       </div>
     </div>

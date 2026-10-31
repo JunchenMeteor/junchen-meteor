@@ -6291,3 +6291,43 @@ body[data-theme] .coverflow-card {
 .rail-card {
   min-height: 260px;
 }
+
+/* Paged rail: three full cards per page, no clipping. */
+.rail-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.rail-page {
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.rail-card {
+  flex: none;
+  min-height: 240px;
+}
+
+@media (max-width: 1100px) {
+  .rail-page {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .rail-page {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.rail-page {
+  align-items: start;
+}
+
+.rail-card {
+  min-height: 0;
+  gap: 8px;
+}
