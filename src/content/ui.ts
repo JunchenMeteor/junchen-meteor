@@ -38,7 +38,10 @@ export const uiCopy = {
       ecosystemHeading: "Projects that support the same loop",
       focusHeading: "What this site is about",
       tourPlay: "Play walkthrough",
-      tourPause: "Pause walkthrough"
+      tourPause: "Pause walkthrough",
+      motionLabel: "Toggle page motion",
+      motionOn: "Motion on",
+      motionOff: "Motion off"
     },
     meteortest: {
       flagshipProject: "Flagship project",
@@ -102,7 +105,10 @@ export const uiCopy = {
       ecosystemHeading: "围绕同一执行闭环的项目",
       focusHeading: "这个站点关注什么",
       tourPlay: "播放演示",
-      tourPause: "暂停演示"
+      tourPause: "暂停演示",
+      motionLabel: "切换页面动效",
+      motionOn: "动效已开",
+      motionOff: "动效已关"
     },
     meteortest: {
       flagshipProject: "主推项目",

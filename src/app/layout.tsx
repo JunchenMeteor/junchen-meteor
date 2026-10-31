@@ -8,13 +8,19 @@ export const metadata: Metadata = {
   ...pageMetadata("en", "home")
 };
 
+// Runs before paint so the motion preference never flashes.
+const motionScript = `(function(){try{var k="jc-meteor-motion";var stored=localStorage.getItem(k);var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;var mode=stored||(reduced?"off":"on");document.documentElement.dataset.motion=mode;}catch(e){document.documentElement.dataset.motion="on";}})();`;
+
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="ink" suppressHydrationWarning>
+    <html lang="en" data-theme="ink" data-motion="on" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: motionScript }} />
+      </head>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
       </body>

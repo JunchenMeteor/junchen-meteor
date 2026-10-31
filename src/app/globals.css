@@ -3799,3 +3799,104 @@ main,
     padding-right: 0;
   }
 }
+
+/* ---------- Motion switch ---------- */
+
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface-control);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.motion-toggle:hover {
+  background: var(--surface-control-hover);
+}
+
+.motion-toggle-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-subtle);
+}
+
+.motion-toggle-dot[data-on="true"] {
+  background: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--alpha-accent-surface);
+}
+
+/* Explicitly enabled motion overrides the operating-system preference. */
+
+@keyframes grid-pan-wide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(96px, 96px, 0);
+  }
+}
+
+html[data-motion="on"] .ambient-blob-a {
+  animation: blob-drift-a 18s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+html[data-motion="on"] .ambient-blob-b {
+  animation: blob-drift-b 24s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+html[data-motion="on"] .ambient-grid {
+  animation: grid-pan-wide 18s linear infinite;
+}
+
+html[data-motion="on"] .marquee-track {
+  animation: marquee-scroll 20s linear infinite;
+}
+
+html[data-motion="on"] .ticker-text {
+  animation: ticker-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@media (hover: hover) {
+  html[data-motion="on"] .hero-copy {
+    translate: calc(var(--px, 0) * -10px) calc(var(--py, 0) * -6px);
+  }
+
+  html[data-motion="on"] .run-sheet {
+    translate: calc(var(--px, 0) * 18px) calc(var(--py, 0) * 12px);
+  }
+
+  html[data-motion="on"] .ambient-blob-a {
+    translate: calc(var(--px, 0) * 30px) calc(var(--py, 0) * 22px);
+  }
+
+  html[data-motion="on"] .ambient-blob-b {
+    translate: calc(var(--px, 0) * -26px) calc(var(--py, 0) * -18px);
+  }
+}
+
+html[data-motion="off"] .ambient-blob-a,
+html[data-motion="off"] .ambient-blob-b,
+html[data-motion="off"] .ambient-grid,
+html[data-motion="off"] .marquee-track,
+html[data-motion="off"] .ticker-text,
+html[data-motion="off"] .hero-copy,
+html[data-motion="off"] .run-sheet {
+  animation: none !important;
+  translate: none !important;
+}
+
+@media (max-width: 640px) {
+  .motion-toggle {
+    width: 38px;
+    height: 38px;
+  }
+}

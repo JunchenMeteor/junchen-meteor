@@ -8,6 +8,7 @@ import { LocaleSwitch } from "@/components/locale-switch";
 import { AmbientMotion } from "@/components/ambient-motion";
 import { ParticleField } from "@/components/particle-field";
 import { AutoTour } from "@/components/auto-tour";
+import { MotionToggle } from "@/components/motion-toggle";
 
 type LayoutProps = {
   locale: Locale;
@@ -38,6 +39,7 @@ export function SiteLayout({ locale, children }: LayoutProps) {
           ))}
         </nav>
         <div className="header-actions">
+          <MotionToggle label={ui.home.motionLabel} onLabel={ui.home.motionOn} offLabel={ui.home.motionOff} />
           <ThemeSwitcher locale={locale} />
           <Link className="icon-link" href={site.github} aria-label={ui.aria.githubProfile}>
             <Github size={18} />
