@@ -6671,3 +6671,32 @@ body[data-theme] .coverflow-card {
   align-items: center;
   padding-bottom: 18px;
 }
+
+/* Uniform card size; the centred card leans in more. */
+.rail-stage {
+  align-items: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.rail-stage .rail-card {
+  height: 330px;
+  overflow: hidden;
+}
+
+.rail-stage .rail-card[data-active="true"] {
+  height: 330px;
+  transform: scale(1.1);
+  z-index: 5;
+}
+
+.rail-stage .rail-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rail-stage .rail-link {
+  margin-top: auto;
+}
