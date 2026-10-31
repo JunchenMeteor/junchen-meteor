@@ -12,115 +12,115 @@ type ProjectRailProps = {
   intervalMs?: number;
 };
 
-const PAGE_SIZE = 3;
-
-function chunk<T>(items: T[], size: number): T[][] {
-  const pages: T[][] = [];
-  for (let index = 0; index < items.length; index += size) {
-    pages.push(items.slice(index, index + size));
-  }
-  return pages;
-}
-
 /**
- * Paged project rail: three full cards per page, so nothing is ever clipped
- * mid-card at the panel edge. Advances on its own and can be dragged.
+ * Coverflow rail built on native scrolling: the active card snaps to the
+ * centre at full size, neighbours stay visible but smaller. Drag, swipe and
+ * clicking a side card all move the rail; arrows sit beside the dots.
  */
-export function ProjectRail({ projects, locale, detailLabel, intervalMs = 5000 }: ProjectRailProps) {
-  const pages = chunk(projects, PAGE_SIZE);
-  const [page, setPage] = useState(0);
-  const [dragging, setDragging] = useState(false);
-  const dragStart = useRef<number | null>(null);
+export function ProjectRail({ projects, locale, detailLabel, intervalMs = 6000 }: ProjectRailProps) {
+  const count = projects.length;
+  const [active, setActive] = useState(0);
+  const [hovered, setHovered] = useState(false);
+  const stageRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<Array<HTMLElement | null>>([]);
 
-  const move = useCallback(
+  const go = useCallback(
     (direction: -1 | 1) => {
-      setPage((current) => (current + direction + pages.length) % pages.length);
+      setActive((current) => (current + direction + count) % count);
     },
-    [pages.length]
+    [count]
   );
 
   useEffect(() => {
-    if (dragging || pages.length < 2) return;
+    const card = cardRefs.current[active];
+    const stage = stageRef.current;
+    if (!card || !stage) return;
+    const target = card.offsetLeft - (stage.clientWidth - card.clientWidth) / 2;
+    stage.scrollTo({ left: target, behavior: "smooth" });
+  }, [active]);
+
+  useEffect(() => {
+    if (hovered || count < 2) return;
     const timer = window.setInterval(() => {
       if (document.documentElement.dataset.motion === "off") return;
-      move(1);
+      go(1);
     }, intervalMs);
     return () => window.clearInterval(timer);
-  }, [dragging, intervalMs, move, pages.length]);
+  }, [count, go, hovered, intervalMs]);
 
   return (
     <div className="rail">
       <div
-        className="rail-viewport"
-        onPointerDown={(event) => {
-          dragStart.current = event.clientX;
-          setDragging(true);
-        }}
-        onPointerUp={(event) => {
-          const start = dragStart.current;
-          dragStart.current = null;
-          setDragging(false);
-          if (start === null) return;
-          const delta = event.clientX - start;
-          if (Math.abs(delta) < 60) return;
-          move(delta < 0 ? 1 : -1);
-        }}
-        onPointerLeave={() => {
-          dragStart.current = null;
-          setDragging(false);
-        }}
+        className="rail-stage"
+        ref={stageRef}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
-        <div className="rail-track" style={{ transform: `translate3d(${-page * 100}%, 0, 0)` }}>
-          {pages.map((group, groupIndex) => (
-            <div className="rail-page" key={groupIndex}>
-              {group.map((project) => (
-                <article className="rail-card" data-card key={project.slug}>
-                  <div className="rail-card-top">
-                    <span className="rail-status">{project.status}</span>
-                    <span className="rail-stack">{project.stack.slice(0, 3).join(" / ")}</span>
-                  </div>
-                  <h3>{project.name}</h3>
-                  {project.zhName ? <small>{project.zhName}</small> : null}
-                  <p>{project.summary[locale]}</p>
-                  {project.image ? (
-                    <div className="rail-shot">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
-                    </div>
-                  ) : null}
-                  <Link className="rail-link" href={project.links.github}>
-                    {detailLabel} <ArrowRight size={15} />
-                  </Link>
-                </article>
-              ))}
-            </div>
-          ))}
-        </div>
+        {projects.map((project, index) => {
+          const isActive = index === active;
+          return (
+            <article
+              key={project.slug}
+              ref={(node) => {
+                cardRefs.current[index] = node;
+              }}
+              className="rail-card"
+              data-active={isActive}
+              onClick={() => {
+                if (!isActive) setActive(index);
+              }}
+            >
+              <div className="rail-card-top">
+                <span className="rail-status">{project.status}</span>
+                <span className="rail-stack">{project.stack.slice(0, 3).join(" / ")}</span>
+              </div>
+              <h3>{project.name}</h3>
+              {project.zhName ? <small>{project.zhName}</small> : null}
+              <p>{project.summary[locale]}</p>
+              {project.image ? (
+                <div className="rail-shot">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={project.image}
+                    alt={`${project.name} screenshot`}
+                    loading="lazy"
+                    draggable={false}
+                  />
+                </div>
+              ) : null}
+              <Link
+                className="rail-link"
+                href={project.links.github}
+                tabIndex={isActive ? 0 : -1}
+                onClick={(event) => event.stopPropagation()}
+              >
+                {detailLabel} <ArrowRight size={15} />
+              </Link>
+            </article>
+          );
+        })}
       </div>
 
       <div className="rail-controls">
-        <button type="button" className="rail-arrow" onClick={() => move(-1)} aria-label="previous">
+        <button type="button" className="rail-arrow" onClick={() => go(-1)} aria-label="previous">
           <ArrowLeft size={16} />
         </button>
         <div className="coverflow-dots">
-          {pages.map((group, position) => (
+          {projects.map((project, position) => (
             <button
-              key={position}
+              key={project.slug}
               type="button"
               className="coverflow-dot"
-              data-on={position === page}
-              aria-label={`page ${position + 1}`}
-              aria-current={position === page}
-              onClick={() => setPage(position)}
+              data-on={position === active}
+              aria-label={`project ${position + 1}`}
+              aria-current={position === active}
+              onClick={() => setActive(position)}
             />
           ))}
         </div>
-        <button type="button" className="rail-arrow" onClick={() => move(1)} aria-label="next">
+        <button type="button" className="rail-arrow" onClick={() => go(1)} aria-label="next">
           <ArrowRight size={16} />
         </button>
-        <span className="rail-counter">
-          {String(page + 1).padStart(2, "0")} / {String(pages.length).padStart(2, "0")}
-        </span>
       </div>
     </div>
   );
