@@ -5147,3 +5147,37 @@ html[data-motion="off"] .showcase-slide {
     min-width: 0;
   }
 }
+
+/* Carousel controls: arrows at the far edges, dots dead centre. */
+.coverflow-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.coverflow-controls .rail-arrow:first-of-type {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.coverflow-controls .rail-arrow:nth-of-type(2) {
+  grid-column: 3;
+  justify-self: end;
+  grid-row: 1;
+}
+
+.coverflow-dots {
+  grid-column: 2;
+  grid-row: 1;
+  justify-content: center;
+  margin: 0;
+}
+
+.rail-counter {
+  position: absolute;
+  right: 0;
+  top: -26px;
+  margin: 0;
+}
