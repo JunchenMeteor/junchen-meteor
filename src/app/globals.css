@@ -5437,3 +5437,512 @@ html[data-motion="off"] .showcase-slide {
     height: 270px;
   }
 }
+
+/* ---------- Pearl Glass theme ---------- */
+
+[data-theme="pearl"] {
+  --palette-ink-950: #f4f5f7;
+  --palette-ink-900: #ffffff;
+  --palette-ink-875: #eef0f3;
+  --palette-ink-850: #ffffff;
+  --palette-ink-800: #e6e9ee;
+  --palette-mist-50: #16181b;
+  --palette-mist-100: #2c3036;
+  --palette-mist-200: #3c424a;
+  --palette-mist-400: #667079;
+  --palette-mist-600: #8c949d;
+  --palette-meteor-mint: #236de9;
+  --palette-meteor-gold: #58a021;
+  --palette-meteor-blue: #7a5af8;
+  --palette-danger: #e0443b;
+  --palette-action-ink: #ffffff;
+
+  --alpha-line: rgba(22, 24, 27, 0.1);
+  --alpha-line-soft: rgba(22, 24, 27, 0.06);
+  --alpha-surface-faint: rgba(255, 255, 255, 0.5);
+  --alpha-surface-soft: rgba(255, 255, 255, 0.55);
+  --alpha-surface: rgba(255, 255, 255, 0.62);
+  --alpha-surface-strong: rgba(255, 255, 255, 0.78);
+  --alpha-hover: rgba(35, 109, 233, 0.08);
+  --alpha-grid: rgba(22, 24, 27, 0.045);
+  --alpha-overlay: rgba(22, 24, 27, 0.06);
+  --alpha-accent-line: rgba(35, 109, 233, 0.26);
+  --alpha-accent-line-strong: rgba(35, 109, 233, 0.4);
+  --alpha-accent-line-stronger: rgba(35, 109, 233, 0.55);
+  --alpha-accent-surface: rgba(35, 109, 233, 0.08);
+  --alpha-accent-surface-strong: rgba(35, 109, 233, 0.14);
+  --alpha-gold-surface: rgba(88, 160, 33, 0.1);
+  --alpha-blue-surface: rgba(122, 90, 248, 0.08);
+
+  --shadow-elevated: 0 1px 2px rgba(22, 24, 27, 0.06), 0 18px 48px rgba(22, 24, 27, 0.1);
+  --glow-mint: rgba(35, 109, 233, 0.16);
+  --glow-gold: rgba(88, 160, 33, 0.12);
+
+  --surface-panel: rgba(255, 255, 255, 0.72);
+  --surface-panel-strong: rgba(255, 255, 255, 0.86);
+  --surface-panel-muted: rgba(246, 247, 249, 0.8);
+  --header-bg: rgba(244, 245, 247, 0.82);
+  --terminal-bg: rgba(246, 247, 249, 0.8);
+  --flow-node-bg: #ffffff;
+
+  --body-bg:
+    radial-gradient(circle at 82% 6%, rgba(35, 109, 233, 0.1), transparent 34rem),
+    radial-gradient(circle at 8% 22%, rgba(88, 160, 33, 0.08), transparent 28rem),
+    #f4f5f7;
+
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-featured-bg: rgba(255, 255, 255, 0.9);
+  --button-primary-bg: #236de9;
+  --button-primary-text: #ffffff;
+}
+
+/* Glass material: only on layered surfaces, never on body text. */
+[data-theme="pearl"] .stage-card,
+[data-theme="pearl"] .run-sheet,
+[data-theme="pearl"] .coverflow-card,
+[data-theme="pearl"] .gallery-item,
+[data-theme="pearl"] .rail-card,
+[data-theme="pearl"] .showcase {
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  border-color: rgba(22, 24, 27, 0.08);
+}
+
+[data-theme="pearl"] .stage-card,
+[data-theme="pearl"] .coverflow-card {
+  border-radius: 20px;
+  box-shadow:
+    0 1px 2px rgba(22, 24, 27, 0.05),
+    0 24px 60px rgba(22, 24, 27, 0.12);
+}
+
+[data-theme="pearl"] .stage-sheet,
+[data-theme="pearl"] .run-sheet {
+  border-radius: 16px;
+}
+
+[data-theme="pearl"] .stage-status,
+[data-theme="pearl"] .run-sheet-state,
+[data-theme="pearl"] .work-status,
+[data-theme="pearl"] .coverflow-status {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dark spec plate, borrowed from the instrument vocabulary. */
+[data-theme="pearl"] .stage-sheet {
+  background: rgba(22, 24, 27, 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #f4f5f7;
+}
+
+[data-theme="pearl"] .stage-sheet-label,
+[data-theme="pearl"] .stage-sheet dt {
+  color: rgba(244, 245, 247, 0.62);
+}
+
+[data-theme="pearl"] .stage-sheet dd {
+  color: #f4f5f7;
+}
+
+[data-theme="pearl"] .site-header {
+  border-bottom-color: rgba(22, 24, 27, 0.08);
+}
+
+.stage-cards {
+  height: clamp(180px, 22vh, 210px);
+}
+
+.stage-card {
+  padding: 20px;
+}
+
+/* ---------- Instrument stage ---------- */
+
+.stage {
+  padding: clamp(16px, 3vw, 34px) var(--page-gutter) clamp(40px, 5vw, 64px);
+}
+
+.stage-panel {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: clamp(20px, 3vh, 34px);
+  padding: clamp(24px, 3vw, 44px);
+  border-radius: clamp(24px, 2.4vw, 36px);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(88, 160, 33, 0.16), transparent 42%),
+    radial-gradient(circle at 12% 82%, rgba(35, 109, 233, 0.14), transparent 46%),
+    #0a0d0c;
+  color: #f2f5f3;
+  box-shadow:
+    0 2px 4px rgba(16, 18, 20, 0.16),
+    0 40px 90px rgba(16, 18, 20, 0.28);
+  overflow: hidden;
+}
+
+.stage-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stage-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stage-brand i {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 32%, #9ae6b4, #2f7a3d 62%, #14261a);
+  box-shadow: 0 0 24px rgba(88, 160, 33, 0.45);
+}
+
+.stage-brand strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: -0.01em;
+}
+
+.stage-brand small {
+  display: block;
+  margin-top: 2px;
+  color: rgba(242, 245, 243, 0.5);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stage-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 13px;
+  border: 1px solid rgba(242, 245, 243, 0.14);
+  border-radius: 999px;
+  color: rgba(242, 245, 243, 0.72);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.stage-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: clamp(26px, 4vw, 56px);
+  align-items: start;
+}
+
+.stage-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.stage h1 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 104px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 0.9;
+  color: #ffffff;
+}
+
+.stage h1 small {
+  display: block;
+  margin-top: 12px;
+  color: rgba(242, 245, 243, 0.45);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+}
+
+.stage-phrase {
+  max-width: 24ch;
+  margin: 6px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+  color: #f2f5f3;
+}
+
+.stage-intro {
+  max-width: 46ch;
+  margin: 0;
+  color: rgba(242, 245, 243, 0.62);
+  font-size: 15.5px;
+  line-height: 1.68;
+}
+
+.stage-identity {
+  margin: 0;
+  padding-left: 12px;
+  border-left: 2px solid #58a021;
+  color: rgba(242, 245, 243, 0.8);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.stage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.stage .primary-button {
+  background: #236de9;
+  color: #ffffff;
+  border-radius: 12px;
+}
+
+.stage .secondary-button {
+  border: 1px solid rgba(242, 245, 243, 0.18);
+  background: rgba(242, 245, 243, 0.06);
+  color: #f2f5f3;
+  border-radius: 12px;
+}
+
+.stage-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(242, 245, 243, 0.6);
+  font-size: 13px;
+}
+
+.stage-github:hover {
+  color: #ffffff;
+}
+
+/* Dial */
+
+.stage-visual {
+  display: grid;
+  gap: 14px;
+}
+
+.dial {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  max-width: 260px;
+  margin-inline: auto;
+}
+
+.dial-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dial-tick {
+  stroke: rgba(242, 245, 243, 0.18);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.dial-tick-active {
+  stroke: #7bd88f;
+  filter: drop-shadow(0 0 4px rgba(123, 216, 143, 0.6));
+}
+
+.dial-core {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.dial-label {
+  color: rgba(242, 245, 243, 0.45);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.dial-core strong {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+}
+
+.dial-caption {
+  color: rgba(242, 245, 243, 0.42);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+}
+
+.dial-value {
+  margin-top: 6px;
+  padding: 3px 9px;
+  border: 1px solid rgba(123, 216, 143, 0.35);
+  border-radius: 999px;
+  color: #7bd88f;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+}
+
+/* Cards + spec sheet */
+
+.stage-cards {
+  position: relative;
+  height: 132px;
+}
+
+.stage-card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 16px 18px;
+  border: 1px solid rgba(242, 245, 243, 0.12);
+  border-radius: 16px;
+  background: rgba(242, 245, 243, 0.05);
+  will-change: transform;
+}
+
+.stage-card-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.stage-card p {
+  margin: 0;
+  color: rgba(242, 245, 243, 0.6);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.stage-card ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stage-card li {
+  padding: 3px 8px;
+  border: 1px solid rgba(242, 245, 243, 0.14);
+  border-radius: 999px;
+  color: rgba(242, 245, 243, 0.55);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+}
+
+.stage-sheet {
+  padding: 12px 14px;
+  border: 1px solid rgba(242, 245, 243, 0.1);
+  border-radius: 14px;
+  background: rgba(4, 6, 5, 0.72);
+}
+
+.stage-sheet-label {
+  color: rgba(242, 245, 243, 0.42);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stage-sheet dl {
+  display: grid;
+  gap: 5px;
+  margin: 8px 0 0;
+}
+
+.stage-sheet dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.stage-sheet dt {
+  color: rgba(242, 245, 243, 0.45);
+  font-family: var(--font-mono);
+}
+
+.stage-sheet dd {
+  margin: 0;
+  color: #f2f5f3;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Foot cards */
+
+.stage-foot {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stage-foot-card {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid rgba(242, 245, 243, 0.1);
+  border-radius: 14px;
+  background: rgba(242, 245, 243, 0.04);
+}
+
+.stage-foot-card strong {
+  font-size: 13.5px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.stage-foot-card span {
+  color: rgba(242, 245, 243, 0.5);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+@media (max-width: 1000px) {
+  .stage-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stage-foot {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dial {
+    max-width: 200px;
+  }
+}
+
+/* The stage is a single dark panel, not a two-column section. */
+.stage {
+  display: block;
+  min-height: 0;
+  overflow: visible;
+  padding-top: clamp(16px, 3vw, 34px);
+}
+
+.stage-bg,
+.stage-orb,
+.stage-dots {
+  display: none;
+}
