@@ -6882,3 +6882,59 @@ body[data-theme] .coverflow-card {
     height: 380px;
   }
 }
+
+/* ---------- Theme-true surfaces: never hardcode white in the rail ---------- */
+.rail-layer {
+  background: var(--card-bg);
+  border-color: var(--line);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), var(--shadow-elevated);
+  color: var(--text);
+}
+
+.rail-layer[data-active='true'] {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), var(--shadow-elevated);
+}
+
+.rail-layer .rail-status {
+  color: var(--text-subtle);
+}
+
+.rail-layer .rail-stack-label,
+.rail-layer small {
+  color: var(--text-subtle);
+}
+
+.rail-layer h3 {
+  color: var(--text);
+}
+
+.rail-layer p {
+  color: var(--text-muted);
+}
+
+.rail-ghost {
+  -webkit-text-stroke-color: var(--line);
+  color: transparent;
+}
+
+.rail-layer[data-active='true'] .rail-ghost {
+  -webkit-text-stroke-color: var(--line);
+}
+
+/* Pearl glass is translucent, so stacked cards would show each other through. */
+[data-theme='pearl'] .rail-layer {
+  background: #ffffff;
+  border-color: rgba(22, 24, 27, 0.1);
+}
+
+/* Rail labels need body-level contrast, not the faintest token. */
+.rail-layer .rail-status,
+.rail-layer .rail-stack-label,
+.rail-layer small {
+  color: var(--text-muted);
+}
+
+.rail-ghost {
+  -webkit-text-stroke: 1.5px var(--border-strong, var(--line));
+  opacity: 0.7;
+}

@@ -95,7 +95,7 @@ export function ProjectRail({
                 transform: `translate(-50%, ${distance * 10}px) translateX(${shift}px) rotateY(${
                   offset === 0 ? 0 : -Math.sign(offset) * 16
                 }deg) scale(${1 - distance * 0.06})`,
-                opacity: hidden ? 0 : 1 - distance * 0.18,
+                opacity: hidden ? 0 : 1 - distance * 0.12,
                 filter: distance === 0 ? 'none' : `blur(${distance * 0.9}px)`,
                 maskImage:
                   distance === 0
