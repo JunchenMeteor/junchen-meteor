@@ -6071,3 +6071,223 @@ body[data-theme] .coverflow-card {
 [data-theme="pearl"] .gallery-section figcaption span {
   color: rgba(242, 245, 243, 0.66) !important;
 }
+
+/* ---------- Flat rail (replaces the 3D coverflow) ---------- */
+
+.work-section {
+  overflow: hidden;
+}
+
+.rail-viewport {
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.rail-viewport:active {
+  cursor: grabbing;
+}
+
+.rail-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.rail-card {
+  flex: 0 0 min(420px, 78vw);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 320px;
+  padding: 22px;
+  border: 1px solid rgba(242, 245, 243, 0.12);
+  border-radius: 18px;
+  background: #11161a;
+}
+
+.rail-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2vw, 28px);
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.rail-card p {
+  margin: 0;
+  color: rgba(242, 245, 243, 0.66);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.rail-card small {
+  color: rgba(242, 245, 243, 0.45);
+  font-size: 12px;
+}
+
+.rail-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(242, 245, 243, 0.45);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.rail-status {
+  color: #7bd88f;
+}
+
+.rail-shot {
+  margin-top: auto;
+  height: 132px;
+  border: 1px solid rgba(242, 245, 243, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.rail-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.rail-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #7bd88f;
+  font-size: 13px;
+}
+
+.rail-controls {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.rail-controls .coverflow-dots {
+  justify-content: center;
+  margin: 0;
+}
+
+.rail-controls .rail-arrow:first-child {
+  justify-self: start;
+}
+
+.rail-controls .rail-arrow:last-of-type {
+  justify-self: end;
+}
+
+.rail-controls .rail-counter {
+  position: absolute;
+  right: 0;
+  top: -24px;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .rail-card {
+    flex-basis: 86vw;
+    min-height: 0;
+  }
+}
+
+/* ---------- Reference-accurate surfaces: light cards, dark rail ---------- */
+
+[data-theme="pearl"] .work-section,
+[data-theme="pearl"] .stats-section,
+[data-theme="pearl"] .gallery-section {
+  background: #ffffff;
+  border: 1px solid rgba(22, 24, 27, 0.06);
+  box-shadow:
+    0 1px 2px rgba(22, 24, 27, 0.04),
+    0 18px 44px rgba(22, 24, 27, 0.07);
+}
+
+[data-theme="pearl"] .work-section h2,
+[data-theme="pearl"] .work-section h3,
+[data-theme="pearl"] .work-section .rail-card strong,
+[data-theme="pearl"] .stats-section h2,
+[data-theme="pearl"] .stats-section h3,
+[data-theme="pearl"] .stats-section .stat-cell strong,
+[data-theme="pearl"] .gallery-section h2,
+[data-theme="pearl"] .gallery-section figcaption strong {
+  color: #16181b !important;
+}
+
+[data-theme="pearl"] .work-section p,
+[data-theme="pearl"] .stats-section p,
+[data-theme="pearl"] .gallery-section figcaption span {
+  color: rgba(22, 24, 27, 0.62) !important;
+}
+
+[data-theme="pearl"] .work-section .section-heading span,
+[data-theme="pearl"] .stats-section .section-heading span,
+[data-theme="pearl"] .gallery-section .section-heading span {
+  color: #236de9;
+}
+
+[data-theme="pearl"] .rail-card,
+[data-theme="pearl"] .stat-cell {
+  background: #f6f7f9;
+  border-color: rgba(22, 24, 27, 0.08);
+}
+
+[data-theme="pearl"] .rail-card h3 {
+  color: #16181b;
+}
+
+[data-theme="pearl"] .rail-card p {
+  color: rgba(22, 24, 27, 0.6);
+}
+
+[data-theme="pearl"] .rail-card small,
+[data-theme="pearl"] .rail-card-top {
+  color: rgba(22, 24, 27, 0.42);
+}
+
+[data-theme="pearl"] .rail-status {
+  color: #3f8a1f;
+}
+
+[data-theme="pearl"] .rail-link {
+  color: #236de9;
+}
+
+[data-theme="pearl"] .rail-arrow,
+[data-theme="pearl"] .rail-toggle {
+  border-color: rgba(22, 24, 27, 0.1);
+  background: #ffffff;
+  color: #16181b;
+}
+
+[data-theme="pearl"] .coverflow-dot {
+  background: rgba(22, 24, 27, 0.18);
+}
+
+[data-theme="pearl"] .coverflow-dot[data-on="true"] {
+  background: #58a021;
+}
+
+[data-theme="pearl"] .stat-cell span {
+  color: rgba(22, 24, 27, 0.5);
+}
+
+[data-theme="pearl"] .gallery-item {
+  background: #ffffff;
+}
+
+[data-theme="pearl"] .rail-shot {
+  border-color: rgba(22, 24, 27, 0.08);
+}
+
+.rail-card {
+  min-height: 260px;
+}

@@ -12,20 +12,32 @@ type ProjectRailProps = {
   intervalMs?: number;
 };
 
-function wrapOffset(position: number, index: number, total: number) {
-  const half = total / 2;
-  return ((((position - index + half) % total) + total) % total) - half;
-}
-
 /**
- * Coverflow rail: the active card sits largest in the middle, neighbours
- * step back and rotate in 3D. It advances on its own, can be dragged, and
- * the dots underneath jump straight to a project.
+ * Flat project rail: one row of opaque cards, clipped by the panel, that
+ * advances on its own, can be dragged, and can be jumped through with the
+ * dots underneath.
  */
 export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }: ProjectRailProps) {
   const [index, setIndex] = useState(0);
   const [dragging, setDragging] = useState(false);
+  const [step, setStep] = useState(0);
+  const trackRef = useRef<HTMLDivElement | null>(null);
   const dragStart = useRef<number | null>(null);
+
+  const measure = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector<HTMLElement>("[data-card]");
+    if (!card) return;
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap || "16") || 16;
+    setStep(card.offsetWidth + gap);
+  }, []);
+
+  useEffect(() => {
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
 
   const move = useCallback(
     (direction: -1 | 1) => {
@@ -43,82 +55,60 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }
     return () => window.clearInterval(timer);
   }, [dragging, intervalMs, move]);
 
-  const onPointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    dragStart.current = event.clientX;
-    setDragging(true);
-  };
-
-  const onPointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
-    const start = dragStart.current;
-    dragStart.current = null;
-    setDragging(false);
-    if (start === null) return;
-    const delta = event.clientX - start;
-    if (Math.abs(delta) < 60) return;
-    move(delta < 0 ? 1 : -1);
-  };
-
   return (
-    <div className="coverflow">
+    <div className="rail">
       <div
-        className="coverflow-stage"
-        onPointerDown={onPointerDown}
-        onPointerUp={onPointerUp}
+        className="rail-viewport"
+        onPointerDown={(event) => {
+          dragStart.current = event.clientX;
+          setDragging(true);
+        }}
+        onPointerUp={(event) => {
+          const start = dragStart.current;
+          dragStart.current = null;
+          setDragging(false);
+          if (start === null) return;
+          const delta = event.clientX - start;
+          if (Math.abs(delta) < 60) return;
+          move(delta < 0 ? 1 : -1);
+        }}
         onPointerLeave={() => {
           dragStart.current = null;
           setDragging(false);
         }}
       >
-        {projects.map((project, position) => {
-          const offset = wrapOffset(position, index, projects.length);
-          const depth = Math.min(Math.abs(offset), 3);
-          const hidden = depth >= 3;
-
-          return (
-            <article
-              className="coverflow-card"
-              key={project.slug}
-              data-active={offset === 0}
-              aria-hidden={offset !== 0}
-              style={{
-                transform: `translate3d(calc(-50% + ${offset * 118}%), 0, ${-depth * 180}px) rotateY(${offset * -22}deg) scale(${1 - depth * 0.08})`,
-                opacity: hidden ? 0 : offset === 0 ? 1 : 0.45,
-                zIndex: 10 - depth
-              }}
-            >
-              <div className="coverflow-top">
-                <span className="coverflow-status">{project.status}</span>
-                <span className="coverflow-stack">{project.stack.slice(0, 3).join(" / ")}</span>
+        <div
+          className="rail-track"
+          ref={trackRef}
+          style={{ transform: `translate3d(${-index * step}px, 0, 0)` }}
+        >
+          {projects.map((project) => (
+            <article className="rail-card" data-card key={project.slug}>
+              <div className="rail-card-top">
+                <span className="rail-status">{project.status}</span>
+                <span className="rail-stack">{project.stack.slice(0, 3).join(" / ")}</span>
               </div>
               <h3>{project.name}</h3>
               {project.zhName ? <small>{project.zhName}</small> : null}
               <p>{project.summary[locale]}</p>
               {project.image ? (
-                <div className="coverflow-shot">
+                <div className="rail-shot">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" draggable={false} />
                 </div>
-              ) : (
-                <div className="coverflow-shot coverflow-placeholder" aria-hidden="true">
-                  <span>{project.name.slice(0, 2)}</span>
-                </div>
-              )}
-              <Link className="coverflow-link" href={project.links.github}>
+              ) : null}
+              <Link className="rail-link" href={project.links.github}>
                 {detailLabel} <ArrowRight size={15} />
               </Link>
             </article>
-          );
-        })}
+          ))}
+        </div>
       </div>
 
-      <div className="coverflow-controls">
+      <div className="rail-controls">
         <button type="button" className="rail-arrow" onClick={() => move(-1)} aria-label="previous">
           <ArrowLeft size={16} />
         </button>
-        <button type="button" className="rail-arrow" onClick={() => move(1)} aria-label="next">
-          <ArrowRight size={16} />
-        </button>
-
         <div className="coverflow-dots">
           {projects.map((project, position) => (
             <button
@@ -132,7 +122,9 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }
             />
           ))}
         </div>
-
+        <button type="button" className="rail-arrow" onClick={() => move(1)} aria-label="next">
+          <ArrowRight size={16} />
+        </button>
         <span className="rail-counter">
           {String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
         </span>
