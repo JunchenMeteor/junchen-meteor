@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Github, MessageSquare } from "lucide-react";
+import { ArrowRight, MessageSquare } from "lucide-react";
 import { contactCopy, homeCopy, site, type Locale } from "@/content/site";
 import { projects } from "@/content/projects";
 import { uiCopy } from "@/content/ui";
@@ -8,12 +8,9 @@ import { ValidationRunPanel } from "@/components/validation-run-panel";
 import { MeteorTestShowcase } from "@/components/meteortest-showcase";
 import { StatsBand, ArchitectureDiagram } from "@/components/stats-band";
 import { ScreenGallery } from "@/components/screen-gallery";
-import { StatusTicker } from "@/components/status-ticker";
+import { HeroStage } from "@/components/hero-stage";
 import { Marquee } from "@/components/marquee";
 import { MobileStory } from "@/components/mobile-story";
-import { Magnetic } from "@/components/magnetic";
-import { AutoShowcase } from "@/components/auto-showcase";
-import { HeroReel } from "@/components/hero-reel";
 import { ProjectRail } from "@/components/project-rail";
 
 export function HomePage({ locale }: { locale: Locale }) {
@@ -25,54 +22,25 @@ export function HomePage({ locale }: { locale: Locale }) {
 
   return (
     <>
-      <section className="hero-section">
-        <div className="hero-copy">
-          <StatusTicker items={copy.tickerItems} />
-          <h1>{site.name}</h1>
-          <HeroReel phrases={copy.heroPhrases} />
-          <p className="hero-intro">{site.intro[locale]}</p>
-          <p className="hero-identity">{site.identity[locale]}</p>
-          <div className="hero-actions">
-            <Magnetic>
-              <Link className="primary-button" href={localizedPath(locale, "/projects")}>
-                {copy.primaryCta} <ArrowRight size={18} />
-              </Link>
-            </Magnetic>
-            <Magnetic>
-              <Link className="secondary-button" href={flagship.links.preview ?? localizedPath(locale, "/meteortest")}>
-                {copy.previewCta} <ArrowRight size={18} />
-              </Link>
-            </Magnetic>
-          </div>
-          <Link className="hero-github" href={site.github}>
-            <Github size={16} /> {copy.secondaryCta}
-          </Link>
-        </div>
-        <aside className="run-sheet" aria-label={copy.sheetLabel}>
-          <div className="run-sheet-head">
-            <span className="run-sheet-label">{copy.sheetLabel}</span>
-            <span className="run-sheet-state">{copy.sheetStatus}</span>
-          </div>
-          <dl className="run-sheet-rows">
-            {copy.sheetRows.map((row) => (
-              <div key={row.label}>
-                <dt>{row.label}</dt>
-                <dd>{row.value}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="run-sheet-note">{copy.sheetNote}</p>
-        </aside>
-      </section>
+      <HeroStage
+        locale={locale}
+        name={site.name}
+        zhName={site.zhName}
+        phrases={copy.heroPhrases}
+        intro={site.intro[locale]}
+        identity={site.identity[locale]}
+        statusItems={copy.tickerItems}
+        primaryCta={copy.primaryCta}
+        primaryHref={localizedPath(locale, "/projects")}
+        secondaryCta={copy.previewCta}
+        secondaryHref={flagship.links.preview ?? localizedPath(locale, "/meteortest")}
+        githubHref={site.github}
+        slides={copy.showcaseSlides}
+        sheetLabel={copy.sheetLabel}
+        sheetRows={copy.sheetRows}
+      />
 
       <Marquee label={copy.marqueeLabel} items={copy.marqueeItems} />
-
-      <AutoShowcase
-        label={copy.showcaseLabel}
-        playLabel={copy.showcasePlay}
-        pauseLabel={copy.showcasePause}
-        slides={copy.showcaseSlides}
-      />
 
       <ScreenGallery
         label={copy.galleryLabel}
