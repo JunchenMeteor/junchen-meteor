@@ -6,7 +6,15 @@ import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
 import { MeteorTestShowcase } from "@/components/meteortest-showcase";
-import { RevealList } from "@/components/reveal-list";
+import { StatsBand, ArchitectureDiagram } from "@/components/stats-band";
+import { ScreenGallery } from "@/components/screen-gallery";
+import { StatusTicker } from "@/components/status-ticker";
+import { Marquee } from "@/components/marquee";
+import { MobileStory } from "@/components/mobile-story";
+import { Magnetic } from "@/components/magnetic";
+import { AutoShowcase } from "@/components/auto-showcase";
+import { HeroReel } from "@/components/hero-reel";
+import { ProjectRail } from "@/components/project-rail";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
@@ -14,27 +22,27 @@ export function HomePage({ locale }: { locale: Locale }) {
   const ui = uiCopy[locale];
   const flagship = projects.find((project) => project.slug === "meteortest") ?? projects[0];
   const companion = projects.find((project) => project.slug === "ios-automation-framework") ?? projects[1];
-  const sprout = projects.find((project) => project.slug === "sprout") ?? projects[0];
 
   return (
     <>
       <section className="hero-section">
         <div className="hero-copy">
-          <p className="hero-status">
-            <span className="status-dot" aria-hidden="true" />
-            {copy.heroStatus}
-          </p>
+          <StatusTicker items={copy.tickerItems} />
           <h1>{site.name}</h1>
-          <p className="hero-title">{copy.heroTitle}</p>
+          <HeroReel phrases={copy.heroPhrases} />
           <p className="hero-intro">{site.intro[locale]}</p>
           <p className="hero-identity">{site.identity[locale]}</p>
           <div className="hero-actions">
-            <Link className="primary-button" href={localizedPath(locale, "/projects")}>
-              {copy.primaryCta} <ArrowRight size={18} />
-            </Link>
-            <Link className="secondary-button" href={flagship.links.preview ?? localizedPath(locale, "/meteortest")}>
-              {copy.previewCta} <ArrowRight size={18} />
-            </Link>
+            <Magnetic>
+              <Link className="primary-button" href={localizedPath(locale, "/projects")}>
+                {copy.primaryCta} <ArrowRight size={18} />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link className="secondary-button" href={flagship.links.preview ?? localizedPath(locale, "/meteortest")}>
+                {copy.previewCta} <ArrowRight size={18} />
+              </Link>
+            </Magnetic>
           </div>
           <Link className="hero-github" href={site.github}>
             <Github size={16} /> {copy.secondaryCta}
@@ -57,30 +65,32 @@ export function HomePage({ locale }: { locale: Locale }) {
         </aside>
       </section>
 
-      <section className="mobile-section">
-        <div className="section-heading">
-          <span>{copy.mobileLabel}</span>
-          <h2>{copy.mobileTitle}</h2>
-          <p>{copy.mobileIntro}</p>
-        </div>
-        <div className="mobile-feature">
-          <ol className="mobile-repos">
-            {copy.mobileRepos.map((repo, index) => (
-              <li key={repo.name}>
-                <span className="repo-index">{String(index + 1).padStart(2, "0")}</span>
-                <strong>{repo.name}</strong>
-                <small>{repo.detail}</small>
-              </li>
-            ))}
-          </ol>
-          <div className="mobile-side">
-            <p className="mobile-note">{copy.mobileNote}</p>
-            <Link className="text-link" href={sprout.links.github}>
-              {sprout.name} {ui.common.github} <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Marquee label={copy.marqueeLabel} items={copy.marqueeItems} />
+
+      <AutoShowcase
+        label={copy.showcaseLabel}
+        playLabel={copy.showcasePlay}
+        pauseLabel={copy.showcasePause}
+        slides={copy.showcaseSlides}
+      />
+
+      <ScreenGallery
+        label={copy.galleryLabel}
+        title={copy.galleryTitle}
+        note={copy.galleryNote}
+        items={copy.galleryItems}
+      />
+
+      <StatsBand locale={locale} />
+
+      <MobileStory
+        label={copy.storyLabel}
+        title={copy.storyTitle}
+        hint={copy.storyHint}
+        scenes={copy.storyScenes}
+      />
+
+      <ArchitectureDiagram locale={locale} />
 
       <section className="flagship-section">
         <div className="section-heading">
@@ -139,22 +149,13 @@ export function HomePage({ locale }: { locale: Locale }) {
           <h2>{copy.workTitle}</h2>
           <p>{copy.workIntro}</p>
         </div>
-        <RevealList className="work-ledger">
-          {projects.map((project) => (
-            <li key={project.slug}>
-              <Link className="work-row" href={project.links.github}>
-                <span className="work-name">
-                  <strong>{project.name}</strong>
-                  {project.zhName ? <small>{project.zhName}</small> : null}
-                </span>
-                <span className="work-summary">{project.summary[locale]}</span>
-                <span className="work-stack">{project.stack.join(" / ")}</span>
-                <span className="work-status">{project.status}</span>
-                <ArrowRight className="work-arrow" size={16} />
-              </Link>
-            </li>
-          ))}
-        </RevealList>
+        <ProjectRail
+          projects={projects}
+          locale={locale}
+          playLabel={copy.showcasePlay}
+          pauseLabel={copy.showcasePause}
+          detailLabel={ui.common.viewDetails}
+        />
       </section>
 
       <section className="focus-section">

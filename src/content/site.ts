@@ -39,6 +39,11 @@ export const homeCopy = {
   en: {
     eyebrow: "Mobile engineering portfolio",
     heroTitle: "Mobile engineering with release quality built in.",
+    heroPhrases: [
+      "Mobile engineering with release quality built in.",
+      "SwiftUI, uni-app x, and the contract between them.",
+      "Three repositories, one product, shipped."
+    ],
     primaryCta: "See the mobile work",
     previewCta: "Open MeteorTest Web Preview",
     secondaryCta: "View GitHub",
@@ -69,6 +74,100 @@ export const homeCopy = {
     ],
     mobileNote:
       "The interface contract is versioned and distributed to both clients with a hash. Only the iOS repository is public today.",
+    tickerItems: [
+      "MeteorTest · MVP, active development",
+      "Sprout · three repositories, one contract",
+      "iOS suite · 6 passed, exit 0",
+      "TankQuest · Phaser 2.5D vertical slice"
+    ],
+    marqueeItems: [
+      "SwiftUI",
+      "uni-app x",
+      "HarmonyOS NEXT",
+      "FastAPI",
+      "LangGraph",
+      "Appium",
+      "pytest",
+      "Allure",
+      "Phaser",
+      "Tauri",
+      "Next.js",
+      "TypeScript"
+    ],
+    marqueeLabel: "Stack in daily use",
+    showcaseLabel: "Selected work, running on its own",
+    showcasePlay: "Resume reel",
+    showcasePause: "Pause reel",
+    showcaseSlides: [
+      {
+        name: "MeteorTest",
+        line: "A testing control plane that runs the suite and keeps the evidence.",
+        meta: ["task queue", "local executor", "Allure reports"]
+      },
+      {
+        name: "Sprout",
+        line: "One product, three repositories, one interface contract.",
+        meta: ["SwiftUI", "uni-app x", "FastAPI contract"]
+      },
+      {
+        name: "TankQuest Academy",
+        line: "A 2.5D learning game with backend-authoritative progress.",
+        meta: ["Phaser", "Tauri preview", "parent report"]
+      }
+    ],
+    galleryLabel: "Screens",
+    galleryTitle: "What the products actually look like.",
+    galleryNote: "Captured from the running builds, not mockups.",
+    galleryItems: [
+      {
+        src: "/screenshots/meteortest-dashboard-preview.png",
+        title: "MeteorTest · workspace",
+        caption: "Projects, suites, tasks, and artifacts in one console."
+      },
+      {
+        src: "/screenshots/meteortest-reports-preview.png",
+        title: "MeteorTest · reports",
+        caption: "Run status, logs, and Allure artifacts per task."
+      },
+      {
+        src: "/screenshots/tankquest-missions.png",
+        title: "TankQuest · missions",
+        caption: "Twelve missions across math, English, and direction drills."
+      },
+      {
+        src: "/screenshots/tankquest-battle.png",
+        title: "TankQuest · battle",
+        caption: "Arcade physics with an in-battle math challenge."
+      }
+    ],
+    storyLabel: "How it is built",
+    storyTitle: "Three scenes, one product.",
+    storyHint: "Scroll to move through the build.",
+    tourPlay: "Play walkthrough",
+    tourPause: "Pause walkthrough",
+    storyScenes: [
+      {
+        kicker: "The app",
+        title: "A SwiftUI client that keeps working offline",
+        body:
+          "Recording, playback, local storage and offline practice flows, with mock services marked explicitly in Debug builds so nothing pretends to be real data.",
+        meta: ["iPhone + iPad", "SwiftUI", "offline practice"]
+      },
+      {
+        kicker: "The contract",
+        title: "One interface contract, three repositories",
+        body:
+          "EC-API-0.1 is versioned and hash-distributed to both clients, so the iOS app, the uni-app x app and the FastAPI backend move together instead of drifting apart.",
+        meta: ["EC-API-0.1", "uni-app x", "FastAPI + LangGraph"]
+      },
+      {
+        kicker: "The release check",
+        title: "The suite that decides it is safe to ship",
+        body:
+          "Appium and pytest suites produce real pass/fail results and Allure artifacts before a build leaves the machine, and the same run is recorded on this page.",
+        meta: ["6 passed", "exit 0", "Allure artifacts"]
+      }
+    ],
     workLabel: "Work",
     workTitle: "Projects, with the state they are actually in.",
     workIntro:
@@ -150,6 +249,11 @@ export const homeCopy = {
   zh: {
     eyebrow: "移动工程作品集",
     heroTitle: "移动工程，把发布质量做进去。",
+    heroPhrases: [
+      "移动工程，把发布质量做进去。",
+      "SwiftUI、uni-app x，以及它们之间的契约。",
+      "三个仓库，一个产品，发布出去。"
+    ],
     primaryCta: "看移动端作品",
     previewCta: "打开 MeteorTest Web 预览",
     secondaryCta: "查看 GitHub",
@@ -180,6 +284,100 @@ export const homeCopy = {
     ],
     mobileNote:
       "接口契约按版本与哈希分发给两个客户端。目前只有 iOS 仓库公开。",
+    tickerItems: [
+      "MeteorTest · MVP，仍在主动开发",
+      "Sprout · 三个仓库，一份契约",
+      "iOS 套件 · 6 passed，exit 0",
+      "TankQuest · Phaser 2.5D 竖切版本"
+    ],
+    marqueeItems: [
+      "SwiftUI",
+      "uni-app x",
+      "HarmonyOS NEXT",
+      "FastAPI",
+      "LangGraph",
+      "Appium",
+      "pytest",
+      "Allure",
+      "Phaser",
+      "Tauri",
+      "Next.js",
+      "TypeScript"
+    ],
+    marqueeLabel: "日常在用的技术栈",
+    showcaseLabel: "代表作，自动播放",
+    showcasePlay: "继续播放",
+    showcasePause: "暂停播放",
+    showcaseSlides: [
+      {
+        name: "MeteorTest",
+        line: "一个跑套件、留证据的测试控制平面。",
+        meta: ["任务队列", "本地执行器", "Allure 报告"]
+      },
+      {
+        name: "Sprout",
+        line: "一个产品，三个仓库，一份接口契约。",
+        meta: ["SwiftUI", "uni-app x", "FastAPI 契约"]
+      },
+      {
+        name: "TankQuest Academy",
+        line: "进度由后端权威裁定的 2.5D 学习游戏。",
+        meta: ["Phaser", "Tauri 预览", "家长报告"]
+      }
+    ],
+    galleryLabel: "界面",
+    galleryTitle: "这些产品实际长什么样。",
+    galleryNote: "截自正在运行的构建，不是效果图。",
+    galleryItems: [
+      {
+        src: "/screenshots/meteortest-dashboard-preview.png",
+        title: "MeteorTest · 工作区",
+        caption: "项目、套件、任务与产物集中在一个控制台。"
+      },
+      {
+        src: "/screenshots/meteortest-reports-preview.png",
+        title: "MeteorTest · 报告",
+        caption: "按任务查看运行状态、日志与 Allure 产物。"
+      },
+      {
+        src: "/screenshots/tankquest-missions.png",
+        title: "TankQuest · 任务选择",
+        caption: "12 个任务，覆盖数学、英语与方向训练。"
+      },
+      {
+        src: "/screenshots/tankquest-battle.png",
+        title: "TankQuest · 战斗",
+        caption: "Arcade 物理，战斗中加入数学挑战。"
+      }
+    ],
+    storyLabel: "构建方式",
+    storyTitle: "三个场景，一个产品。",
+    storyHint: "向下滚动，推进构建过程。",
+    tourPlay: "播放演示",
+    tourPause: "暂停演示",
+    storyScenes: [
+      {
+        kicker: "App",
+        title: "一个能离线工作的 SwiftUI 客户端",
+        body:
+          "录音、播放、本地存储与离线练习流程；Debug 构建里使用显式标记的模拟服务，不让任何假数据看起来像真的。",
+        meta: ["iPhone + iPad", "SwiftUI", "离线练习"]
+      },
+      {
+        kicker: "契约",
+        title: "一份接口契约，三个仓库",
+        body:
+          "EC-API-0.1 按版本与哈希分发给两个客户端，iOS、uni-app x 与 FastAPI 后端一起演进，而不是各走各的。",
+        meta: ["EC-API-0.1", "uni-app x", "FastAPI + LangGraph"]
+      },
+      {
+        kicker: "发布校验",
+        title: "决定能不能发布的那套测试",
+        body:
+          "Appium 与 pytest 套件在构建离开机器之前给出真实的通过/失败结果与 Allure 产物；页面上记录的就是同一次运行。",
+        meta: ["6 passed", "exit 0", "Allure 产物"]
+      }
+    ],
     workLabel: "作品",
     workTitle: "项目，连同它们当前的真实状态。",
     workIntro:
