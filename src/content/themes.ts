@@ -12,12 +12,13 @@ export const themeIds = [
   "sky",
   "glacier",
   "mint",
-  "sakura"
+  "sakura",
+  "pearl"
 ] as const;
 
 export type ThemeId = (typeof themeIds)[number];
 
-export const defaultTheme: ThemeId = "sky";
+export const defaultTheme: ThemeId = "pearl";
 
 export const themeCopy = {
   en: {
@@ -32,7 +33,8 @@ export const themeCopy = {
       sakura: "Sakura Mist",
       glacier: "Glacier Silver",
       dune: "Dune",
-      aurora: "Aurora Terminal"
+      aurora: "Aurora Terminal",
+      pearl: "Pearl Glass"
     }
   },
   zh: {
@@ -47,7 +49,8 @@ export const themeCopy = {
       sakura: "樱花雾",
       glacier: "冰湖银",
       dune: "沙丘",
-      aurora: "极光终端"
+      aurora: "极光终端",
+      pearl: "珍珠玻璃"
     }
   }
 } satisfies Record<

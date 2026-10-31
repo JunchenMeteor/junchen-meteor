@@ -95,6 +95,16 @@ export const homeCopy = {
       "TypeScript"
     ],
     marqueeLabel: "Stack in daily use",
+    stageBrand: "JC Meteor",
+    stageVersion: "mobile engineering portfolio",
+    dialLabel: "Local time",
+    dialValue: "626 commits · 10 public repos",
+    dialCaption: "readout",
+    stageFoot: [
+      { title: "Release checks", detail: "Appium + pytest + Allure" },
+      { title: "Contracts", detail: "EC-API-0.1, versioned and hashed" },
+      { title: "Public work", detail: "10 repositories, 3.0 MB of source" }
+    ],
     showcaseLabel: "Selected work, running on its own",
     showcasePlay: "Resume reel",
     showcasePause: "Pause reel",
@@ -305,6 +315,16 @@ export const homeCopy = {
       "TypeScript"
     ],
     marqueeLabel: "日常在用的技术栈",
+    stageBrand: "JC Meteor",
+    stageVersion: "移动工程作品集",
+    dialLabel: "本地时间",
+    dialValue: "626 次提交 · 10 个公开仓库",
+    dialCaption: "读数",
+    stageFoot: [
+      { title: "发布校验", detail: "Appium + pytest + Allure" },
+      { title: "接口契约", detail: "EC-API-0.1，按版本与哈希分发" },
+      { title: "公开工作", detail: "10 个仓库，3.0 MB 源码" }
+    ],
     showcaseLabel: "代表作，自动播放",
     showcasePlay: "继续播放",
     showcasePause: "暂停播放",
