@@ -11,6 +11,7 @@ import { StatusTicker } from "@/components/status-ticker";
 import { Marquee } from "@/components/marquee";
 import { MobileStory } from "@/components/mobile-story";
 import { Magnetic } from "@/components/magnetic";
+import { AutoShowcase } from "@/components/auto-showcase";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
@@ -62,6 +63,13 @@ export function HomePage({ locale }: { locale: Locale }) {
       </section>
 
       <Marquee label={copy.marqueeLabel} items={copy.marqueeItems} />
+
+      <AutoShowcase
+        label={copy.showcaseLabel}
+        playLabel={copy.showcasePlay}
+        pauseLabel={copy.showcasePause}
+        slides={copy.showcaseSlides}
+      />
 
       <MobileStory
         label={copy.storyLabel}

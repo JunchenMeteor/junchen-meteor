@@ -90,6 +90,26 @@ export const homeCopy = {
       "TypeScript"
     ],
     marqueeLabel: "Stack in daily use",
+    showcaseLabel: "Selected work, running on its own",
+    showcasePlay: "Resume reel",
+    showcasePause: "Pause reel",
+    showcaseSlides: [
+      {
+        name: "MeteorTest",
+        line: "A testing control plane that runs the suite and keeps the evidence.",
+        meta: ["task queue", "local executor", "Allure reports"]
+      },
+      {
+        name: "Sprout",
+        line: "One product, three repositories, one interface contract.",
+        meta: ["SwiftUI", "uni-app x", "FastAPI contract"]
+      },
+      {
+        name: "TankQuest Academy",
+        line: "A 2.5D learning game with backend-authoritative progress.",
+        meta: ["Phaser", "Tauri preview", "parent report"]
+      }
+    ],
     storyLabel: "How it is built",
     storyTitle: "Three scenes, one product.",
     storyHint: "Scroll to move through the build.",
@@ -250,6 +270,26 @@ export const homeCopy = {
       "TypeScript"
     ],
     marqueeLabel: "日常在用的技术栈",
+    showcaseLabel: "代表作，自动播放",
+    showcasePlay: "继续播放",
+    showcasePause: "暂停播放",
+    showcaseSlides: [
+      {
+        name: "MeteorTest",
+        line: "一个跑套件、留证据的测试控制平面。",
+        meta: ["任务队列", "本地执行器", "Allure 报告"]
+      },
+      {
+        name: "Sprout",
+        line: "一个产品，三个仓库，一份接口契约。",
+        meta: ["SwiftUI", "uni-app x", "FastAPI 契约"]
+      },
+      {
+        name: "TankQuest Academy",
+        line: "进度由后端权威裁定的 2.5D 学习游戏。",
+        meta: ["Phaser", "Tauri 预览", "家长报告"]
+      }
+    ],
     storyLabel: "构建方式",
     storyTitle: "三个场景，一个产品。",
     storyHint: "向下滚动，推进构建过程。",
