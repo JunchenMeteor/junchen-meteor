@@ -78,6 +78,12 @@ export function ProjectRail({
               <h3>{project.name}</h3>
               {project.zhName ? <small>{project.zhName}</small> : null}
               <p>{project.summary[locale]}</p>
+              {project.image ? (
+                <div className="rail-shot">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={project.image} alt={`${project.name} screenshot`} loading="lazy" />
+                </div>
+              ) : null}
               <Link className="rail-link" href={project.links.github}>
                 {detailLabel} <ArrowRight size={15} />
               </Link>

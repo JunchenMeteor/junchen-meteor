@@ -8,6 +8,7 @@ export type Project = {
   role: ProjectRole;
   status: ProjectStatus;
   stack: string[];
+  image?: string;
   summary: {
     en: string;
     zh: string;
@@ -683,6 +684,7 @@ const projectEntries: Project[] = [
     role: "product",
     status: "Active",
     stack: ["Phaser", "TypeScript", "Tauri", "Node.js"],
+    image: "/screenshots/tankquest-missions.png",
     summary: {
       en: "A 2.5D web learning game for kids: tank-themed training grounds that mix driving, tactical challenges, and math, English, and direction drills.",
       zh: "一款面向孩子的 2.5D Web 学习游戏：坦克主题训练场把驾驶、战术挑战与数学、英语、方向训练结合起来。"
