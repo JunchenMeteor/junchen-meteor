@@ -6754,3 +6754,22 @@ body[data-theme] .coverflow-card {
 .rail-stage .rail-card[data-active='true'] .rail-ghost {
   -webkit-text-stroke-color: rgba(20, 40, 60, 0.1);
 }
+
+/* Neighbours slide under the centred card so its edge covers part of them. */
+.rail-stage .rail-card:not([data-active='true']) {
+  transform: translateX(var(--rail-shift, 0px)) scale(0.86);
+  opacity: 0.55;
+  filter: blur(3px) saturate(0.9);
+  z-index: 1;
+}
+
+.rail-stage .rail-card[data-active='true'] {
+  transform: scale(1.08);
+  z-index: 5;
+}
+
+/* Keep the tucked cards readable: lighter blur, a bit more presence. */
+.rail-stage .rail-card:not([data-active='true']) {
+  opacity: 0.68;
+  filter: blur(2.2px) saturate(0.95);
+}

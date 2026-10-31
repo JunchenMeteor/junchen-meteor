@@ -67,6 +67,9 @@ export function ProjectRail({
       >
         {slides.map((project, index) => {
           const isActive = count > 1 ? index === active + 1 : index === active;
+          const offset = index - (count > 1 ? active + 1 : active);
+          /* Neighbours tuck under the centred card instead of sitting beside it. */
+          const shift = offset === 0 ? 0 : -Math.sign(offset) * 96;
           return (
             <article
               key={`${project.slug}-${index}`}
@@ -75,6 +78,7 @@ export function ProjectRail({
               }}
               className="rail-card"
               data-active={isActive}
+              style={{ ["--rail-shift" as string]: `${shift}px` }}
               aria-hidden={!isActive}
               onClick={() => {
                 if (isActive) return;
