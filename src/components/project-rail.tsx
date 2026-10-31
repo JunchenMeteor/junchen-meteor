@@ -81,6 +81,9 @@ export function ProjectRail({
                 setActive((((index - 1) % count) + count) % count);
               }}
             >
+              <span className="rail-ghost" aria-hidden="true">
+                {project.name.slice(0, 2)}
+              </span>
               <div className="rail-card-top">
                 <span className="rail-status">{project.status}</span>
                 <span className="rail-stack">
