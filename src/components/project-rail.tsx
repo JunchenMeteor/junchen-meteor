@@ -81,8 +81,8 @@ export function ProjectRail({ projects, locale, detailLabel, intervalMs = 4200 }
               data-active={offset === 0}
               aria-hidden={offset !== 0}
               style={{
-                transform: `translate3d(calc(-50% + ${offset * 62}%), 0, ${-depth * 180}px) rotateY(${offset * -22}deg) scale(${1 - depth * 0.08})`,
-                opacity: hidden ? 0 : offset === 0 ? 1 : Math.max(0.15, 0.75 - depth * 0.22),
+                transform: `translate3d(calc(-50% + ${offset * 118}%), 0, ${-depth * 180}px) rotateY(${offset * -22}deg) scale(${1 - depth * 0.08})`,
+                opacity: hidden ? 0 : offset === 0 ? 1 : 0.45,
                 zIndex: 10 - depth
               }}
             >

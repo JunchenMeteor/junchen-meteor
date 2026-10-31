@@ -5946,3 +5946,128 @@ html[data-motion="off"] .showcase-slide {
 .stage-dots {
   display: none;
 }
+
+/* ---------- Dark instrument panels for the content sections ---------- */
+
+[data-theme="pearl"] .work-section,
+[data-theme="pearl"] .stats-section,
+[data-theme="pearl"] .gallery-section {
+  margin: 0 var(--page-gutter) clamp(22px, 3vw, 38px);
+  padding: clamp(26px, 3.2vw, 50px);
+  border: 0;
+  border-radius: clamp(22px, 2.2vw, 34px);
+  background:
+    radial-gradient(circle at 14% 6%, rgba(35, 109, 233, 0.18), transparent 46%),
+    radial-gradient(circle at 88% 92%, rgba(88, 160, 33, 0.14), transparent 44%),
+    #0a0d0c;
+  box-shadow:
+    0 2px 4px rgba(16, 18, 20, 0.16),
+    0 32px 70px rgba(16, 18, 20, 0.24);
+
+  --text-primary: #ffffff;
+  --text-soft: rgba(242, 245, 243, 0.82);
+  --text-secondary: rgba(242, 245, 243, 0.62);
+  --text-subtle: rgba(242, 245, 243, 0.44);
+  --border-default: rgba(242, 245, 243, 0.12);
+  --border-soft: rgba(242, 245, 243, 0.08);
+  --line: rgba(242, 245, 243, 0.12);
+  --card-bg: rgba(242, 245, 243, 0.05);
+  --surface-panel-muted: rgba(242, 245, 243, 0.04);
+  --alpha-surface-soft: rgba(242, 245, 243, 0.05);
+  --shadow-elevated: 0 18px 48px rgba(0, 0, 0, 0.45);
+  --accent-primary: #7bd88f;
+  --accent-secondary: #9db7ff;
+}
+
+[data-theme="pearl"] .work-section .section-heading h2,
+[data-theme="pearl"] .stats-section .section-heading h2,
+[data-theme="pearl"] .gallery-section .section-heading h2 {
+  color: #ffffff;
+}
+
+[data-theme="pearl"] .work-section .section-heading span,
+[data-theme="pearl"] .stats-section .section-heading span,
+[data-theme="pearl"] .gallery-section .section-heading span {
+  color: #7bd88f;
+  letter-spacing: 0.14em;
+}
+
+[data-theme="pearl"] .coverflow-card,
+[data-theme="pearl"] .stat-cell,
+[data-theme="pearl"] .gallery-item {
+  border-color: rgba(242, 245, 243, 0.12);
+  background: rgba(242, 245, 243, 0.05);
+}
+
+[data-theme="pearl"] .coverflow-card[data-active="true"] {
+  border-color: rgba(123, 216, 143, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="pearl"] .coverflow-dot {
+  background: rgba(242, 245, 243, 0.24);
+}
+
+[data-theme="pearl"] .coverflow-dot[data-on="true"] {
+  background: #7bd88f;
+}
+
+[data-theme="pearl"] .rail-arrow,
+[data-theme="pearl"] .rail-toggle {
+  border-color: rgba(242, 245, 243, 0.16);
+  background: rgba(242, 245, 243, 0.06);
+  color: #f2f5f3;
+}
+
+[data-theme="pearl"] .stat-cell strong {
+  color: #ffffff;
+}
+
+[data-theme="pearl"] .gallery-item figcaption strong {
+  color: #ffffff;
+}
+
+[data-theme="pearl"] .lang-bar {
+  background: rgba(242, 245, 243, 0.1);
+}
+
+/* Coverflow cards must stay opaque inside the dark panels. */
+[data-theme="pearl"] .coverflow-card,
+body[data-theme] .coverflow-card {
+  background: #11161a;
+}
+
+.coverflow-card[data-active="false"] {
+  filter: saturate(0.6);
+}
+
+/* Alias tokens also need overriding inside dark panels. */
+[data-theme="pearl"] .work-section,
+[data-theme="pearl"] .stats-section,
+[data-theme="pearl"] .gallery-section {
+  --text: #ffffff;
+  --muted: rgba(242, 245, 243, 0.62);
+  --subtle: rgba(242, 245, 243, 0.44);
+  --line: rgba(242, 245, 243, 0.12);
+  --panel: rgba(242, 245, 243, 0.05);
+  --accent: #7bd88f;
+  --accent-2: #9db7ff;
+}
+
+/* Headings inside dark panels must never inherit the dark ink. */
+[data-theme="pearl"] .work-section h2,
+[data-theme="pearl"] .work-section h3,
+[data-theme="pearl"] .work-section .coverflow-card strong,
+[data-theme="pearl"] .stats-section h2,
+[data-theme="pearl"] .stats-section h3,
+[data-theme="pearl"] .stats-section .stat-cell strong,
+[data-theme="pearl"] .gallery-section h2,
+[data-theme="pearl"] .gallery-section figcaption strong {
+  color: #ffffff !important;
+}
+
+[data-theme="pearl"] .work-section p,
+[data-theme="pearl"] .stats-section p,
+[data-theme="pearl"] .gallery-section figcaption span {
+  color: rgba(242, 245, 243, 0.66) !important;
+}
