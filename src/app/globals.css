@@ -5437,3 +5437,121 @@ html[data-motion="off"] .showcase-slide {
     height: 270px;
   }
 }
+
+/* ---------- Pearl Glass theme ---------- */
+
+[data-theme="pearl"] {
+  --palette-ink-950: #f4f5f7;
+  --palette-ink-900: #ffffff;
+  --palette-ink-875: #eef0f3;
+  --palette-ink-850: #ffffff;
+  --palette-ink-800: #e6e9ee;
+  --palette-mist-50: #16181b;
+  --palette-mist-100: #2c3036;
+  --palette-mist-200: #3c424a;
+  --palette-mist-400: #667079;
+  --palette-mist-600: #8c949d;
+  --palette-meteor-mint: #236de9;
+  --palette-meteor-gold: #58a021;
+  --palette-meteor-blue: #7a5af8;
+  --palette-danger: #e0443b;
+  --palette-action-ink: #ffffff;
+
+  --alpha-line: rgba(22, 24, 27, 0.1);
+  --alpha-line-soft: rgba(22, 24, 27, 0.06);
+  --alpha-surface-faint: rgba(255, 255, 255, 0.5);
+  --alpha-surface-soft: rgba(255, 255, 255, 0.55);
+  --alpha-surface: rgba(255, 255, 255, 0.62);
+  --alpha-surface-strong: rgba(255, 255, 255, 0.78);
+  --alpha-hover: rgba(35, 109, 233, 0.08);
+  --alpha-grid: rgba(22, 24, 27, 0.045);
+  --alpha-overlay: rgba(22, 24, 27, 0.06);
+  --alpha-accent-line: rgba(35, 109, 233, 0.26);
+  --alpha-accent-line-strong: rgba(35, 109, 233, 0.4);
+  --alpha-accent-line-stronger: rgba(35, 109, 233, 0.55);
+  --alpha-accent-surface: rgba(35, 109, 233, 0.08);
+  --alpha-accent-surface-strong: rgba(35, 109, 233, 0.14);
+  --alpha-gold-surface: rgba(88, 160, 33, 0.1);
+  --alpha-blue-surface: rgba(122, 90, 248, 0.08);
+
+  --shadow-elevated: 0 1px 2px rgba(22, 24, 27, 0.06), 0 18px 48px rgba(22, 24, 27, 0.1);
+  --glow-mint: rgba(35, 109, 233, 0.16);
+  --glow-gold: rgba(88, 160, 33, 0.12);
+
+  --surface-panel: rgba(255, 255, 255, 0.72);
+  --surface-panel-strong: rgba(255, 255, 255, 0.86);
+  --surface-panel-muted: rgba(246, 247, 249, 0.8);
+  --header-bg: rgba(244, 245, 247, 0.82);
+  --terminal-bg: rgba(246, 247, 249, 0.8);
+  --flow-node-bg: #ffffff;
+
+  --body-bg:
+    radial-gradient(circle at 82% 6%, rgba(35, 109, 233, 0.1), transparent 34rem),
+    radial-gradient(circle at 8% 22%, rgba(88, 160, 33, 0.08), transparent 28rem),
+    #f4f5f7;
+
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-featured-bg: rgba(255, 255, 255, 0.9);
+  --button-primary-bg: #236de9;
+  --button-primary-text: #ffffff;
+}
+
+/* Glass material: only on layered surfaces, never on body text. */
+[data-theme="pearl"] .stage-card,
+[data-theme="pearl"] .run-sheet,
+[data-theme="pearl"] .coverflow-card,
+[data-theme="pearl"] .gallery-item,
+[data-theme="pearl"] .rail-card,
+[data-theme="pearl"] .showcase {
+  backdrop-filter: blur(18px) saturate(1.1);
+  -webkit-backdrop-filter: blur(18px) saturate(1.1);
+  border-color: rgba(22, 24, 27, 0.08);
+}
+
+[data-theme="pearl"] .stage-card,
+[data-theme="pearl"] .coverflow-card {
+  border-radius: 20px;
+  box-shadow:
+    0 1px 2px rgba(22, 24, 27, 0.05),
+    0 24px 60px rgba(22, 24, 27, 0.12);
+}
+
+[data-theme="pearl"] .stage-sheet,
+[data-theme="pearl"] .run-sheet {
+  border-radius: 16px;
+}
+
+[data-theme="pearl"] .stage-status,
+[data-theme="pearl"] .run-sheet-state,
+[data-theme="pearl"] .work-status,
+[data-theme="pearl"] .coverflow-status {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Dark spec plate, borrowed from the instrument vocabulary. */
+[data-theme="pearl"] .stage-sheet {
+  background: rgba(22, 24, 27, 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #f4f5f7;
+}
+
+[data-theme="pearl"] .stage-sheet-label,
+[data-theme="pearl"] .stage-sheet dt {
+  color: rgba(244, 245, 247, 0.62);
+}
+
+[data-theme="pearl"] .stage-sheet dd {
+  color: #f4f5f7;
+}
+
+[data-theme="pearl"] .site-header {
+  border-bottom-color: rgba(22, 24, 27, 0.08);
+}
+
+.stage-cards {
+  height: clamp(180px, 22vh, 210px);
+}
+
+.stage-card {
+  padding: 20px;
+}
