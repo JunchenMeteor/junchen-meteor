@@ -39,6 +39,11 @@ export const homeCopy = {
   en: {
     eyebrow: "Mobile engineering portfolio",
     heroTitle: "Mobile engineering with release quality built in.",
+    heroPhrases: [
+      "Mobile engineering with release quality built in.",
+      "SwiftUI, uni-app x, and the contract between them.",
+      "Three repositories, one product, shipped."
+    ],
     primaryCta: "See the mobile work",
     previewCta: "Open MeteorTest Web Preview",
     secondaryCta: "View GitHub",
@@ -219,6 +224,11 @@ export const homeCopy = {
   zh: {
     eyebrow: "移动工程作品集",
     heroTitle: "移动工程，把发布质量做进去。",
+    heroPhrases: [
+      "移动工程，把发布质量做进去。",
+      "SwiftUI、uni-app x，以及它们之间的契约。",
+      "三个仓库，一个产品，发布出去。"
+    ],
     primaryCta: "看移动端作品",
     previewCta: "打开 MeteorTest Web 预览",
     secondaryCta: "查看 GitHub",

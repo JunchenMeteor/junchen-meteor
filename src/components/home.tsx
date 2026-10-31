@@ -6,12 +6,14 @@ import { uiCopy } from "@/content/ui";
 import { localizedPath } from "@/content/locales";
 import { ValidationRunPanel } from "@/components/validation-run-panel";
 import { MeteorTestShowcase } from "@/components/meteortest-showcase";
-import { RevealList } from "@/components/reveal-list";
+import { StatsBand, ArchitectureDiagram } from "@/components/stats-band";
 import { StatusTicker } from "@/components/status-ticker";
 import { Marquee } from "@/components/marquee";
 import { MobileStory } from "@/components/mobile-story";
 import { Magnetic } from "@/components/magnetic";
 import { AutoShowcase } from "@/components/auto-showcase";
+import { HeroReel } from "@/components/hero-reel";
+import { ProjectRail } from "@/components/project-rail";
 
 export function HomePage({ locale }: { locale: Locale }) {
   const copy = homeCopy[locale];
@@ -26,7 +28,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <div className="hero-copy">
           <StatusTicker items={copy.tickerItems} />
           <h1>{site.name}</h1>
-          <p className="hero-title">{copy.heroTitle}</p>
+          <HeroReel phrases={copy.heroPhrases} />
           <p className="hero-intro">{site.intro[locale]}</p>
           <p className="hero-identity">{site.identity[locale]}</p>
           <div className="hero-actions">
@@ -71,12 +73,16 @@ export function HomePage({ locale }: { locale: Locale }) {
         slides={copy.showcaseSlides}
       />
 
+      <StatsBand locale={locale} />
+
       <MobileStory
         label={copy.storyLabel}
         title={copy.storyTitle}
         hint={copy.storyHint}
         scenes={copy.storyScenes}
       />
+
+      <ArchitectureDiagram locale={locale} />
 
       <section className="flagship-section">
         <div className="section-heading">
@@ -135,22 +141,13 @@ export function HomePage({ locale }: { locale: Locale }) {
           <h2>{copy.workTitle}</h2>
           <p>{copy.workIntro}</p>
         </div>
-        <RevealList className="work-ledger">
-          {projects.map((project) => (
-            <li key={project.slug}>
-              <Link className="work-row" href={project.links.github}>
-                <span className="work-name">
-                  <strong>{project.name}</strong>
-                  {project.zhName ? <small>{project.zhName}</small> : null}
-                </span>
-                <span className="work-summary">{project.summary[locale]}</span>
-                <span className="work-stack">{project.stack.join(" / ")}</span>
-                <span className="work-status">{project.status}</span>
-                <ArrowRight className="work-arrow" size={16} />
-              </Link>
-            </li>
-          ))}
-        </RevealList>
+        <ProjectRail
+          projects={projects}
+          locale={locale}
+          playLabel={copy.showcasePlay}
+          pauseLabel={copy.showcasePause}
+          detailLabel={ui.common.viewDetails}
+        />
       </section>
 
       <section className="focus-section">
