@@ -50,6 +50,7 @@ const projectDisplayOrder = [
   "meteorvoice",
   "meteortest",
   "tankquest-academy",
+  "videocreator",
   "junchen-meteor",
   "lensport",
   "agentshot",
@@ -664,13 +665,13 @@ const projectEntries: Project[] = [
         "Three repositories, one interface contract",
         "iOS client and cross-platform client share EC-API-0.1",
         "Local storage and offline practice flows",
-        "Only the iOS client repository is public today"
+        "All three repositories are public"
       ],
       zh: [
         "三个仓库共享一份接口契约",
         "iOS 与跨端客户端共用 EC-API-0.1",
         "本地存储与离线练习流程",
-        "目前仅 iOS 客户端仓库公开"
+        "三个仓库均已公开"
       ]
     },
     links: {
@@ -734,6 +735,63 @@ const projectEntries: Project[] = [
     links: {
       github: "https://github.com/JunchenMeteor/tankquest-academy",
       docs: "https://github.com/JunchenMeteor/tankquest-academy#readme"
+    }
+  },
+  {
+    slug: "videocreator",
+    name: "VideoCreator",
+    role: "product",
+    status: "MVP",
+    stack: ["Tauri", "FastAPI", "CrewAI", "FFmpeg", "TypeScript"],
+    summary: {
+      en: "A local-first video creation tool with a five-step workbench from project to final cut, and an API/MCP surface that AI agents can operate.",
+      zh: "本地优先的视频创作工具，提供从建项目到成片的五步工作台，并暴露可供 AI agent 调用的 API/MCP 接口。"
+    },
+    portfolio: {
+      why: {
+        en: "Video tooling usually trades either your account or your pipeline for convenience. VideoCreator keeps projects, materials, credentials, and rendering on your own machine, and treats the production chain as a contract instead of a hidden service.",
+        zh: "视频工具往往要用账号或流水线的透明度来换便利。VideoCreator 把项目、素材、凭据和渲染都留在本机，并把制作链路当成一份契约，而不是藏在服务背后。"
+      },
+      built: {
+        en: [
+          "Five-step workbench: create project, set direction, review plan, produce, and final cut.",
+          "FastAPI engine with a contract surface (OpenAPI plus generated clients) shared by the workbench and the desktop shell.",
+          "Tauri desktop host with native owner setup, credential handling, and route contracts.",
+          "Local-only mode that needs no hosted account or API key to start."
+        ],
+        zh: [
+          "五步工作台：建项目、定方向、看方案、制作、成片。",
+          "FastAPI 引擎提供契约接口（OpenAPI 与生成客户端），工作台和桌面壳共用。",
+          "Tauri 桌面宿主，包含本机 owner 初始化、凭据处理与路由契约。",
+          "本地模式无需托管账号或 API Key 即可启动。"
+        ]
+      },
+      role: {
+        en: "Solo architecture and implementation.",
+        zh: "独立架构与实现。"
+      },
+      next: {
+        en: "Close Gate 0 verification for the development installation host, then enable the optional hosted service.",
+        zh: "先完成开发安装宿主的 Gate 0 验收，再接入可选的托管服务。"
+      }
+    },
+    highlights: {
+      en: [
+        "Local-first: projects, materials and rendering stay on the machine",
+        "Five-step workbench from idea to final cut",
+        "Contract-generated API clients shared by workbench and desktop",
+        "MCP surface so agents can operate the pipeline"
+      ],
+      zh: [
+        "本地优先：项目、素材与渲染都在本机",
+        "从想法到成片的五步工作台",
+        "契约生成的 API 客户端由工作台与桌面端共用",
+        "提供 MCP 接口，让 agent 可以操作流水线"
+      ]
+    },
+    links: {
+      github: "https://github.com/JunchenMeteor/VideoCreator",
+      docs: "https://github.com/JunchenMeteor/VideoCreator#readme"
     }
   }
 ];
