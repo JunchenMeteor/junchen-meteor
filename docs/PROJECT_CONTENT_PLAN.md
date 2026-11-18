@@ -791,7 +791,9 @@ The site was repositioned from "testing engineer" to "mobile engineer who also b
 - Hero now states `Mobile engineer · SwiftUI / uni-app x / Python`, a mobile-first headline, and an intro that names the app, the contract, and the release checks.
 - A new `Mobile work` section sits directly under the hero and presents Sprout as one product across three repositories (`SproutIOS`, `SproutCrossPlatform`, `SproutApi`) sharing the EC-API-0.1 contract.
 - The MeteorTest section is relabelled `Release quality` and keeps its full showcase; it now reads as the quality layer behind mobile releases rather than the whole identity.
-- The project ledger order starts with `sprout`, then `ios-automation-framework`, `meteorvoice`, `meteortest`, `tankquest-academy`.
+- The project ledger order starts with `sprout`, then `ios-automation-framework`, `meteorvoice`, `meteortest`, `tankquest-academy`, `videocreator`.
+- `VideoCreator` was added to the ledger after its repository became public: a local-first video creation tool with a five-step workbench, a FastAPI contract surface, and a Tauri desktop host.
+- The Sprout ledger entry no longer says only the iOS client is public; `SproutApi` and `SproutCrossPlatform` are public now.
 - The hero run sheet is relabelled as the mobile suite (`iOS-Automation-Framework · api_smoke`) while keeping the same validated run data and the private-execution boundary.
 
 Motion (first pass):
